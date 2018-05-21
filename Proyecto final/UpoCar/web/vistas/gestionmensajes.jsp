@@ -28,7 +28,7 @@
                         <td><s:property value="texto" /></td>
                         <td><s:property value="idUsuarioEnvia.nomUsuario" /></td>
                         <td><s:property value="idUsuarioRecibe.nomUsuario" /></td>
-                        <td><img class="foto-mi-cuenta img-circle img-responsive" src="../images/papelera.png" /></td>
+                        <td><img class="foto-mi-cuenta img-circle img-responsive" src="./images/papelera.png" /></td>
                     </tr>
                     </s:iterator>
                 </table>

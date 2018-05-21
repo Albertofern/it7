@@ -15,7 +15,7 @@
             <%@include file="../css/misviajes.css" %>
             <%@include file="../librerias/w3css/w3.css" %>
         </style>
-        <script type="text/javascript" src="../librerias/jquery/jquery-1.12.4.min.js"></script>
+        <script type="text/javascript" src="./librerias/jquery/jquery-1.12.4.min.js"></script>
         <title>UpoCar</title>
     </head>
     <body>

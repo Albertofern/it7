@@ -45,8 +45,8 @@
                                     <td id="plazasMax<s:property value="idViaje" />"><s:property value="plazasMax" /></td>
                                     <td><s:property value="fechaSalida" /></td>
                                     <td>
-                                        <s:form action="deleteViaje" ><button name="idViaje" value="<s:property value="idViaje" />"><img class="foto-mi-cuenta img-circle img-responsive" src="../images/papelera.png" /></button></s:form>
-                                        <button id="<s:property value="idViaje" />" class="updateButton" /><img class="foto-mi-cuenta img-circle img-responsive" src="../images/update.png" /></button>
+                                        <s:form action="deleteViaje" ><button name="idViaje" value="<s:property value="idViaje" />"><img class="foto-mi-cuenta img-circle img-responsive" src="./images/papelera.png" /></button></s:form>
+                                        <button id="<s:property value="idViaje" />" class="updateButton" /><img class="foto-mi-cuenta img-circle img-responsive" src="./images/update.png" /></button>
                                     </td>
                                 </tr>
                             </s:iterator>

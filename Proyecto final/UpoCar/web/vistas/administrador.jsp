@@ -12,18 +12,18 @@
 
                 <div class="col-lg-12 hidden-sm hidden-md hidden-xs">
                     <div class="col-lg-4 ">
-                        <div><img class="foto-mi-cuenta img-circle img-responsive" src="../images/gestionUsuarios.png" /></div>        
+                        <div><img class="foto-mi-cuenta img-circle img-responsive" src="./images/gestionUsuarios.png" /></div>        
                         <s:form action="toGestionUsuarios"><button class="btn btn-default hidden-sm hidden-md hidden-xs" >Gesti&oacute;n usuarios</button></s:form>
                         &nbsp;
                     </div>
 
                     <div class="col-lg-4">
-                        <div><img class="foto-mi-cuenta img-circle img-responsive" src="../images/gestionViajes.jpg" /></div>            
+                        <div><img class="foto-mi-cuenta img-circle img-responsive" src="./images/gestionViajes.jpg" /></div>            
                         <s:form action="toGestionViajes"><button class="btn btn-default hidden-sm hidden-md hidden-xs">Gesti&oacute;n viajes</button></s:form>
                         &nbsp;
                     </div>
                     <div class="col-lg-4">
-                        <div><img class="foto-mi-cuenta img-circle img-responsive" src="../images/gestionMensajes.png" /></div>            
+                        <div><img class="foto-mi-cuenta img-circle img-responsive" src="./images/gestionMensajes.png" /></div>            
                         <s:form action="toGestionMensajes"><button class="btn btn-default hidden-sm hidden-md hidden-xs">Gesti&oacute;n mensajes</button></s:form>
                         &nbsp;
                     </div>

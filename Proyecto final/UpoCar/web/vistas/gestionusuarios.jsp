@@ -27,7 +27,7 @@
                         <td><s:property value="nombre" /></td>
                         <td><s:property value="apellidos" /></td>
                         <td><s:property value="idUsuarioRecibe.nomUsuario" /></td>
-                        <td><img class="foto-mi-cuenta img-circle img-responsive" src="../images/papelera.png" /></td>
+                        <td><img class="foto-mi-cuenta img-circle img-responsive" src="./images/papelera.png" /></td>
                     </tr>
                     </s:iterator>
                 </table>
