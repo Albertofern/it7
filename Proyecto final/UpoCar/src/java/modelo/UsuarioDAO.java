@@ -42,4 +42,8 @@ public class UsuarioDAO {
         return user;
     }
     
+    public void registro(Usuario u){
+        clientUsuario.create_XML(u);
+    }
+    
 }

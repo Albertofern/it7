@@ -11,12 +11,17 @@
                         <s:textfield cssClass="form-control" name="usuario" cssStyle="inputLogin"></s:textfield>  
                         <s:textfield cssClass="form-control" name="nombre" cssStyle="inputLogin"></s:textfield>  
                         <s:textfield cssClass="form-control" name="apellidos" cssStyle="inputLogin"></s:textfield>  
+                        <s:textfield cssClass="form-control" name="email" cssStyle="inputLogin"></s:textfield>  
                         <s:textfield cssClass="form-control" name="dni" cssStyle="inputLogin"></s:textfield>  
                         <s:textfield cssClass="form-control" name="localidad" cssStyle="inputLogin"></s:textfield>  
-                        <s:textfield cssClass="form-control" name="telefono" cssStyle="inputLogin"></s:textfield>  
-                        <s:password cssClass="form-control" name="password" cssStyle="inputLogin"></s:password>
-                        <s:submit cssClass="btn btn-success btn-sm" name="Registro" value="Login"></s:submit>     
-                    </s:form>
+                        <select name="sexo"> 
+                            <option value="M">Masculino</option> 
+                            <option value="F">Femenino</option>                             
+                        </select> 
+                    <s:textfield cssClass="form-control" name="telefono" cssStyle="inputLogin"></s:textfield>  
+                    <s:password cssClass="form-control" name="password" cssStyle="inputLogin"></s:password>
+                    <s:submit cssClass="btn btn-success btn-sm" name="Registro" value="Login"></s:submit>     
+                </s:form>
             </div>
         </div>
     </div>
