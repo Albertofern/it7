@@ -6,10 +6,43 @@
 
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.ws.rs.core.GenericType;
+import webServiceREST.JerseyClientVehiculo;
+import webServiceREST.entidades.Usuario;
+import webServiceREST.entidades.Vehiculo;
+
 /**
  * 
  * @author Antonio Jose Herrera Tabaco 
  */
 public class VehiculoDAO {
+    private JerseyClientVehiculo clienteVehiculo = new JerseyClientVehiculo();
 
+    public JerseyClientVehiculo getClienteVehiculo() {
+        return clienteVehiculo;
+    }
+
+    public void setClienteVehiculo(JerseyClientVehiculo clienteVehiculo) {
+        this.clienteVehiculo = clienteVehiculo;
+    }
+    
+    public List<Vehiculo> listadoVehiculosUsuario(String idUsuario){
+        GenericType<List<Vehiculo>> genericType = new GenericType<List<Vehiculo>>(){};
+        
+        List<Vehiculo> listaVehiculos = getClienteVehiculo().findAll_XML(genericType);
+        List<Vehiculo> listaVehiculoUser = new ArrayList<Vehiculo>();
+        
+        for(int i = 0; i < listaVehiculos.size(); i++){
+            Vehiculo v = listaVehiculos.get(i);
+            
+            Usuario u = v.getIdUsuario();
+            
+            if(u.getIdUsuario().equals(Integer.parseInt(idUsuario))){
+                listaVehiculoUser.add(v);
+            }            
+        }
+        return listaVehiculoUser;
+    }
 }
