@@ -5,9 +5,12 @@
  */
 package acciones;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.Map;
 import modelo.VehiculoDAO;
 import modelo.ViajeDAO;
+import webServiceREST.entidades.Usuario;
 import webServiceREST.entidades.Vehiculo;
 import webServiceREST.entidades.Viaje;
 
@@ -88,9 +91,13 @@ public class publicarViajeAction extends ActionSupport {
     }
     
     public String crearViaje(){
+        Map sesion = (Map) ActionContext.getContext().get("session");
+        Usuario u = (Usuario) sesion.get("usuario");
+        
         Viaje v = new Viaje(null, recogida, plazas, precio, fechaSalida);
+        //v.setIdUsuarioPublica(u);
         
-        
+        dao.crearViaje(v);
         return SUCCESS;
     }
     
