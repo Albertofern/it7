@@ -16,7 +16,7 @@
                         <legend>Seleccione el coche para el viaje</legend>             
                        
                     <s:iterator value="listadoCoches" var="vehiculo">
-                        <s:radio name="coches" list="%{marca+' ' +modelo+' ' +color}"/><br>
+                        <s:radio name="coches" listKey="idVehiculo" list="%{marca+' ' +modelo+' ' +color}"/><br>
                     </s:iterator>
                     
                 </fieldset>
