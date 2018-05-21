@@ -7,9 +7,12 @@ package acciones;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.List;
 import java.util.Map;
+import modelo.LocalidadDAO;
 import modelo.VehiculoDAO;
 import modelo.ViajeDAO;
+import webServiceREST.entidades.Localidad;
 import webServiceREST.entidades.Usuario;
 import webServiceREST.entidades.Vehiculo;
 import webServiceREST.entidades.Viaje;
@@ -20,8 +23,10 @@ import webServiceREST.entidades.Viaje;
  */
 public class publicarViajeAction extends ActionSupport {
     
-    private String origen;
-    private String destino;    
+    private String localidadOrigen;
+    private String localidadDestino;
+    private List origen;
+    private List destino;    
     private int plazas;
     private double precio;
     private String recogida;
@@ -30,20 +35,37 @@ public class publicarViajeAction extends ActionSupport {
 
     ViajeDAO dao = new ViajeDAO();
     VehiculoDAO vehiculoDao = new VehiculoDAO();
+    LocalidadDAO localidadDao = new LocalidadDAO();
+
+    public String getLocalidadOrigen() {
+        return localidadOrigen;
+    }
+
+    public void setLocalidadOrigen(String localidadOrigen) {
+        this.localidadOrigen = localidadOrigen;
+    }
+
+    public String getLocalidadDestino() {
+        return localidadDestino;
+    }
+
+    public void setLocalidadDestino(String localidadDestino) {
+        this.localidadDestino = localidadDestino;
+    }
     
-    public String getOrigen() {
+    public List getOrigen() {
         return origen;
     }
 
-    public void setOrigen(String origen) {
+    public void setOrigen(List origen) {
         this.origen = origen;
     }
 
-    public String getDestino() {
+    public List getDestino() {
         return destino;
     }
 
-    public void setDestino(String destino) {
+    public void setDestino(List destino) {
         this.destino = destino;
     }
 
@@ -95,7 +117,17 @@ public class publicarViajeAction extends ActionSupport {
         Usuario u = (Usuario) sesion.get("usuario");
         
         Viaje v = new Viaje(null, recogida, plazas, precio, fechaSalida);
-        //v.setIdUsuarioPublica(u);
+        v.setIdUsuarioPublica(u);
+                
+        Vehiculo vehiculoSeleccionado = vehiculoDao.getVehiculoPorId(String.valueOf(coches));
+        v.setIdVehiculoElegido(vehiculoSeleccionado);
+        
+        //devolver la localidad por el origen
+        Localidad lo = localidadDao.getLocalidadPorId(localidadOrigen);
+        v.setIdLocalidadOrigen(lo);
+        //devolver la locaidad por el destino
+        Localidad ld = localidadDao.getLocalidadPorId(localidadDestino);
+        v.setIdLocalidadDestino(ld);
         
         dao.crearViaje(v);
         return SUCCESS;
