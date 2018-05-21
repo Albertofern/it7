@@ -54,5 +54,9 @@ public class ViajeDAO {
     public void setClientViaje(JerseyClientViaje clientViaje) {
         this.clientViaje = clientViaje;
     }
+    
+    public void crearViaje(Viaje v){
+        this.clientViaje.create_XML(v);
+    }
 
 }

@@ -9,7 +9,7 @@
                 Plazas<s:textfield name="plazas" cssClass="form-control"></s:textfield><br/>
                 Precio<s:textfield name="precio" cssClass="form-control"></s:textfield><br/>
                 Punto de recogida<s:textarea name="recogida" cols="35" rows="8" cssClass="form-control"/>
-                    Fecha<input type="date" class="form-control"/><br/>
+                Fecha<input type="date" name="fechaSalida" class="form-control"/><br/>
                 </div>
                 <div class="col-lg-4">
                     <fieldset>

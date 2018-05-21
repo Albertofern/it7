@@ -45,4 +45,11 @@ public class VehiculoDAO {
         }
         return listaVehiculoUser;
     }
+    
+    public Vehiculo getVehiculoPorId(String id){
+        GenericType<Vehiculo> genericType = new GenericType<Vehiculo>(){};
+        Vehiculo v = this.clienteVehiculo.find_XML(genericType, id);
+        
+        return v;
+    }
 }
