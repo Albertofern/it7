@@ -102,11 +102,12 @@ public class registroAction extends ActionSupport {
     public registroAction() {
     }
     
-    public String execute() throws Exception {
+    public String registro() throws Exception {
         Usuario u = new Usuario(null, usuario, password, "1", nombre, apellidos, email, localidad, sexo, null);        
         dao.registro(u);
         
         return SUCCESS;
     }
+    
     
 }
