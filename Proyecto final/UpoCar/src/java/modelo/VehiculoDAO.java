@@ -28,7 +28,7 @@ public class VehiculoDAO {
         this.clienteVehiculo = clienteVehiculo;
     }
     
-    public List<Vehiculo> listadoVehiculosUsuario(String idUsuario){
+    public List<Vehiculo> listadoVehiculosUsuario(int idUsuario){
         GenericType<List<Vehiculo>> genericType = new GenericType<List<Vehiculo>>(){};
         
         List<Vehiculo> listaVehiculos = getClienteVehiculo().findAll_XML(genericType);
@@ -39,7 +39,7 @@ public class VehiculoDAO {
             
             Usuario u = v.getIdUsuario();
             
-            if(u.getIdUsuario().equals(Integer.parseInt(idUsuario))){
+            if(u.getIdUsuario().equals(idUsuario)){
                 listaVehiculoUser.add(v);
             }            
         }

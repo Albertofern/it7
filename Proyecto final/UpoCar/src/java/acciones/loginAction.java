@@ -7,9 +7,12 @@ package acciones;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.List;
 import java.util.Map;
 import modelo.UsuarioDAO;
+import modelo.VehiculoDAO;
 import webServiceREST.entidades.Usuario;
+import webServiceREST.entidades.Vehiculo;
 
 /**
  *
@@ -19,7 +22,17 @@ public class loginAction extends ActionSupport {
 
     private String usuario;
     private String password;
+    private List<Vehiculo> listadoCoches;
     UsuarioDAO dao = new UsuarioDAO();
+    VehiculoDAO vehiculoDao = new VehiculoDAO();
+
+    public List<Vehiculo> getListadoCoches() {
+        return listadoCoches;
+    }
+
+    public void setListadoCoches(List<Vehiculo> listadoCoches) {
+        this.listadoCoches = listadoCoches;
+    }
 
     public String getUsuario() {
         return usuario;
@@ -61,6 +74,11 @@ public class loginAction extends ActionSupport {
     }
     
     public String toPublicarViaje(){
+        Map sesion = (Map) ActionContext.getContext().get("session");
+        Usuario u = (Usuario) sesion.get("usuario");
+        
+        listadoCoches = vehiculoDao.listadoVehiculosUsuario(u.getIdUsuario());
+        
         return SUCCESS;
     }
     

@@ -12,10 +12,9 @@
                 </div>
                 <div class="col-lg-4">
                     <fieldset>
-                        <legend>Seleccione el coche para el viaje</legend>
-                        <!-- Poner etiqueta struts radio cuando tengamos la lista de la BD -->
-
-                    </fieldset>
+                        <legend>Seleccione el coche para el viaje</legend>                    
+                    <s:radio name="coches" list="listadoCoches" listKey="idVehiculo" listValue="%{marca+' ' +modelo+' ' +color}"/>                    
+                </fieldset>
                 <s:submit name="publicar" value="Publicar viaje" cssClass="btn btn-success btn-sm"></s:submit>
                 </div>
 
