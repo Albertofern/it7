@@ -41,14 +41,14 @@
                                     <td><s:property value="idLocalidadDestino.nombre" /></td>
                                     <td><s:property value="idVehiculoElegido.marca" /> <s:property value="idVehiculoElegido.modelo" /></td>
                                     <td><s:property value="puntoRecogida" /></td>
-                                    <td id="precioPersona"><s:property value="percioPersona" /></td>
-                                    <td id="plazasMax"><s:property value="plazasMax" /></td>
+                                    <td id="precioPersona<s:property value="idViaje" />"><s:property value="percioPersona" /></td>
+                                    <td id="plazasMax<s:property value="idViaje" />"><s:property value="plazasMax" /></td>
                                     <td><s:property value="fechaSalida" /></td>
                                     <td>
                                         <s:form action="deleteViaje" ><button name="idViaje" value="<s:property value="idViaje" />"><img class="foto-mi-cuenta img-circle img-responsive" src="../images/papelera.png" /></button></s:form>
-                                            <button class="updateButton" onclick="updateElements()" /><img class="foto-mi-cuenta img-circle img-responsive" src="../images/update.png" /></button>
-                                        </td>
-                                    </tr>
+                                        <button id="<s:property value="idViaje" />" class="updateButton" /><img class="foto-mi-cuenta img-circle img-responsive" src="../images/update.png" /></button>
+                                    </td>
+                                </tr>
                             </s:iterator>
                         </s:if>
                         <s:else>
@@ -63,28 +63,45 @@
             <div class="col-lg-12"><hr /></div>
 
 
-            <div id="formularioUpdate" style="display: none" class="col-lg-12">
+            <div id="formularioUpdate" style="display: none" class="col-lg-12 center-block" >
+               
+                  <div class="col-lg-5"></div>
+                   
+<div class="col-lg-2">
+                <table >
+                    <tr><th colspan="2">Update</th></tr>
+                        <s:form method="post" action="updateViaje">
+                        <tr><td>ID Viaje</td><td id="updateId"></td></tr>
+                            <tr><td>Plazas M&aacute;ximas:</td><td><s:textfield id="updatePlazasMax" placeholder="Plazas máximas..." name="updatePlazasMax" value="" ></s:textfield></td></tr>
+                            <tr><td>Precio/Persona:</td><td><s:textfield id="updatePrecioPersona" placeholder="Precio por persona..." name="updatePrecioPersona" value=""></s:textfield></td></tr>
+                            <tr><td><s:submit value="Update"></s:submit></td></tr>
+                            <input id="hiddenUpdateID" type="hidden" name="updateId" value="" />
+                        </s:form>
 
-                <hr />
-                <h2>Update</h2>
-
-                <s:form method="post" action="updateViaje">
-                    <s:textfield  placeholder="Plazas máximas..." name="updatePlazasMax" ></s:textfield>
-                    <s:textfield  placeholder="Precio por persona..." name="updatePrecioPersona"></s:textfield>
-                    <s:submit value="Update"></s:submit>
-                </s:form>
+                    </table>
+    </div>
+              <div class="col-lg-5"></div>
             </div>
-
         </div>
 
-        <div class="col-lg-2"></div>
     </div>
+
+    <div class="col-lg-2"></div>
+</div>
 </div>
 
 <script type="text/javascript">
     $("document").ready(function () {
         $(".updateButton").click(function () {
             $("#formularioUpdate").toggle();
+            var id = $(this).attr("id");
+            var precioPers = $("#precioPersona" + id).text();
+            var plazasMax = $("#plazasMax" + id).text();
+            $("#updatePrecioPersona").attr("value", precioPers);
+            $("#updatePlazasMax").attr("value", plazasMax);
+            $("#hiddenUpdateID").attr("value", id);
+            $("#updateId").text(id);
+
         });
     });
 </script>
