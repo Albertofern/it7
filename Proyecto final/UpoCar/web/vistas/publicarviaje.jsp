@@ -12,8 +12,12 @@
                 </div>
                 <div class="col-lg-4">
                     <fieldset>
-                        <legend>Seleccione el coche para el viaje</legend>                    
-                    <s:radio name="coches" list="listadoCoches" listKey="idVehiculo" listValue="%{marca+' ' +modelo+' ' +color}"/>                    
+                        <legend>Seleccione el coche para el viaje</legend>             
+                       
+                    <s:iterator value="listadoCoches" var="vehiculo">
+                        <s:radio name="coches" list="%{marca+' ' +modelo+' ' +color}"/><br>
+                    </s:iterator>
+                    
                 </fieldset>
                 <s:submit name="publicar" value="Publicar viaje" cssClass="btn btn-success btn-sm"></s:submit>
                 </div>
