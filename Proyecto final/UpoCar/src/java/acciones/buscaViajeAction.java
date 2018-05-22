@@ -82,7 +82,7 @@ public class buscaViajeAction extends ActionSupport {
     
     public String buscaViaje() throws ParseException{
         Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(fechaHora);
-        String formattedDate = new SimpleDateFormat("yy/MM/yyyy HH:mm").format(date);
+        String formattedDate = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(date);
         
         listadoViajes = viajeDao.buscaViaje(origen, destino, formattedDate);
         
