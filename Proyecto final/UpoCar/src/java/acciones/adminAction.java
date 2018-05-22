@@ -27,6 +27,7 @@ public class adminAction extends ActionSupport {
     String nomUsuario;
     Integer updatePlazasMax;
     Double updatePrecioPersona;
+    String updatePuntoRecogida;
     Integer updateId;
     
     public adminAction() {
@@ -62,7 +63,7 @@ public class adminAction extends ActionSupport {
     
     public String updateViaje() throws Exception {
         ViajeDAO viajeDAO = new ViajeDAO();
-        viajeDAO.updateViaje(this.getUpdateId(), this.getUpdatePlazasMax(), this.getUpdatePrecioPersona());
+        viajeDAO.updateViaje(this.getUpdateId(), this.getUpdatePlazasMax(), this.getUpdatePrecioPersona(), this.getUpdatePuntoRecogida());
         return SUCCESS;
     }
     
@@ -134,6 +135,14 @@ public class adminAction extends ActionSupport {
 
     public void setUpdateId(Integer updateId) {
         this.updateId = updateId;
+    }
+
+    public String getUpdatePuntoRecogida() {
+        return updatePuntoRecogida;
+    }
+
+    public void setUpdatePuntoRecogida(String updatePuntoRecogida) {
+        this.updatePuntoRecogida = updatePuntoRecogida;
     }
 
     
