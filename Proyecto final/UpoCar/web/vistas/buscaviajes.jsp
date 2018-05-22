@@ -30,18 +30,18 @@
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8 colum-height">
                     <div class="col-xs-12 col-sm-2 col-lg-3 color1">
-                        <p>Imagen</p>
-                        <p>usuario</p>
-                        <p>Puntuacion</p>
+                        <p>Imagen</p> <!-- Imagen del usuario que publica el viaje -->
+                        <p>usuario</p> <!-- Nombre y apellidos del usuario que publica el viaje -->
+                        <p>Puntuacion</p> <!-- Puntuacion del usuario que publica el viaje -->
                     </div>
                     <div class="col-xs-12 col-sm-4 col-lg-4 color2">
-                        <p>Origen:</p>
-                        <p>Destino:</p>
-                        <p>Precio:</p>
-                        <p>Plazas disponibles:</p>
+                        <p>Origen:</p> <!-- Origen del viaje -->
+                        <p>Destino:</p> <!-- Destino del viaje -->
+                        <p>Precio:</p> <!-- Precio del viaje -->
+                        <p>Plazas disponibles:</p> <!-- Plazas disponibles para el viaje -->
                     </div>
                     <div class="col-xs-12 col-sm-6 col-lg-5 color3">
-                        <p>Foto coche</p>
+                        <p>Foto coche</p> <!-- Foto del coche del usuario que publica el viaje -->
                     </div>
                 </div>
                 <div class="col-lg-2"></div>
