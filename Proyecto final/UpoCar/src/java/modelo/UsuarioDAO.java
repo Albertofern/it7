@@ -26,12 +26,16 @@ public class UsuarioDAO {
         return listaUsuarios;
     }
 
-    public Usuario buscarUsuario(String usuario) {
-        GenericType<Usuario> genericType = new GenericType<Usuario>() {
+    public List<Usuario> buscarUsuario(String usuario) {
+        GenericType<List<Usuario>> genericType = new GenericType<List<Usuario>>() {
         };
 
-        Usuario u = this.getClientUsuario().find_XML(genericType, usuario);
-        return u;
+        List<Usuario> listaUsuario = this.getClientUsuario().buscarUsuario(genericType, usuario);
+        return listaUsuario;
+    }
+
+    public void deleteUsuario(String id) {
+        clientUsuario.remove(id);
     }
 
     public JerseyClientUsuario getClientUsuario() {
@@ -42,16 +46,17 @@ public class UsuarioDAO {
         this.clientUsuario = clientUsuario;
     }
 
-    public Usuario login(String usuario, String password){
-        GenericType<Usuario> genericType = new GenericType<Usuario>(){};
-        
+    public Usuario login(String usuario, String password) {
+        GenericType<Usuario> genericType = new GenericType<Usuario>() {
+        };
+
         Usuario user = clientUsuario.login(genericType, usuario, password);
-        
+
         return user;
     }
-    
-    public void registro(Usuario u){
+
+    public void registro(Usuario u) {
         clientUsuario.create_XML(u);
     }
-    
+
 }

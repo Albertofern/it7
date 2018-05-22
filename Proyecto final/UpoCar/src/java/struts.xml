@@ -86,7 +86,7 @@
                 <param name="actionName">toGestionViajes</param>
             </result>
         </action>
-        
+                
         <action name="updateViaje" method="updateViaje" class="acciones.adminAction">
             <result type="chain">
                 <param name="actionName">toGestionViajes</param>
@@ -95,6 +95,16 @@
         
         <action name="buscarUsuarioViaje" method="buscarUsuarioViaje" class="acciones.adminAction">
             <result name="success">/vistas/gestionviajes.jsp</result>
+        </action>
+        
+        <action name="buscarUsuario" method="buscarUsuario" class="acciones.adminAction">
+            <result name="success">/vistas/gestionusuarios.jsp</result>
+        </action>
+        
+        <action name="deleteUsuario" method="deleteUsuario" class="acciones.adminAction">
+            <result type="chain">
+                <param name="actionName">toGestionUsuarios</param>
+            </result>
         </action>
         
     </package>

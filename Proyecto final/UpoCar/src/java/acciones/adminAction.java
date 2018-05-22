@@ -6,6 +6,7 @@
 package acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.ArrayList;
 import java.util.List;
 import modelo.LocalidadDAO;
 import modelo.MensajeDAO;
@@ -23,7 +24,7 @@ import webServiceREST.entidades.Viaje;
 public class adminAction extends ActionSupport {
 
     List<Mensaje> listadoMensajes;
-    List<Usuario> listadoUsuarios;
+    List<Usuario> listadoUsuarios = new ArrayList<Usuario>();
     List<Localidad> listadoLocalidades;
     List<Viaje> listadoViajes;
     String idViaje;
@@ -89,9 +90,16 @@ public class adminAction extends ActionSupport {
 
     public String buscarUsuario() throws Exception {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        this.setListadoUsuarios(listadoUsuarios);
+        this.setListadoUsuarios(usuarioDAO.buscarUsuario(this.getNomUsuario()));
         return SUCCESS;
     }
+    
+    public String deleteUsuario() throws Exception {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuarioDAO.deleteUsuario(String.valueOf(this.getIdUsuario()));
+        return SUCCESS;
+    }
+
 
     public List<Mensaje> getListadoMensajes() {
         return listadoMensajes;
