@@ -87,6 +87,12 @@ public class adminAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public String buscarUsuario() throws Exception {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        this.setListadoUsuarios(listadoUsuarios);
+        return SUCCESS;
+    }
+
     public List<Mensaje> getListadoMensajes() {
         return listadoMensajes;
     }

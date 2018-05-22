@@ -26,6 +26,14 @@ public class UsuarioDAO {
         return listaUsuarios;
     }
 
+    public Usuario buscarUsuario(String usuario) {
+        GenericType<Usuario> genericType = new GenericType<Usuario>() {
+        };
+
+        Usuario u = this.getClientUsuario().find_XML(genericType, usuario);
+        return u;
+    }
+
     public JerseyClientUsuario getClientUsuario() {
         return clientUsuario;
     }
