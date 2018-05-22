@@ -6,6 +6,7 @@
 package acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.Date;
 import modelo.VehiculoDAO;
 import modelo.ViajeDAO;
 
@@ -17,11 +18,20 @@ public class buscaViajeAction extends ActionSupport {
     
     private String origen;
     private String destino;
+    private String fechaHora;
     private int plazas;
     private double precio;        
 
     ViajeDAO viajeDao = new ViajeDAO();
     VehiculoDAO vehiculoDao = new VehiculoDAO();
+
+    public String getFechaHora() {
+        return fechaHora;
+    }
+
+    public void setFechaHora(String fechaHora) {
+        this.fechaHora = fechaHora;
+    }
     
     public String getOrigen() {
         return origen;
@@ -58,7 +68,15 @@ public class buscaViajeAction extends ActionSupport {
     public buscaViajeAction() {
     }
     
-    public String execute() throws Exception {
+    public String buscaViaje(){
+        String pruebaHora = fechaHora;
+        String pruebaOrigen = origen;
+        String pruebaDestino = destino;
+        
+        return SUCCESS;
+    }
+    
+    public String execute() throws Exception {        
         throw new UnsupportedOperationException("Not supported yet.");
     }        
 }

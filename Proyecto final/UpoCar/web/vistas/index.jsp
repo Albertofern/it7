@@ -16,7 +16,8 @@
                         </div>
 
                         <div class="col-lg-4">
-                            <input type="date" class="form-control"/>
+                            <!--<input type="date" class="form-control"/>-->
+                            <input id="datetime" name="fechaHora" type="datetime-local" class="form-control">
                         </div>                                
 
                     <s:submit name="buscar" value="Buscar viaje" cssClass="btn btn-default btnBuscar"></s:submit>
