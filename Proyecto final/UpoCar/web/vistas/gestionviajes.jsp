@@ -36,10 +36,10 @@
                             <s:iterator value="listadoViajes">
                                 <tr>
                                     <td><s:property value="idViaje" /></td>
-                                    <td><s:property value="idUsuarioPublica.nomUsuario" /></td>
-                                    <td><s:property value="idLocalidadOrigen.nombre" /></td>
-                                    <td><s:property value="idLocalidadDestino.nombre" /></td>
-                                    <td><s:property value="idVehiculoElegido.marca" /> <s:property value="idVehiculoElegido.modelo" /></td>
+                                    <td id="puntoRecogida<s:property value="idViaje" />"><s:property value="idUsuarioPublica.nomUsuario" /></td>
+                                    <td id="puntoRecogida<s:property value="idViaje" />"><s:property value="idLocalidadOrigen.nombre" /></td>
+                                    <td id="puntoRecogida<s:property value="idViaje" />"><s:property value="idLocalidadDestino.nombre" /></td>
+                                    <td id="puntoRecogida<s:property value="idViaje" />"><s:property value="idVehiculoElegido.marca" /> <s:property value="idVehiculoElegido.modelo" /></td>
                                     <td id="puntoRecogida<s:property value="idViaje" />"><s:property value="puntoRecogida" /></td>
                                     <td id="precioPersona<s:property value="idViaje" />"><s:property value="percioPersona" /></td>
                                     <td id="plazasMax<s:property value="idViaje" />"><s:property value="plazasMax" /></td>
@@ -75,8 +75,7 @@
                             <tr><td>Plazas M&aacute;ximas:</td><td><s:textfield id="updatePlazasMax" name="updatePlazasMax" value="" ></s:textfield></td></tr>
                             <tr><td>Precio/Persona:</td><td><s:textfield id="updatePrecioPersona" name="updatePrecioPersona" value=""></s:textfield></td></tr>
                             <tr><td>Lugar de Recogida:</td><td><s:textfield id="updatePuntoRecogida" name="updatePuntoRecogida" value=""></s:textfield></td></tr>
-                            <!-- cambiar el tipo de la fecha cuando se cambie en la búqueda de los viajes -->
-                            <tr><td>Fecha Salida:</td><td><input type="datetime" id="updateFechaSalida" name="updateFechaSalida" value="" /></td></tr>
+                            <tr><td>Fecha Salida:</td><td><input type="datetime-local" id="updateFechaSalida" name="updateFechaSalida" value=""  /></td></tr>
                             <tr><td><s:submit value="Update"></s:submit></td></tr>
                             <input id="hiddenUpdateID" type="hidden" name="updateId" value="" />
                         </s:form>
