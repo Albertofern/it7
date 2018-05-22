@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import modelo.VehiculoDAO;
 import modelo.ViajeDAO;
 
@@ -23,9 +24,18 @@ public class buscaViajeAction extends ActionSupport {
     private String fechaHora;
     private int plazas;
     private double precio;        
+    private List listadoViajes;
 
     ViajeDAO viajeDao = new ViajeDAO();
     VehiculoDAO vehiculoDao = new VehiculoDAO();
+
+    public List getListadoViajes() {
+        return listadoViajes;
+    }
+
+    public void setListadoViajes(List listadoViajes) {
+        this.listadoViajes = listadoViajes;
+    }
 
     public String getFechaHora() {
         return fechaHora;
@@ -73,6 +83,8 @@ public class buscaViajeAction extends ActionSupport {
     public String buscaViaje() throws ParseException{
         Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(fechaHora);
         String formattedDate = new SimpleDateFormat("yy/MM/yyyy HH:mm").format(date);
+        
+        listadoViajes = viajeDao.buscaViaje(origen, destino, formattedDate);
         
         return SUCCESS;
     }

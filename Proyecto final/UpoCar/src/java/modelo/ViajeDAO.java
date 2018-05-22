@@ -79,4 +79,10 @@ public class ViajeDAO {
         this.clientViaje.create_XML(v);
     }
 
+    
+    public List<Viaje> buscaViaje(String origen, String destino, String fechaSalida){
+        GenericType<List<Viaje>> genericType = new GenericType<List<Viaje>>() {};
+                
+        return clientViaje.buscaViaje(genericType, origen, destino, fechaSalida);
+    }
 }
