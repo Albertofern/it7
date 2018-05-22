@@ -43,7 +43,7 @@
                                     <td id="puntoRecogida<s:property value="idViaje" />"><s:property value="puntoRecogida" /></td>
                                     <td id="precioPersona<s:property value="idViaje" />"><s:property value="percioPersona" /></td>
                                     <td id="plazasMax<s:property value="idViaje" />"><s:property value="plazasMax" /></td>
-                                    <td><s:property value="fechaSalida" /></td>
+                                    <td id="fechaSalida<s:property value="idViaje" />"><s:property value="fechaSalida" /></td>
                                     <td>
                                         <s:form action="deleteViaje" ><button name="idViaje" value="<s:property value="idViaje" />"><img class="foto-mi-cuenta img-circle img-responsive" src="./images/papelera.png" /></button></s:form>
                                         <button id="<s:property value="idViaje" />" class="updateButton" /><img class="foto-mi-cuenta img-circle img-responsive" src="./images/update.png" /></button>
@@ -75,6 +75,8 @@
                             <tr><td>Plazas M&aacute;ximas:</td><td><s:textfield id="updatePlazasMax" name="updatePlazasMax" value="" ></s:textfield></td></tr>
                             <tr><td>Precio/Persona:</td><td><s:textfield id="updatePrecioPersona" name="updatePrecioPersona" value=""></s:textfield></td></tr>
                             <tr><td>Lugar de Recogida:</td><td><s:textfield id="updatePuntoRecogida" name="updatePuntoRecogida" value=""></s:textfield></td></tr>
+                            <!-- cambiar el tipo de la fecha cuando se cambie en la búqueda de los viajes -->
+                            <tr><td>Fecha Salida:</td><td><input type="datetime" id="updateFechaSalida" name="updateFechaSalida" value="" /></td></tr>
                             <tr><td><s:submit value="Update"></s:submit></td></tr>
                             <input id="hiddenUpdateID" type="hidden" name="updateId" value="" />
                         </s:form>
@@ -99,9 +101,11 @@
             var precioPers = $("#precioPersona" + id).text();
             var plazasMax = $("#plazasMax" + id).text();
             var puntoRecogida = $("#puntoRecogida" + id).text();
+            var fechaSalida = $("#fechaSalida" + id).text();
             $("#updatePrecioPersona").attr("value", precioPers);
             $("#updatePlazasMax").attr("value", plazasMax);
             $("#updatePuntoRecogida").attr("value", puntoRecogida);
+            $("#updateFechaSalida").attr("value", fechaSalida);
             $("#hiddenUpdateID").attr("value", id);
             $("#updateId").text(id);
 

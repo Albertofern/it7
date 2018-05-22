@@ -30,13 +30,14 @@ public class ViajeDAO {
         clientViaje.remove(id);
     }
 
-    public void updateViaje(Integer id,Integer plazasMax,Double precioPers,String puntoRecogida) {
+    public void updateViaje(Integer id,Integer plazasMax,Double precioPers,String puntoRecogida,String fechaSalida) {
         GenericType<Viaje> genericType = new GenericType<Viaje>() {
         };
         Viaje v = clientViaje.find_XML(genericType, String.valueOf(id));
         v.setPercioPersona(precioPers);
         v.setPlazasMax(plazasMax);
         v.setPuntoRecogida(puntoRecogida);
+        v.setFechaSalida(fechaSalida);
         clientViaje.edit_XML(v, String.valueOf(v.getIdViaje()));
     }
 
