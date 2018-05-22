@@ -6,6 +6,8 @@
 package acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import modelo.VehiculoDAO;
 import modelo.ViajeDAO;
@@ -68,10 +70,9 @@ public class buscaViajeAction extends ActionSupport {
     public buscaViajeAction() {
     }
     
-    public String buscaViaje(){
-        String pruebaHora = fechaHora;
-        String pruebaOrigen = origen;
-        String pruebaDestino = destino;
+    public String buscaViaje() throws ParseException{
+        Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(fechaHora);
+        String formattedDate = new SimpleDateFormat("yy/MM/yyyy HH:mm").format(date);
         
         return SUCCESS;
     }
