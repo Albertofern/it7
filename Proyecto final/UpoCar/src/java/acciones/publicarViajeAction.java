@@ -7,6 +7,9 @@ package acciones;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import modelo.LocalidadDAO;
@@ -112,11 +115,15 @@ public class publicarViajeAction extends ActionSupport {
     public publicarViajeAction() {
     }
     
-    public String crearViaje(){
+    public String crearViaje() throws ParseException{
         Map sesion = (Map) ActionContext.getContext().get("session");
         Usuario u = (Usuario) sesion.get("usuario");
         
-        Viaje v = new Viaje(null, recogida, plazas, precio, fechaSalida);
+        //la fecha la guarda en el siguiente formato: 2018-05-30T14:15
+        Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(fechaSalida);
+        String formattedDate = new SimpleDateFormat("yy/MM/yyyy HH:mm").format(date);
+        
+        Viaje v = new Viaje(null, recogida, plazas, precio, formattedDate);
         v.setIdUsuarioPublica(u);
                 
         Vehiculo vehiculoSeleccionado = vehiculoDao.getVehiculoPorId(String.valueOf(coches));
