@@ -36,10 +36,10 @@
                             <s:iterator value="listadoViajes">
                                 <tr>
                                     <td><s:property value="idViaje" /></td>
-                                    <td id="puntoRecogida<s:property value="idViaje" />"><s:property value="idUsuarioPublica.nomUsuario" /></td>
-                                    <td id="puntoRecogida<s:property value="idViaje" />"><s:property value="idLocalidadOrigen.nombre" /></td>
-                                    <td id="puntoRecogida<s:property value="idViaje" />"><s:property value="idLocalidadDestino.nombre" /></td>
-                                    <td id="puntoRecogida<s:property value="idViaje" />"><s:property value="idVehiculoElegido.marca" /> <s:property value="idVehiculoElegido.modelo" /></td>
+                                    <td><s:property value="idUsuarioPublica.nomUsuario" /></td>
+                                    <td><s:property value="idLocalidadOrigen.nombre" /></td>
+                                    <td><s:property value="idLocalidadDestino.nombre" /></td>
+                                    <td><s:property value="idVehiculoElegido.marca" /> <s:property value="idVehiculoElegido.modelo" /></td>
                                     <td id="puntoRecogida<s:property value="idViaje" />"><s:property value="puntoRecogida" /></td>
                                     <td id="precioPersona<s:property value="idViaje" />"><s:property value="percioPersona" /></td>
                                     <td id="plazasMax<s:property value="idViaje" />"><s:property value="plazasMax" /></td>
@@ -64,25 +64,28 @@
 
 
             <div id="formularioUpdate" style="display: none" class="col-lg-12 center-block" >
-               
-                  <div class="col-lg-5"></div>
-                   
-<div class="col-lg-2">
-                <table >
-                    <tr><th colspan="2">Update</th></tr>
-                        <s:form method="post" action="updateViaje">
-                        <tr><td>ID Viaje</td><td id="updateId"></td></tr>
+
+                <div class="col-lg-5"></div>
+
+                <div class="col-lg-2">
+                    <table >
+                        <tr><th colspan="2">Update</th></tr>
+                                <s:form id="formularioUpdate" method="post" action="updateViaje">
+                            <tr><td>ID Viaje</td><td id="updateId"></td></tr>
+                            <tr><td>Conductor:</td><td><s:select list="listadoUsuarios" listValue="nomUsuario" listKey="idUsuario" name="idUsuario" ></s:select>  </td></tr>
+                            <tr><td>Origen:</td><td><s:select list="listadoLocalidades" listValue="nombre" listKey="idLocalidad" name="updateIdLocalidadOrigen" ></s:select>  </td></tr>
+                            <tr><td>Destino:</td><td><s:select list="listadoLocalidades" listValue="nombre" listKey="idLocalidad" name="updateIdLocalidadDestino" ></s:select>  </td></tr>
                             <tr><td>Plazas M&aacute;ximas:</td><td><s:textfield id="updatePlazasMax" name="updatePlazasMax" value="" ></s:textfield></td></tr>
                             <tr><td>Precio/Persona:</td><td><s:textfield id="updatePrecioPersona" name="updatePrecioPersona" value=""></s:textfield></td></tr>
                             <tr><td>Lugar de Recogida:</td><td><s:textfield id="updatePuntoRecogida" name="updatePuntoRecogida" value=""></s:textfield></td></tr>
-                            <tr><td>Fecha Salida:</td><td><input type="datetime-local" id="updateFechaSalida" name="updateFechaSalida" value=""  /></td></tr>
-                            <tr><td><s:submit value="Update"></s:submit></td></tr>
-                            <input id="hiddenUpdateID" type="hidden" name="updateId" value="" />
+                                <tr><td>Fecha Salida:</td><td><input type="datetime-local" id="updateFechaSalida" name="updateFechaSalida" value=""  /></td></tr>
+                                <tr><td><s:submit value="Update"></s:submit></td></tr>
+                                <input id="hiddenUpdateID" type="hidden" name="updateId" value="" />
                         </s:form>
 
                     </table>
-    </div>
-              <div class="col-lg-5"></div>
+                </div>
+                <div class="col-lg-5"></div>
             </div>
         </div>
 
@@ -107,6 +110,9 @@
             $("#updateFechaSalida").attr("value", fechaSalida);
             $("#hiddenUpdateID").attr("value", id);
             $("#updateId").text(id);
+
+            var focalizar = $("#formularioUpdate").position().top;
+            $('html,body').animate({scrollTop: focalizar}, 1000);
 
         });
     });
