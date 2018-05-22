@@ -7,9 +7,11 @@ package acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
+import modelo.LocalidadDAO;
 import modelo.MensajeDAO;
 import modelo.UsuarioDAO;
 import modelo.ViajeDAO;
+import webServiceREST.entidades.Localidad;
 import webServiceREST.entidades.Mensaje;
 import webServiceREST.entidades.Usuario;
 import webServiceREST.entidades.Viaje;
@@ -19,9 +21,10 @@ import webServiceREST.entidades.Viaje;
  * @author Gonza
  */
 public class adminAction extends ActionSupport {
-    
+
     List<Mensaje> listadoMensajes;
     List<Usuario> listadoUsuarios;
+    List<Localidad> listadoLocalidades;
     List<Viaje> listadoViajes;
     String idViaje;
     String nomUsuario;
@@ -30,44 +33,54 @@ public class adminAction extends ActionSupport {
     String updatePuntoRecogida;
     String updateFechaSalida;
     Integer updateId;
-    
+    Integer idUsuario;
+    Integer updateIdLocalidadOrigen;
+    Integer updateIdLocalidadDestino;
+
     public adminAction() {
     }
-    
+
     public String execute() throws Exception {
         return SUCCESS;
     }
-    
+
     public String toGestionMensajes() throws Exception {
         MensajeDAO mensajeDAO = new MensajeDAO();
         this.setListadoMensajes(mensajeDAO.listarMensajes());
         return SUCCESS;
     }
-    
+
     public String toGestionUsuarios() throws Exception {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         this.setListadoUsuarios(usuarioDAO.listarUsuarios());
         return SUCCESS;
     }
-    
+
     public String toGestionViajes() throws Exception {
         ViajeDAO viajeDAO = new ViajeDAO();
         this.setListadoViajes(viajeDAO.listarViajes());
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        this.setListadoUsuarios(usuarioDAO.listarUsuarios());
+        LocalidadDAO localidadDAO = new LocalidadDAO();
+        this.setListadoLocalidades(localidadDAO.getLocalidades());
         return SUCCESS;
     }
-    
+
     public String deleteViaje() throws Exception {
         ViajeDAO viajeDAO = new ViajeDAO();
         viajeDAO.deleteViaje(this.getIdViaje());
         return SUCCESS;
     }
-    
+
     public String updateViaje() throws Exception {
         ViajeDAO viajeDAO = new ViajeDAO();
-        viajeDAO.updateViaje(this.getUpdateId(), this.getUpdatePlazasMax(), this.getUpdatePrecioPersona(), this.getUpdatePuntoRecogida(),this.getUpdateFechaSalida());
+        viajeDAO.updateViaje(this.getUpdateId(), this.getUpdatePlazasMax(),
+                this.getUpdatePrecioPersona(), this.getUpdatePuntoRecogida(),
+                this.getUpdateFechaSalida(), this.getIdUsuario(),
+                this.getUpdateIdLocalidadOrigen(), this.getUpdateIdLocalidadDestino());
         return SUCCESS;
     }
-    
+
     public String buscarUsuarioViaje() throws Exception {
         ViajeDAO viajeDAO = new ViajeDAO();
         this.setListadoViajes(viajeDAO.listarViajesUsuario(this.getNomUsuario()));
@@ -154,5 +167,36 @@ public class adminAction extends ActionSupport {
         this.updateFechaSalida = updateFechaSalida;
     }
 
-    
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public List<Localidad> getListadoLocalidades() {
+        return listadoLocalidades;
+    }
+
+    public void setListadoLocalidades(List<Localidad> listadoLocalidades) {
+        this.listadoLocalidades = listadoLocalidades;
+    }
+
+    public Integer getUpdateIdLocalidadOrigen() {
+        return updateIdLocalidadOrigen;
+    }
+
+    public void setUpdateIdLocalidadOrigen(Integer updateIdLocalidadOrigen) {
+        this.updateIdLocalidadOrigen = updateIdLocalidadOrigen;
+    }
+
+    public Integer getUpdateIdLocalidadDestino() {
+        return updateIdLocalidadDestino;
+    }
+
+    public void setUpdateIdLocalidadDestino(Integer updateIdLocalidadDestino) {
+        this.updateIdLocalidadDestino = updateIdLocalidadDestino;
+    }
+
 }
