@@ -42,6 +42,7 @@
                                 <p>
                                 <s:form action="reservar">
                                     <s:submit name="reservarViaje" value="Reservar plaza" cssClass="btn btn-default btnBuscar"></s:submit>
+                                    <s:hidden name="idViaje" value="%{idViaje}"></s:hidden>
                                 </s:form>
                             </p> <!-- Boton para reservar la plaza solo si esta logueado, o sino que le envie al login. Si no hay plazas disponibles no se puede reservar (boton disabled)-->
                         </div>
