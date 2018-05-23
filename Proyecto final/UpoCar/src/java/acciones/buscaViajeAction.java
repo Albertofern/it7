@@ -18,12 +18,12 @@ import modelo.ViajeDAO;
  * @author Antonio Jose Herrera Tabaco
  */
 public class buscaViajeAction extends ActionSupport {
-    
+
     private String origen;
     private String destino;
     private String fechaHora;
     private int plazas;
-    private double precio;        
+    private double precio;
     private List listadoViajes;
 
     ViajeDAO viajeDao = new ViajeDAO();
@@ -44,7 +44,7 @@ public class buscaViajeAction extends ActionSupport {
     public void setFechaHora(String fechaHora) {
         this.fechaHora = fechaHora;
     }
-    
+
     public String getOrigen() {
         return origen;
     }
@@ -76,20 +76,25 @@ public class buscaViajeAction extends ActionSupport {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-    
+
     public buscaViajeAction() {
     }
-    
-    public String buscaViaje() throws ParseException{
-        Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(fechaHora);
-        String formattedDate = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(date);
-        
-        listadoViajes = viajeDao.buscaViaje(origen, destino, formattedDate);
-        
+
+    public String buscaViaje() throws ParseException {
+        //Comprobar que la hora no sea obligatoria pero si la fecha
+        if (!fechaHora.equals("")) {
+            Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(fechaHora);
+            String formattedDate = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(date);
+
+            listadoViajes = viajeDao.buscaViaje(origen, destino, formattedDate);
+        } else {
+            listadoViajes = viajeDao.listarViajes();
+        }
+
         return SUCCESS;
     }
-    
-    public String execute() throws Exception {        
+
+    public String execute() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
-    }        
+    }
 }
