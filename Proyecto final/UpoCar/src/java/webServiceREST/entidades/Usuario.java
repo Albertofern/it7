@@ -108,7 +108,7 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "total_puntuacion")
-    private int totalPuntuacion;
+    private double totalPuntuacion;
 
     public Usuario() {
     }
@@ -117,7 +117,7 @@ public class Usuario implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public Usuario(Integer idUsuario, String nomUsuario, String password, String tipoUsuario, String nombre, String apellidos, String email, String localidad, String sexo, String foto, int totalPuntuacion) {
+    public Usuario(Integer idUsuario, String nomUsuario, String password, String tipoUsuario, String nombre, String apellidos, String email, String localidad, String sexo, String foto, double totalPuntuacion) {
         this.idUsuario = idUsuario;
         this.nomUsuario = nomUsuario;
         this.password = password;
@@ -227,11 +227,11 @@ public class Usuario implements Serializable {
         this.fechaAlta = fechaAlta;
     }
 
-    public int getTotalPuntuacion() {
+    public double getTotalPuntuacion() {
         return totalPuntuacion;
     }
 
-    public void setTotalPuntuacion(int totalPuntuacion) {
+    public void setTotalPuntuacion(double totalPuntuacion) {
         this.totalPuntuacion = totalPuntuacion;
     }
 
