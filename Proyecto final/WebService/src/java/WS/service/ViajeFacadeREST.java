@@ -23,7 +23,7 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author Antonio Jose Herrera Tabaco
+ * @author Gonza
  */
 @Stateless
 @Path("ws.viaje")

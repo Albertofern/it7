@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package WS.service;
 
 import WS.Vehiculo;
@@ -11,7 +10,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -23,8 +21,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
- * 
- * @author Antonio Jose Herrera Tabaco 
+ *
+ * @author Gonza
  */
 @Stateless
 @Path("ws.vehiculo")
@@ -89,9 +87,5 @@ public class VehiculoFacadeREST extends AbstractFacade<Vehiculo> {
     protected EntityManager getEntityManager() {
         return em;
     }
-
-    /*
-    Para obtener los vehiculos de un usuario, cogeremos la funcion de findAll, y a continuacion, buscaremos mediante esa lista
-    que coincida el id del usuario de la sesion con el Usuario del vehiculo
-    */
+    
 }

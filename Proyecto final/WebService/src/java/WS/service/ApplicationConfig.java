@@ -33,6 +33,7 @@ public class ApplicationConfig extends Application {
         resources.add(WS.service.FotoVehiFacadeREST.class);
         resources.add(WS.service.LocalidadFacadeREST.class);
         resources.add(WS.service.MensajeFacadeREST.class);
+        resources.add(WS.service.PasajerosFacadeREST.class);
         resources.add(WS.service.ProvinciaFacadeREST.class);
         resources.add(WS.service.PuntuacionFacadeREST.class);
         resources.add(WS.service.TelefonoFacadeREST.class);

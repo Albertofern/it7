@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package WS.service;
 
 import WS.Localidad;
@@ -22,8 +21,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
- * 
- * @author Antonio Jose Herrera Tabaco 
+ *
+ * @author Gonza
  */
 @Stateless
 @Path("ws.localidad")
@@ -88,5 +87,5 @@ public class LocalidadFacadeREST extends AbstractFacade<Localidad> {
     protected EntityManager getEntityManager() {
         return em;
     }
-
+    
 }
