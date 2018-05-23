@@ -89,7 +89,7 @@ public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
         
     @GET
     @Path("/login/{nomUsuario}/{password}")
@@ -118,5 +118,5 @@ public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
 
         return l;
     }
-
+    
 }
