@@ -75,10 +75,18 @@
             <result name="success">/vistas/gestionmensajes.jsp</result>
         </action>
         
-          <action name="deleteMensaje" method="deleteMensaje" class="acciones.adminAction">
+        <action name="deleteMensaje" method="deleteMensaje" class="acciones.adminAction">
             <result type="chain">
                 <param name="actionName">toGestionMensajes</param>
             </result>
+        </action>
+        
+        <action name="buscarEnviaMensaje" method="buscarEnviaMensaje" class="acciones.adminAction">
+            <result name="success">/vistas/gestionmensajes.jsp</result>
+        </action>
+        
+        <action name="buscarRecibeMensaje" method="buscarRecibeMensaje" class="acciones.adminAction">
+            <result name="success">/vistas/gestionmensajes.jsp</result>
         </action>
 
         <!-- Gestión viajes -->        

@@ -29,6 +29,18 @@ public class MensajeDAO {
     public void deleteMensaje(Integer idMensaje){
         clientMensaje.remove(String.valueOf(idMensaje));
     }
+    
+    public void buscarRecibeMensaje(String nomUsuario){
+        GenericType<List<Mensaje>> genericType = new GenericType<List<Mensaje>>() {
+        };
+        clientMensaje.buscarMensajeUsuRecibe(genericType, nomUsuario);
+    }
+    
+    public List<Mensaje> buscarEnviaMensaje(String nomUsuario){
+        GenericType<List<Mensaje>> genericType = new GenericType<List<Mensaje>>() {
+        };
+        return clientMensaje.buscarMensajeUsuEnvia(genericType, nomUsuario);
+    }
 
 
 public JerseyClientMensaje getClientMensaje() {

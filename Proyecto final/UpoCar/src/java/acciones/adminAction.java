@@ -68,6 +68,11 @@ public class adminAction extends ActionSupport {
         mensajeDAO.deleteMensaje(this.getIdMensaje());
         return SUCCESS;
     }
+     public String buscarEnviaMensaje() throws Exception {
+        MensajeDAO mensajeDAO = new MensajeDAO();
+        this.setListadoMensajes(mensajeDAO.buscarEnviaMensaje(this.getNomUsuario()));
+        return SUCCESS;
+    }
 
     //Gestión Viajes
     public String toGestionViajes() throws Exception {

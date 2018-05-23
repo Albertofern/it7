@@ -8,9 +8,16 @@
         <div class="row">
 
             <div class="col-lg-12">
-                <s:form method="post" action="">
-                    <s:textfield placeholder="Nombre usuario..." name="nombreUsuario" />
+                <s:form method="post" action="buscarEnviaMensaje">
+                    <s:textfield placeholder="Usuario envia mensaje..." name="nomUsuario" />
                     <s:submit name="buscarUsuario" value="Buscar" />
+                </s:form>
+                <s:form method="post" action="buscarRecibeMensaje">
+                    <s:textfield placeholder="Usuario recibe mensaje..." name="nomUsuario" />
+                    <s:submit name="buscarUsuario" value="Buscar" />
+                </s:form>
+                <s:form method="post" action="toGestionMensajes">
+                    <s:submit name="buscarUsuario" value="Mostrar todos" />
                 </s:form>
             </div>
             <div class="col-lg-12">
