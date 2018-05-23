@@ -17,9 +17,7 @@
                 </s:form>
             </div>
             <div class="col-lg-12">
-
-
-                <table border="1">
+                <table class="table table-striped text-center" border="1">
                     <tr>
                         <th>ID</th>
                         <th>Conductor</th>

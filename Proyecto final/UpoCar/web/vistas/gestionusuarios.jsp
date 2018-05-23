@@ -19,7 +19,7 @@
             <div class="col-lg-12">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10">
-                    <table class="col-lg-12" border="1">
+                    <table class="table table-striped text-center col-lg-12" border="1">
                         <tr>
                             <th></th>
                             <th>ID</th>

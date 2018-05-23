@@ -135,7 +135,12 @@ form.login input[type="submit"]
 
 .imagenCRUD{
     display: inline;
-    width: 50px;
+    width: 80px;
     height: 50px;    
 }
+
+table th {
+  text-align: center;
+}
+
 

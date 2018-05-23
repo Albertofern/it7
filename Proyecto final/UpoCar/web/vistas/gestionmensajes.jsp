@@ -23,7 +23,7 @@
             <div class="col-lg-12">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10">
-                    <table class="col-lg-12" border="1">
+                    <table class="col-lg-12 text-center table table-striped" border="1">
                         <tr>
                             <th>ID</th>
                             <th>Enviado</th>
