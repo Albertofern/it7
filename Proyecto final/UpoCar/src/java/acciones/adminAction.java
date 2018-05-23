@@ -48,8 +48,6 @@ public class adminAction extends ActionSupport {
     String updateLocalidad;
     //Mesnaje
     Integer idMensaje;
-    String nomUsuarioEnvia;
-    String nomUsuarioRecibe;
 
     public adminAction() {
     }
@@ -72,12 +70,7 @@ public class adminAction extends ActionSupport {
     }
      public String buscarEnviaMensaje() throws Exception {
         MensajeDAO mensajeDAO = new MensajeDAO();
-        this.setListadoMensajes(mensajeDAO.buscarEnviaMensaje(this.getNomUsuarioEnvia()));
-        return SUCCESS;
-    }
-     public String buscarRecibeMensaje() throws Exception {
-        MensajeDAO mensajeDAO = new MensajeDAO();
-        this.setListadoMensajes(mensajeDAO.buscarRecibeMensaje(this.getNomUsuarioRecibe()));
+        this.setListadoMensajes(mensajeDAO.buscarEnviaMensaje(this.getNomUsuario()));
         return SUCCESS;
     }
 
@@ -316,22 +309,5 @@ public class adminAction extends ActionSupport {
         this.idMensaje = idMensaje;
     }
 
-    public String getNomUsuarioEnvia() {
-        return nomUsuarioEnvia;
-    }
-
-    public void setNomUsuarioEnvia(String nomUsuarioEnvia) {
-        this.nomUsuarioEnvia = nomUsuarioEnvia;
-    }
-
-    public String getNomUsuarioRecibe() {
-        return nomUsuarioRecibe;
-    }
-
-    public void setNomUsuarioRecibe(String nomUsuarioRecibe) {
-        this.nomUsuarioRecibe = nomUsuarioRecibe;
-    }
-
-    
     
 }

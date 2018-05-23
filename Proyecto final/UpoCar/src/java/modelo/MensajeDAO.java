@@ -30,10 +30,10 @@ public class MensajeDAO {
         clientMensaje.remove(String.valueOf(idMensaje));
     }
     
-    public List<Mensaje>  buscarRecibeMensaje(String nomUsuario){
+    public void buscarRecibeMensaje(String nomUsuario){
         GenericType<List<Mensaje>> genericType = new GenericType<List<Mensaje>>() {
         };
-        return clientMensaje.buscarMensajeUsuRecibe(genericType, nomUsuario);
+        clientMensaje.buscarMensajeUsuRecibe(genericType, nomUsuario);
     }
     
     public List<Mensaje> buscarEnviaMensaje(String nomUsuario){
