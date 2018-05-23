@@ -40,8 +40,8 @@
                                 <td><s:property value="idUsuarioRecibe.nomUsuario" /></td>
                                 <td><s:property value="fechaHora" /></td>
                                 <td>
-                                    <s:form action="deleteMensaje" ><button name="idMensaje" value="<s:property value="idMensaje" />"><img class="foto-mi-cuenta img-circle img-responsive" src="./images/papelera.png" /></button></s:form>
-                                    <button id="<s:property value="idMensaje" />" class="updateButton" /><img class="foto-mi-cuenta img-circle img-responsive" src="./images/update.png" /></button>
+                                    <s:form action="deleteMensaje" ><button name="idMensaje" value="<s:property value="idMensaje" />"><img class="imagenCRUD img-circle img-responsive" src="./images/papelera.png" /></button></s:form>
+                                    <button id="<s:property value="idMensaje" />" class="updateButton" /><img class="imagenCRUD img-circle img-responsive" src="./images/update.png" /></button>
                                 </td>
                             </tr>
                         </s:iterator>

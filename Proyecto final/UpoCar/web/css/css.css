@@ -133,3 +133,9 @@ form.login input[type="submit"]
     letter-spacing: 1px;
 }
 
+.imagenCRUD{
+    display: inline;
+    width: 50px;
+    height: 50px;    
+}
+

@@ -47,8 +47,8 @@
                                     <td id="ultimoAcceso<s:property value="idUsuario" />"><s:property value="ultimoAcceso" /></td>
                                     <td id="fechaAlta<s:property value="idUsuario" />"><s:property value="fechaAlta" /></td>
                                     <td>
-                                        <s:form action="deleteUsuario" ><button name="idUsuario" value="<s:property value="idUsuario" />"><img class="foto-mi-cuenta img-circle img-responsive" src="./images/papelera.png" /></button></s:form>
-                                        <button id="<s:property value="idUsuario" />" class="updateButton" /><img class="foto-mi-cuenta img-circle img-responsive" src="./images/update.png" /></button>
+                                        <s:form action="deleteUsuario" ><button name="idUsuario" value="<s:property value="idUsuario" />"><img class="imagenCRUD img-circle img-responsive" src="./images/papelera.png" /></button></s:form>
+                                        <button id="<s:property value="idUsuario" />" class="updateButton" /><img class="imagenCRUD img-circle img-responsive" src="./images/update.png" /></button>
                                     </td>
                                 </tr>
                             </s:iterator>
