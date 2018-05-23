@@ -77,7 +77,7 @@
                             <tr><td>Plazas M&aacute;ximas:</td><td><s:textfield id="updatePlazasMax" name="updatePlazasMax" value="" ></s:textfield></td></tr>
                             <tr><td>Precio/Persona:</td><td><s:textfield id="updatePrecioPersona" name="updatePrecioPersona" value=""></s:textfield></td></tr>
                             <tr><td>Lugar de Recogida:</td><td><s:textfield id="updatePuntoRecogida" name="updatePuntoRecogida" value=""></s:textfield></td></tr>
-                                <tr><td>Fecha Salida:</td><td><input type="datetime-local" id="updateFechaSalida" name="updateFechaSalida" value=""  /></td></tr>
+                                <tr><td>Fecha Salida:</td><td><input type="datetime-local"  id="updateFechaSalida" name="updateFechaSalida" value=""  /></td></tr>
                                 <tr><td><s:submit value="Update"></s:submit></td></tr>
                                 <input id="hiddenUpdateID" type="hidden" name="updateId" value="" />
                         </s:form>
@@ -102,7 +102,7 @@
             var precioPers = $("#precioPersona" + id).text();
             var plazasMax = $("#plazasMax" + id).text();
             var puntoRecogida = $("#puntoRecogida" + id).text();
-            var fechaSalida = $("#fechaSalida" + id).text();
+            var fechaSalida = $("#fechaSalida" + id).text().split(" ").join("T");
             $("#updatePrecioPersona").attr("value", precioPers);
             $("#updatePlazasMax").attr("value", plazasMax);
             $("#updatePuntoRecogida").attr("value", puntoRecogida);

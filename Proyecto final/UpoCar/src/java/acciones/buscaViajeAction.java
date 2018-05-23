@@ -84,7 +84,7 @@ public class buscaViajeAction extends ActionSupport {
         //Comprobar que la hora no sea obligatoria pero si la fecha
         if (!fechaHora.equals("")) {
             Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(fechaHora);
-            String formattedDate = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(date);
+            String formattedDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
 
             listadoViajes = viajeDao.buscaViaje(origen, destino, formattedDate);
         } else {

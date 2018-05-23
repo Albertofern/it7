@@ -38,7 +38,7 @@
                                     <td><s:property value="idUsuarioEnvia.nomUsuario" /></td>
                                     <td id="mensaje<s:property value="idMensaje" />"><s:property value="texto" /></td>
                                     <td><s:property value="idUsuarioRecibe.nomUsuario" /></td>
-                                    <td id="fecha<s:property value="idMensaje" />"><s:property value="fechaHora" /></td>
+                                    <td id="fecha<s:property value="idMensaje" />"><s:date name="fechaHora" format="yyyy-mm-dd HH:mm" /></td>
                                     <td>
                                         <s:form action="deleteMensaje" ><button name="idMensaje" value="<s:property value="idMensaje" />"><img class="imagenCRUD img-circle img-responsive" src="./images/papelera.png" /></button></s:form>
                                         <button id="<s:property value="idMensaje" />" class="updateButton" /><img class="imagenCRUD img-circle img-responsive" src="./images/update.png" /></button>
@@ -64,11 +64,12 @@
                 <div class="col-lg-2">
                     <table >
                         <tr><th colspan="2">Update</th></tr>
-                                <s:form id="formularioUpdate"  method="post" action="updateIdMensaje">
+                                <s:form id="formularioUpdate"  method="post" action="updateMensaje">
                             <tr><td>ID Mensaje</td><td id="updateIdMensaje"></td></tr>
+                            <tr><td>Usuario recibe mensaje</td><td><s:select list="listadoUsuarios" listValue="nomUsuario" listKey="idUsuario" name="idUsuario" ></s:select>  </td></tr>
                             <tr><td>Mensaje</td><td><s:textarea id="updateMensaje" name="updateMensaje" value="" ></s:textarea></td></tr>
                                 <tr><td><s:submit value="Update"></s:submit></td></tr>
-                                <input id="hiddenUpdateID" type="hidden" name="updateIdMensaje" value="" />
+                                <input id="hiddenUpdateID" type="hidden" name="idMensaje" value="" />
                         </s:form>
 
                     </table>

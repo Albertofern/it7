@@ -88,6 +88,13 @@
         <action name="buscarRecibeMensaje" method="buscarRecibeMensaje" class="acciones.adminAction">
             <result name="success">/vistas/gestionmensajes.jsp</result>
         </action>
+        
+                 
+        <action name="updateMensaje" method="updateMensaje" class="acciones.adminAction">
+            <result type="chain">
+                <param name="actionName">toGestionMensajes</param>
+            </result>
+        </action>
 
         <!-- Gestión viajes -->        
         <action name="toGestionViajes" method="toGestionViajes" class="acciones.adminAction">

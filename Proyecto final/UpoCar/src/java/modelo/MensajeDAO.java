@@ -8,7 +8,9 @@ package modelo;
 import java.util.List;
 import javax.ws.rs.core.GenericType;
 import webServiceREST.JerseyClientMensaje;
+import webServiceREST.JerseyClientUsuario;
 import webServiceREST.entidades.Mensaje;
+import webServiceREST.entidades.Usuario;
 
 /**
  *
@@ -40,6 +42,19 @@ public class MensajeDAO {
         GenericType<List<Mensaje>> genericType = new GenericType<List<Mensaje>>() {
         };
         return clientMensaje.buscarMensajeUsuEnvia(genericType, nomUsuario);
+    }
+    
+    public void updateMensaje(Integer id,String mensaje, Integer idUsuario){
+        JerseyClientUsuario clientUsuario = new JerseyClientUsuario();
+        GenericType<Usuario> genericTypeUsuario = new GenericType<Usuario>() {
+        };
+        Usuario u = clientUsuario.find_XML(genericTypeUsuario, String.valueOf(idUsuario));
+        GenericType<Mensaje> genericType = new GenericType<Mensaje>() {
+        };
+        Mensaje m = clientMensaje.find_XML(genericType, String.valueOf(id));
+        m.setTexto(mensaje);
+        m.setIdUsuarioRecibe(u);
+        clientMensaje.edit_XML(m, String.valueOf(id));        
     }
 
 

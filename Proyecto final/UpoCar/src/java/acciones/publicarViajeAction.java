@@ -121,7 +121,7 @@ public class publicarViajeAction extends ActionSupport {
         
         //la fecha la guarda en el siguiente formato: 2018-05-30T14:15
         Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(fechaSalida);
-        String formattedDate = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(date);
+        String formattedDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
         
         Viaje v = new Viaje(null, recogida, plazas, precio, formattedDate);
         v.setIdUsuarioPublica(u);

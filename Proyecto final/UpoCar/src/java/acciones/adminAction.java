@@ -6,7 +6,9 @@
 package acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import modelo.LocalidadDAO;
 import modelo.MensajeDAO;
@@ -50,6 +52,8 @@ public class adminAction extends ActionSupport {
     Integer idMensaje;
     String nomUsuarioEnvia;
     String nomUsuarioRecibe;
+    String updateMensaje;
+    
 
     public adminAction() {
     }
@@ -62,6 +66,8 @@ public class adminAction extends ActionSupport {
     public String toGestionMensajes() throws Exception {
         MensajeDAO mensajeDAO = new MensajeDAO();
         this.setListadoMensajes(mensajeDAO.listarMensajes());
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        this.setListadoUsuarios(usuarioDAO.listarUsuarios());
         return SUCCESS;
     }
 
@@ -78,6 +84,12 @@ public class adminAction extends ActionSupport {
      public String buscarRecibeMensaje() throws Exception {
         MensajeDAO mensajeDAO = new MensajeDAO();
         this.setListadoMensajes(mensajeDAO.buscarRecibeMensaje(this.getNomUsuarioRecibe()));
+        return SUCCESS;
+    }
+     
+     public String updateMensaje() throws Exception {
+        MensajeDAO mensajeDAO = new MensajeDAO();
+        mensajeDAO.updateMensaje(this.getIdMensaje(), this.getUpdateMensaje(),this.getIdUsuario());
         return SUCCESS;
     }
 
@@ -100,9 +112,14 @@ public class adminAction extends ActionSupport {
 
     public String updateViaje() throws Exception {
         ViajeDAO viajeDAO = new ViajeDAO();
+        
+          //la fecha la guarda en el siguiente formato: 2018-05-30T14:15
+        Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(this.getUpdateFechaSalida());
+        String formattedDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
+        
         viajeDAO.updateViaje(this.getUpdateId(), this.getUpdatePlazasMax(),
                 this.getUpdatePrecioPersona(), this.getUpdatePuntoRecogida(),
-                this.getUpdateFechaSalida(), this.getIdUsuario(),
+                formattedDate, this.getIdUsuario(),
                 this.getUpdateIdLocalidadOrigen(), this.getUpdateIdLocalidadDestino());
         return SUCCESS;
     }
@@ -330,6 +347,14 @@ public class adminAction extends ActionSupport {
 
     public void setNomUsuarioRecibe(String nomUsuarioRecibe) {
         this.nomUsuarioRecibe = nomUsuarioRecibe;
+    }
+
+    public String getUpdateMensaje() {
+        return updateMensaje;
+    }
+
+    public void setUpdateMensaje(String updateMensaje) {
+        this.updateMensaje = updateMensaje;
     }
 
     
