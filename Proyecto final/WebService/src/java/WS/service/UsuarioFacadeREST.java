@@ -90,6 +90,7 @@ public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
         return em;
     }
     
+        
     @GET
     @Path("/login/{nomUsuario}/{password}")
     @Produces({MediaType.APPLICATION_XML})

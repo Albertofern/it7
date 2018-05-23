@@ -51,6 +51,11 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findByFechaAlta", query = "SELECT u FROM Usuario u WHERE u.fechaAlta = :fechaAlta")})
 public class Usuario implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "total_puntuacion")
+    private int totalPuntuacion;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -337,6 +342,14 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "WS.Usuario[ idUsuario=" + idUsuario + " ]";
+    }
+
+    public int getTotalPuntuacion() {
+        return totalPuntuacion;
+    }
+
+    public void setTotalPuntuacion(int totalPuntuacion) {
+        this.totalPuntuacion = totalPuntuacion;
     }
 
 }
