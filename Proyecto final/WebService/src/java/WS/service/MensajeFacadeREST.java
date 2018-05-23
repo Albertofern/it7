@@ -11,6 +11,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -87,6 +88,30 @@ public class MensajeFacadeREST extends AbstractFacade<Mensaje> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+       @GET
+    @Path("/buscarMensajeUsuEnvia/{nomUsuario}")
+    @Produces({MediaType.APPLICATION_XML})
+    public List<Mensaje> buscarMensajeUsuEnvia(@PathParam("nomUsuario") String usuario){
+        //Usuario u = (Usuario) em.createNamedQuery("Usuario.login").setParameter("nomUsuario", usuario).getSingleResult();        
+        Query q =  em.createQuery("SELECT m FROM Mensaje m WHERE m.idUsuarioEnvia = (SELECT u.idUsuario FROM Usuario u WHERE u.nomUsuario = :nomUsuario)").setParameter("nomUsuario", usuario);      
+        
+        List l = q.getResultList();
+
+        return l;
+    }
+    
+       @GET
+    @Path("/buscarMensajeUsuRecibe/{nomUsuario}")
+    @Produces({MediaType.APPLICATION_XML})
+    public List<Mensaje> buscarMensajeUsuRecibe(@PathParam("nomUsuario") String usuario){
+        //Usuario u = (Usuario) em.createNamedQuery("Usuario.login").setParameter("nomUsuario", usuario).getSingleResult();        
+        Query q =  em.createQuery("SELECT m FROM Mensaje m WHERE m.idUsuarioRecibe = (SELECT u.idUsuario FROM Usuario u WHERE u.nomUsuario = :nomUsuario)").setParameter("nomUsuario", usuario);      
+        
+        List l = q.getResultList();
+
+        return l;
     }
 
 }
