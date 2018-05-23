@@ -3,33 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package webServiceREST.entidades;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
- * @author Gonza
+ * 
+ * @author Antonio Jose Herrera Tabaco 
  */
 @Entity
 @Table(name = "usuario")
@@ -47,7 +43,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findBySexo", query = "SELECT u FROM Usuario u WHERE u.sexo = :sexo")
     , @NamedQuery(name = "Usuario.findByFoto", query = "SELECT u FROM Usuario u WHERE u.foto = :foto")
     , @NamedQuery(name = "Usuario.findByUltimoAcceso", query = "SELECT u FROM Usuario u WHERE u.ultimoAcceso = :ultimoAcceso")
-    , @NamedQuery(name = "Usuario.findByFechaAlta", query = "SELECT u FROM Usuario u WHERE u.fechaAlta = :fechaAlta")})
+    , @NamedQuery(name = "Usuario.findByFechaAlta", query = "SELECT u FROM Usuario u WHERE u.fechaAlta = :fechaAlta")
+    , @NamedQuery(name = "Usuario.findByTotalPuntuacion", query = "SELECT u FROM Usuario u WHERE u.totalPuntuacion = :totalPuntuacion")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -81,7 +78,7 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "apellidos")
     private String apellidos;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Correo electrónico no válido")//if the field contains email address consider using this annotation to enforce field validation
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -108,22 +105,10 @@ public class Usuario implements Serializable {
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAlta;
-    @ManyToMany(mappedBy = "usuarioCollection")
-    private Collection<Viaje> viajeCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarioPuntua")
-    private Collection<Puntuacion> puntuacionCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarioRecibe")
-    private Collection<Puntuacion> puntuacionCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarioPublica")
-    private Collection<Viaje> viajeCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarioEnvia")
-    private Collection<Mensaje> mensajeCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarioRecibe")
-    private Collection<Mensaje> mensajeCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
-    private Collection<Vehiculo> vehiculoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
-    private Collection<Telefono> telefonoCollection;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "total_puntuacion")
+    private int totalPuntuacion;
 
     public Usuario() {
     }
@@ -132,7 +117,7 @@ public class Usuario implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public Usuario(Integer idUsuario, String nomUsuario, String password, String tipoUsuario, String nombre, String apellidos, String email, String localidad, String sexo, String foto) {
+    public Usuario(Integer idUsuario, String nomUsuario, String password, String tipoUsuario, String nombre, String apellidos, String email, String localidad, String sexo, String foto, int totalPuntuacion) {
         this.idUsuario = idUsuario;
         this.nomUsuario = nomUsuario;
         this.password = password;
@@ -143,6 +128,7 @@ public class Usuario implements Serializable {
         this.localidad = localidad;
         this.sexo = sexo;
         this.foto = foto;
+        this.totalPuntuacion = totalPuntuacion;
     }
 
     public Integer getIdUsuario() {
@@ -241,76 +227,12 @@ public class Usuario implements Serializable {
         this.fechaAlta = fechaAlta;
     }
 
-    @XmlTransient
-    public Collection<Viaje> getViajeCollection() {
-        return viajeCollection;
+    public int getTotalPuntuacion() {
+        return totalPuntuacion;
     }
 
-    public void setViajeCollection(Collection<Viaje> viajeCollection) {
-        this.viajeCollection = viajeCollection;
-    }
-
-    @XmlTransient
-    public Collection<Puntuacion> getPuntuacionCollection() {
-        return puntuacionCollection;
-    }
-
-    public void setPuntuacionCollection(Collection<Puntuacion> puntuacionCollection) {
-        this.puntuacionCollection = puntuacionCollection;
-    }
-
-    @XmlTransient
-    public Collection<Puntuacion> getPuntuacionCollection1() {
-        return puntuacionCollection1;
-    }
-
-    public void setPuntuacionCollection1(Collection<Puntuacion> puntuacionCollection1) {
-        this.puntuacionCollection1 = puntuacionCollection1;
-    }
-
-    @XmlTransient
-    public Collection<Viaje> getViajeCollection1() {
-        return viajeCollection1;
-    }
-
-    public void setViajeCollection1(Collection<Viaje> viajeCollection1) {
-        this.viajeCollection1 = viajeCollection1;
-    }
-
-    @XmlTransient
-    public Collection<Mensaje> getMensajeCollection() {
-        return mensajeCollection;
-    }
-
-    public void setMensajeCollection(Collection<Mensaje> mensajeCollection) {
-        this.mensajeCollection = mensajeCollection;
-    }
-
-    @XmlTransient
-    public Collection<Mensaje> getMensajeCollection1() {
-        return mensajeCollection1;
-    }
-
-    public void setMensajeCollection1(Collection<Mensaje> mensajeCollection1) {
-        this.mensajeCollection1 = mensajeCollection1;
-    }
-
-    @XmlTransient
-    public Collection<Vehiculo> getVehiculoCollection() {
-        return vehiculoCollection;
-    }
-
-    public void setVehiculoCollection(Collection<Vehiculo> vehiculoCollection) {
-        this.vehiculoCollection = vehiculoCollection;
-    }
-
-    @XmlTransient
-    public Collection<Telefono> getTelefonoCollection() {
-        return telefonoCollection;
-    }
-
-    public void setTelefonoCollection(Collection<Telefono> telefonoCollection) {
-        this.telefonoCollection = telefonoCollection;
+    public void setTotalPuntuacion(int totalPuntuacion) {
+        this.totalPuntuacion = totalPuntuacion;
     }
 
     @Override
@@ -337,5 +259,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "webServiceREST.entidades.Usuario[ idUsuario=" + idUsuario + " ]";
     }
-    
+
 }
