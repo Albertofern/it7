@@ -39,7 +39,7 @@ public class adminAction extends ActionSupport {
     //Usuario
     Integer idUsuario;
     String nomUsuario;
-    String updateIdUsuario;
+    Integer updateIdUsuario;
     String updateUsuario;
     String updateNombre;
     String updateApellidos;
@@ -54,18 +54,14 @@ public class adminAction extends ActionSupport {
         return SUCCESS;
     }
 
+    //Gestión Mensajes
     public String toGestionMensajes() throws Exception {
         MensajeDAO mensajeDAO = new MensajeDAO();
         this.setListadoMensajes(mensajeDAO.listarMensajes());
         return SUCCESS;
     }
 
-    public String toGestionUsuarios() throws Exception {
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        this.setListadoUsuarios(usuarioDAO.listarUsuarios());
-        return SUCCESS;
-    }
-
+    //Gestión Mensajes
     public String toGestionViajes() throws Exception {
         ViajeDAO viajeDAO = new ViajeDAO();
         this.setListadoViajes(viajeDAO.listarViajes());
@@ -97,6 +93,13 @@ public class adminAction extends ActionSupport {
         return SUCCESS;
     }
 
+    //Gestión Usuarios
+    public String toGestionUsuarios() throws Exception {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        this.setListadoUsuarios(usuarioDAO.listarUsuarios());
+        return SUCCESS;
+    }
+
     public String buscarUsuario() throws Exception {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         this.setListadoUsuarios(usuarioDAO.buscarUsuario(this.getNomUsuario()));
@@ -106,6 +109,14 @@ public class adminAction extends ActionSupport {
     public String deleteUsuario() throws Exception {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.deleteUsuario(String.valueOf(this.getIdUsuario()));
+        return SUCCESS;
+    }
+
+    public String updateUsuario() throws Exception {
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuarioDAO.updateUsuario(this.getUpdateIdUsuario(), this.getUpdateUsuario(),
+                this.getUpdateNombre(), this.getUpdateApellidos(), this.getUpdateEmail(),
+                this.getUpdateLocalidad(), this.getUpdateSexo());
         return SUCCESS;
     }
 
@@ -219,6 +230,65 @@ public class adminAction extends ActionSupport {
 
     public void setUpdateIdLocalidadDestino(Integer updateIdLocalidadDestino) {
         this.updateIdLocalidadDestino = updateIdLocalidadDestino;
+    }
+
+    public Integer getUpdateIdUsuario() {
+        return updateIdUsuario;
+    }
+
+    public void setUpdateIdUsuario(Integer updateIdUsuario) {
+        this.updateIdUsuario = updateIdUsuario;
+    }
+
+
+    
+
+    public String getUpdateUsuario() {
+        return updateUsuario;
+    }
+
+    public void setUpdateUsuario(String updateUsuario) {
+        this.updateUsuario = updateUsuario;
+    }
+
+    public String getUpdateNombre() {
+        return updateNombre;
+    }
+
+    public void setUpdateNombre(String updateNombre) {
+        this.updateNombre = updateNombre;
+    }
+
+    public String getUpdateApellidos() {
+        return updateApellidos;
+    }
+
+    public void setUpdateApellidos(String updateApellidos) {
+        this.updateApellidos = updateApellidos;
+    }
+
+    public String getUpdateEmail() {
+        return updateEmail;
+    }
+
+    public void setUpdateEmail(String updateEmail) {
+        this.updateEmail = updateEmail;
+    }
+
+    public String getUpdateSexo() {
+        return updateSexo;
+    }
+
+    public void setUpdateSexo(String updateSexo) {
+        this.updateSexo = updateSexo;
+    }
+
+    public String getUpdateLocalidad() {
+        return updateLocalidad;
+    }
+
+    public void setUpdateLocalidad(String updateLocalidad) {
+        this.updateLocalidad = updateLocalidad;
     }
 
 }

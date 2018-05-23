@@ -107,6 +107,12 @@
             </result>
         </action>
         
+        <action name="updateUsuario" method="updateUsuario" class="acciones.adminAction">
+            <result type="chain">
+                <param name="actionName">toGestionUsuarios</param>
+            </result>
+        </action>
+        
     </package>
     
     <package name="viaje" extends="struts-default">

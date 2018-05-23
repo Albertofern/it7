@@ -38,6 +38,20 @@ public class UsuarioDAO {
         clientUsuario.remove(id);
     }
 
+    public void updateUsuario(Integer idUsuario,String usuario,String nombre,String apellido, 
+            String email,String localidad,String sexo) {
+
+        GenericType<Usuario> genericTypeUsuario = new GenericType<Usuario>() {
+        };
+        Usuario u = clientUsuario.find_XML(genericTypeUsuario, String.valueOf(idUsuario));
+        u.setNomUsuario(usuario);
+        u.setApellidos(apellido);
+        u.setEmail(email);
+        u.setLocalidad(localidad);
+        u.setSexo(sexo);
+        clientUsuario.edit_XML(u, String.valueOf(idUsuario));
+    }
+
     public JerseyClientUsuario getClientUsuario() {
         return clientUsuario;
     }

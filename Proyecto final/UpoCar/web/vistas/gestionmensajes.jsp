@@ -14,26 +14,29 @@
                 </s:form>
             </div>
             <div class="col-lg-12">
-                <div class="col-lg-4"></div>
-                <div class="col-lg-4">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
                 <table class="col-lg-12" border="1">
                     <tr>
+                        <th>ID</th>
+                        <th>Enviado</th>
                         <th>Mensaje</th>
-                        <th>Remitente</th>
-                        <th>Destinatario</th>
-                        <th></th>
+                        <th>Recibido</th>
+                        <th>Fecha/Hora</th>
                     </tr>
                     <s:iterator value="listadoMensajes">
                     <tr>
-                        <td><s:property value="texto" /></td>
+                        <td><s:property value="idMensaje" /></td>
                         <td><s:property value="idUsuarioEnvia.nomUsuario" /></td>
+                        <td><s:property value="texto" /></td>
                         <td><s:property value="idUsuarioRecibe.nomUsuario" /></td>
+                        <td><s:property value="fechaHora" /></td>
                         <td><img class="foto-mi-cuenta img-circle img-responsive" src="./images/papelera.png" /></td>
                     </tr>
                     </s:iterator>
                 </table>
                 </div>
-                <div class="col-lg-4"></div>
+                <div class="col-lg-1"></div>
             </div>
             <div class="col-lg-12"><hr /></div>
             
