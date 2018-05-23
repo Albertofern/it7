@@ -11,6 +11,7 @@
     <class>webServiceREST.entidades.FotoVehi</class>
     <class>webServiceREST.entidades.Provincia</class>
     <class>webServiceREST.entidades.Puntuacion</class>
+    <class>webServiceREST.entidades.Pasajeros</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/upocar?zeroDateTimeBehavior=convertToNull"/>
