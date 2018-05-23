@@ -16,30 +16,33 @@
             <div class="col-lg-12">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10">
-                <table class="col-lg-12" border="1">
-                    <tr>
-                        <th>ID</th>
-                        <th>Enviado</th>
-                        <th>Mensaje</th>
-                        <th>Recibido</th>
-                        <th>Fecha/Hora</th>
-                    </tr>
-                    <s:iterator value="listadoMensajes">
-                    <tr>
-                        <td><s:property value="idMensaje" /></td>
-                        <td><s:property value="idUsuarioEnvia.nomUsuario" /></td>
-                        <td><s:property value="texto" /></td>
-                        <td><s:property value="idUsuarioRecibe.nomUsuario" /></td>
-                        <td><s:property value="fechaHora" /></td>
-                        <td><img class="foto-mi-cuenta img-circle img-responsive" src="./images/papelera.png" /></td>
-                    </tr>
-                    </s:iterator>
-                </table>
+                    <table class="col-lg-12" border="1">
+                        <tr>
+                            <th>ID</th>
+                            <th>Enviado</th>
+                            <th>Mensaje</th>
+                            <th>Recibido</th>
+                            <th>Fecha/Hora</th>
+                        </tr>
+                        <s:iterator value="listadoMensajes">
+                            <tr>
+                                <td><s:property value="idMensaje" /></td>
+                                <td><s:property value="idUsuarioEnvia.nomUsuario" /></td>
+                                <td><s:property value="texto" /></td>
+                                <td><s:property value="idUsuarioRecibe.nomUsuario" /></td>
+                                <td><s:property value="fechaHora" /></td>
+                                <td>
+                                    <s:form action="deleteMensaje" ><button name="idMensaje" value="<s:property value="idMensaje" />"><img class="foto-mi-cuenta img-circle img-responsive" src="./images/papelera.png" /></button></s:form>
+                                    <button id="<s:property value="idMensaje" />" class="updateButton" /><img class="foto-mi-cuenta img-circle img-responsive" src="./images/update.png" /></button>
+                                </td>
+                            </tr>
+                        </s:iterator>
+                    </table>
                 </div>
                 <div class="col-lg-1"></div>
             </div>
             <div class="col-lg-12"><hr /></div>
-            
+
             <div class="col-lg-12">
                 <s:form method="post" action="">
                     <s:textfield placeholder="Nombre" name=""></s:textfield>

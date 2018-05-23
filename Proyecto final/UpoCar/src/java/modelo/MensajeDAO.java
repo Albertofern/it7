@@ -25,6 +25,10 @@ public class MensajeDAO {
         List<Mensaje> listaMensajes = this.getClientMensaje().findAll_XML(genericType);
         return listaMensajes;
     }
+    
+    public void deleteMensaje(Integer idMensaje){
+        clientMensaje.remove(String.valueOf(idMensaje));
+    }
 
 
 public JerseyClientMensaje getClientMensaje() {

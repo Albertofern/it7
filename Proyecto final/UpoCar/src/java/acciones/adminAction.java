@@ -46,6 +46,8 @@ public class adminAction extends ActionSupport {
     String updateEmail;
     String updateSexo;
     String updateLocalidad;
+    //Mesnaje
+    Integer idMensaje;
 
     public adminAction() {
     }
@@ -61,7 +63,13 @@ public class adminAction extends ActionSupport {
         return SUCCESS;
     }
 
-    //Gestión Mensajes
+    public String deleteMensaje() throws Exception {
+        MensajeDAO mensajeDAO = new MensajeDAO();
+        mensajeDAO.deleteMensaje(this.getIdMensaje());
+        return SUCCESS;
+    }
+
+    //Gestión Viajes
     public String toGestionViajes() throws Exception {
         ViajeDAO viajeDAO = new ViajeDAO();
         this.setListadoViajes(viajeDAO.listarViajes());
@@ -113,7 +121,7 @@ public class adminAction extends ActionSupport {
     }
 
     public String updateUsuario() throws Exception {
-            UsuarioDAO usuarioDAO = new UsuarioDAO();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.updateUsuario(this.getUpdateIdUsuario(), this.getUpdateUsuario(),
                 this.getUpdateNombre(), this.getUpdateApellidos(), this.getUpdateEmail(),
                 this.getUpdateLocalidad(), this.getUpdateSexo());
@@ -240,9 +248,6 @@ public class adminAction extends ActionSupport {
         this.updateIdUsuario = updateIdUsuario;
     }
 
-
-    
-
     public String getUpdateUsuario() {
         return updateUsuario;
     }
@@ -291,4 +296,13 @@ public class adminAction extends ActionSupport {
         this.updateLocalidad = updateLocalidad;
     }
 
+    public Integer getIdMensaje() {
+        return idMensaje;
+    }
+
+    public void setIdMensaje(Integer idMensaje) {
+        this.idMensaje = idMensaje;
+    }
+
+    
 }

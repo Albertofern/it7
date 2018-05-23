@@ -69,14 +69,19 @@
     
     <package name="administrador" extends="struts-default">
         
+        <!-- Gestión Mensajes -->       
+        
         <action name="toGestionMensajes" method="toGestionMensajes" class="acciones.adminAction">
             <result name="success">/vistas/gestionmensajes.jsp</result>
         </action>
         
-        <action name="toGestionUsuarios" method="toGestionUsuarios" class="acciones.adminAction">
-            <result name="success">/vistas/gestionusuarios.jsp</result>
+          <action name="deleteMensaje" method="deleteMensaje" class="acciones.adminAction">
+            <result type="chain">
+                <param name="actionName">toGestionMensajes</param>
+            </result>
         </action>
-        
+
+        <!-- Gestión viajes -->        
         <action name="toGestionViajes" method="toGestionViajes" class="acciones.adminAction">
             <result name="success">/vistas/gestionviajes.jsp</result>
         </action>
@@ -91,6 +96,11 @@
             <result type="chain">
                 <param name="actionName">toGestionViajes</param>
             </result>
+        </action>
+        
+        <!-- Gestión Usuarios -->          
+        <action name="toGestionUsuarios" method="toGestionUsuarios" class="acciones.adminAction">
+            <result name="success">/vistas/gestionusuarios.jsp</result>
         </action>
         
         <action name="buscarUsuarioViaje" method="buscarUsuarioViaje" class="acciones.adminAction">
