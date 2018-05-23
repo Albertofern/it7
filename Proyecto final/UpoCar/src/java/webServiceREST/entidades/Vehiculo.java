@@ -41,6 +41,11 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Vehiculo.findByPlazas", query = "SELECT v FROM Vehiculo v WHERE v.plazas = :plazas")})
 public class Vehiculo implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "id_foto_vehiculo")
+    private int idFotoVehiculo;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -178,6 +183,14 @@ public class Vehiculo implements Serializable {
     @Override
     public String toString() {
         return "webServiceREST.entidades.Vehiculo[ idVehiculo=" + idVehiculo + " ]";
+    }
+
+    public int getIdFotoVehiculo() {
+        return idFotoVehiculo;
+    }
+
+    public void setIdFotoVehiculo(int idFotoVehiculo) {
+        this.idFotoVehiculo = idFotoVehiculo;
     }
     
 }
