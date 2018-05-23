@@ -38,13 +38,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Vehiculo.findByMarca", query = "SELECT v FROM Vehiculo v WHERE v.marca = :marca")
     , @NamedQuery(name = "Vehiculo.findByModelo", query = "SELECT v FROM Vehiculo v WHERE v.modelo = :modelo")
     , @NamedQuery(name = "Vehiculo.findByColor", query = "SELECT v FROM Vehiculo v WHERE v.color = :color")
-    , @NamedQuery(name = "Vehiculo.findByPlazas", query = "SELECT v FROM Vehiculo v WHERE v.plazas = :plazas")})
+    , @NamedQuery(name = "Vehiculo.findByPlazas", query = "SELECT v FROM Vehiculo v WHERE v.plazas = :plazas")
+    , @NamedQuery(name = "Vehiculo.findByIdFotoVehiculo", query = "SELECT v FROM Vehiculo v WHERE v.idFotoVehiculo = :idFotoVehiculo")})
 public class Vehiculo implements Serializable {
-
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "id_foto_vehiculo")
-    private int idFotoVehiculo;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -71,6 +67,10 @@ public class Vehiculo implements Serializable {
     @NotNull
     @Column(name = "plazas")
     private int plazas;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "id_foto_vehiculo")
+    private int idFotoVehiculo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVehiculoElegido")
     private Collection<Viaje> viajeCollection;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
@@ -86,12 +86,13 @@ public class Vehiculo implements Serializable {
         this.idVehiculo = idVehiculo;
     }
 
-    public Vehiculo(Integer idVehiculo, String marca, String modelo, String color, int plazas) {
+    public Vehiculo(Integer idVehiculo, String marca, String modelo, String color, int plazas, int idFotoVehiculo) {
         this.idVehiculo = idVehiculo;
         this.marca = marca;
         this.modelo = modelo;
         this.color = color;
         this.plazas = plazas;
+        this.idFotoVehiculo = idFotoVehiculo;
     }
 
     public Integer getIdVehiculo() {
@@ -132,6 +133,14 @@ public class Vehiculo implements Serializable {
 
     public void setPlazas(int plazas) {
         this.plazas = plazas;
+    }
+
+    public int getIdFotoVehiculo() {
+        return idFotoVehiculo;
+    }
+
+    public void setIdFotoVehiculo(int idFotoVehiculo) {
+        this.idFotoVehiculo = idFotoVehiculo;
     }
 
     @XmlTransient
@@ -183,14 +192,6 @@ public class Vehiculo implements Serializable {
     @Override
     public String toString() {
         return "webServiceREST.entidades.Vehiculo[ idVehiculo=" + idVehiculo + " ]";
-    }
-
-    public int getIdFotoVehiculo() {
-        return idFotoVehiculo;
-    }
-
-    public void setIdFotoVehiculo(int idFotoVehiculo) {
-        this.idFotoVehiculo = idFotoVehiculo;
     }
     
 }

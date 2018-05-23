@@ -21,7 +21,7 @@ import javax.ws.rs.core.GenericType;
  *        client.close();
  * </pre>
  *
- * @author Antonio Jose Herrera Tabaco
+ * @author Gonza
  */
 public class JerseyClientUsuario {
 

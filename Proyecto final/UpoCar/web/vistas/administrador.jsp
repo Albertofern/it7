@@ -31,17 +31,17 @@
                 
                 <div class="hidden-lg  ">
                     <div >
-                        <div><s:form action="toGestionUsuarios"><button><img class="foto-mi-cuenta img-circle img-responsive" src="../images/gestionUsuarios.png" /></button></s:form></div>  
+                        <div><s:form action="toGestionUsuarios"><button><img class="foto-mi-cuenta img-circle img-responsive" src="./images/gestionUsuarios.png" /></button></s:form></div>  
                         &nbsp;
                     </div>
 
                     <div >
-                        <div><s:form action="toGestionViajes"><button><img class="foto-mi-cuenta img-circle img-responsive" src="../images/gestionViajes.jpg" /></button></s:form></div>
+                        <div><s:form action="toGestionViajes"><button><img class="foto-mi-cuenta img-circle img-responsive" src="./images/gestionViajes.jpg" /></button></s:form></div>
 
                         &nbsp;
                     </div>
                     <div >
-                        <div><s:form action="toGestionMensajes"><button><img class="foto-mi-cuenta img-circle img-responsive" src="../images/gestionMensajes.png" /></button></s:form></div>
+                        <div><s:form action="toGestionMensajes"><button><img class="foto-mi-cuenta img-circle img-responsive" src="./images/gestionMensajes.png" /></button></s:form></div>
                         &nbsp;
                     </div>
                 </div>

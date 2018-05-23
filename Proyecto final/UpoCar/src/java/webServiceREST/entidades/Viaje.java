@@ -8,17 +8,17 @@ package webServiceREST.entidades;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -65,11 +65,8 @@ public class Viaje implements Serializable {
     @Size(min = 1, max = 25)
     @Column(name = "fecha_salida")
     private String fechaSalida;
-    @JoinTable(name = "pasajeros", joinColumns = {
-        @JoinColumn(name = "id_viaje", referencedColumnName = "id_viaje")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")})
-    @ManyToMany
-    private Collection<Usuario> usuarioCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idViaje")
+    private Collection<Pasajeros> pasajerosCollection;
     @JoinColumn(name = "id_localidad_destino", referencedColumnName = "id_localidad")
     @ManyToOne(optional = false)
     private Localidad idLocalidadDestino;
@@ -139,12 +136,12 @@ public class Viaje implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Usuario> getUsuarioCollection() {
-        return usuarioCollection;
+    public Collection<Pasajeros> getPasajerosCollection() {
+        return pasajerosCollection;
     }
 
-    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
-        this.usuarioCollection = usuarioCollection;
+    public void setPasajerosCollection(Collection<Pasajeros> pasajerosCollection) {
+        this.pasajerosCollection = pasajerosCollection;
     }
 
     public Localidad getIdLocalidadDestino() {

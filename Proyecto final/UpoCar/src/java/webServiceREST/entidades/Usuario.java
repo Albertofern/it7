@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package webServiceREST.entidades;
 
 import java.io.Serializable;
@@ -16,7 +15,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -29,8 +27,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- * 
- * @author Antonio Jose Herrera Tabaco 
+ *
+ * @author Gonza
  */
 @Entity
 @Table(name = "usuario")
@@ -51,13 +49,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findByFechaAlta", query = "SELECT u FROM Usuario u WHERE u.fechaAlta = :fechaAlta")
     , @NamedQuery(name = "Usuario.findByTotalPuntuacion", query = "SELECT u FROM Usuario u WHERE u.totalPuntuacion = :totalPuntuacion")})
 public class Usuario implements Serializable {
-
-    @ManyToMany(mappedBy = "usuarioCollection")
-    private Collection<Viaje> viajeCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarioPublica")
-    private Collection<Viaje> viajeCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
-    private Collection<Vehiculo> vehiculoCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -90,7 +81,7 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "apellidos")
     private String apellidos;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Correo electrónico no válido")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -121,6 +112,22 @@ public class Usuario implements Serializable {
     @NotNull
     @Column(name = "total_puntuacion")
     private double totalPuntuacion;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarioPuntua")
+    private Collection<Puntuacion> puntuacionCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarioRecibe")
+    private Collection<Puntuacion> puntuacionCollection1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private Collection<Pasajeros> pasajerosCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarioPublica")
+    private Collection<Viaje> viajeCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarioEnvia")
+    private Collection<Mensaje> mensajeCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarioRecibe")
+    private Collection<Mensaje> mensajeCollection1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private Collection<Vehiculo> vehiculoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private Collection<Telefono> telefonoCollection;
 
     public Usuario() {
     }
@@ -247,6 +254,78 @@ public class Usuario implements Serializable {
         this.totalPuntuacion = totalPuntuacion;
     }
 
+    @XmlTransient
+    public Collection<Puntuacion> getPuntuacionCollection() {
+        return puntuacionCollection;
+    }
+
+    public void setPuntuacionCollection(Collection<Puntuacion> puntuacionCollection) {
+        this.puntuacionCollection = puntuacionCollection;
+    }
+
+    @XmlTransient
+    public Collection<Puntuacion> getPuntuacionCollection1() {
+        return puntuacionCollection1;
+    }
+
+    public void setPuntuacionCollection1(Collection<Puntuacion> puntuacionCollection1) {
+        this.puntuacionCollection1 = puntuacionCollection1;
+    }
+
+    @XmlTransient
+    public Collection<Pasajeros> getPasajerosCollection() {
+        return pasajerosCollection;
+    }
+
+    public void setPasajerosCollection(Collection<Pasajeros> pasajerosCollection) {
+        this.pasajerosCollection = pasajerosCollection;
+    }
+
+    @XmlTransient
+    public Collection<Viaje> getViajeCollection() {
+        return viajeCollection;
+    }
+
+    public void setViajeCollection(Collection<Viaje> viajeCollection) {
+        this.viajeCollection = viajeCollection;
+    }
+
+    @XmlTransient
+    public Collection<Mensaje> getMensajeCollection() {
+        return mensajeCollection;
+    }
+
+    public void setMensajeCollection(Collection<Mensaje> mensajeCollection) {
+        this.mensajeCollection = mensajeCollection;
+    }
+
+    @XmlTransient
+    public Collection<Mensaje> getMensajeCollection1() {
+        return mensajeCollection1;
+    }
+
+    public void setMensajeCollection1(Collection<Mensaje> mensajeCollection1) {
+        this.mensajeCollection1 = mensajeCollection1;
+    }
+
+    @XmlTransient
+    public Collection<Vehiculo> getVehiculoCollection() {
+        return vehiculoCollection;
+    }
+
+    public void setVehiculoCollection(Collection<Vehiculo> vehiculoCollection) {
+        this.vehiculoCollection = vehiculoCollection;
+    }
+
+    @XmlTransient
+    public Collection<Telefono> getTelefonoCollection() {
+        return telefonoCollection;
+    }
+
+    public void setTelefonoCollection(Collection<Telefono> telefonoCollection) {
+        this.telefonoCollection = telefonoCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -271,32 +350,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "webServiceREST.entidades.Usuario[ idUsuario=" + idUsuario + " ]";
     }
-
-    @XmlTransient
-    public Collection<Viaje> getViajeCollection() {
-        return viajeCollection;
-    }
-
-    public void setViajeCollection(Collection<Viaje> viajeCollection) {
-        this.viajeCollection = viajeCollection;
-    }
-
-    @XmlTransient
-    public Collection<Viaje> getViajeCollection1() {
-        return viajeCollection1;
-    }
-
-    public void setViajeCollection1(Collection<Viaje> viajeCollection1) {
-        this.viajeCollection1 = viajeCollection1;
-    }
-
-    @XmlTransient
-    public Collection<Vehiculo> getVehiculoCollection() {
-        return vehiculoCollection;
-    }
-
-    public void setVehiculoCollection(Collection<Vehiculo> vehiculoCollection) {
-        this.vehiculoCollection = vehiculoCollection;
-    }
-
+    
 }
