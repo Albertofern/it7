@@ -9,11 +9,11 @@
 
             <div class="col-lg-12">
                 <s:form method="post" action="buscarEnviaMensaje">
-                    <s:textfield placeholder="Usuario envia mensaje..." name="nomUsuario" />
+                    <s:textfield placeholder="Usuario envia mensaje..." name="nomUsuarioEnvia" />
                     <s:submit name="buscarUsuario" value="Buscar" />
                 </s:form>
                 <s:form method="post" action="buscarRecibeMensaje">
-                    <s:textfield placeholder="Usuario recibe mensaje..." name="nomUsuario" />
+                    <s:textfield placeholder="Usuario recibe mensaje..." name="nomUsuarioRecibe" />
                     <s:submit name="buscarUsuario" value="Buscar" />
                 </s:form>
                 <s:form method="post" action="toGestionMensajes">
@@ -31,6 +31,7 @@
                             <th>Recibido</th>
                             <th>Fecha/Hora</th>
                         </tr>
+                         <s:if test="%{listadoMensajes.size() > 0}">
                         <s:iterator value="listadoMensajes">
                             <tr>
                                 <td><s:property value="idMensaje" /></td>
@@ -44,6 +45,12 @@
                                 </td>
                             </tr>
                         </s:iterator>
+                            </s:if>
+                        <s:else>
+                            <tr>
+                                <td colspan="6">No hay coincidencias</td>
+                            </tr>
+                        </s:else>
                     </table>
                 </div>
                 <div class="col-lg-1"></div>
