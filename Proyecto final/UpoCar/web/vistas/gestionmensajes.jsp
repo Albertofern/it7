@@ -31,21 +31,21 @@
                             <th>Recibido</th>
                             <th>Fecha/Hora</th>
                         </tr>
-                         <s:if test="%{listadoMensajes.size() > 0}">
-                        <s:iterator value="listadoMensajes">
-                            <tr>
-                                <td><s:property value="idMensaje" /></td>
-                                <td><s:property value="idUsuarioEnvia.nomUsuario" /></td>
-                                <td><s:property value="texto" /></td>
-                                <td><s:property value="idUsuarioRecibe.nomUsuario" /></td>
-                                <td><s:property value="fechaHora" /></td>
-                                <td>
-                                    <s:form action="deleteMensaje" ><button name="idMensaje" value="<s:property value="idMensaje" />"><img class="imagenCRUD img-circle img-responsive" src="./images/papelera.png" /></button></s:form>
-                                    <button id="<s:property value="idMensaje" />" class="updateButton" /><img class="imagenCRUD img-circle img-responsive" src="./images/update.png" /></button>
-                                </td>
-                            </tr>
-                        </s:iterator>
-                            </s:if>
+                        <s:if test="%{listadoMensajes.size() > 0}">
+                            <s:iterator value="listadoMensajes">
+                                <tr>
+                                    <td><s:property value="idMensaje" /></td>
+                                    <td><s:property value="idUsuarioEnvia.nomUsuario" /></td>
+                                    <td id="mensaje<s:property value="idMensaje" />"><s:property value="texto" /></td>
+                                    <td><s:property value="idUsuarioRecibe.nomUsuario" /></td>
+                                    <td id="fecha<s:property value="idMensaje" />"><s:property value="fechaHora" /></td>
+                                    <td>
+                                        <s:form action="deleteMensaje" ><button name="idMensaje" value="<s:property value="idMensaje" />"><img class="imagenCRUD img-circle img-responsive" src="./images/papelera.png" /></button></s:form>
+                                        <button id="<s:property value="idMensaje" />" class="updateButton" /><img class="imagenCRUD img-circle img-responsive" src="./images/update.png" /></button>
+                                    </td>
+                                </tr>
+                            </s:iterator>
+                        </s:if>
                         <s:else>
                             <tr>
                                 <td colspan="6">No hay coincidencias</td>
@@ -57,13 +57,23 @@
             </div>
             <div class="col-lg-12"><hr /></div>
 
-            <div class="col-lg-12">
-                <s:form method="post" action="">
-                    <s:textfield placeholder="Nombre" name=""></s:textfield>
-                    <s:textfield placeholder="Apellidos" name=""></s:textfield>
-                    <s:textfield placeholder="Nombre Usuario" name=""></s:textfield>
-                    <s:submit name="add" value="Add"></s:submit>
-                </s:form>
+            <div id="formularioUpdate" style="display: none" class="col-lg-12 center-block" >
+
+                <div class="col-lg-5"></div>
+
+                <div class="col-lg-2">
+                    <table >
+                        <tr><th colspan="2">Update</th></tr>
+                                <s:form id="formularioUpdate"  method="post" action="updateIdMensaje">
+                            <tr><td>ID Mensaje</td><td id="updateIdMensaje"></td></tr>
+                            <tr><td>Mensaje</td><td><s:textarea id="updateMensaje" name="updateMensaje" value="" ></s:textarea></td></tr>
+                                <tr><td><s:submit value="Update"></s:submit></td></tr>
+                                <input id="hiddenUpdateID" type="hidden" name="updateIdMensaje" value="" />
+                        </s:form>
+
+                    </table>
+                </div>
+                <div class="col-lg-5"></div>
             </div>
 
         </div>
@@ -71,4 +81,20 @@
         <div class="col-lg-2"></div>
     </div>
 </div>
+<script type="text/javascript">
+    $("document").ready(function () {
+        $(".updateButton").click(function () {
+            $("#formularioUpdate").toggle();
+            var id = $(this).attr("id");
+            var mensaje = $("#mensaje" + id).text();
+            $("#updateMensaje").text(mensaje);
+            $("#hiddenUpdateID").attr("value", id);
+            $("#updateIdMensaje").text(id);
+
+            var focalizar = $("#formularioUpdate").position().top;
+            $('html,body').animate({scrollTop: focalizar}, 1000);
+
+        });
+    });
+</script>
 <%@include file="./index_footer.jsp" %>
