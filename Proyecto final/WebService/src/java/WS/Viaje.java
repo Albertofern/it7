@@ -9,6 +9,7 @@ package WS;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +21,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -41,6 +43,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Viaje.findByPercioPersona", query = "SELECT v FROM Viaje v WHERE v.percioPersona = :percioPersona")
     , @NamedQuery(name = "Viaje.findByFechaSalida", query = "SELECT v FROM Viaje v WHERE v.fechaSalida = :fechaSalida")})
 public class Viaje implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idViaje")
+    private Collection<Pasajeros> pasajerosCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -203,6 +208,15 @@ public class Viaje implements Serializable {
     @Override
     public String toString() {
         return "WS.Viaje[ idViaje=" + idViaje + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Pasajeros> getPasajerosCollection() {
+        return pasajerosCollection;
+    }
+
+    public void setPasajerosCollection(Collection<Pasajeros> pasajerosCollection) {
+        this.pasajerosCollection = pasajerosCollection;
     }
 
 }
