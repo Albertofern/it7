@@ -27,16 +27,25 @@ public class adminAction extends ActionSupport {
     List<Usuario> listadoUsuarios = new ArrayList<Usuario>();
     List<Localidad> listadoLocalidades;
     List<Viaje> listadoViajes;
+    //Viaje
     String idViaje;
-    String nomUsuario;
     Integer updatePlazasMax;
     Double updatePrecioPersona;
     String updatePuntoRecogida;
     String updateFechaSalida;
     Integer updateId;
-    Integer idUsuario;
     Integer updateIdLocalidadOrigen;
     Integer updateIdLocalidadDestino;
+    //Usuario
+    Integer idUsuario;
+    String nomUsuario;
+    String updateIdUsuario;
+    String updateUsuario;
+    String updateNombre;
+    String updateApellidos;
+    String updateEmail;
+    String updateSexo;
+    String updateLocalidad;
 
     public adminAction() {
     }
@@ -93,13 +102,12 @@ public class adminAction extends ActionSupport {
         this.setListadoUsuarios(usuarioDAO.buscarUsuario(this.getNomUsuario()));
         return SUCCESS;
     }
-    
+
     public String deleteUsuario() throws Exception {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.deleteUsuario(String.valueOf(this.getIdUsuario()));
         return SUCCESS;
     }
-
 
     public List<Mensaje> getListadoMensajes() {
         return listadoMensajes;

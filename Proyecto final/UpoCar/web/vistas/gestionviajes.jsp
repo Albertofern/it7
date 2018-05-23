@@ -93,7 +93,7 @@
 
     <div class="col-lg-2"></div>
 </div>
-</div>
+
 
 <script type="text/javascript">
     $("document").ready(function () {
