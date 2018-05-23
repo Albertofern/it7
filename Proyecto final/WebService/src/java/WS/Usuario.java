@@ -7,26 +7,21 @@
 package WS;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * 
@@ -51,16 +46,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findByFechaAlta", query = "SELECT u FROM Usuario u WHERE u.fechaAlta = :fechaAlta")
     , @NamedQuery(name = "Usuario.findByTotalPuntuacion", query = "SELECT u FROM Usuario u WHERE u.totalPuntuacion = :totalPuntuacion")})
 public class Usuario implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
-    private Collection<Pasajeros> pasajerosCollection;
-
-    @ManyToMany(mappedBy = "usuarioCollection")
-    private Collection<Viaje> viajeCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarioPublica")
-    private Collection<Viaje> viajeCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
-    private Collection<Vehiculo> vehiculoCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -273,42 +258,6 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "WS.Usuario[ idUsuario=" + idUsuario + " ]";
-    }
-
-    @XmlTransient
-    public Collection<Viaje> getViajeCollection() {
-        return viajeCollection;
-    }
-
-    public void setViajeCollection(Collection<Viaje> viajeCollection) {
-        this.viajeCollection = viajeCollection;
-    }
-
-    @XmlTransient
-    public Collection<Viaje> getViajeCollection1() {
-        return viajeCollection1;
-    }
-
-    public void setViajeCollection1(Collection<Viaje> viajeCollection1) {
-        this.viajeCollection1 = viajeCollection1;
-    }
-
-    @XmlTransient
-    public Collection<Vehiculo> getVehiculoCollection() {
-        return vehiculoCollection;
-    }
-
-    public void setVehiculoCollection(Collection<Vehiculo> vehiculoCollection) {
-        this.vehiculoCollection = vehiculoCollection;
-    }
-
-    @XmlTransient
-    public Collection<Pasajeros> getPasajerosCollection() {
-        return pasajerosCollection;
-    }
-
-    public void setPasajerosCollection(Collection<Pasajeros> pasajerosCollection) {
-        this.pasajerosCollection = pasajerosCollection;
     }
 
 }

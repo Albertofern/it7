@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package WS.service;
 
 import WS.Viaje;
@@ -11,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -22,8 +22,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
- * 
- * @author Antonio Jose Herrera Tabaco 
+ *
+ * @author Antonio Jose Herrera Tabaco
  */
 @Stateless
 @Path("ws.viaje")
@@ -87,6 +87,30 @@ public class ViajeFacadeREST extends AbstractFacade<Viaje> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+
+    @GET
+    @Path("/buscaViaje/{origen}/{destino}/{fechaSalida}")
+    @Produces({MediaType.APPLICATION_XML})
+    public List<Viaje> buscaViaje(@PathParam("origen") String origen, @PathParam("destino") String destino, @PathParam("fechaSalida") String fechaViaje) {
+
+        Query q = em.createQuery("SELECT v FROM Viaje v WHERE v.idLocalidadOrigen = (SELECT l.idLocalidad FROM Localidad l WHERE l.nombre = :origen) and v.idLocalidadDestino = (SELECT l.idLocalidad FROM Localidad l WHERE l.nombre = :destino) and v.fechaSalida = :fechaSalida").setParameter("origen", origen).setParameter("destino", destino).setParameter("fechaSalida", fechaViaje);
+
+        List listaViajes = q.getResultList();
+
+        return listaViajes;
+    }
+
+    @GET
+    @Path("/buscaViajeUsuario/{nombreUsuario}")
+    @Produces({MediaType.APPLICATION_XML})
+    public List<Viaje> buscaViajeUsuario(@PathParam("nombreUsuario") String nombreUsuario) {
+
+        Query q = em.createQuery("SELECT v FROM Viaje v WHERE v.idUsuarioPublica = (SELECT u.idUsuario FROM Usuario u WHERE u.nomUsuario = :nombreUsuario)").setParameter("nombreUsuario", nombreUsuario);
+
+        List listaViajes = q.getResultList();
+
+        return listaViajes;
     }
 
 }
