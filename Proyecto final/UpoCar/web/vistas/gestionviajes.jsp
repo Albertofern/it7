@@ -16,8 +16,9 @@
                     <s:submit name="buscarUsuario" value="Mostrar todos" />
                 </s:form>
             </div>
-            <div class="col-lg-12">
-                <table class="table table-striped text-center" border="1">
+            <div class="col-lg-12 datagrid">
+                <table>
+                    <thead>
                     <tr>
                         <th>ID</th>
                         <th>Conductor</th>
@@ -30,9 +31,16 @@
                         <th>Fecha y Hora Salida</th>
                         <th></th>
                     </tr>
+                    </thead>
+                    <% int col = 0;%>
                     <s:if test="%{listadoViajes.size() > 0}">
                         <s:iterator value="listadoViajes">
-                            <tr>
+                            <tbody>
+                             <% if((col%2) != 0){%>
+                                        <tr class="alt">
+                                            <% }else{%>
+                                        <tr >
+                                            <% }%>
                                 <td><s:property value="idViaje" /></td>
                                 <td><s:property value="idUsuarioPublica.nomUsuario" /></td>
                                 <td><s:property value="idLocalidadOrigen.nombre" /></td>
@@ -43,10 +51,12 @@
                                 <td id="plazasMax<s:property value="idViaje" />"><s:property value="plazasMax" /></td>
                                 <td id="fechaSalida<s:property value="idViaje" />"><s:property value="fechaSalida" /></td>
                                 <td>
-                                    <s:form action="deleteViaje" ><button name="idViaje" value="<s:property value="idViaje" />"><img class="imagenCRUD img-circle img-responsive" src="./images/papelera.png" /></button></s:form>
-                                    <button id="<s:property value="idViaje" />" class="updateButton" /><img class="imagenCRUD img-circle img-responsive" src="./images/update.png" /></button>
+                                    <s:form action="deleteViaje" ><button name="idViaje" value="<s:property value="idViaje" />"><img class="imagenCRUD" title="Borrar" src="./images/papelera.png" /></button></s:form>
+                                    <button id="<s:property value="idViaje" />" class="updateButton" /><img class="imagenCRUD" title="Editar" src="./images/update.png" /></button>
                                 </td>
                             </tr>
+                            </tbody>
+                                    <% col++;%>
                         </s:iterator>
                     </s:if>
                     <s:else>

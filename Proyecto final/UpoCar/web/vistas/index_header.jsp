@@ -20,8 +20,8 @@
     </head>
     <body>
         <s:set name="theme" value="'simple'" scope="page" /> <%-- Elimina el estilo de Struts de esta pagina --%>
-
-        <div class="w3-bar w3-border w3-light-grey">
+        
+        <div class="w3-bar w3-border w3-light-grey" >
             <a href="#" class="w3-bar-item w3-button w3-padding-24">UPOCAR</a>                        
 
             <s:if test="%{#session.usuario != null}">  

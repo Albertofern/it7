@@ -31,8 +31,8 @@
 /* FOOTER */
 
 footer{
-     background-color: #333;
-     padding:70px 0px;
+    background-color: #333;
+    padding:70px 0px;
 }	       
 
 .logo{
@@ -42,16 +42,16 @@ footer{
 }
 
 .adress span , .contact span , .social span{
-   color: #FFF; 
-   font-weight: 800; 
-   padding-bottom: 10px; 
-   margin-bottom: 20px;
-   display: block;
-   text-transform: uppercase;
-   font-size: 13px;
-   letter-spacing: 3px;
+    color: #FFF; 
+    font-weight: 800; 
+    padding-bottom: 10px; 
+    margin-bottom: 20px;
+    display: block;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 3px;
 }
- 
+
 .adress li p , .contact li a , .social li a{
     color:#FFF;
     letter-spacing: 2px;
@@ -135,12 +135,54 @@ form.login input[type="submit"]
 
 .imagenCRUD{
     display: inline;
-    width: 80px;
+    width: 50px;
     height: 50px;    
 }
 
-table th {
-  text-align: center;
+table th, table tbody {
+    text-align: center;
+    vertical-align: central;
 }
 
 
+
+.datagrid table { 
+    border-collapse: collapse; 
+    text-align: left; width: 100%;
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px;
+    border-radius: 5px; } 
+.datagrid {
+    font: normal 12px/150% Verdana, Arial, Helvetica, sans-serif; 
+    background: #fff; 
+    overflow: hidden; 
+
+
+}
+.datagrid table td, .datagrid table th { 
+    padding: 3px 10px; 
+}
+.datagrid table thead th {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );
+    background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');
+    background-color:#006699; 
+    color:#FFFCFF; 
+    font-size: 14px; 
+    font-weight: bold; 
+    border-left: 1px solid #0070A8; 
+} 
+.datagrid table thead th:first-child { 
+    border: none; 
+}
+.datagrid table tbody td { 
+    color: #00496B; 
+    font-size: 12px;
+    font-weight: normal; 
+}.datagrid table tbody .alt td { 
+    background: #E1EEF4; color: #00496B; 
+}.datagrid table tbody td:first-child { 
+    border-left: none; }
+.datagrid table tbody tr:last-child td { 
+    border-bottom: none; 
+}

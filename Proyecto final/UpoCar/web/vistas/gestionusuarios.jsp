@@ -18,8 +18,9 @@
             </div>
             <div class="col-lg-12">
                 <div class="col-lg-1"></div>
-                <div class="col-lg-10">
-                    <table class="table table-striped text-center col-lg-12" border="1">
+                <div class="col-lg-10 datagrid">
+                    <table class="col-lg-12" border="1">
+                        <thead>
                         <tr>
                             <th></th>
                             <th>ID</th>
@@ -33,24 +34,33 @@
                             <th>Fecha Alta</th>
                             <th></th>
                         </tr>
+                        </thead>
+                        <% int col = 0;%>
                         <s:if test="%{listadoUsuarios.size() > 0}">
                             <s:iterator value="listadoUsuarios">
-                                <tr>
-                                    <td><img class="foto-mi-cuenta img-circle img-responsive" src="http://www.cetep.cl/web/wp-content/uploads/2016/11/icono-de-usuario-masculino.jpg" /></td>
-                                    <td><s:property value="idUsuario" /></td>
-                                    <td id="usuario<s:property value="idUsuario" />"><s:property value="nomUsuario" /></td>
-                                    <td id="nombre<s:property value="idUsuario" />"><s:property value="nombre" /></td>
-                                    <td id="apellidos<s:property value="idUsuario" />"><s:property value="apellidos" /></td>
-                                    <td id="email<s:property value="idUsuario" />"><s:property value="email" /></td>
-                                    <td id="localidad<s:property value="idUsuario" />"><s:property value="localidad" /></td>
-                                    <td id="sexo<s:property value="idUsuario" />"><s:property value="sexo" /></td>
-                                    <td id="ultimoAcceso<s:property value="idUsuario" />"><s:property value="ultimoAcceso" /></td>
-                                    <td id="fechaAlta<s:property value="idUsuario" />"><s:property value="fechaAlta" /></td>
-                                    <td>
-                                        <s:form action="deleteUsuario" ><button name="idUsuario" value="<s:property value="idUsuario" />"><img class="imagenCRUD img-circle img-responsive" src="./images/papelera.png" /></button></s:form>
-                                        <button id="<s:property value="idUsuario" />" class="updateButton" /><img class="imagenCRUD img-circle img-responsive" src="./images/update.png" /></button>
-                                    </td>
-                                </tr>
+                                <tbody>
+                                    <% if((col%2) != 0){%>
+                                    <tr class="alt">
+                                        <% }else{%>
+                                    <tr >
+                                        <% }%>
+                                        <td><img class="foto-mi-cuenta img-circle img-responsive" src="http://www.cetep.cl/web/wp-content/uploads/2016/11/icono-de-usuario-masculino.jpg" /></td>
+                                        <td><s:property value="idUsuario" /></td>
+                                        <td id="usuario<s:property value="idUsuario" />"><s:property value="nomUsuario" /></td>
+                                        <td id="nombre<s:property value="idUsuario" />"><s:property value="nombre" /></td>
+                                        <td id="apellidos<s:property value="idUsuario" />"><s:property value="apellidos" /></td>
+                                        <td id="email<s:property value="idUsuario" />"><s:property value="email" /></td>
+                                        <td id="localidad<s:property value="idUsuario" />"><s:property value="localidad" /></td>
+                                        <td id="sexo<s:property value="idUsuario" />"><s:property value="sexo" /></td>
+                                        <td id="ultimoAcceso<s:property value="idUsuario" />"><s:property value="ultimoAcceso" /></td>
+                                        <td id="fechaAlta<s:property value="idUsuario" />"><s:property value="fechaAlta" /></td>
+                                        <td>
+                                            <s:form action="deleteUsuario" ><button name="idUsuario" value="<s:property value="idUsuario" />"><img class="imagenCRUD img-circle img-responsive" title="Borrar" src="./images/papelera.png" /></button></s:form>
+                                            <button id="<s:property value="idUsuario" />" class="updateButton" /><img class="imagenCRUD img-circle img-responsive" title="Editar" src="./images/update.png" /></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <%  col++;%>
                             </s:iterator>
                         </s:if>
                         <s:else>

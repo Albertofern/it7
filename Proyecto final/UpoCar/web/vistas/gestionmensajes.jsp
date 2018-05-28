@@ -22,8 +22,9 @@
             </div>
             <div class="col-lg-12">
                 <div class="col-lg-1"></div>
-                <div class="col-lg-10">
-                    <table class="col-lg-12 text-center table table-striped" border="1">
+                <div class="col-lg-10 datagrid">
+                    <table class="col-lg-12 " border="1">
+                        <thead>
                         <tr>
                             <th>ID</th>
                             <th>Enviado</th>
@@ -31,19 +32,28 @@
                             <th>Recibido</th>
                             <th>Fecha/Hora</th>
                         </tr>
+                        </thead>
+                        <% int col = 0;%>
                         <s:if test="%{listadoMensajes.size() > 0}">
                             <s:iterator value="listadoMensajes">
-                                <tr>
+                                <tbody>
+                                        <% if((col%2) != 0){%>
+                                        <tr class="alt">
+                                            <% }else{%>
+                                        <tr >
+                                            <% }%>
                                     <td><s:property value="idMensaje" /></td>
                                     <td><s:property value="idUsuarioEnvia.nomUsuario" /></td>
                                     <td id="mensaje<s:property value="idMensaje" />"><s:property value="texto" /></td>
                                     <td><s:property value="idUsuarioRecibe.nomUsuario" /></td>
                                     <td id="fecha<s:property value="idMensaje" />"><s:date name="fechaHora" format="yyyy-mm-dd HH:mm" /></td>
                                     <td>
-                                        <s:form action="deleteMensaje" ><button name="idMensaje" value="<s:property value="idMensaje" />"><img class="imagenCRUD img-circle img-responsive" src="./images/papelera.png" /></button></s:form>
-                                        <button id="<s:property value="idMensaje" />" class="updateButton" /><img class="imagenCRUD img-circle img-responsive" src="./images/update.png" /></button>
+                                        <s:form action="deleteMensaje" ><button name="idMensaje" value="<s:property value="idMensaje" />"><img class="imagenCRUD" title="Borrar" src="./images/papelera.png" /></button></s:form>
+                                        <button id="<s:property value="idMensaje" />" class="updateButton" /><img class="imagenCRUD" title="Editar" src="./images/update.png" /></button>
                                     </td>
                                 </tr>
+                                </tbody>
+                                    <% col++;%>
                             </s:iterator>
                         </s:if>
                         <s:else>
