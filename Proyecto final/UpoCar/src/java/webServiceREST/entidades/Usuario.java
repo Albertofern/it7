@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findByUltimoAcceso", query = "SELECT u FROM Usuario u WHERE u.ultimoAcceso = :ultimoAcceso")
     , @NamedQuery(name = "Usuario.findByFechaAlta", query = "SELECT u FROM Usuario u WHERE u.fechaAlta = :fechaAlta")
     , @NamedQuery(name = "Usuario.findByTotalPuntuacion", query = "SELECT u FROM Usuario u WHERE u.totalPuntuacion = :totalPuntuacion")})
-public class Usuario implements Serializable {
+public class Usuario implements Serializable, Comparable<Usuario> {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -346,9 +346,20 @@ public class Usuario implements Serializable {
         return true;
     }
 
+    public int compareTo(Usuario u) {
+        int cmp = 0;
+        if (u.getTotalPuntuacion() > this.getTotalPuntuacion()) {
+            cmp = 1;
+        } else if (u.getTotalPuntuacion() < this.getTotalPuntuacion()) {
+            cmp = -1;
+        }
+        return cmp;
+    }
+
     @Override
     public String toString() {
         return "webServiceREST.entidades.Usuario[ idUsuario=" + idUsuario + " ]";
     }
-    
+
+
 }

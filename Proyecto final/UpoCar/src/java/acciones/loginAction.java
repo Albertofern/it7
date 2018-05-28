@@ -7,13 +7,16 @@ package acciones;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import modelo.LocalidadDAO;
 import modelo.UsuarioDAO;
 import modelo.VehiculoDAO;
+import modelo.ViajeDAO;
 import webServiceREST.entidades.Usuario;
 import webServiceREST.entidades.Vehiculo;
+import webServiceREST.entidades.Viaje;
 
 /**
  *
@@ -24,11 +27,14 @@ public class loginAction extends ActionSupport {
     private String usuario;
     private String password;
     private List<Vehiculo> listadoCoches;
+    List<Usuario> listadoUsuarios;
     private List origen;
-    private List destino; 
-    UsuarioDAO dao = new UsuarioDAO();
+    private List destino;
+    private List<Viaje> listadoViajes;
+    UsuarioDAO usuarioDao = new UsuarioDAO();
     VehiculoDAO vehiculoDao = new VehiculoDAO();
     LocalidadDAO localidadDao = new LocalidadDAO();
+    ViajeDAO viajeDao = new ViajeDAO();
 
     public List getOrigen() {
         return origen;
@@ -106,11 +112,20 @@ public class loginAction extends ActionSupport {
     }
     
     public String toRanking(){
+        this.setListadoUsuarios(usuarioDao.listarUsuarios());
+        Collections.sort(getListadoUsuarios());
+        this.setListadoViajes(viajeDao.listarViajes());
+        return SUCCESS;
+    }
+    
+    
+    public String buscarUsuarioRanking() throws Exception {
+        this.setListadoUsuarios(usuarioDao.buscarUsuario(this.getUsuario()));
         return SUCCESS;
     }
 
     public String login() {
-        Usuario u = dao.login(usuario, password);
+        Usuario u = usuarioDao.login(usuario, password);
 
         if (u == null) {
             return ERROR;
@@ -129,4 +144,22 @@ public class loginAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public List<Usuario> getListadoUsuarios() {
+        return listadoUsuarios;
+    }
+
+    public void setListadoUsuarios(List<Usuario> listadoUsuarios) {
+        this.listadoUsuarios = listadoUsuarios;
+    }
+
+    public List<Viaje> getListadoViajes() {
+        return listadoViajes;
+    }
+
+    public void setListadoViajes(List<Viaje> listadoViajes) {
+        this.listadoViajes = listadoViajes;
+    }
+
+    
+    
 }

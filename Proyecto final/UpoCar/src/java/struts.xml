@@ -55,6 +55,10 @@
         <action name="toRanking" method="toRanking" class="acciones.loginAction">
             <result name="success">/vistas/ranking.jsp</result>
         </action>
+
+        <action name="buscarUsuarioRanking" method="buscarUsuarioRanking" class="acciones.loginAction">
+            <result name="success">/vistas/ranking.jsp</result>
+        </action>
         
         <action name="registro" method="registro" class="acciones.registroAction">
             <result name="success">/vistas/index.jsp</result>
