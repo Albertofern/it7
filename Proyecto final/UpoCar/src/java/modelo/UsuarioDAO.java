@@ -33,6 +33,17 @@ public class UsuarioDAO {
         List<Usuario> listaUsuario = this.getClientUsuario().buscarUsuario(genericType, usuario);
         return listaUsuario;
     }
+    
+    public List<Usuario> buscarUsuarioPorID(String idUsuario) {
+        GenericType<List<Usuario>> genericType = new GenericType<List<Usuario>>() {
+        };
+        //GenericType<Usuario> genericTypeUsuario = new GenericType<Usuario>() {
+        //};
+        //Usuario u = clientUsuario.find_XML(genericTypeUsuario, String.valueOf(idUsuario));
+
+        List<Usuario> listaUsuario = this.getClientUsuario().find_XML(genericType, idUsuario); //buscarUsuario(genericType, usuario);
+        return listaUsuario;
+    }
 
     public void deleteUsuario(String id) {
         clientUsuario.remove(id);

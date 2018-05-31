@@ -40,10 +40,6 @@
             <result name="success">/vistas/index.jsp</result>
         </action>
         
-        <action name="toMiCuenta" method="toMiCuenta" class="acciones.loginAction">
-            <result name="success">/vistas/micuenta.jsp</result>
-        </action>
-        
         <action name="toPanelAdmin" method="toPanelAdmin" class="acciones.loginAction">
             <result name="success">/vistas/administrador.jsp</result>
         </action>
@@ -66,6 +62,19 @@
         
         <action name="buscaViaje" method="buscaViaje" class="acciones.buscaViajeAction">
             <result name="success">/vistas/buscaviajes.jsp</result>
+        </action>
+    </package>
+    
+    <!-- Mi cuenta -->
+    
+    <package name="micuenta" extends="struts-default">
+        
+        <action name="toMiCuenta" method="toMiCuenta" class="acciones.miCuentaAction">
+            <result name="success">/vistas/micuenta.jsp</result>
+        </action>
+        
+        <action name="toMisDatos" method="toMisDatos" class="acciones.miCuentaAction">
+            <result name="success">/vistas/misdatos.jsp</result>
         </action>
     </package>
     

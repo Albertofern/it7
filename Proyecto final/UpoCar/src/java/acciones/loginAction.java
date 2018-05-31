@@ -95,10 +95,6 @@ public class loginAction extends ActionSupport {
         return SUCCESS;
     }
     
-    public String toMiCuenta(){
-        return SUCCESS;
-    }
-    
     public String toPublicarViaje(){                
         origen = localidadDao.getLocalidades();
         destino = localidadDao.getLocalidades();
