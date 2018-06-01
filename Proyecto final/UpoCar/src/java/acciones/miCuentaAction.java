@@ -6,9 +6,11 @@
 package acciones;
 
 import static com.opensymphony.xwork2.Action.SUCCESS;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import modelo.UsuarioDAO;
 import webServiceREST.entidades.Usuario;
 
@@ -19,6 +21,7 @@ import webServiceREST.entidades.Usuario;
 public class miCuentaAction extends ActionSupport {
     
     List<Usuario> listadoUsuarios = new ArrayList<Usuario>();
+    Usuario usuario = new Usuario();
     
     public miCuentaAction() {
     }
@@ -34,6 +37,10 @@ public class miCuentaAction extends ActionSupport {
     }
     
     public String toMisDatos(){
+        //Recojo el usuario de la sesion y lo guardo en una lista
+        Map sesion = (Map) ActionContext.getContext().get("session");
+        Usuario u = (Usuario) sesion.get("usuario");
+        this.getListadoUsuarios().add(u);
         //UsuarioDAO usuarioDAO = new UsuarioDAO();
         //this.setListadoUsuarios(usuarioDAO.buscarUsuarioPorID(INPUT));
         return SUCCESS;
@@ -45,6 +52,14 @@ public class miCuentaAction extends ActionSupport {
 
     public void setListadoUsuarios(List<Usuario> listadoUsuarios) {
         this.listadoUsuarios = listadoUsuarios;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     
     

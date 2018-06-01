@@ -7,6 +7,8 @@
             <div class="col-lg-8">
                 
                 <div class="col-lg-6">
+                    
+                        <s:iterator value="listadoUsuarios">
                     <form class="form-horizontal" action="">
                         <div class="col-lg-12">
                             <div class="col-lg-6">
@@ -15,34 +17,43 @@
                             </div>
                             <div class="col-lg-6">
                                 <br/><br/>
-                                <p>Tu puntuación es: <span class="badge">123</span></p>
+                                <p>Tu puntuación es: <span class="badge"><s:property value="totalPuntuacion"></s:property></span></p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="nombre">Nombre:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="" name="nombre" value="Albert">
+                                <%--<s:textfield name="nombre" label="Nombre" value="" class="form-control" />--%>
+                                <input type="text" class="form-control" placeholder="" name="nombre" value="<s:property value="nombre"></s:property>">
                             </div>
                           </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="apellidos">Apellidos:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="" name="apellidos" value="Einstein">
+                                <input type="text" class="form-control" placeholder="" name="apellidos" value="<s:property value="apellidos"></s:property>">
                             </div>
                           </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="email">Email:</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" placeholder="" name="email" value="aeinstein@yahoo.es">
+                                <input type="email" class="form-control" placeholder="" name="email" value="<s:property value="email"></s:property>">
                             </div>
                           </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="localidad">Localidad:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="" name="localidad" value="Princeton">
+                                <input type="text" class="form-control" placeholder="" name="localidad" value="<s:property value="localidad"></s:property>">
                             </div>
                           </div>
                         <div class="form-group">
+                            <label class="control-label col-sm-2" for="sel1">Sexo:</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="sel1" value="<s:property value="sexo"></s:property>">
+                                    <option value="S/N" <s:if test="%{sexo == 'S/N'}">Selected</s:if> >S/N</option>
+                                  <option value="M" <s:if test="%{sexo == 'M'}">Selected</s:if> >Masculino</option>
+                                  <option value="F" <s:if test="%{sexo == 'F'}">Selected</s:if> >Femenino</option>
+                                </select>
+                            </div>
                             
                           </div>
                         <div class="form-group">        
@@ -51,6 +62,7 @@
                             </div>
                           </div>
                     </form>
+                    </s:iterator>
                 </div>
                 <div class="col-lg-6">
                     <form class="form-horizontal" action="">
