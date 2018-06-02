@@ -11,7 +11,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import modelo.TelefonoDAO;
 import modelo.UsuarioDAO;
+import webServiceREST.entidades.Telefono;
 import webServiceREST.entidades.Usuario;
 
 /**
@@ -21,7 +23,8 @@ import webServiceREST.entidades.Usuario;
 public class miCuentaAction extends ActionSupport {
     
     List<Usuario> listadoUsuarios = new ArrayList<Usuario>();
-    Usuario usuario = new Usuario();
+    List<Telefono> listadoTelefonos = new ArrayList<Telefono>();
+
     
     public miCuentaAction() {
     }
@@ -41,6 +44,8 @@ public class miCuentaAction extends ActionSupport {
         Map sesion = (Map) ActionContext.getContext().get("session");
         Usuario u = (Usuario) sesion.get("usuario");
         this.getListadoUsuarios().add(u);
+        TelefonoDAO tDao = new TelefonoDAO();
+        this.setListadoTelefonos(tDao.listarTelefonosUsuarios(u.getIdUsuario()));
         //UsuarioDAO usuarioDAO = new UsuarioDAO();
         //this.setListadoUsuarios(usuarioDAO.buscarUsuarioPorID(INPUT));
         return SUCCESS;
@@ -54,13 +59,15 @@ public class miCuentaAction extends ActionSupport {
         this.listadoUsuarios = listadoUsuarios;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public List<Telefono> getListadoTelefonos() {
+        return listadoTelefonos;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setListadoTelefonos(List<Telefono> listadoTelefonos) {
+        this.listadoTelefonos = listadoTelefonos;
     }
+
+    
     
     
     
