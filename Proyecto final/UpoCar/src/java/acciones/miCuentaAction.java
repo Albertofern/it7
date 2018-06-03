@@ -13,8 +13,10 @@ import java.util.List;
 import java.util.Map;
 import modelo.TelefonoDAO;
 import modelo.UsuarioDAO;
+import modelo.ViajeDAO;
 import webServiceREST.entidades.Telefono;
 import webServiceREST.entidades.Usuario;
+import webServiceREST.entidades.Viaje;
 
 /**
  *
@@ -26,7 +28,6 @@ public class miCuentaAction extends ActionSupport {
     List<Telefono> listadoTelefonos = new ArrayList<Telefono>();
 
     //mis datos
-    
     String usuario;
     String nombre;
     String apellidos; 
@@ -37,6 +38,11 @@ public class miCuentaAction extends ActionSupport {
     Integer nuevoTlf;
     String idTelefono;
     
+    //Mis viajes
+    List<Viaje> listaViajes = new ArrayList<Viaje>();
+    String idViaje;
+    
+    
     public miCuentaAction() {
     }
     
@@ -45,8 +51,6 @@ public class miCuentaAction extends ActionSupport {
     }
     
     public String toMiCuenta(){
-        //UsuarioDAO usuarioDAO = new UsuarioDAO();
-        //this.setListadoUsuarios(usuarioDAO.buscarUsuarioPorID(INPUT));
         return SUCCESS;
     }
     
@@ -107,6 +111,35 @@ public class miCuentaAction extends ActionSupport {
         return SUCCESS;
     }
     
+    public String toMisViajes(){
+        //Creo un objeto ViajeDAO para obtener la lista de viajes
+        ViajeDAO vDao = new ViajeDAO();
+        List<Viaje> listaViajesNoFiltrada = vDao.listarViajes();
+        List<Viaje> listaViajesFiltrada = new ArrayList<Viaje>();
+        //Obtengo el usuario de la sesion
+        Map sesion = (Map) ActionContext.getContext().get("session");
+        Usuario u = (Usuario) sesion.get("usuario");
+        //Recorro la lista para obtener los vuajes del usuario actual
+        for(int i=0; i < listaViajesNoFiltrada.size();i++){
+            if(listaViajesNoFiltrada.get(i).getIdUsuarioPublica().getIdUsuario() == u.getIdUsuario()){
+                listaViajesFiltrada.add(listaViajesNoFiltrada.get(i));
+            }
+        }
+        this.setListaViajes(listaViajesFiltrada);
+        return SUCCESS;
+    }
+    
+    public String eliminarViaje(){
+        // Creo un objeto TelefonoDAO y le paso el objeto telefono
+        ViajeDAO vDao = new ViajeDAO();
+        vDao.deleteViaje(this.getIdViaje());
+        //Llamo al metodo toMisDatos() para recargar la pagina
+        this.toMisViajes();
+        return SUCCESS;
+    }
+    
+    
+    // Getter y setter MisDatos
     public List<Usuario> getListadoUsuarios() {
         return listadoUsuarios;
     }
@@ -187,5 +220,23 @@ public class miCuentaAction extends ActionSupport {
         this.idTelefono = idTelefono;
     }
 
+    //Getter y setter Mis Viajes
+
+    public List<Viaje> getListaViajes() {
+        return listaViajes;
+    }
+
+    public void setListaViajes(List<Viaje> listaViajes) {
+        this.listaViajes = listaViajes;
+    }
+
+    public String getIdViaje() {
+        return idViaje;
+    }
+
+    public void setIdViaje(String idViaje) {
+        this.idViaje = idViaje;
+    }
+    
     
 }

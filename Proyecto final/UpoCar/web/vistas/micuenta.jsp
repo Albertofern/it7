@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-sm-2">
                     <div><img class="foto-mi-cuenta img-circle img-responsive" src="./images/gestionUsuarios.png" /></div>        
-                <s:form action="toGestionUsuarios"><button class="btn btn-default hidden-sm hidden-md hidden-sm" >Gesti&oacute;n usuarios</button></s:form>
+                <s:form action="toMisViajes"><button class="btn btn-default hidden-sm hidden-md hidden-sm" >Mis viajes</button></s:form>
                     &nbsp;
                 </div>
                 <div class="col-sm-2">

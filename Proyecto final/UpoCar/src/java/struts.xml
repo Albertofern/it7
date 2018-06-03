@@ -92,6 +92,15 @@
         <action name="eliminarTelefono" method="eliminarTelefono" class="acciones.miCuentaAction">
             <result name="success">/vistas/misdatos.jsp</result>
         </action>
+        
+        <action name="toMisViajes" method="toMisViajes" class="acciones.miCuentaAction">
+            <result name="success">/vistas/misviajes.jsp</result>
+        </action>
+        
+        <action name="eliminarViaje" method="eliminarViaje" class="acciones.miCuentaAction">
+            <result name="success">/vistas/misviajes.jsp</result>
+        </action>
+        
     </package>
     
     <!-- Administrador -->
