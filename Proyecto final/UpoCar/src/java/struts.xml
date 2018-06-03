@@ -76,6 +76,18 @@
         <action name="toMisDatos" method="toMisDatos" class="acciones.miCuentaAction">
             <result name="success">/vistas/misdatos.jsp</result>
         </action>
+        
+        <action name="agregarTelefono" method="agregarTelefono" class="acciones.miCuentaAction">
+            <result name="success">/vistas/misdatos.jsp</result>
+        </action>
+        
+        <action name="modificarTelefono" method="modificarTelefono" class="acciones.miCuentaAction">
+            <result name="success">/vistas/misdatos.jsp</result>
+        </action>
+        
+        <action name="eliminarTelefono" method="eliminarTelefono" class="acciones.miCuentaAction">
+            <result name="success">/vistas/misdatos.jsp</result>
+        </action>
     </package>
     
     <!-- Administrador -->

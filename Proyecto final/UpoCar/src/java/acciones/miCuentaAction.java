@@ -25,6 +25,9 @@ public class miCuentaAction extends ActionSupport {
     List<Usuario> listadoUsuarios = new ArrayList<Usuario>();
     List<Telefono> listadoTelefonos = new ArrayList<Telefono>();
 
+    //mis datos
+    Integer nuevoTlf;
+    String idTelefono;
     
     public miCuentaAction() {
     }
@@ -51,6 +54,40 @@ public class miCuentaAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public String agregarTelefono(){
+        //Obtengo el usuario de la sesion
+        Map sesion = (Map) ActionContext.getContext().get("session");
+        Usuario u = (Usuario) sesion.get("usuario");
+        // Creo un objeto telefono nuevo y le paso por set el usuario y el telefono
+        Telefono t = new Telefono();
+        t.setIdUsuario(u);
+        t.setNumTel(this.getNuevoTlf());
+        // Creo un objeto TelefonoDAO y le paso el objeto telefono
+        TelefonoDAO tDao = new TelefonoDAO();
+        tDao.createTelefono(t);
+        //Llamo al metodo toMisDatos() para recargar la pagina
+        this.toMisDatos();
+        return SUCCESS;
+    }
+    
+    public String modificarTelefono(){
+        // Creo un objeto TelefonoDAO y le paso el objeto telefono
+        TelefonoDAO tDao = new TelefonoDAO();
+        tDao.updateTelefono(this.getIdTelefono(), this.getNuevoTlf());
+        //Llamo al metodo toMisDatos() para recargar la pagina
+        this.toMisDatos();
+        return SUCCESS;
+    }
+    
+    public String eliminarTelefono(){
+        // Creo un objeto TelefonoDAO y le paso el objeto telefono
+        TelefonoDAO tDao = new TelefonoDAO();
+        tDao.deleteTelefono(this.getIdTelefono());
+        //Llamo al metodo toMisDatos() para recargar la pagina
+        this.toMisDatos();
+        return SUCCESS;
+    }
+    
     public List<Usuario> getListadoUsuarios() {
         return listadoUsuarios;
     }
@@ -65,6 +102,22 @@ public class miCuentaAction extends ActionSupport {
 
     public void setListadoTelefonos(List<Telefono> listadoTelefonos) {
         this.listadoTelefonos = listadoTelefonos;
+    }
+
+    public Integer getNuevoTlf() {
+        return nuevoTlf;
+    }
+
+    public void setNuevoTlf(Integer nuevoTlf) {
+        this.nuevoTlf = nuevoTlf;
+    }
+
+    public String getIdTelefono() {
+        return idTelefono;
+    }
+
+    public void setIdTelefono(String idTelefono) {
+        this.idTelefono = idTelefono;
     }
 
     

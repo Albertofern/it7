@@ -49,7 +49,6 @@
                             <label class="control-label col-sm-2" for="sel1">Sexo:</label>
                             <div class="col-sm-10">
                                 <select class="form-control" value="<s:property value="sexo"></s:property>">
-                                    <option value="S/N" <s:if test="%{sexo == 'S/N'}">Selected</s:if> >S/N</option>
                                   <option value="M" <s:if test="%{sexo == 'M'}">Selected</s:if> >Masculino</option>
                                   <option value="F" <s:if test="%{sexo == 'F'}">Selected</s:if> >Femenino</option>
                                 </select>
@@ -70,11 +69,11 @@
                             <label class="control-label col-sm-2" for="telefonos">Telefonos:</label>
                             <div class="col-sm-10">
                                 <div class="col-sm-12"><!--<div class="col-lg-1"></div><button class="btn btn-success col-lg-11">Nuevo teléfono</button>-->
-                                    <s:form class="form-horizontal" action="">
+                                    <s:form class="form-horizontal" action="agregarTelefono">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="">
+                                        <input type="text" name=nuevoTlf class="form-control" placeholder="ej: 654876123">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-success" type="submit">Agregar<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                            <button class="btn btn-success" name="agregarTlf" type="submit">Agregar<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                         </span>
                                       </div>
                                     </s:form>
@@ -82,9 +81,15 @@
                                 <br />
                                 <s:iterator value="listadoTelefonos">
                                 <div class="col-sm-12">
-                                    <div class="col-sm-10"><input type="text" class="form-control" placeholder="" name="telefono" value="<s:property value="numTel"></s:property>"></div>
-                                    <div class="col-sm-1"><button class="btn btn-warning"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></div>
-                                    <div class="col-sm-1"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>
+                                    <s:form class="form-horizontal" action="modificarTelefono">
+                                        <div class="col-sm-10"><input type="text" class="form-control" name="nuevoTlf" value="<s:property value="numTel"></s:property>"></div>
+                                        <input type="hidden" name="idTelefono" value="<s:property value="idTel"></s:property>" />
+                                        <div class="col-sm-1"><button class="btn btn-warning" name="modificarTlf" type="submit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></div>
+                                    </s:form>
+                                    <s:form class="form-horizontal" action="eliminarTelefono">
+                                        <input type="hidden" name="idTelefono" value="<s:property value="idTel"></s:property>" />
+                                        <div class="col-sm-1"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>
+                                    </s:form>
                                 </div>
                                 </s:iterator>
                                 

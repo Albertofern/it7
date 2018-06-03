@@ -36,16 +36,20 @@ public class TelefonoDAO {
         return listaTelefonosFiltrados;
     }
     
-    public void updateTelefono(Integer idTel,Usuario idUsuario,int numTel) {
+    public void createTelefono(Telefono t){
+        this.getClientTelefono().create_XML(t);
+    }
+    
+    public void updateTelefono(String idTel,Integer numTel) {
 
         GenericType<Telefono> genericTypeTelefono = new GenericType<Telefono>() {
         };
         //List<Telefono> listaTelefonosCompleta = clientTelefono.findAll_XML(genericTypeTelefono);
         
         
-        Telefono t = this.getClientTelefono().find_XML(genericTypeTelefono, String.valueOf(idTel));
+        Telefono t = this.getClientTelefono().find_XML(genericTypeTelefono, idTel);
         t.setNumTel(numTel);
-        clientTelefono.edit_XML(t, String.valueOf(idTel));
+        clientTelefono.edit_XML(t, idTel);
     }
     
     public void deleteTelefono(String id) {
