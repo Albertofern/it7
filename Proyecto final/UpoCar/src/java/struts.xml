@@ -77,6 +77,10 @@
             <result name="success">/vistas/misdatos.jsp</result>
         </action>
         
+        <action name="modificarMisDatos" method="modificarMisDatos" class="acciones.miCuentaAction">
+            <result name="success">/vistas/misdatos.jsp</result>
+        </action>
+        
         <action name="agregarTelefono" method="agregarTelefono" class="acciones.miCuentaAction">
             <result name="success">/vistas/misdatos.jsp</result>
         </action>

@@ -26,6 +26,14 @@ public class miCuentaAction extends ActionSupport {
     List<Telefono> listadoTelefonos = new ArrayList<Telefono>();
 
     //mis datos
+    
+    String usuario;
+    String nombre;
+    String apellidos; 
+    String email;
+    String localidad;
+    String sexo;
+    
     Integer nuevoTlf;
     String idTelefono;
     
@@ -51,6 +59,17 @@ public class miCuentaAction extends ActionSupport {
         this.setListadoTelefonos(tDao.listarTelefonosUsuarios(u.getIdUsuario()));
         //UsuarioDAO usuarioDAO = new UsuarioDAO();
         //this.setListadoUsuarios(usuarioDAO.buscarUsuarioPorID(INPUT));
+        return SUCCESS;
+    }
+    
+    public String modificarMisDatos(){
+        //Obtengo el usuario de la sesion
+        Map sesion = (Map) ActionContext.getContext().get("session");
+        Usuario u = (Usuario) sesion.get("usuario");
+        UsuarioDAO uDao = new UsuarioDAO();
+        uDao.updateUsuario(u.getIdUsuario(), this.getUsuario(), this.getNombre(), this.getApellidos(), this.getEmail(), this.getLocalidad(), this.getSexo());
+        //Llamo al metodo toMisDatos() para recargar la pagina
+        this.toMisDatos();
         return SUCCESS;
     }
 
@@ -104,6 +123,54 @@ public class miCuentaAction extends ActionSupport {
         this.listadoTelefonos = listadoTelefonos;
     }
 
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getLocalidad() {
+        return localidad;
+    }
+
+    public void setLocalidad(String localidad) {
+        this.localidad = localidad;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+    
     public Integer getNuevoTlf() {
         return nuevoTlf;
     }
@@ -120,13 +187,5 @@ public class miCuentaAction extends ActionSupport {
         this.idTelefono = idTelefono;
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
     
 }

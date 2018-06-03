@@ -9,10 +9,10 @@
                 <div class="col-lg-6">
                     
                         <s:iterator value="listadoUsuarios">
-                            <s:form class="form-horizontal" action="" method="post">
+                            <s:form class="form-horizontal" action="modificarMisDatos" method="POST">
                         <div class="col-lg-12">
                             <div class="col-lg-6">
-                                <img class="foto-mi-cuenta img-circle img-responsive" src="https://cdnb.20m.es/sites/76/2015/07/La-an%C3%A9cdota-sobre-la-famosa-e-ic%C3%B3nica-foto-de-Albert-Einstein-sacando-la-lengua.jpeg" />        
+                                <img class="foto-mi-cuenta img-circle img-responsive" src="<s:property value="foto"></s:property>" />        
                                 <button class="btn btn-default">Buscar foto</button>
                             </div>
                             <div class="col-lg-6">
@@ -20,6 +20,13 @@
                                 <p>Tu puntuación es: <span class="badge"><s:property value="totalPuntuacion"></s:property></span></p>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="usuario">Usuario:</label>
+                            <div class="col-sm-10">
+                                <%--<s:textfield name="nombre" label="Nombre" value="" class="form-control" />--%>
+                                <input type="text" class="form-control" placeholder="" name="usuario" value="<s:property value="nomUsuario"></s:property>">
+                            </div>
+                          </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="nombre">Nombre:</label>
                             <div class="col-sm-10">
@@ -48,9 +55,9 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="sel1">Sexo:</label>
                             <div class="col-sm-10">
-                                <select class="form-control" value="<s:property value="sexo"></s:property>">
-                                  <option value="M" <s:if test="%{sexo == 'M'}">Selected</s:if> >Masculino</option>
-                                  <option value="F" <s:if test="%{sexo == 'F'}">Selected</s:if> >Femenino</option>
+                                <select class="form-control" name="sexo" value="<s:property value="sexo"></s:property>">
+                                  <option value="M">Masculino</option>
+                                  <option value="F">Femenino</option>
                                 </select>
                             </div>
                             
@@ -81,12 +88,12 @@
                                 <br />
                                 <s:iterator value="listadoTelefonos">
                                 <div class="col-sm-12">
-                                    <s:form class="form-horizontal" action="modificarTelefono">
+                                    <s:form class="form-horizontal" action="modificarTelefono" method="POST">
                                         <div class="col-sm-10"><input type="text" class="form-control" name="nuevoTlf" value="<s:property value="numTel"></s:property>"></div>
                                         <input type="hidden" name="idTelefono" value="<s:property value="idTel"></s:property>" />
                                         <div class="col-sm-1"><button class="btn btn-warning" name="modificarTlf" type="submit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></div>
                                     </s:form>
-                                    <s:form class="form-horizontal" action="eliminarTelefono">
+                                    <s:form class="form-horizontal" action="eliminarTelefono" method="POST">
                                         <input type="hidden" name="idTelefono" value="<s:property value="idTel"></s:property>" />
                                         <div class="col-sm-1"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>
                                     </s:form>

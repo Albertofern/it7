@@ -56,6 +56,7 @@ public class UsuarioDAO {
         };
         Usuario u = clientUsuario.find_XML(genericTypeUsuario, String.valueOf(idUsuario));
         u.setNomUsuario(usuario);
+        u.setNombre(nombre);
         u.setApellidos(apellido);
         u.setEmail(email);
         u.setLocalidad(localidad);
