@@ -42,4 +42,40 @@ public class PuntuacionDAO {
             
             return puntosUser;
     }
+    
+    public List<Puntuacion> listarPuntuacionRecibidas(int idUsuario) {
+        GenericType<List<Puntuacion>> genericType = new GenericType<List<Puntuacion>>() {
+        };
+
+        List<Puntuacion> listaPuntuacionesRecibidas = puntClient.findAll_XML(genericType);
+        List<Puntuacion> listaPuntuacionesRecibidasFiltrados = new ArrayList<Puntuacion>();
+        
+        for(Puntuacion p: listaPuntuacionesRecibidas ){
+            if(p.getIdUsuarioRecibe().getIdUsuario() == idUsuario){
+                listaPuntuacionesRecibidasFiltrados.add(p);
+            }
+        }
+        
+        return listaPuntuacionesRecibidasFiltrados;
+    }
+    
+    public List<Puntuacion> listarPuntuacionRealizadas(int idUsuario) {
+        GenericType<List<Puntuacion>> genericType = new GenericType<List<Puntuacion>>() {
+        };
+
+        List<Puntuacion> listaPuntuacionesRealizadas = puntClient.findAll_XML(genericType);
+        List<Puntuacion> listaPuntuacionesRealizadasFiltrados = new ArrayList<Puntuacion>();
+        
+        for(Puntuacion p: listaPuntuacionesRealizadas ){
+            if(p.getIdUsuarioPuntua().getIdUsuario() == idUsuario){
+                listaPuntuacionesRealizadasFiltrados.add(p);
+            }
+        }
+        
+        return listaPuntuacionesRealizadasFiltrados;
+    }
+    
+    public void deletePuntuacion(String id) {
+        puntClient.remove(id);
+    }
 }

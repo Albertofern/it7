@@ -13,7 +13,7 @@
     </package>
     
     <package name="index" extends="struts-default">
-        <action name="index" class="acciones.indexAction">
+        <action name="index">
             <result name="success">/vistas/index.jsp</result>
         </action>
         
@@ -103,6 +103,14 @@
         
         <action name="eliminarPasajeroViaje" method="eliminarPasajeroViaje" class="acciones.miCuentaAction">
             <result name="success">/vistas/misviajes.jsp</result>
+        </action>
+        
+        <action name="toMisOpiniones" method="toMisOpiniones" class="acciones.miCuentaAction">
+            <result name="success">/vistas/misopiniones.jsp</result>
+        </action>
+        
+        <action name="eliminarPuntuacion" method="eliminarPuntuacion" class="acciones.miCuentaAction">
+            <result name="success">/vistas/misopiniones.jsp</result>
         </action>
         
     </package>

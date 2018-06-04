@@ -3,11 +3,9 @@
 <%@page import="java.util.Map"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
-<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <sx:head />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style type="text/css">
             <%@include file="../librerias/bootstrap-3.3.7-dist/css/bootstrap.css" %>
@@ -15,16 +13,18 @@
             <%@include file="../css/buscaviajes.css" %>
             <%@include file="../css/micuenta.css" %>
             <%@include file="../css/misviajes.css" %>
+            <%@include file="../css/misopiniones.css" %>
             <%@include file="../librerias/w3css/w3.css" %>
         </style>
         <script type="text/javascript" src="./librerias/jquery/jquery-1.12.4.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="./librerias/jquery/bootstrap.js"></script>
         <title>UpoCar</title>
     </head>
     <body>
         <s:set name="theme" value="'simple'" scope="page" /> <%-- Elimina el estilo de Struts de esta pagina --%>
         
-        <div class="w3-bar w3-light-grey" >
+        <div class="w3-bar w3-border w3-light-grey" >
             <a href="#" class="w3-bar-item w3-button w3-padding-24">UPOCAR</a>                        
 
             <s:if test="%{#session.usuario != null}">  

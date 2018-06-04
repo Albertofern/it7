@@ -12,10 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import modelo.PasajeroDAO;
+import modelo.PuntuacionDAO;
 import modelo.TelefonoDAO;
 import modelo.UsuarioDAO;
 import modelo.ViajeDAO;
 import webServiceREST.entidades.Pasajeros;
+import webServiceREST.entidades.Puntuacion;
 import webServiceREST.entidades.Telefono;
 import webServiceREST.entidades.Usuario;
 import webServiceREST.entidades.Viaje;
@@ -45,6 +47,10 @@ public class miCuentaAction extends ActionSupport {
     String idViaje;
     String idPasajero;
     
+    //Mis opiniones
+    List<Puntuacion> listaPuntuacionRealizadas = new ArrayList<Puntuacion>();
+    List<Puntuacion> listaPuntuacionRecibidas = new ArrayList<Puntuacion>();
+    String idPuntuacion;
     
     public miCuentaAction() {
     }
@@ -157,6 +163,27 @@ public class miCuentaAction extends ActionSupport {
         return SUCCESS;
     }
     
+    public String toMisOpiniones(){
+        
+        //Obtengo el usuario de la sesion
+        Map sesion = (Map) ActionContext.getContext().get("session");
+        Usuario u = (Usuario) sesion.get("usuario");
+        PuntuacionDAO pDao = new PuntuacionDAO();
+        this.setListaPuntuacionRealizadas(pDao.listarPuntuacionRealizadas(u.getIdUsuario()));
+        this.setListaPuntuacionRecibidas(pDao.listarPuntuacionRecibidas(u.getIdUsuario()));
+        
+        return SUCCESS;
+    }
+    
+    public String eliminarPuntuacion(){
+        // Creo un objeto PuntuacionDAO y le paso el idPuntuacion
+        PuntuacionDAO pDao = new PuntuacionDAO();
+        pDao.deletePuntuacion(this.getIdPuntuacion());
+        //Llamo al metodo toMisDatos() para recargar la pagina
+        this.toMisOpiniones();
+        return SUCCESS;
+    }
+    
     // Getter y setter MisDatos
     public List<Usuario> getListadoUsuarios() {
         return listadoUsuarios;
@@ -263,6 +290,33 @@ public class miCuentaAction extends ActionSupport {
     public void setIdPasajero(String idPasajero) {
         this.idPasajero = idPasajero;
     }
+    
+    //Getter y setter Mis Opiniones
+
+    public List<Puntuacion> getListaPuntuacionRealizadas() {
+        return listaPuntuacionRealizadas;
+    }
+
+    public void setListaPuntuacionRealizadas(List<Puntuacion> listaPuntuacionRealizadas) {
+        this.listaPuntuacionRealizadas = listaPuntuacionRealizadas;
+    }
+
+    public List<Puntuacion> getListaPuntuacionRecibidas() {
+        return listaPuntuacionRecibidas;
+    }
+
+    public void setListaPuntuacionRecibidas(List<Puntuacion> listaPuntuacionRecibidas) {
+        this.listaPuntuacionRecibidas = listaPuntuacionRecibidas;
+    }
+
+    public String getIdPuntuacion() {
+        return idPuntuacion;
+    }
+
+    public void setIdPuntuacion(String idPuntuacion) {
+        this.idPuntuacion = idPuntuacion;
+    }
+    
     
     
 }
