@@ -57,6 +57,7 @@
                             <div class="col-xs-12 col-sm-6 col-lg-5 ">
                                 <p>Foto coche</p> <!-- Foto del coche del usuario que publica el viaje -->
                             </div>
+                            <!-- Mostrar tambien el punto de recogida -->
                         </div>
                         <div class="col-lg-2"></div>
                     </div>

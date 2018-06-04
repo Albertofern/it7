@@ -85,4 +85,11 @@ public class ViajeDAO {
                 
         return clientViaje.buscaViaje(genericType, origen, destino, fechaSalida);
     }
+    
+    public Viaje getViajePorId(String id){
+        GenericType<Viaje> genericTypeViaje = new GenericType<Viaje>() {
+        };
+        
+        return clientViaje.find_XML(genericTypeViaje, id);
+    }
 }

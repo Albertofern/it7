@@ -5,13 +5,19 @@
  */
 package acciones;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import modelo.PasajeroDAO;
 import modelo.VehiculoDAO;
 import modelo.ViajeDAO;
+import webServiceREST.entidades.Pasajeros;
+import webServiceREST.entidades.Usuario;
+import webServiceREST.entidades.Viaje;
 
 /**
  *
@@ -25,9 +31,19 @@ public class buscaViajeAction extends ActionSupport {
     private int plazas;
     private double precio;
     private List listadoViajes;
+    private String idViaje;
+
+    public String getIdViaje() {
+        return idViaje;
+    }
+
+    public void setIdViaje(String idViaje) {
+        this.idViaje = idViaje;
+    }
 
     ViajeDAO viajeDao = new ViajeDAO();
     VehiculoDAO vehiculoDao = new VehiculoDAO();
+    PasajeroDAO pasajeroDao = new PasajeroDAO();
 
     public List getListadoViajes() {
         return listadoViajes;
@@ -98,6 +114,19 @@ public class buscaViajeAction extends ActionSupport {
         /*
         Comprobar que hay plazas suficientes para poder reservarla.
         */
+        
+        Pasajeros p = new Pasajeros(null);
+        //Cuando publica un viaje, tambien debe crearse el como pasajero
+        
+        Map sesion = (Map) ActionContext.getContext().get("session");
+        Usuario u = (Usuario) sesion.get("usuario");
+        
+        p.setIdUsuario(u);
+                
+        Viaje v = viajeDao.getViajePorId(idViaje);
+        p.setIdViaje(v);
+        
+        pasajeroDao.reservaViaje(p);
         
         return SUCCESS;
     }
