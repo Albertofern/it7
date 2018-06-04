@@ -156,6 +156,7 @@
         </action>
         <action name="reservar" method="reservarViaje" class="acciones.buscaViajeAction">
             <result name="success">/vistas/misviajes.jsp</result>
+            <result name="error">/vistas/index.jsp</result> <!-- Deberia de redirigir a una ventana de errores -->
         </action>
         
         <!-- Gestión Usuarios -->          

@@ -10,20 +10,28 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.core.GenericType;
 import webServiceREST.JerseyClientPasajeros;
+import webServiceREST.JerseyClientViaje;
 import webServiceREST.entidades.Pasajeros;
+import webServiceREST.entidades.Viaje;
 
 /**
  * 
  * @author Antonio Jose Herrera Tabaco 
  */
 public class PasajeroDAO {
-    private JerseyClientPasajeros clientPasajero = new JerseyClientPasajeros();
+
+    private JerseyClientPasajeros cliente = new JerseyClientPasajeros();
+    private JerseyClientViaje clienteViajes = new JerseyClientViaje();
+
     
     public boolean reservaViaje(Pasajeros p){        
         
         if(p.getIdViaje().getPlazasMax() > 0){
-            clientPasajero.create_XML(p);
             //decrementar aqui el numero de plazas ?
+            cliente.create_XML(p);
+            Viaje v = p.getIdViaje();
+            v.setPlazasMax(v.getPlazasMax()-1);
+            clienteViajes.edit_XML(v, String.valueOf(v.getIdViaje()));
             return true;
         } else {
             return false;
@@ -34,7 +42,7 @@ public class PasajeroDAO {
         GenericType<List<Pasajeros>> genericType = new GenericType<List<Pasajeros>>() {
         };
 
-        List<Pasajeros> listaPasajeros = this.getClientPasajero().findAll_XML(genericType);
+        List<Pasajeros> listaPasajeros = this.getCliente().findAll_XML(genericType);
         List<Pasajeros> listaPasajerosFiltrados = new ArrayList<Pasajeros>();
         
         for(Pasajeros p: listaPasajeros ){
@@ -48,15 +56,15 @@ public class PasajeroDAO {
     
     
     public void deletePasajeros(String id) {
-        this.getClientPasajero().remove(id);
+        this.getCliente().remove(id);
     }
 
-    public JerseyClientPasajeros getClientPasajero() {
-        return clientPasajero;
+    public JerseyClientPasajeros getCliente() {
+        return cliente;
     }
 
-    public void setClientPasajero(JerseyClientPasajeros clientPasajero) {
-        this.clientPasajero = clientPasajero;
+    public void setClientPasajero(JerseyClientPasajeros cliente) {
+        this.cliente = cliente;
     }
     
     
