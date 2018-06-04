@@ -93,6 +93,14 @@ public class buscaViajeAction extends ActionSupport {
 
         return SUCCESS;
     }
+    
+    public String reservarViaje(){
+        /*
+        Comprobar que hay plazas suficientes para poder reservarla.
+        */
+        
+        return SUCCESS;
+    }
 
     public String execute() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");

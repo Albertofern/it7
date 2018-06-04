@@ -150,6 +150,9 @@
                 <param name="actionName">toGestionViajes</param>
             </result>
         </action>
+        <action name="reservar" method="reservarViaje" class="acciones.buscaViajeAction">
+            <result name="success">/vistas/misviajes.jsp</result>
+        </action>
         
         <!-- Gestión Usuarios -->          
         <action name="toGestionUsuarios" method="toGestionUsuarios" class="acciones.adminAction">
