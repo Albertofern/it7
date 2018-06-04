@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -102,9 +103,29 @@ public class buscaViajeAction extends ActionSupport {
             Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(fechaHora);
             String formattedDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
 
-            listadoViajes = viajeDao.buscaViaje(origen, destino, formattedDate);
-        } else {
-            listadoViajes = viajeDao.listarViajes();
+            List listadoProvisional = viajeDao.buscaViaje(origen, destino, formattedDate);
+            List listaFinal = new ArrayList();
+            
+            for(int i = 0; i < listadoProvisional.size(); i++){ //Muestro todos los viajes que tengan plazas disponibles
+                Viaje v = (Viaje) listadoProvisional.get(i);
+                
+                if(v.getPlazasMax() > 0){
+                    listaFinal.add(v);
+                }
+            }
+            listadoViajes = listaFinal;
+            
+        } else {                        
+            List listadoProvisional = viajeDao.listarViajes();
+            List listaFinal = new ArrayList();
+            for(int i = 0; i < listadoProvisional.size(); i++){
+                Viaje v = (Viaje) listadoProvisional.get(i);
+                
+                if(v.getPlazasMax() > 0){
+                    listaFinal.add(v);
+                }
+            }
+            listadoViajes = listaFinal;
         }
 
         return SUCCESS;
