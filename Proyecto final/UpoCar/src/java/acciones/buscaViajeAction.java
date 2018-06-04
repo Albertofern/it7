@@ -128,6 +128,10 @@ public class buscaViajeAction extends ActionSupport {
         
         pasajeroDao.reservaViaje(p);
         
+        /*
+        Cuando se reserve un viaje se debera de decrementar el numero de plazas de ese viaje
+        */
+        
         return SUCCESS;
     }
 
