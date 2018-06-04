@@ -16,7 +16,14 @@ import webServiceREST.entidades.Pasajeros;
 public class PasajeroDAO {
     private JerseyClientPasajeros cliente = new JerseyClientPasajeros();
     
-    public void reservaViaje(Pasajeros p){
-        cliente.create_XML(p);
+    public boolean reservaViaje(Pasajeros p){        
+        
+        if(p.getIdViaje().getPlazasMax() > 0){
+            cliente.create_XML(p);
+            //decrementar aqui el numero de plazas ?
+            return true;
+        } else {
+            return false;
+        }        
     }
 }
