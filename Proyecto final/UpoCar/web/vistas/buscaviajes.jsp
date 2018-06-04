@@ -39,12 +39,14 @@
                             <p>Imagen</p> <!-- Imagen del usuario que publica el viaje, si no tiene, que muestre una por defecto -->
                             <p><s:property value="idUsuarioPublica.nombre"></s:property> <s:property value="idUsuarioPublica.apellidos"></s:property></p> 
                             <p>Puntuacion: <s:property value="idUsuarioPublica.totalPuntuacion"></s:property></p>
+                            <s:if test="%{#session.usuario != null}">     
                                 <p>
-                                <s:form action="reservar">
-                                    <s:submit name="reservarViaje" value="Reservar plaza" cssClass="btn btn-default btnBuscar"></s:submit>
-                                    <s:hidden name="idViaje" value="%{idViaje}"></s:hidden>
-                                </s:form>
-                            </p> <!-- Boton para reservar la plaza solo si esta logueado, o sino que le envie al login. Si no hay plazas disponibles no se puede reservar (boton disabled)-->
+                                    <s:form action="reservar">
+                                        <s:submit name="reservarViaje" value="Reservar plaza" cssClass="btn btn-default btnBuscar"></s:submit>
+                                        <s:hidden name="idViaje" value="%{idViaje}"></s:hidden>
+                                    </s:form>
+                                </p> <!-- Boton para reservar la plaza solo si esta logueado, o sino que le envie al login. Si no hay plazas disponibles no se puede reservar (boton disabled)-->
+                            </s:if>
                         </div>
                         <div class="col-xs-12 col-sm-4 col-lg-4 ">
                             <p>Origen:<s:property value="idLocalidadOrigen.nombre"></s:property></p> 
