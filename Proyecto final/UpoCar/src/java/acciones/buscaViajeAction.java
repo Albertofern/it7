@@ -126,13 +126,15 @@ public class buscaViajeAction extends ActionSupport {
         Viaje v = viajeDao.getViajePorId(idViaje);
         p.setIdViaje(v);
         
-        pasajeroDao.reservaViaje(p);
+        if(pasajeroDao.reservaViaje(p)){
+            return SUCCESS;
+        } else {
+            return ERROR;
+        }
         
         /*
         Cuando se reserve un viaje se debera de decrementar el numero de plazas de ese viaje
-        */
-        
-        return SUCCESS;
+        */                
     }
 
     public String execute() throws Exception {
