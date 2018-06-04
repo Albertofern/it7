@@ -98,7 +98,6 @@ public class buscaViajeAction extends ActionSupport {
     }
 
     public String buscaViaje() throws ParseException {
-        //Comprobar que la hora no sea obligatoria pero si la fecha
         if (!fechaHora.equals("")) {
             Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(fechaHora);
             String formattedDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
@@ -132,12 +131,8 @@ public class buscaViajeAction extends ActionSupport {
     }
     
     public String reservarViaje(){
-        /*
-        Comprobar que hay plazas suficientes para poder reservarla.
-        */
-        
-        Pasajeros p = new Pasajeros(null);
-        //Cuando publica un viaje, tambien debe crearse el como pasajero
+
+        Pasajeros p = new Pasajeros(null);        
         
         Map sesion = (Map) ActionContext.getContext().get("session");
         Usuario u = (Usuario) sesion.get("usuario");

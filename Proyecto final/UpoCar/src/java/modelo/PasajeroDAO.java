@@ -20,7 +20,7 @@ public class PasajeroDAO {
         
         if(p.getIdViaje().getPlazasMax() > 0){
             cliente.create_XML(p);
-            //decrementar aqui el numero de plazas ?
+            //decrementar aqui el numero de plazas 
             return true;
         } else {
             return false;

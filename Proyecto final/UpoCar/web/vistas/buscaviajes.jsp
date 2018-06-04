@@ -42,7 +42,7 @@
                             <s:if test="%{#session.usuario != null}">     
                                 <p>
                                     <s:form action="reservar"> <!-- Se podra realizar mas de una reserva por si acaso se quieren reservar varias plazas para varias personas -->
-                                        <s:submit name="reservarViaje" value="Reservar plaza" cssClass="btn btn-default btnBuscar"></s:submit>
+                                        <s:submit name="reservarViaje" value="Reservar plaza" cssClass="btn btn-primary btnBuscar"></s:submit>
                                         <s:hidden name="idViaje" value="%{idViaje}"></s:hidden>
                                     </s:form>
                                 </p>
@@ -58,7 +58,7 @@
                             <div class="col-xs-12 col-sm-6 col-lg-5 ">
                                 <p>Foto coche</p> <!-- Foto del coche del usuario que publica el viaje -->
                             </div>
-                            <!-- Mostrar tambien el punto de recogida -->
+
                         </div>
                         <div class="col-lg-2"></div>
                     </div>
