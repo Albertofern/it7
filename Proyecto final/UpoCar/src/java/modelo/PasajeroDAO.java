@@ -6,6 +6,9 @@
 
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.ws.rs.core.GenericType;
 import webServiceREST.JerseyClientPasajeros;
 import webServiceREST.entidades.Pasajeros;
 
@@ -14,16 +17,47 @@ import webServiceREST.entidades.Pasajeros;
  * @author Antonio Jose Herrera Tabaco 
  */
 public class PasajeroDAO {
-    private JerseyClientPasajeros cliente = new JerseyClientPasajeros();
+    private JerseyClientPasajeros clientPasajero = new JerseyClientPasajeros();
     
     public boolean reservaViaje(Pasajeros p){        
         
         if(p.getIdViaje().getPlazasMax() > 0){
-            cliente.create_XML(p);
+            clientPasajero.create_XML(p);
             //decrementar aqui el numero de plazas ?
             return true;
         } else {
             return false;
         }        
     }
+    
+    public List<Pasajeros> listarPasajeros(int idViaje) {
+        GenericType<List<Pasajeros>> genericType = new GenericType<List<Pasajeros>>() {
+        };
+
+        List<Pasajeros> listaPasajeros = this.getClientPasajero().findAll_XML(genericType);
+        List<Pasajeros> listaPasajerosFiltrados = new ArrayList<Pasajeros>();
+        
+        for(Pasajeros p: listaPasajeros ){
+            if(p.getIdViaje().getIdViaje() == idViaje){
+                listaPasajerosFiltrados.add(p);
+            }
+        }
+        
+        return listaPasajerosFiltrados;
+    }
+    
+    
+    public void deletePasajeros(String id) {
+        this.getClientPasajero().remove(id);
+    }
+
+    public JerseyClientPasajeros getClientPasajero() {
+        return clientPasajero;
+    }
+
+    public void setClientPasajero(JerseyClientPasajeros clientPasajero) {
+        this.clientPasajero = clientPasajero;
+    }
+    
+    
 }

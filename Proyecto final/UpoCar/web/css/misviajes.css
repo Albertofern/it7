@@ -125,4 +125,15 @@
     margin-right: 40px;
 }
 
+.pasajero-box {
+    background-color: white;
+    margin: 4px 4px 4px 5px;
+    font-size: 10px;
+    border-radius: 6px;
+}
 
+#btnEliminarPasajero {
+    float: right;
+    width: 2px;
+    height: 4px;
+}

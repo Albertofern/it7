@@ -101,6 +101,10 @@
             <result name="success">/vistas/misviajes.jsp</result>
         </action>
         
+        <action name="eliminarPasajeroViaje" method="eliminarPasajeroViaje" class="acciones.miCuentaAction">
+            <result name="success">/vistas/misviajes.jsp</result>
+        </action>
+        
     </package>
     
     <!-- Administrador -->

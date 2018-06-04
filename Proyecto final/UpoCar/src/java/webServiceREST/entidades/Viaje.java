@@ -6,7 +6,9 @@
 package webServiceREST.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -41,6 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Viaje.findByFechaSalida", query = "SELECT v FROM Viaje v WHERE v.fechaSalida = :fechaSalida")})
 public class Viaje implements Serializable {
 
+    private List<Pasajeros> listaPasajeros = new ArrayList<Pasajeros>();
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -199,6 +202,14 @@ public class Viaje implements Serializable {
     @Override
     public String toString() {
         return "webServiceREST.entidades.Viaje[ idViaje=" + idViaje + " ]";
+    }
+
+    public List<Pasajeros> getListaPasajeros() {
+        return listaPasajeros;
+    }
+
+    public void setListaPasajeros(List<Pasajeros> listaPasajeros) {
+        this.listaPasajeros = listaPasajeros;
     }
     
 }

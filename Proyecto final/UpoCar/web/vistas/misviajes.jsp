@@ -9,10 +9,10 @@
         <div class="panel-body">
             <div class="rsvp col-xs-2 col-sm-2">
                
-                <i><s:property value="fechaSalida.split('-')[2]"></s:property></i>
-                <i><s:property value="fechaSalida.split('-')[1]"></s:property></i>
+                <i><s:property value="(fechaSalida.split(' ')[0]).split('-')[2]"></s:property></i>
+                <i><s:property value="(fechaSalida.split(' ')[0]).split('-')[1]"></s:property></i>
                 <div>
-                    <i><s:property value="fechaSalida.split('-')[0]"></s:property></i>
+                    <i><s:property value="(fechaSalida.split(' ')[0]).split('-')[0]"></s:property></i>
                 </div>
             </div>
             <div class="info col-xs-8 col-sm-7">
@@ -34,6 +34,18 @@
                                 Max. Plazas: <s:property value="plazasMax"></s:property>
                             </div>
                         </div>
+                        <div class="row colum1">
+                        <s:iterator value="listaPasajeros">
+                                <div class="col-xs-1 pasajero-box">
+                                    <s:property value="idUsuario.nombre"></s:property>
+                                    <s:property value="idUsuario.apellidos"></s:property>
+                                    <s:form class="form-horizontal" action="eliminarPasajeroViaje" method="POST">
+                                        <input type="hidden" name="idPasajero" value="<s:property value="idPasajero"></s:property>" />
+                                        <button class="btn btn-danger" id="btnEliminarPasajero"></button>
+                                    </s:form>
+                                </div>  
+                            </s:iterator>
+                        </div>
                     </div>
                     <div class="col-xs-2">
                         <div class="row price">
@@ -43,7 +55,8 @@
                             euros por persona
                         </div>
 
-                    </div>     
+                    </div>
+                        
                 </div>    
             </div>
             <div class="author col-xs-2 col-sm-3">  

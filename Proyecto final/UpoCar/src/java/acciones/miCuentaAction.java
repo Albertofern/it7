@@ -11,9 +11,11 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import modelo.PasajeroDAO;
 import modelo.TelefonoDAO;
 import modelo.UsuarioDAO;
 import modelo.ViajeDAO;
+import webServiceREST.entidades.Pasajeros;
 import webServiceREST.entidades.Telefono;
 import webServiceREST.entidades.Usuario;
 import webServiceREST.entidades.Viaje;
@@ -41,6 +43,7 @@ public class miCuentaAction extends ActionSupport {
     //Mis viajes
     List<Viaje> listaViajes = new ArrayList<Viaje>();
     String idViaje;
+    String idPasajero;
     
     
     public miCuentaAction() {
@@ -119,13 +122,20 @@ public class miCuentaAction extends ActionSupport {
         //Obtengo el usuario de la sesion
         Map sesion = (Map) ActionContext.getContext().get("session");
         Usuario u = (Usuario) sesion.get("usuario");
+        //Creo un objeto PasajeroDAO para obtener la lista de viajes
+        PasajeroDAO pDao = new PasajeroDAO();
+        List<List<Pasajeros>> listaPasajerosPorViaje = new ArrayList<List<Pasajeros>>();
+        
         //Recorro la lista para obtener los vuajes del usuario actual
         for(int i=0; i < listaViajesNoFiltrada.size();i++){
             if(listaViajesNoFiltrada.get(i).getIdUsuarioPublica().getIdUsuario() == u.getIdUsuario()){
+                //Obtengo la lista de pasajeros de este viaje y se lo paso por set al viaje
+                listaViajesNoFiltrada.get(i).setListaPasajeros(pDao.listarPasajeros(listaViajesNoFiltrada.get(i).getIdViaje()));
                 listaViajesFiltrada.add(listaViajesNoFiltrada.get(i));
             }
         }
         this.setListaViajes(listaViajesFiltrada);
+        
         return SUCCESS;
     }
     
@@ -133,11 +143,19 @@ public class miCuentaAction extends ActionSupport {
         // Creo un objeto TelefonoDAO y le paso el objeto telefono
         ViajeDAO vDao = new ViajeDAO();
         vDao.deleteViaje(this.getIdViaje());
-        //Llamo al metodo toMisDatos() para recargar la pagina
+        //Llamo al metodo toMisViajes() para recargar la pagina
         this.toMisViajes();
         return SUCCESS;
     }
     
+    public String eliminarPasajeroViaje(){
+        // Creo un objeto PasajeroDAO y le paso el idPasajero
+        PasajeroDAO pDao = new PasajeroDAO();
+        pDao.deletePasajeros(this.getIdPasajero());
+        //Llamo al metodo toMisViajes() para recargar la pagina
+        this.toMisViajes();
+        return SUCCESS;
+    }
     
     // Getter y setter MisDatos
     public List<Usuario> getListadoUsuarios() {
@@ -236,6 +254,14 @@ public class miCuentaAction extends ActionSupport {
 
     public void setIdViaje(String idViaje) {
         this.idViaje = idViaje;
+    }
+
+    public String getIdPasajero() {
+        return idPasajero;
+    }
+
+    public void setIdPasajero(String idPasajero) {
+        this.idPasajero = idPasajero;
     }
     
     
