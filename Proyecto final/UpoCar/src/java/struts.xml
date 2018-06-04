@@ -13,7 +13,7 @@
     </package>
     
     <package name="index" extends="struts-default">
-        <action name="index">
+        <action name="index" class="acciones.indexAction">
             <result name="success">/vistas/index.jsp</result>
         </action>
         

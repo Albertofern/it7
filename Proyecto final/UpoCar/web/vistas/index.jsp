@@ -8,17 +8,21 @@
             <s:form action="buscaViaje">
                 <div class="input-group">
                     <div class="col-lg-4">
-                        <s:textfield cssClass="form-control" name="origen" placeholder="Origen"></s:textfield>                            
-                        </div>
+                        <sx:autocompleter label="Origen" name="origen" autoComplete="false" list="listaLocalidadesOrigen" listValue="nombre" cssClass="form-control"/>
+                    </div>
 
-                        <div class="col-lg-4">
-                        <s:textfield cssClass="form-control" name="destino" placeholder="Destino"></s:textfield>                            
-                        </div>
+                    <div class="col-lg-4">
+                        <sx:autocompleter label="Destino" name="destino" autoComplete="false" list="listaLocalidadesDestino" listValue="nombre" cssClass="form-control"/>
+                    </div>
 
-                        <div class="col-lg-4">
-                            <!--<input type="date" class="form-control"/>-->
-                            <input id="datetime" name="fechaHora" type="datetime-local" class="form-control">
-                        </div>                                
+                    <div class="col-lg-4">
+                        <!--<input type="date" class="form-control"/>-->
+                        <input id="datetime" name="fechaHora" type="datetime-local" class="form-control">
+                    </div>   
+
+
+
+
 
                     <s:submit name="buscar" value="Buscar viaje" cssClass="btn btn-default btnBuscar"></s:submit>
                     </div>
