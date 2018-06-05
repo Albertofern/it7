@@ -24,7 +24,7 @@
     </head>
     <body>
         <s:set name="theme" value="'simple'" scope="page" /> <%-- Elimina el estilo de Struts de esta pagina --%>
-        
+
         <div class="w3-bar w3-border w3-light-grey" >
             <a href="#" class="w3-bar-item w3-button w3-padding-24">UPOCAR</a>                        
 
@@ -47,7 +47,7 @@
                         <s:submit name="toPublicarViaje" value="Publicar viaje" cssClass="w3-bar-item w3-button w3-padding-24"></s:submit>
                     </s:form>
                 </s:else>
-                
+
                 <s:form action="toRanking">
                     <s:submit name="toRanking" value="Ver ranking" cssClass="w3-bar-item w3-button w3-padding-24"></s:submit>
                 </s:form>

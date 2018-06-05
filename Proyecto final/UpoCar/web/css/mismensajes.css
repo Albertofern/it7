@@ -1,4 +1,3 @@
-@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 /*Comment List styles*/
 .comment-list .row {
   margin-bottom: 0px;
@@ -74,4 +73,27 @@
 }
 .comment-list .comment-post {
   margin-top: 6px;
+}
+
+#mis-mensajes .page-header {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.men-enviado {
+    background-color: #F2F5A9;
+    border-style: dashed;
+    font-size: 13px;
+}
+
+.men-recibido {
+    background-color: #b2dba1;
+    border-style: dashed;
+    font-size: 13px;
+}
+
+#btnEliminarMensaje {
+    float: right;
+    margin-right: 2px;
+    margin-top: 2px;
 }

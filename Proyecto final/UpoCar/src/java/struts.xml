@@ -117,6 +117,10 @@
             <result name="success">/vistas/mismensajes.jsp</result>
         </action>
         
+        <action name="eliminarMensaje" method="eliminarMensaje" class="acciones.miCuentaAction">
+            <result name="success">/vistas/mismensajes.jsp</result>
+        </action>
+        
     </package>
     
     <!-- Administrador -->

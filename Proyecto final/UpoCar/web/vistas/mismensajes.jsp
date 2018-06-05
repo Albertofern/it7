@@ -1,12 +1,10 @@
 <%@include file="index_header.jsp" %>
 <div class="container-fluid">
-    <div id="background-firstlook">
-  <div class="row">
-    
-      <h2 class="page-header">Mensajes</h2>
-        <section class="comment-list">
-            <div class="col-xs-12 col-sm-6">
-                <h4 class="page-header">Enviados</h4>
+    <div class="row" id="mis-mensajes">
+      <h2 class="page-header text-center">Mensajes</h2>
+        <section class="comment-list box-flex">
+            <div class="col-xs-12 col-sm-6 men-enviado">
+                <h4 class="page-header text-center">Enviados</h4>
                 <!-- Mensaje enviado -->
                 <s:iterator value="listaMensajesEnviados">
           <article class="row">
@@ -17,10 +15,14 @@
             </div>
             <div class="col-md-8 col-sm-12 col-xs-12">
               <div class="panel panel-default arrow left">
+                  <s:form class="form-horizontal" action="eliminarMensaje" method="POST">
+                        <input type="hidden" name="idMensaje" value="<s:property value="idMensaje"></s:property>" />
+                            <button class="btn btn-danger" id="btnEliminarMensaje"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                        </s:form>
                 <div class="panel-body">
                   <header class="text-left">
                       <div class="comment-user"><span class="hidden-lg hidden-md"><s:property value="idUsuarioEnvia.nombre"></s:property> a </span><s:property value="idUsuarioRecibe.nombre"></s:property></div>
-                    <time class="comment-date" datetime=""> <s:property value="fechaHora"></s:property></time>
+                    <time class="comment-date" datetime="16-12-2014 01:05"> <s:property value="fechaHora"></s:property></time>
                   </header>
                   <div class="comment-post">
                     <p>
@@ -33,8 +35,8 @@
           </article>
                 </s:iterator>
             </div>
-            <div class="col-xs-12 col-sm-6">
-                <h4 class="page-header">Recibidos</h4>
+            <div class="col-xs-12 col-sm-6 men-recibido">
+                <h4 class="page-header text-center">Recibidos</h4>
           <!-- Mensaje recibido -->
           <s:iterator value="listaMensajesRecibidos">
           <article class="row">
@@ -43,7 +45,7 @@
                 <div class="panel-body">
                   <header class="text-right">
                       <div class="comment-user"><span class="hidden-lg hidden-md"><s:property value="idUsuarioEnvia.nombre"></s:property> a </span> </span><s:property value="idUsuarioRecibe.nombre"></s:property></div>
-                    <time class="comment-date" datetime=""> <s:property value="fechaHora"></s:property></time>
+                    <time class="comment-date" datetime="16-12-2014 01:05"> <s:property value="fechaHora"></s:property></time>
                   </header>
                   <div class="comment-post">
                     <p>
@@ -65,6 +67,6 @@
 
   </div>
 
-    </div>
+
 </div>
 <%@include file="index_footer.jsp" %>

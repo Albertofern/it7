@@ -8,7 +8,6 @@
     <div class="panel panel-default event">
         <div class="panel-body">
             <div class="rsvp col-xs-2 col-sm-2">
-               
                 <i><s:property value="(fechaSalida.split(' ')[0]).split('-')[2]"></s:property></i>
                 <i><s:property value="(fechaSalida.split(' ')[0]).split('-')[1]"></s:property></i>
                 <div>

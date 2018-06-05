@@ -57,6 +57,7 @@ public class miCuentaAction extends ActionSupport {
     //Mis mensajes
     List<Mensaje> listaMensajesEnviados = new ArrayList<Mensaje>();
     List<Mensaje> listaMensajesRecibidos = new ArrayList<Mensaje>();
+    String idMensaje;
     
     public miCuentaAction() {
     }
@@ -201,9 +202,9 @@ public class miCuentaAction extends ActionSupport {
     }
     
     public String eliminarMensaje(){
-        // Creo un objeto PuntuacionDAO y le paso el idPuntuacion
-        //PuntuacionDAO pDao = new PuntuacionDAO();
-        //pDao.deletePuntuacion(this.getIdPuntuacion());
+        // Creo un objeto MensajeDAO y le paso el idMensaje
+        MensajeDAO mDao = new MensajeDAO();
+        mDao.deleteMensaje(Integer.parseInt(this.getIdMensaje()));
         //Llamo al metodo toMisMensajes() para recargar la pagina
         this.toMisMensajes();
         return SUCCESS;
@@ -358,6 +359,14 @@ public class miCuentaAction extends ActionSupport {
 
     public void setListaMensajesRecibidos(List<Mensaje> listaMensajesRecibidos) {
         this.listaMensajesRecibidos = listaMensajesRecibidos;
+    }
+
+    public String getIdMensaje() {
+        return idMensaje;
+    }
+
+    public void setIdMensaje(String idMensaje) {
+        this.idMensaje = idMensaje;
     }
     
     
