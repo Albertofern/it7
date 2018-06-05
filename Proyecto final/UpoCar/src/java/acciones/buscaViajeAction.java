@@ -108,7 +108,7 @@ public class buscaViajeAction extends ActionSupport {
             for(int i = 0; i < listadoProvisional.size(); i++){ //Muestro todos los viajes que tengan plazas disponibles
                 Viaje v = (Viaje) listadoProvisional.get(i);
                 
-                if(v.getPlazasMax() > 0){
+                if(v.getPlazasMax() > pasajeroDao.listarPasajeros(v.getIdViaje()).size()){
                     listaFinal.add(v);
                 }
             }
@@ -120,7 +120,7 @@ public class buscaViajeAction extends ActionSupport {
             for(int i = 0; i < listadoProvisional.size(); i++){
                 Viaje v = (Viaje) listadoProvisional.get(i);
                 
-                if(v.getPlazasMax() > 0){
+                if(v.getPlazasMax() > pasajeroDao.listarPasajeros(v.getIdViaje()).size()){
                     listaFinal.add(v);
                 }
             }
@@ -141,8 +141,8 @@ public class buscaViajeAction extends ActionSupport {
                 
         Viaje v = viajeDao.getViajePorId(idViaje);
         p.setIdViaje(v);
-        
-        if(pasajeroDao.reservaViaje(p)){
+
+        if(pasajeroDao.reservaViaje(p, Integer.parseInt(this.idViaje))){
             return SUCCESS;
         } else {
             return ERROR;
