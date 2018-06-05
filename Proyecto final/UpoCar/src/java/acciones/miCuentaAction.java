@@ -11,11 +11,13 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import modelo.MensajeDAO;
 import modelo.PasajeroDAO;
 import modelo.PuntuacionDAO;
 import modelo.TelefonoDAO;
 import modelo.UsuarioDAO;
 import modelo.ViajeDAO;
+import webServiceREST.entidades.Mensaje;
 import webServiceREST.entidades.Pasajeros;
 import webServiceREST.entidades.Puntuacion;
 import webServiceREST.entidades.Telefono;
@@ -51,6 +53,10 @@ public class miCuentaAction extends ActionSupport {
     List<Puntuacion> listaPuntuacionRealizadas = new ArrayList<Puntuacion>();
     List<Puntuacion> listaPuntuacionRecibidas = new ArrayList<Puntuacion>();
     String idPuntuacion;
+    
+    //Mis mensajes
+    List<Mensaje> listaMensajesEnviados = new ArrayList<Mensaje>();
+    List<Mensaje> listaMensajesRecibidos = new ArrayList<Mensaje>();
     
     public miCuentaAction() {
     }
@@ -179,12 +185,27 @@ public class miCuentaAction extends ActionSupport {
         // Creo un objeto PuntuacionDAO y le paso el idPuntuacion
         PuntuacionDAO pDao = new PuntuacionDAO();
         pDao.deletePuntuacion(this.getIdPuntuacion());
-        //Llamo al metodo toMisDatos() para recargar la pagina
+        //Llamo al metodo toMisOpiniones() para recargar la pagina
         this.toMisOpiniones();
         return SUCCESS;
     }
     
     public String toMisMensajes(){
+        //Obtengo el usuario de la sesion
+        Map sesion = (Map) ActionContext.getContext().get("session");
+        Usuario u = (Usuario) sesion.get("usuario");
+        MensajeDAO mDao = new MensajeDAO();
+        this.setListaMensajesEnviados(mDao.buscarEnviaMensaje(u.getNomUsuario()));
+        this.setListaMensajesRecibidos(mDao.buscarRecibeMensaje(u.getNomUsuario()));
+        return SUCCESS;
+    }
+    
+    public String eliminarMensaje(){
+        // Creo un objeto PuntuacionDAO y le paso el idPuntuacion
+        //PuntuacionDAO pDao = new PuntuacionDAO();
+        //pDao.deletePuntuacion(this.getIdPuntuacion());
+        //Llamo al metodo toMisMensajes() para recargar la pagina
+        this.toMisMensajes();
         return SUCCESS;
     }
     
@@ -319,6 +340,24 @@ public class miCuentaAction extends ActionSupport {
 
     public void setIdPuntuacion(String idPuntuacion) {
         this.idPuntuacion = idPuntuacion;
+    }
+    
+    //Getter y setter Mis Mensajes
+
+    public List<Mensaje> getListaMensajesEnviados() {
+        return listaMensajesEnviados;
+    }
+
+    public void setListaMensajesEnviados(List<Mensaje> listaMensajesEnviados) {
+        this.listaMensajesEnviados = listaMensajesEnviados;
+    }
+
+    public List<Mensaje> getListaMensajesRecibidos() {
+        return listaMensajesRecibidos;
+    }
+
+    public void setListaMensajesRecibidos(List<Mensaje> listaMensajesRecibidos) {
+        this.listaMensajesRecibidos = listaMensajesRecibidos;
     }
     
     
