@@ -113,6 +113,10 @@
             <result name="success">/vistas/misopiniones.jsp</result>
         </action>
         
+        <action name="toMisMensajes" method="toMisMensajes" class="acciones.miCuentaAction">
+            <result name="success">/vistas/mismensajes.jsp</result>
+        </action>
+        
     </package>
     
     <!-- Administrador -->

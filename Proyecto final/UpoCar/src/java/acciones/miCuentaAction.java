@@ -184,6 +184,10 @@ public class miCuentaAction extends ActionSupport {
         return SUCCESS;
     }
     
+    public String toMisMensajes(){
+        return SUCCESS;
+    }
+    
     // Getter y setter MisDatos
     public List<Usuario> getListadoUsuarios() {
         return listadoUsuarios;
