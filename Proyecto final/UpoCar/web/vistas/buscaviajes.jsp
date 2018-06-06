@@ -41,28 +41,33 @@
                             </s:if>
                             <s:else>
                                 <img class="foto-mi-cuenta img-circle img-responsive" src="<s:property value="idUsuarioPublica.foto"></s:property>>
-                            </s:else>
-                            <!-- <p>Imagen</p> Imagen del usuario que publica el viaje, si no tiene, que muestre una por defecto -->
-                            <p><s:property value="idUsuarioPublica.nombre"></s:property> <s:property value="idUsuarioPublica.apellidos"></s:property></p> 
-                            <p>Puntuacion: <s:property value="idUsuarioPublica.totalPuntuacion"></s:property></p>
-                            <s:if test="%{#session.usuario != null}">     
-                                <p>
+                                </s:else>
+                                <!-- <p>Imagen</p> Imagen del usuario que publica el viaje, si no tiene, que muestre una por defecto -->
+                                <p><s:property value="idUsuarioPublica.nombre"></s:property> <s:property value="idUsuarioPublica.apellidos"></s:property></p> 
+                                <p>Puntuacion: <s:property value="idUsuarioPublica.totalPuntuacion"></s:property></p>
+                                <s:if test="%{#session.usuario != null}">     
+                                    <p>
                                     <s:form action="reservar"> <!-- Se podra realizar mas de una reserva por si acaso se quieren reservar varias plazas para varias personas -->
                                         <s:submit name="reservarViaje" value="Reservar plaza" cssClass="btn btn-primary btnBuscar"></s:submit>
                                         <s:hidden name="idViaje" value="%{idViaje}"></s:hidden>
                                     </s:form>
-                                </p>
-                            </s:if>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-lg-4 ">
-                            <p>Origen:<s:property value="idLocalidadOrigen.nombre"></s:property></p> 
+                                    </p>
+                                </s:if>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-lg-4 ">
+                                <p>Origen:<s:property value="idLocalidadOrigen.nombre"></s:property></p> 
                             <p>Destino:<s:property value="idLocalidadDestino.nombre"></s:property></p> 
                             <p>Precio:<s:property value="percioPersona"></s:property></p> 
                             <p>Plazas disponibles: <s:property value="plazasMax"></s:property></p> 
                             <p>Punto de recogida: <s:property value="puntoRecogida"></s:property></p>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-lg-5 ">
-                                <p>Foto coche</p> <!-- Foto del coche del usuario que publica el viaje -->
+                                <p>Foto coche</p>  Foto del coche del usuario que publica el viaje
+                                
+                                <!--<div class="fotorama">-->
+                                    <!--<img src="http://s.fotorama.io/1.jpg">-->
+                                    <!--<img src="http://s.fotorama.io/2.jpg">-->
+                                <!--</div>-->
                             </div>
 
                         </div>
