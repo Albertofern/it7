@@ -4,15 +4,36 @@
     <div class="col-md-6 col-md-offset-3" id="contentPpal">
         <div id="infoPpal">                   
 
-            <div class="wrap">
-                <p class="form-title">
-                    Login</p>
-                    <s:form action="login" cssClass="login">                        
-                        Usuario<s:textfield cssClass="form-control" name="usuario" cssStyle="inputLogin"></s:textfield>  <%-- Poner un width mas pequeño para los inputs --%>
-                        Password<s:password cssClass="form-control" name="password" cssStyle="inputLogin"></s:password>
-                        <s:submit cssClass="btn btn-success btn-sm" name="login" value="Login"></s:submit>     
+            
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="avatar">
+                        <img src="./images/avatar.png" alt="Avatar">
+                    </div>				
+                    <h4 class="modal-title">Member Login</h4>	
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <s:form action="login" cssClass="login">  
+                        <div class="form-group">
+                            	
+                            <s:textfield cssClass="form-control" name="usuario" cssStyle="inputLogin"></s:textfield>
+                        </div>
+                        <div class="form-group">
+                            
+                            Password<s:password cssClass="form-control" name="password" cssStyle="inputLogin"></s:password>
+                        </div>        
+                        <div class="form-group">
+                            
+                            <s:submit cssClass="btn btn-primary btn-lg btn-block login-btn" name="login" value="Login"></s:submit>    
+                        </div>
                     </s:form>
+                </div>
             </div>
+        </div>
+
+            
         </div>
     </div>
 </div>
