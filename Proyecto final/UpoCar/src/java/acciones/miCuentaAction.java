@@ -48,6 +48,7 @@ public class miCuentaAction extends ActionSupport {
     List<Viaje> listaViajes = new ArrayList<Viaje>();
     String idViaje;
     String idPasajero;
+    int numPasajeros;
     
     //Mis opiniones
     List<Puntuacion> listaPuntuacionRealizadas = new ArrayList<Puntuacion>();
@@ -142,7 +143,7 @@ public class miCuentaAction extends ActionSupport {
         //Recorro la lista para obtener los vuajes del usuario actual
         for(int i=0; i < listaViajesNoFiltrada.size();i++){
             if(listaViajesNoFiltrada.get(i).getIdUsuarioPublica().getIdUsuario() == u.getIdUsuario()){
-                //Obtengo la lista de pasajeros de este viaje y se lo paso por set al viaje
+                //Obtengo el viaje actual y le agrego los pasajeros que van en ese viaje
                 listaViajesNoFiltrada.get(i).setListaPasajeros(pDao.listarPasajeros(listaViajesNoFiltrada.get(i).getIdViaje()));
                 listaViajesFiltrada.add(listaViajesNoFiltrada.get(i));
             }
@@ -315,6 +316,14 @@ public class miCuentaAction extends ActionSupport {
 
     public void setIdPasajero(String idPasajero) {
         this.idPasajero = idPasajero;
+    }
+
+    public int getNumPasajeros() {
+        return numPasajeros;
+    }
+
+    public void setNumPasajeros(int numPasajeros) {
+        this.numPasajeros = numPasajeros;
     }
     
     //Getter y setter Mis Opiniones

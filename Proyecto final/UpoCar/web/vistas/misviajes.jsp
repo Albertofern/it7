@@ -17,6 +17,10 @@
             <div class="info col-xs-8 col-sm-7">
                 <div class="row">
                     <div class="col-xs-10">
+                        
+                        
+                        
+                        
                         <div class="row colum1">
                             <div class="col-xs-6">
                                 Origen: <s:property value="idLocalidadOrigen.nombre"></s:property>
@@ -30,12 +34,12 @@
                                 Lugar recogida: <s:property value="puntoRecogida"></s:property>
                             </div>
                             <div class="col-xs-3">
-                                Max. Plazas: <s:property value="plazasMax"></s:property>
+                                Plazas: <s:property value="listaPasajeros.size()"></s:property> de <s:property value="plazasMax"></s:property>
                             </div>
                         </div>
                         <div class="row colum1">
                         <s:iterator value="listaPasajeros">
-                                <div class="col-xs-1 pasajero-box">
+                                <div class="col-xs-2 pasajero-box">
                                     <s:property value="idUsuario.nombre"></s:property>
                                     <s:property value="idUsuario.apellidos"></s:property>
                                     <s:form class="form-horizontal" action="eliminarPasajeroViaje" method="POST">
@@ -44,7 +48,14 @@
                                     </s:form>
                                 </div>  
                             </s:iterator>
+                        <s:if test="%{listaPasajeros.size() == 0}">
+                            <div class="alert alert-danger sin-pasajeros text-center" role="alert">
+                                Sin pasajeros
+                              </div>
+                        </s:if>
                         </div>
+                            
+                            
                     </div>
                     <div class="col-xs-2">
                         <div class="row price">
@@ -65,7 +76,7 @@
                         <button class="btn btn-danger" id="btnEliminarViaje"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
                     </s:form>
                     <strong><s:property value="idUsuarioPublica.nomUsuario"></s:property> <s:property value="idUsuarioPublica.apellidos"></s:property></strong>
-                    <article>Datos del coche</article>
+                    <article>Datos del coche:</article>
                     <div class="links">
                         <i class="col-xs-6"><s:property value="idVehiculoElegido.marca"></s:property></i>
                         <i class="col-xs-6"><s:property value="idVehiculoElegido.modelo"></s:property></i>
