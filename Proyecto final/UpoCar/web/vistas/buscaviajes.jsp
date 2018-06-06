@@ -55,11 +55,11 @@
                                 </s:if>
                                 </div>
                                 <div class="col-xs-12 col-sm-4 col-lg-4 ">
-                                <p>Origen:<s:property value="idLocalidadOrigen.nombre"></s:property></p> 
-                            <p>Destino:<s:property value="idLocalidadDestino.nombre"></s:property></p> 
-                            <p>Precio:<s:property value="percioPersona"></s:property></p> 
-                            <p>Plazas disponibles: <s:property value="plazasMax"></s:property></p> 
-                            <p>Punto de recogida: <s:property value="puntoRecogida"></s:property></p>
+                                <p><strong>Origen:</strong><s:property value="idLocalidadOrigen.nombre"></s:property></p> 
+                            <p><strong>Destino:</strong><s:property value="idLocalidadDestino.nombre"></s:property></p> 
+                            <p><strong>Precio:</strong><s:property value="percioPersona"></s:property></p> 
+                            <p><strong>Plazas disponibles:</strong> <s:property value="listaPasajeros.size()"></s:property>/<s:property value="plazasMax"></s:property></p> 
+                            <p><strong>Punto de recogida:</strong> <s:property value="puntoRecogida"></s:property></p>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-lg-5 ">                                
                                 <p>
@@ -70,8 +70,8 @@
                                 <div class="fotorama">                                    
                                     <s:iterator value="fotosVehiculo">                                        
                                         <img src="<s:property value="rutaFoto"></s:property>" alt="imagen coche">
-                                        <!--<img src="./images/audi_r8_rojo.jpg" />-->
-                                        <!--<img src="./images/renault_clio_gris.jpg" />-->
+                                            <!--<img src="./images/audi_r8_rojo.jpg" />-->
+                                            <!--<img src="./images/renault_clio_gris.jpg" />-->
                                     </s:iterator>
                                 </div>
                             </s:else>
@@ -80,8 +80,8 @@
                     </div>
                     <div class="col-lg-2"></div>
                 </div>
-
-            </s:iterator>   
+                <hr/>
+            </s:iterator>                
         </s:else>                        
     </div>
 </div>

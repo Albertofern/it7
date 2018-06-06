@@ -121,6 +121,7 @@ public class buscaViajeAction extends ActionSupport {
                 
                 if(v.getPlazasMax() > pasajeroDao.listarPasajeros(v.getIdViaje()).size()){
                     v.setFotosVehiculo(fotoDao.fotosVehiculo(String.valueOf(v.getIdVehiculoElegido().getIdVehiculo())));
+                    v.setListaPasajeros(pasajeroDao.listarPasajeros(v.getIdViaje()));
                     listaFinal.add(v);
                 }
             }
@@ -134,6 +135,7 @@ public class buscaViajeAction extends ActionSupport {
                 
                 if(v.getPlazasMax() > pasajeroDao.listarPasajeros(v.getIdViaje()).size()){
                     v.setFotosVehiculo(fotoDao.fotosVehiculo(String.valueOf(v.getIdVehiculoElegido().getIdVehiculo())));
+                    v.setListaPasajeros(pasajeroDao.listarPasajeros(v.getIdViaje()));
                     listaFinal.add(v);
                 }
             }
