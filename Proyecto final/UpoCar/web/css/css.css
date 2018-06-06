@@ -186,3 +186,7 @@ table th, table tbody {
 .datagrid table tbody tr:last-child td { 
     border-bottom: none; 
 }
+
+.noDisponible{
+    width: 200px;
+}

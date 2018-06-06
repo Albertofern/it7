@@ -64,7 +64,7 @@
                             <div class="col-xs-12 col-sm-6 col-lg-5 ">                                
                                 <p>
                                 <s:if test="%{fotosVehiculo.size() == 0}">
-                                    <img src="./images/Sin_imagen.png" class="img-responsive">
+                                    <img src="./images/Sin_imagen.png" class="img-responsive noDisponible">
                                 </s:if>
                                 <s:else>
                                 <div class="fotorama">                                    
