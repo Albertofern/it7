@@ -44,6 +44,7 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Viaje implements Serializable {
 
     private List<Pasajeros> listaPasajeros = new ArrayList<Pasajeros>();
+    private List<FotoVehi> fotosVehiculo = new ArrayList<FotoVehi>();
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -210,6 +211,14 @@ public class Viaje implements Serializable {
 
     public void setListaPasajeros(List<Pasajeros> listaPasajeros) {
         this.listaPasajeros = listaPasajeros;
+    }
+
+    public List<FotoVehi> getFotosVehiculo() {
+        return fotosVehiculo;
+    }
+
+    public void setFotosVehiculo(List<FotoVehi> fotosVehiculo) {
+        this.fotosVehiculo = fotosVehiculo;
     }
     
 }

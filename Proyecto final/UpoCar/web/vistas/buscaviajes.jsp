@@ -61,18 +61,23 @@
                             <p>Plazas disponibles: <s:property value="plazasMax"></s:property></p> 
                             <p>Punto de recogida: <s:property value="puntoRecogida"></s:property></p>
                             </div>
-                            <div class="col-xs-12 col-sm-6 col-lg-5 ">
-                                <p>Foto coche</p>  Foto del coche del usuario que publica el viaje
-                                
-                                <!--<div class="fotorama">-->
-                                    <!--<img src="http://s.fotorama.io/1.jpg">-->
-                                    <!--<img src="http://s.fotorama.io/2.jpg">-->
-                                <!--</div>-->
-                            </div>
-
+                            <div class="col-xs-12 col-sm-6 col-lg-5 ">                                
+                                <p>
+                                <s:if test="%{fotosVehiculo.size() == 0}">
+                                    <img src="./images/Sin_imagen.png" class="img-responsive">
+                                </s:if>
+                                <s:else>
+                                <div class="fotorama">                                    
+                                    <s:iterator value="fotosVehiculo">                                        
+                                        <img src="<s:property value="rutaFoto"></s:property>" alt="imagen coche">
+                                    </s:iterator>
+                                </div>
+                            </s:else>
+                            </p>
                         </div>
-                        <div class="col-lg-2"></div>
                     </div>
+                    <div class="col-lg-2"></div>
+                </div>
 
             </s:iterator>   
         </s:else>                        

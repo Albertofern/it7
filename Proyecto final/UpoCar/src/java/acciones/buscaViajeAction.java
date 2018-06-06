@@ -33,6 +33,7 @@ public class buscaViajeAction extends ActionSupport {
     private int plazas;
     private double precio;
     private List listadoViajes;
+    private List listadoFotos;
     private String idViaje;
 
     public String getIdViaje() {
@@ -46,6 +47,15 @@ public class buscaViajeAction extends ActionSupport {
     ViajeDAO viajeDao = new ViajeDAO();
     VehiculoDAO vehiculoDao = new VehiculoDAO();
     PasajeroDAO pasajeroDao = new PasajeroDAO();
+    FotoVehiDAO fotoDao = new FotoVehiDAO();
+
+    public List getListadoFotos() {
+        return listadoFotos;
+    }
+
+    public void setListadoFotos(List listadoFotos) {
+        this.listadoFotos = listadoFotos;
+    }
 
     public List getListadoViajes() {
         return listadoViajes;
@@ -110,6 +120,7 @@ public class buscaViajeAction extends ActionSupport {
                 Viaje v = (Viaje) listadoProvisional.get(i);
                 
                 if(v.getPlazasMax() > pasajeroDao.listarPasajeros(v.getIdViaje()).size()){
+                    v.setFotosVehiculo(fotoDao.fotosVehiculo(String.valueOf(v.getIdVehiculoElegido().getIdVehiculo())));
                     listaFinal.add(v);
                 }
             }
@@ -122,6 +133,7 @@ public class buscaViajeAction extends ActionSupport {
                 Viaje v = (Viaje) listadoProvisional.get(i);
                 
                 if(v.getPlazasMax() > pasajeroDao.listarPasajeros(v.getIdViaje()).size()){
+                    v.setFotosVehiculo(fotoDao.fotosVehiculo(String.valueOf(v.getIdVehiculoElegido().getIdVehiculo())));
                     listaFinal.add(v);
                 }
             }
