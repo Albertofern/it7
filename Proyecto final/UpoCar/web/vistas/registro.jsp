@@ -16,7 +16,7 @@
                         <s:form action="login" cssClass="login">  
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    Nickname<s:textfield cssClass="form-control" name="usuario"></s:textfield><br/>
+                                    Nickname<s:textfield cssClass="form-control" name="usuario"></s:textfield>
                                     Nombre<s:textfield cssClass="form-control" name="nombre"></s:textfield>  
                                     Apellidos<s:textfield cssClass="form-control" name="apellidos" cssStyle="inputLogin"></s:textfield>  
                                     Email<s:textfield cssClass="form-control" name="email" cssStyle="inputLogin"></s:textfield> 
@@ -35,6 +35,7 @@
 
                                 <div class="form-group">
                                     <select name="sexo" class="form-control"> 
+                                        <option selected disabled>Sexo</option>
                                         <option value="M">Masculino</option> 
                                         <option value="F">Femenino</option>                             
                                     </select> <br/>
