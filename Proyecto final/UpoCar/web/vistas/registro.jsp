@@ -6,7 +6,7 @@
 
 
             <div class="modal-dialog modal-registro">
-                <div class="modal-content">
+                <div class="modal-content modal-position">
                     <div class="modal-header">
                         			
                         <h4 class="modal-title">Registrate</h4>	

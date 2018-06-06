@@ -86,6 +86,10 @@ footer{
 		width: 350px;
 	}
         
+        .modal-position{
+            margin-top: -150px;
+        }
+        
         .modal-registro{
             color: #636363;
 		width: 550px;

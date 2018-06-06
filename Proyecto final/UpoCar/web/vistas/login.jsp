@@ -6,7 +6,7 @@
 
             
         <div class="modal-dialog modal-login">
-            <div class="modal-content">
+            <div class="modal-content modal-position">
                 <div class="modal-header">
                     <div class="avatar">
                         <img src="./images/avatar.png" alt="Avatar">
