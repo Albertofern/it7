@@ -11,14 +11,14 @@
                     <div class="avatar">
                         <img src="./images/avatar.png" alt="Avatar">
                     </div>				
-                    <h4 class="modal-title">Member Login</h4>	
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Entrar en UpoCar</h4>	
+                    
                 </div>
                 <div class="modal-body">
                     <s:form action="login" cssClass="login">  
                         <div class="form-group">
                             	
-                            <s:textfield cssClass="form-control" name="usuario" cssStyle="inputLogin"></s:textfield>
+                            Nickname<s:textfield cssClass="form-control" name="usuario" cssStyle="inputLogin"></s:textfield>
                         </div>
                         <div class="form-group">
                             
