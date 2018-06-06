@@ -36,7 +36,13 @@
                     <div class="col-lg-2"></div>
                     <div class="col-lg-8 colum-height">
                         <div class="col-xs-12 col-sm-2 col-lg-3 ">
-                            <p>Imagen</p> <!-- Imagen del usuario que publica el viaje, si no tiene, que muestre una por defecto -->
+                            <s:if test="%{idUsuarioPublica.foto == ''}">
+                                <img class="foto-mi-cuenta img-circle img-responsive" src="http://www.cetep.cl/web/wp-content/uploads/2016/11/icono-de-usuario-masculino.jpg" />
+                            </s:if>
+                            <s:else>
+                                <img class="foto-mi-cuenta img-circle img-responsive" src="<s:property value="idUsuarioPublica.foto"></s:property>>
+                            </s:else>
+                            <!-- <p>Imagen</p> Imagen del usuario que publica el viaje, si no tiene, que muestre una por defecto -->
                             <p><s:property value="idUsuarioPublica.nombre"></s:property> <s:property value="idUsuarioPublica.apellidos"></s:property></p> 
                             <p>Puntuacion: <s:property value="idUsuarioPublica.totalPuntuacion"></s:property></p>
                             <s:if test="%{#session.usuario != null}">     
