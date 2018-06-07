@@ -69,7 +69,7 @@
                                 <s:else>
                                 <div class="fotorama">                                    
                                     <s:iterator value="fotosVehiculo">                                        
-                                        <img src="<s:property value="rutaFoto"></s:property>" alt="imagen coche">
+                                        <img src="<s:property value="rutaFoto"></s:property>" />
                                             <!--<img src="./images/audi_r8_rojo.jpg" />-->
                                             <!--<img src="./images/renault_clio_gris.jpg" />-->
                                     </s:iterator>
