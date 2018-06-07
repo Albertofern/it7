@@ -13,7 +13,7 @@
                         
                     </div>
                     <div class="modal-body">
-                        <s:form action="login" cssClass="login">  
+                        <s:form action="registro" cssClass="login">  
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     Nickname<s:textfield cssClass="form-control" name="usuario"></s:textfield>

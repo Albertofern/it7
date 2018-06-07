@@ -6,6 +6,7 @@
 
 package modelo;
 
+import static com.opensymphony.xwork2.Action.NONE;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.core.GenericType;
