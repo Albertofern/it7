@@ -121,6 +121,14 @@
             <result name="success">/vistas/mismensajes.jsp</result>
         </action>
         
+        <action name="toMisReservas" method="toMisReservas" class="acciones.miCuentaAction">
+            <result name="success">/vistas/misreservas.jsp</result>
+        </action>
+        
+        <action name="eliminarReserva" method="eliminarReserva" class="acciones.miCuentaAction">
+            <result name="success">/vistas/misreservas.jsp</result>
+        </action>
+        
         <action name="verPerfil" method="verPerfilUsuario" class="acciones.verPerfilAction">
             <result name="success">/vistas/verPerfil.jsp</result>
         </action>

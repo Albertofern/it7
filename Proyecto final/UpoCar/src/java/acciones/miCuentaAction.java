@@ -60,6 +60,9 @@ public class miCuentaAction extends ActionSupport {
     List<Mensaje> listaMensajesRecibidos = new ArrayList<Mensaje>();
     String idMensaje;
     
+    //Mis Reservas
+    List<Pasajeros> listaReservas = new ArrayList<Pasajeros>();
+    
     public miCuentaAction() {
     }
     
@@ -208,6 +211,29 @@ public class miCuentaAction extends ActionSupport {
         mDao.deleteMensaje(Integer.parseInt(this.getIdMensaje()));
         //Llamo al metodo toMisMensajes() para recargar la pagina
         this.toMisMensajes();
+        return SUCCESS;
+    }
+    
+    public String toMisReservas(){
+        //Obtengo el usuario de la sesion
+        Map sesion = (Map) ActionContext.getContext().get("session");
+        Usuario u = (Usuario) sesion.get("usuario");        
+        //Creo un objeto PasajeroDAO para obtener los viajes donde soy pasajero
+        PasajeroDAO pDao = new PasajeroDAO();
+        List<Pasajeros> listaPasajerosReservas = pDao.listarPasajerosPorUsuarios(u.getIdUsuario());
+        
+        
+        this.setListaReservas(listaPasajerosReservas);
+        
+        return SUCCESS;
+    }
+    
+    public String eliminarReserva(){
+        // Creo un objeto PasajeroDAO y le paso el idPasajero para eliminarlo
+        PasajeroDAO pDao = new PasajeroDAO();
+        pDao.deletePasajeros(this.getIdPasajero());
+        //Llamo al metodo toMisMensajes() para recargar la pagina
+        this.toMisReservas();
         return SUCCESS;
     }
     
@@ -378,6 +404,14 @@ public class miCuentaAction extends ActionSupport {
         this.idMensaje = idMensaje;
     }
     
-    
+    //Getter y setter Mis Reservas
+
+    public List<Pasajeros> getListaReservas() {
+        return listaReservas;
+    }
+
+    public void setListaReservas(List<Pasajeros> listaReservas) {
+        this.listaReservas = listaReservas;
+    }
     
 }

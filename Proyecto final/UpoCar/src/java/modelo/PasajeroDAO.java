@@ -53,6 +53,22 @@ public class PasajeroDAO {
         return listaPasajerosFiltrados;
     }
 
+    public List<Pasajeros> listarPasajerosPorUsuarios(int idUsuario) {
+        GenericType<List<Pasajeros>> genericType = new GenericType<List<Pasajeros>>() {
+        };
+
+        List<Pasajeros> listaPasajeros = this.getCliente().findAll_XML(genericType);
+        List<Pasajeros> listaPasajerosFiltrados = new ArrayList<Pasajeros>();
+
+        for (Pasajeros p : listaPasajeros) {
+            if (p.getIdUsuario().getIdUsuario() == idUsuario) {
+                listaPasajerosFiltrados.add(p);
+            }
+        }
+
+        return listaPasajerosFiltrados;
+    }
+    
     public void deletePasajeros(String id) {
         this.getCliente().remove(id);
     }
