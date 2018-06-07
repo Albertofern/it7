@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.core.GenericType;
 import webServiceREST.JerseyClientPuntuacion;
+import webServiceREST.JerseyClientUsuario;
 import webServiceREST.entidades.Puntuacion;
+import webServiceREST.entidades.Usuario;
 
 /**
  * 
@@ -19,6 +21,7 @@ import webServiceREST.entidades.Puntuacion;
 public class PuntuacionDAO {
 
     JerseyClientPuntuacion puntClient = new JerseyClientPuntuacion();
+    JerseyClientUsuario usuarioClient = new JerseyClientUsuario();
     
     public double getPuntuacionUsuario(int id){
         GenericType<List<Puntuacion>> genericType = new GenericType<List<Puntuacion>>(){};
@@ -81,5 +84,12 @@ public class PuntuacionDAO {
     
     public void puntuar(Puntuacion p){
         puntClient.create_XML(p);
+        GenericType<Usuario> genericTypeUsuario = new GenericType<Usuario>() {
+        };
+        
+        Usuario u = p.getIdUsuarioRecibe();
+        double puntuacion = getPuntuacionUsuario(u.getIdUsuario());
+        u.setTotalPuntuacion(puntuacion);
+        usuarioClient.edit_XML(u, String.valueOf(u.getIdUsuario()));
     }
 }
