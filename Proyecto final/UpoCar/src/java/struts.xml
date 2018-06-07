@@ -125,6 +125,10 @@
             <result name="success">/vistas/verPerfil.jsp</result>
         </action>
         
+        <action name="votar" method="votar" class="acciones.verPerfilAction">
+            <result name="success">/vistas/misopiniones.jsp</result>
+        </action>
+        
     </package>
     
     <!-- Administrador -->

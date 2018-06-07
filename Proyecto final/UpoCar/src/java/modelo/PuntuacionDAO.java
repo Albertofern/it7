@@ -78,4 +78,8 @@ public class PuntuacionDAO {
     public void deletePuntuacion(String id) {
         puntClient.remove(id);
     }
+    
+    public void puntuar(Puntuacion p){
+        puntClient.create_XML(p);
+    }
 }
