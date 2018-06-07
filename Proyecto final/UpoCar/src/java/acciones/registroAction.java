@@ -103,7 +103,13 @@ public class registroAction extends ActionSupport {
     }
     
     public String registro() throws Exception {
-        Usuario u = new Usuario(null, usuario, password, "1", nombre, apellidos, email, localidad, sexo, NONE, 0);        
+        Usuario u = null;
+        if(sexo.equals("M")){
+            u = new Usuario(null, usuario, password, "1", nombre, apellidos, email, localidad, sexo, "./images/male.png", 0);        
+        } else {
+            u = new Usuario(null, usuario, password, "1", nombre, apellidos, email, localidad, sexo, "./images/female.png", 0);        
+        }
+        
         dao.registro(u);
         
         return SUCCESS;

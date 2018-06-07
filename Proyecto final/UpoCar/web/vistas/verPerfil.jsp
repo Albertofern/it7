@@ -6,12 +6,9 @@
 
         <div class="col-lg-3">                
             <div class="col-lg-12">                
-                <s:if test="%{foto == ''}">
-                    <img class="foto-mi-cuenta img-circle img-responsive" src="http://www.cetep.cl/web/wp-content/uploads/2016/11/icono-de-usuario-masculino.jpg" />                                
-                </s:if>
-                <s:else>
+                
                     <img class="foto-mi-cuenta img-circle img-responsive" src="<s:property value="foto"></s:property>" /> 
-                </s:else>
+
 
                 <br/><br/>
                 <s:property value="nombre"></s:property>

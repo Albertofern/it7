@@ -36,26 +36,23 @@
                     <div class="col-lg-2"></div>
                     <div class="col-lg-8 colum-height">
                         <div class="col-xs-12 col-sm-2 col-lg-3 ">
-                            <s:if test="%{idUsuarioPublica.foto == ''}">
-                                <img class="foto-mi-cuenta img-circle img-responsive" src="http://www.cetep.cl/web/wp-content/uploads/2016/11/icono-de-usuario-masculino.jpg" />                                
-                            </s:if>
-                            <s:else>
-                                <img class="foto-mi-cuenta img-circle img-responsive" src='<s:property value="idUsuarioPublica.foto"></s:property>' />
-                                </s:else>
+
+                            <img class="foto-mi-cuenta img-circle img-responsive" src='<s:property value="idUsuarioPublica.foto"></s:property>' />
+
                                 <!-- <p>Imagen</p> Imagen del usuario que publica el viaje, si no tiene, que muestre una por defecto -->
                                 <p><s:property value="idUsuarioPublica.nombre"></s:property> <s:property value="idUsuarioPublica.apellidos"></s:property></p> 
-                                <p>Puntuacion: <s:property value="idUsuarioPublica.totalPuntuacion"></s:property></p>
-                                <s:if test="%{#session.usuario != null}">     
-                                    <p>
+                            <p>Puntuacion: <s:property value="idUsuarioPublica.totalPuntuacion"></s:property></p>
+                            <s:if test="%{#session.usuario != null}">     
+                                <p>
                                     <s:form action="verPerfil">
                                         <s:submit name="verPerfil" value="Ver perfil" cssClass="btn btn-primary btnBuscar"></s:submit>
                                         <s:hidden name="idUsuario" value="%{idUsuarioPublica.idUsuario}"></s:hidden>
                                     </s:form>
-                                    </p>
-                                </s:if>
-                                </div>
-                                <div class="col-xs-12 col-sm-4 col-lg-4 ">
-                                <p><strong>Origen:</strong><s:property value="idLocalidadOrigen.nombre"></s:property></p> 
+                                </p>
+                            </s:if>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-lg-4 ">
+                            <p><strong>Origen:</strong><s:property value="idLocalidadOrigen.nombre"></s:property></p> 
                             <p><strong>Destino:</strong><s:property value="idLocalidadDestino.nombre"></s:property></p> 
                             <p><strong>Precio:</strong><s:property value="percioPersona"></s:property></p> 
                             <p><strong>Plazas disponibles:</strong> <s:property value="listaPasajeros.size()"></s:property>/<s:property value="plazasMax"></s:property></p> 

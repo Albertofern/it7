@@ -90,7 +90,7 @@ public class PuntuacionDAO {
         
         Usuario u = p.getIdUsuarioRecibe();
         double puntuacion = getPuntuacionUsuario(u.getIdUsuario());
-        u.setTotalPuntuacion(puntuacion);
+        u.setTotalPuntuacion(puntuacion);     
         usuarioClient.edit_XML(u, String.valueOf(u.getIdUsuario()));
     }
 }
