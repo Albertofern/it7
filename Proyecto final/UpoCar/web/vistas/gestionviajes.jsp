@@ -105,7 +105,7 @@
 <script type="text/javascript">
     $("document").ready(function () {
         $(".updateButton").click(function () {
-            $("#formularioUpdate").toggle();
+            $("#formularioUpdate").show();
             var id = $(this).attr("id");
             var precioPers = $("#precioPersona" + id).text();
             var plazasMax = $("#plazasMax" + id).text();

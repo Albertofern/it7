@@ -111,7 +111,7 @@
 <script type="text/javascript">
     $("document").ready(function () {
         $(".updateButton").click(function () {
-            $("#formularioUpdate").toggle();
+            $("#formularioUpdate").show();
             var id = $(this).attr("id");
             var usuario = $("#usuario" + id).text();
             var nombre = $("#nombre" + id).text();
