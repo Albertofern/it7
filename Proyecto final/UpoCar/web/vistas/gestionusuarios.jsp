@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div id="background-firstlook">
         &nbsp;
-        <h1>Gesti&oacute;n Usuarios</h1>
+        <h1 class="admin">Gesti&oacute;n Usuarios</h1>
         <hr />
         &nbsp;
         <div class="row">
@@ -10,15 +10,18 @@
             <div class="col-xs-12">
                 <s:form method="post" action="buscarUsuario">
                     <s:textfield placeholder="Nombre usuario..." name="nomUsuario" />
-                    <s:submit name="buscarUsuario" value="Buscar" />
+                    <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/buscar.jpg" /></button>
                 </s:form>
+                    &nbsp;
                 <s:form method="post" action="toGestionUsuarios">
-                    <s:submit name="buscarUsuario" value="Mostrar todos" />
+                    Mostrar Todo
+                    <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/mostrarTodo.png" /></button>
                 </s:form>
+                    &nbsp;
             </div>
             <div class="col-xs-12">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-10 datagrid">
+               
+                <div class="col-xs-12 datagrid">
                     <table class="col-lg-12" border="1">
                         <thead>
                             <tr>
@@ -55,8 +58,8 @@
                                         <td id="ultimoAcceso<s:property value="idUsuario" />"><s:property value="ultimoAcceso" /></td>
                                         <td id="fechaAlta<s:property value="idUsuario" />"><s:property value="fechaAlta" /></td>
                                         <td>
-                                            <s:form action="deleteUsuario" ><button name="idUsuario" value="<s:property value="idUsuario" />"><img class="imagenCRUD img-circle img-responsive" title="Borrar" src="./images/papelera.png" /></button></s:form>
-                                            <button id="<s:property value="idUsuario" />" class="updateButton" /><img class="imagenCRUD img-circle img-responsive" title="Editar" src="./images/update.png" /></button>
+                                            <s:form action="deleteUsuario" ><button class="btn btn-default" name="idUsuario" value="<s:property value="idUsuario" />"><img class="imagenCRUD img-circle img-responsive" title="Borrar" src="./images/papelera.png" /></button></s:form>
+                                            <button id="<s:property value="idUsuario" />" class="updateButton btn btn-default" /><img class="imagenCRUD img-circle img-responsive" title="Editar" src="./images/update.png" /></button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -70,37 +73,39 @@
                         </s:else>
                     </table>
                 </div>
-                <div class="col-lg-1"></div>
+    
             </div>
             <div class="col-xs-12"><hr /></div>
 
             <div id="formularioUpdate" style="display: none" class="col-xs-12 center-block" >
 
-                <div class="col-lg-5"></div>
+                <div class="col-lg-4 col-xs-3"></div>
 
-                <div class="col-lg-2">
+                <div class="col-lg-4 col-xs-6 datagrid">
                     <table >
+                        <thead>
                         <tr><th colspan="2">Update</th></tr>
+                        </thead>
                                 <s:form id="formularioUpdate" method="post" action="updateUsuario">
                             <tr><td>ID:</td><td id="updateIdUsuario"></td></tr>
-                            <tr><td>Usuario:</td><td><s:textfield id="updateUsuario" name="updateUsuario" value="" ></s:textfield></td></tr>
+                            <tr class="alt"><td>Usuario:</td><td><s:textfield id="updateUsuario" name="updateUsuario" value="" ></s:textfield></td></tr>
                             <tr><td>Nombre</td><td><s:textfield id="updateNombre" name="updateNombre" value="" ></s:textfield></td></tr>
-                            <tr><td>Apellidos:</td><td><s:textfield id="updateApellidos" name="updateApellidos" value=""></s:textfield></td></tr>
+                            <tr class="alt"><td>Apellidos:</td><td><s:textfield id="updateApellidos" name="updateApellidos" value=""></s:textfield></td></tr>
                             <tr><td>E-mail:</td><td><s:textfield id="updateEmail" name="updateEmail" value=""></s:textfield></td></tr>
-                            <tr><td>Localidad:</td><td><s:textfield id="updateLocalidad" name="updateLocalidad" value=""></s:textfield></td></tr>
+                            <tr class="alt"><td>Localidad:</td><td><s:textfield id="updateLocalidad" name="updateLocalidad" value=""></s:textfield></td></tr>
                                 <tr><td>Sexo:</td><td>
                                         <select id="updateSexo" name="updateSexo" > 
                                             <option id="masculino" value="M">Masculino</option> 
                                             <option id="femenino" value="F">Femenino</option>                             
                                         </select> </td></tr>
-                                <tr><td>Foto:</td><td><s:textfield id="updateFoto" name="updateFoto" value=""></s:textfield></td></tr>
-                            <tr><td><s:submit value="Update"></s:submit></td></tr>
+                                <tr class="alt"><td>Foto:</td><td><s:textfield id="updateFoto" name="updateFoto" value=""></s:textfield></td></tr>
+                            <tr><td colspan="2"><s:submit cssClass="btn btn-default" value="Update"></s:submit></td></tr>
                                 <input id="hiddenUpdateID" type="hidden" name="updateIdUsuario" value="" />
                         </s:form>
-                        <tr><td><button id="volverUpdate">Volver</button></td></tr>
+                                <tr class="alt"><td colspan="2"><button class="btn btn-default" id="volverUpdate">Cerrar</button></td></tr>
                     </table>
                 </div>
-                <div class="col-lg-5"></div>
+                <div class="col-lg-4 col-xs-3"></div>
             </div>
 
         </div>
@@ -147,4 +152,6 @@
         });
     });
 </script>
+<br />
+<br />
 <%@include file="./index_footer.jsp" %>

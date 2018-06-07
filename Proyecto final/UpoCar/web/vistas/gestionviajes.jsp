@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div id="background-firstlook">
         &nbsp;
-        <h1>Gesti&oacute;n Viajes</h1>
+        <h1 class="admin">Gesti&oacute;n Viajes</h1>
         <hr />
         &nbsp;
         <div class="row">
@@ -10,11 +10,14 @@
             <div class="col-xs-12">
                 <s:form method="post" action="buscarUsuarioViaje">
                     <s:textfield placeholder="Nombre conductor..." name="nomUsuario" />
-                    <s:submit name="buscarUsuario" value="Buscar" />
+                    <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/buscar.jpg" /></button>
                 </s:form>
+                    &nbsp;
                 <s:form method="post" action="toGestionViajes">
-                    <s:submit name="buscarUsuario" value="Mostrar todos" />
+                    Mostrar Todo
+                    <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/mostrarTodo.png" /></button>
                 </s:form>
+                    &nbsp;
             </div>
             <div class="col-xs-12 datagrid">
                 <table>
@@ -51,8 +54,8 @@
                                     <td id="plazasMax<s:property value="idViaje" />"><s:property value="plazasMax" /></td>
                                     <td id="fechaSalida<s:property value="idViaje" />"><s:property value="fechaSalida" /></td>
                                     <td>
-                                        <s:form action="deleteViaje" ><button name="idViaje" value="<s:property value="idViaje" />"><img class="imagenCRUD" title="Borrar" src="./images/papelera.png" /></button></s:form>
-                                        <button id="<s:property value="idViaje" />" class="updateButton" /><img class="imagenCRUD" title="Editar" src="./images/update.png" /></button>
+                                        <s:form action="deleteViaje" ><button class="btn btn-default" name="idViaje" value="<s:property value="idViaje" />"><img class="imagenCRUD" title="Borrar" src="./images/papelera.png" /></button></s:form>
+                                        <button id="<s:property value="idViaje" />" class="updateButton btn btn-default" /><img class="imagenCRUD" title="Editar" src="./images/update.png" /></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -72,27 +75,29 @@
 
             <div id="formularioUpdate" style="display: none" class="col-xs-12 center-block" >
 
-                <div class="col-lg-5"></div>
+                <div class="col-lg-4 col-xs-3"></div>
 
-                <div class="col-lg-2">
+                <div class="col-lg-4 col-xs-6 datagrid">
                     <table >
+                        <thead>
                         <tr><th colspan="2">Update</th></tr>
+                        </thead>
                                 <s:form id="formularioUpdate" method="post" action="updateViaje">
                             <tr><td>ID Viaje</td><td id="updateId"></td></tr>
-                            <tr><td>Conductor:</td><td><s:select list="listadoUsuarios" listValue="nomUsuario" listKey="idUsuario" name="idUsuario" ></s:select>  </td></tr>
+                            <tr class="alt"><td>Conductor:</td><td><s:select list="listadoUsuarios" listValue="nomUsuario" listKey="idUsuario" name="idUsuario" ></s:select>  </td></tr>
                             <tr><td>Origen:</td><td><s:select list="listadoLocalidades" listValue="nombre" listKey="idLocalidad" name="updateIdLocalidadOrigen" ></s:select>  </td></tr>
-                            <tr><td>Destino:</td><td><s:select list="listadoLocalidades" listValue="nombre" listKey="idLocalidad" name="updateIdLocalidadDestino" ></s:select>  </td></tr>
+                            <tr class="alt"><td>Destino:</td><td><s:select list="listadoLocalidades" listValue="nombre" listKey="idLocalidad" name="updateIdLocalidadDestino" ></s:select>  </td></tr>
                             <tr><td>Plazas M&aacute;ximas:</td><td><s:textfield id="updatePlazasMax" name="updatePlazasMax" value="" ></s:textfield></td></tr>
-                            <tr><td>Precio/Persona:</td><td><s:textfield id="updatePrecioPersona" name="updatePrecioPersona" value=""></s:textfield></td></tr>
+                            <tr class="alt"><td>Precio/Persona:</td><td><s:textfield id="updatePrecioPersona" name="updatePrecioPersona" value=""></s:textfield></td></tr>
                             <tr><td>Lugar de Recogida:</td><td><s:textfield id="updatePuntoRecogida" name="updatePuntoRecogida" value=""></s:textfield></td></tr>
-                                <tr><td>Fecha Salida:</td><td><input type="datetime-local"  id="updateFechaSalida" name="updateFechaSalida" value=""  /></td></tr>
-                                <tr><td><s:submit value="Update"></s:submit></td></tr>
+                                <tr class="alt"><td>Fecha Salida:</td><td><input type="datetime-local"  id="updateFechaSalida" name="updateFechaSalida" value=""  /></td></tr>
+                                <tr><td  colspan="2"><s:submit cssClass="btn btn-default" value="Update"></s:submit></td></tr>
                                 <input id="hiddenUpdateID" type="hidden" name="updateId" value="" />
                         </s:form>
-                        <tr><td><button id="volverUpdate">Volver</button></td></tr>
+                        <tr class="alt"><td  colspan="2"><button class="btn btn-default" id="volverUpdate">Cerrar</button></td></tr>
                     </table>
                 </div>
-                <div class="col-lg-5"></div>
+                <div class="col-lg-4 col-xs-3"></div>
             </div>
         </div>
 
@@ -130,4 +135,6 @@
         });
     });
 </script>
+<br />
+<br />
 <%@include file="./index_footer.jsp" %>

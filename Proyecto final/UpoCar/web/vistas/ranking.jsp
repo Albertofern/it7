@@ -2,26 +2,28 @@
 <div class="container-fluid">
     <div id="background-firstlook">
         &nbsp;
-        <h1>Ranking mayor puntuaci&oacute;n usuarios</h1>
+        <h1 class="admin">Ranking mayor puntuaci&oacute;n usuarios</h1>
         <hr />
         &nbsp;
         <div class="row">
 
-            <div class="col-lg-12">
-                <div class="col-lg-12">
+            <div class="col-xs-12">
+                <div class="col-xs-12">
                     <s:form method="post" action="buscarUsuarioRanking">
                         <s:textfield placeholder="Nombre usuario..." name="usuario" />
-                        <s:submit name="buscarUsuario" value="Buscar" />
-                    </s:form>
+                        <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/buscar.jpg" /></button>
+                        </s:form>
+                    &nbsp;
                     <s:form method="post" action="toRanking">
-                        <s:submit name="buscarUsuario" value="Mostrar todos" />
-                    </s:form>
-
+                        Mostrar Todo
+                        <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/mostrarTodo.png" /></button>
+                        </s:form>
+                    &nbsp;
                 </div>
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8 datagrid">
 
-                    <table class="col-lg-12" >
+                    <table class="col-xs-12" >
                         <thead>
                             <tr>
                                 <th></th>
@@ -82,4 +84,6 @@
 
     </div>
 </div>
+<br />
+<br />
 <%@include file="index_footer.jsp" %>

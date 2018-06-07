@@ -338,6 +338,13 @@ form.login input[type="submit"]
     height: 50px;    
 }
 
+.imagenBuscar{
+    display: inline;
+    width: 30px;
+    height: 30px;    
+}
+
+
 table th, table tbody {
     text-align: center;
     vertical-align: central;
@@ -371,6 +378,7 @@ table th, table tbody {
     font-weight: bold; 
     border-left: 1px solid #0070A8; 
 } 
+
 .datagrid table thead th:first-child { 
     border: none; 
 }
@@ -388,4 +396,15 @@ table th, table tbody {
 
 .noDisponible{
     width: 200px;
+}
+
+.admin {
+	margin: 1em 0 0.5em 0;
+	font-weight: 600;
+	font-family: 'Titillium Web', sans-serif;
+	position: relative;
+	text-shadow: 0 -1px 1px rgba(88,158,65);
+	font-size: 22px;
+	color: #1A6ED5;
+	text-transform: uppercase;
 }

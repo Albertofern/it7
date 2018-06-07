@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div id="background-firstlook">
         &nbsp;
-        <h1>Gesti&oacute;n Mensajes</h1>
+        <h1 class="admin">Gesti&oacute;n Mensajes</h1>
         <hr />
         &nbsp;
         <div class="row">
@@ -10,15 +10,19 @@
             <div class="col-xs-12">
                 <s:form method="post" action="buscarEnviaMensaje">
                     <s:textfield placeholder="Usuario envia mensaje..." name="nomUsuarioEnvia" />
-                    <s:submit name="buscarUsuario" value="Buscar" />
+                    <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/buscar.jpg" /></button>
                 </s:form>
+                &nbsp;
                 <s:form method="post" action="buscarRecibeMensaje">
                     <s:textfield placeholder="Usuario recibe mensaje..." name="nomUsuarioRecibe" />
-                    <s:submit name="buscarUsuario" value="Buscar" />
+                    <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/buscar.jpg" /></button>
                 </s:form>
+                &nbsp;
                 <s:form method="post" action="toGestionMensajes">
-                    <s:submit name="buscarUsuario" value="Mostrar todos" />
+                    Mostrar Todo
+                    <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/mostrarTodo.png" /></button>
                 </s:form>
+                &nbsp;
             </div>
             <div class="col-xs-12">
                 <div class="col-lg-1"></div>
@@ -48,8 +52,8 @@
                                         <td><s:property value="idUsuarioRecibe.nomUsuario" /></td>
                                         <td id="fecha<s:property value="idMensaje" />"><s:date name="fechaHora" format="yyyy-mm-dd HH:mm" /></td>
                                         <td>
-                                            <s:form action="deleteMensaje" ><button name="idMensaje" value="<s:property value="idMensaje" />"><img class="imagenCRUD" title="Borrar" src="./images/papelera.png" /></button></s:form>
-                                            <button id="<s:property value="idMensaje" />" class="updateButton" /><img class="imagenCRUD" title="Editar" src="./images/update.png" /></button>
+                                            <s:form action="deleteMensaje" ><button class="btn btn-default" name="idMensaje" value="<s:property value="idMensaje" />"><img class="imagenCRUD" title="Borrar" src="./images/papelera.png" /></button></s:form>
+                                            <button id="<s:property value="idMensaje" />" class="updateButton btn btn-default" /><img class="imagenCRUD" title="Editar" src="./images/update.png" /></button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -69,23 +73,25 @@
 
             <div id="formularioUpdate" style="display: none" class="col-xs-12 center-block" >
 
-                <div class="col-lg-5"></div>
+                <div class="col-lg-4 col-xs-3"></div>
 
-                <div class="col-lg-2">
+                <div class="col-lg-4 col-xs-6 datagrid">
                     <table >
-                        <tr><th colspan="2">Update</th></tr>
+                        <thead>
+                            <tr><th colspan="2">Update</th></tr>
+                        </thead>
                                 <s:form id="formularioUpdate"  method="post" action="updateMensaje">
                             <tr><td>ID Mensaje</td><td id="updateIdMensaje"></td></tr>
-                            <tr><td>Usuario recibe mensaje</td><td><s:select list="listadoUsuarios" listValue="nomUsuario" listKey="idUsuario" name="idUsuario" ></s:select>  </td></tr>
+                            <tr class="alt"><td>Usuario recibe mensaje</td><td><s:select list="listadoUsuarios" listValue="nomUsuario" listKey="idUsuario" name="idUsuario" ></s:select>  </td></tr>
                             <tr><td>Mensaje</td><td><s:textarea id="updateMensaje" name="updateMensaje" value="" ></s:textarea></td></tr>
-                            <tr><td><s:submit value="Update"></s:submit></td></tr>
+                            <tr class="alt"><td  colspan="2"><s:submit cssClass="btn btn-default" value="Update"></s:submit></td></tr>
                                 <tr><td><input id="hiddenUpdateID" type="hidden" name="idMensaje" value="" /></td></tr>
 
                         </s:form>
-                        <tr><td><button id="volverUpdate">Volver</button></td></tr>
+                                <tr class="alt"><td colspan="2"><button class="btn btn-default" id="volverUpdate">Cerrar</button></td></tr>
                     </table>
                 </div>
-                <div class="col-lg-5"></div>
+                <div class="col-lg-4 col-xs-3"></div>
             </div>
 
         </div>
@@ -115,4 +121,6 @@
         });
     });
 </script>
+<br />
+<br />
 <%@include file="./index_footer.jsp" %>
