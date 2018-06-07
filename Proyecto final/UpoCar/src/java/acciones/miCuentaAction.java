@@ -237,6 +237,10 @@ public class miCuentaAction extends ActionSupport {
         return SUCCESS;
     }
     
+    public String toMisCoches(){        
+        return SUCCESS;
+    }
+    
     // Getter y setter MisDatos
     public List<Usuario> getListadoUsuarios() {
         return listadoUsuarios;

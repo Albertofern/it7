@@ -129,6 +129,10 @@
             <result name="success">/vistas/misreservas.jsp</result>
         </action>
         
+        <action name="toMisCoches" method="toMisCoches" class="acciones.miCuentaAction">
+            <result name="success">/vistas/miscoches.jsp</result>
+        </action>
+        
         <action name="verPerfil" method="verPerfilUsuario" class="acciones.verPerfilAction">
             <result name="success">/vistas/verPerfil.jsp</result>
         </action>

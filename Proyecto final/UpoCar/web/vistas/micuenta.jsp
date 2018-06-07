@@ -6,7 +6,6 @@
         <hr />
         &nbsp;
         <div class="row">
-            <div class="col-sm-1"></div>
             <div class="col-sm-2">
                 <div><img class="foto-mi-cuenta img-circle img-responsive" src="./images/gestionUsuarios.png" /></div>        
                 <s:form action="toMisDatos"><button class="btn btn-default hidden-sm hidden-md hidden-sm" >Mis datos</button></s:form>
@@ -32,7 +31,11 @@
                 <s:form action="toMisReservas"><button class="btn btn-default hidden-sm hidden-md hidden-sm" >Mis reservas</button></s:form>
                     &nbsp;
                 </div>
-                <div class="col-sm-1"></div>
+                <div class="col-sm-2">
+                    <div><img class="foto-mi-cuenta img-circle img-responsive" src="./images/gestionUsuarios.png" /></div>        
+                <s:form action="toMisCoches"><button class="btn btn-default hidden-sm hidden-md hidden-sm" >Mis coches</button></s:form>
+                    &nbsp;
+                </div>
             </div>
         </div>
     </div>

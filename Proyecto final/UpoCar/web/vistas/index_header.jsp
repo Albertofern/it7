@@ -15,6 +15,7 @@
             <%@include file="../css/misviajes.css" %>
             <%@include file="../css/misopiniones.css" %>
             <%@include file="../css/mismensajes.css" %>
+            <%@include file="../css/miscoches.css" %>
             <%@include file="../librerias/w3css/w3.css" %>
         </style>
         <script type="text/javascript" src="./librerias/jquery/jquery-1.12.4.min.js"></script>
