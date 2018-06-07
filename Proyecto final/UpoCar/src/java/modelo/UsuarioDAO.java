@@ -34,15 +34,15 @@ public class UsuarioDAO {
         return listaUsuario;
     }
     
-    public List<Usuario> buscarUsuarioPorID(String idUsuario) {
-        GenericType<List<Usuario>> genericType = new GenericType<List<Usuario>>() {
+    public Usuario buscarUsuarioPorID(String idUsuario) {
+        GenericType<Usuario> genericType = new GenericType<Usuario>() {
         };
         //GenericType<Usuario> genericTypeUsuario = new GenericType<Usuario>() {
         //};
-        //Usuario u = clientUsuario.find_XML(genericTypeUsuario, String.valueOf(idUsuario));
+        Usuario u = clientUsuario.find_XML(genericType, idUsuario);
 
-        List<Usuario> listaUsuario = this.getClientUsuario().find_XML(genericType, idUsuario); //buscarUsuario(genericType, usuario);
-        return listaUsuario;
+        //List<Usuario> listaUsuario = this.getClientUsuario().find_XML(genericType, idUsuario); //buscarUsuario(genericType, usuario);
+        return u;
     }
 
     public void deleteUsuario(String id) {

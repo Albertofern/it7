@@ -121,6 +121,10 @@
             <result name="success">/vistas/mismensajes.jsp</result>
         </action>
         
+        <action name="verPerfil" method="verPerfilUsuario" class="acciones.verPerfilAction">
+            <result name="success">/vistas/verPerfil.jsp</result>
+        </action>
+        
     </package>
     
     <!-- Administrador -->
