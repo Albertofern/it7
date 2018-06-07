@@ -127,6 +127,10 @@ public class adminAction extends ActionSupport {
     public String buscarUsuarioViaje() throws Exception {
         ViajeDAO viajeDAO = new ViajeDAO();
         this.setListadoViajes(viajeDAO.listarViajesUsuario(this.getNomUsuario()));
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        this.setListadoUsuarios(usuarioDAO.listarUsuarios());
+        LocalidadDAO localidadDAO = new LocalidadDAO();
+        this.setListadoLocalidades(localidadDAO.getLocalidades());
         return SUCCESS;
     }
 

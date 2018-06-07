@@ -7,7 +7,7 @@
         &nbsp;
         <div class="row">
 
-            <div class="col-lg-12">
+            <div class="col-xs-12">
                 <s:form method="post" action="buscarUsuarioViaje">
                     <s:textfield placeholder="Nombre conductor..." name="nomUsuario" />
                     <s:submit name="buscarUsuario" value="Buscar" />
@@ -16,47 +16,47 @@
                     <s:submit name="buscarUsuario" value="Mostrar todos" />
                 </s:form>
             </div>
-            <div class="col-lg-12 datagrid">
+            <div class="col-xs-12 datagrid">
                 <table>
                     <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Conductor</th>
-                        <th>Origen</th>
-                        <th>Destino</th>
-                        <th>Vehiculo</th>
-                        <th>Lugar de Recogida</th>
-                        <th>Precio/persona</th>
-                        <th>Plazas max</th>
-                        <th>Fecha y Hora Salida</th>
-                        <th></th>
-                    </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>Conductor</th>
+                            <th>Origen</th>
+                            <th>Destino</th>
+                            <th>Vehiculo</th>
+                            <th>Lugar de Recogida</th>
+                            <th>Precio/persona</th>
+                            <th>Plazas max</th>
+                            <th>Fecha y Hora Salida</th>
+                            <th></th>
+                        </tr>
                     </thead>
                     <% int col = 0;%>
                     <s:if test="%{listadoViajes.size() > 0}">
                         <s:iterator value="listadoViajes">
                             <tbody>
-                             <% if((col%2) != 0){%>
-                                        <tr class="alt">
-                                            <% }else{%>
-                                        <tr >
-                                            <% }%>
-                                <td><s:property value="idViaje" /></td>
-                                <td><s:property value="idUsuarioPublica.nomUsuario" /></td>
-                                <td><s:property value="idLocalidadOrigen.nombre" /></td>
-                                <td><s:property value="idLocalidadDestino.nombre" /></td>
-                                <td><s:property value="idVehiculoElegido.marca" /> <s:property value="idVehiculoElegido.modelo" /></td>
-                                <td id="puntoRecogida<s:property value="idViaje" />"><s:property value="puntoRecogida" /></td>
-                                <td id="precioPersona<s:property value="idViaje" />"><s:property value="percioPersona" /></td>
-                                <td id="plazasMax<s:property value="idViaje" />"><s:property value="plazasMax" /></td>
-                                <td id="fechaSalida<s:property value="idViaje" />"><s:property value="fechaSalida" /></td>
-                                <td>
-                                    <s:form action="deleteViaje" ><button name="idViaje" value="<s:property value="idViaje" />"><img class="imagenCRUD" title="Borrar" src="./images/papelera.png" /></button></s:form>
-                                    <button id="<s:property value="idViaje" />" class="updateButton" /><img class="imagenCRUD" title="Editar" src="./images/update.png" /></button>
-                                </td>
-                            </tr>
+                                <% if((col%2) != 0){%>
+                                <tr class="alt">
+                                    <% }else{%>
+                                <tr >
+                                    <% }%>
+                                    <td><s:property value="idViaje" /></td>
+                                    <td><s:property value="idUsuarioPublica.nomUsuario" /></td>
+                                    <td><s:property value="idLocalidadOrigen.nombre" /></td>
+                                    <td><s:property value="idLocalidadDestino.nombre" /></td>
+                                    <td><s:property value="idVehiculoElegido.marca" /> <s:property value="idVehiculoElegido.modelo" /></td>
+                                    <td id="puntoRecogida<s:property value="idViaje" />"><s:property value="puntoRecogida" /></td>
+                                    <td id="precioPersona<s:property value="idViaje" />"><s:property value="percioPersona" /></td>
+                                    <td id="plazasMax<s:property value="idViaje" />"><s:property value="plazasMax" /></td>
+                                    <td id="fechaSalida<s:property value="idViaje" />"><s:property value="fechaSalida" /></td>
+                                    <td>
+                                        <s:form action="deleteViaje" ><button name="idViaje" value="<s:property value="idViaje" />"><img class="imagenCRUD" title="Borrar" src="./images/papelera.png" /></button></s:form>
+                                        <button id="<s:property value="idViaje" />" class="updateButton" /><img class="imagenCRUD" title="Editar" src="./images/update.png" /></button>
+                                    </td>
+                                </tr>
                             </tbody>
-                                    <% col++;%>
+                            <% col++;%>
                         </s:iterator>
                     </s:if>
                     <s:else>
@@ -67,10 +67,10 @@
                 </table>
 
             </div>
-            <div class="col-lg-12"><hr /></div>
+            <div class="col-xs-12"><hr /></div>
 
 
-            <div id="formularioUpdate" style="display: none" class="col-lg-12 center-block" >
+            <div id="formularioUpdate" style="display: none" class="col-xs-12 center-block" >
 
                 <div class="col-lg-5"></div>
 
@@ -89,7 +89,7 @@
                                 <tr><td><s:submit value="Update"></s:submit></td></tr>
                                 <input id="hiddenUpdateID" type="hidden" name="updateId" value="" />
                         </s:form>
-
+                        <tr><td><button id="volverUpdate">Volver</button></td></tr>
                     </table>
                 </div>
                 <div class="col-lg-5"></div>
@@ -121,6 +121,12 @@
             var focalizar = $("#formularioUpdate").position().top;
             $('html,body').animate({scrollTop: focalizar}, 1000);
 
+        });
+
+        $("#volverUpdate").click(function () {
+            $("#formularioUpdate").hide();
+            var focalizar = $(".updateButton").position().top;
+            $('html,body').animate({scrollTop: focalizar}, 1000);
         });
     });
 </script>

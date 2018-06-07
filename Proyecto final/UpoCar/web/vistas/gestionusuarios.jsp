@@ -7,7 +7,7 @@
         &nbsp;
         <div class="row">
 
-            <div class="col-lg-12">
+            <div class="col-xs-12">
                 <s:form method="post" action="buscarUsuario">
                     <s:textfield placeholder="Nombre usuario..." name="nomUsuario" />
                     <s:submit name="buscarUsuario" value="Buscar" />
@@ -16,24 +16,24 @@
                     <s:submit name="buscarUsuario" value="Mostrar todos" />
                 </s:form>
             </div>
-            <div class="col-lg-12">
+            <div class="col-xs-12">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10 datagrid">
                     <table class="col-lg-12" border="1">
                         <thead>
-                        <tr>
-                            <th></th>
-                            <th>ID</th>
-                            <th>Usuario</th>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>E-mail</th>
-                            <th>Localidad</th>
-                            <th>Sexo</th>
-                            <th>&Uacute;ltimo acceso</th>
-                            <th>Fecha Alta</th>
-                            <th></th>
-                        </tr>
+                            <tr>
+                                <th></th>
+                                <th>ID</th>
+                                <th>Usuario</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>E-mail</th>
+                                <th>Localidad</th>
+                                <th>Sexo</th>
+                                <th>&Uacute;ltimo acceso</th>
+                                <th>Fecha Alta</th>
+                                <th></th>
+                            </tr>
                         </thead>
                         <% int col = 0;%>
                         <s:if test="%{listadoUsuarios.size() > 0}">
@@ -72,9 +72,9 @@
                 </div>
                 <div class="col-lg-1"></div>
             </div>
-            <div class="col-lg-12"><hr /></div>
+            <div class="col-xs-12"><hr /></div>
 
-            <div id="formularioUpdate" style="display: none" class="col-lg-12 center-block" >
+            <div id="formularioUpdate" style="display: none" class="col-xs-12 center-block" >
 
                 <div class="col-lg-5"></div>
 
@@ -97,7 +97,7 @@
                             <tr><td><s:submit value="Update"></s:submit></td></tr>
                                 <input id="hiddenUpdateID" type="hidden" name="updateIdUsuario" value="" />
                         </s:form>
-
+                        <tr><td><button id="volverUpdate">Volver</button></td></tr>
                     </table>
                 </div>
                 <div class="col-lg-5"></div>
@@ -133,10 +133,17 @@
             }
             $("#hiddenUpdateID").attr("value", id);
             $("#updateIdUsuario").text(id);
+        
 
             var focalizar = $("#formularioUpdate").position().top;
             $('html,body').animate({scrollTop: focalizar}, 1000);
 
+        });
+
+        $("#volverUpdate").click(function () {
+            $("#formularioUpdate").hide();
+            var focalizar = $(".updateButton").position().top;
+            $('html,body').animate({scrollTop: focalizar}, 1000);
         });
     });
 </script>
