@@ -26,12 +26,21 @@ public class verPerfilAction extends ActionSupport {
     private String apellidos;
     private String foto;
     private List<Puntuacion> listaPuntuacionRecibidas = new ArrayList<Puntuacion>();
+    List<Puntuacion> listaPuntuacionRealizadas = new ArrayList<Puntuacion>();
     private String puntuacion;
     private String comentario;
     private String voto;
 
     UsuarioDAO usuarioDao = new UsuarioDAO();
     PuntuacionDAO puntuacionDao = new PuntuacionDAO();
+
+    public List<Puntuacion> getListaPuntuacionRealizadas() {
+        return listaPuntuacionRealizadas;
+    }
+
+    public void setListaPuntuacionRealizadas(List<Puntuacion> listaPuntuacionRealizadas) {
+        this.listaPuntuacionRealizadas = listaPuntuacionRealizadas;
+    }
 
     public String getPuntuacion() {
         return puntuacion;
@@ -130,7 +139,7 @@ public class verPerfilAction extends ActionSupport {
         p.setIdUsuarioPuntua(u);
         Usuario uRecibe = usuarioDao.buscarUsuarioPorID(idUsuario);
         p.setIdUsuarioRecibe(uRecibe);
-        
+        listaPuntuacionRealizadas = puntuacionDao.listarPuntuacionRealizadas(u.getIdUsuario());
         puntuacionDao.puntuar(p);
         /*
         Recalcular la media de la puntuacion
