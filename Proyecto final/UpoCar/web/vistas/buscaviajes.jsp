@@ -1,24 +1,24 @@
 <%@include file="index_header.jsp" %>
 <div class="container-fluid">
-    <div id="background-firstlook">
+    <div>
         <h1>¡Buscar viaje!</h1>                    
 
         <s:form action="buscaViaje">
 
             <div class="row">
                 <div class="col-lg-2"></div>
-                <div class="col-xs-12 col-lg-2">
+                <div class="col-xs-12 col-md-3 col-lg-2">
                     <s:textfield cssClass="form-control" name="origen" placeholder="Origen"></s:textfield>                            
                     </div>
 
-                    <div class="col-xs-12 col-lg-2">
+                    <div class="col-xs-12 col-md-3 col-lg-2">
                     <s:textfield cssClass="form-control" name="destino" placeholder="Destino"></s:textfield>                            
                     </div>
 
-                    <div class="col-xs-12 col-lg-2">
+                    <div class="col-xs-12 col-md-3 col-lg-2">
                         <input id="datetime" name="fechaHora" type="datetime-local" class="form-control">
                     </div>                                
-                    <div class="col-xs-12 col-lg-2">
+                    <div class="col-xs-12 col-md-3 col-lg-2">
                     <s:submit name="buscar" value="Buscar viaje" cssClass="btn btn-default btnBuscar"></s:submit>
                     </div>
                     <div class="col-lg-2"></div>
