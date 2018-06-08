@@ -111,6 +111,13 @@ public class redireccionAction extends ActionSupport {
         return SUCCESS;
     }
 
+        
+    public String logout(){
+        Map sesion = (Map) ActionContext.getContext().get("session");
+        sesion.clear();
+        return SUCCESS;
+    }
+    
     public String execute() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
