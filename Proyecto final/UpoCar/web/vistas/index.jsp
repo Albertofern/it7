@@ -5,8 +5,8 @@
         <div id="infoPpal">
             <h1>¡Bienvenido a UpoCar!</h1>                    
             <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-8">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
                     <s:form action="buscaViaje">
                         <div class="col-lg-4 ">
                             <s:textfield cssClass="form-control" name="origen" placeholder="Origen"></s:textfield>                            
@@ -23,7 +23,7 @@
                     </s:form>
                 </div>
             </div>
-            <div class="col-lg-2"></div>
+            <div class="col-lg-1"></div>
         </div>
     </div>
 </div>
