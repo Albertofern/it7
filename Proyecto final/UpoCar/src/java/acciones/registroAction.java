@@ -6,6 +6,7 @@
 package acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.regex.Pattern;
 import modelo.UsuarioDAO;
 import webServiceREST.entidades.Usuario;
 
@@ -113,6 +114,44 @@ public class registroAction extends ActionSupport {
         dao.registro(u);
         
         return SUCCESS;
+    }
+    
+    public void validate(){
+        if(usuario.trim().length() == 0){
+            addFieldError("usuario", "El usuario debe estar relleno");
+        }
+        
+        if(nombre.trim().length() == 0){
+            addFieldError("nombre", "El nombre debe estar relleno");
+        }
+        
+        if(apellidos.trim().length() == 0){
+            addFieldError("apellidos", "Los apellidos debe estar relleno");
+        }
+        
+        if(dni.trim().length() == 0){
+            addFieldError("dni", "El dni debe estar relleno");
+        }
+        
+        if(email.trim().length() == 0){
+            addFieldError("email", "El email debe estar relleno");
+        }
+        
+        if(!Pattern.matches("[^@]+@[^@]+\\\\.[a-zA-Z]{2,}", email)){
+            addFieldError("email", "El email no tiene el formato correcto");
+        }
+        
+        if(localidad.trim().length() == 0){
+            addFieldError("localidad", "La localidad debe estar relleno");
+        }
+        
+        if(telefono.trim().length() == 0){
+            addFieldError("telefono", "El telefono debe estar relleno");
+        }
+        
+        if(password.trim().length() == 0){
+            addFieldError("password", "La password debe estar rellena");
+        }
     }
     
     

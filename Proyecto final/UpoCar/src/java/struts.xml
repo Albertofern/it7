@@ -58,6 +58,7 @@
         
         <action name="registro" method="registro" class="acciones.registroAction">
             <result name="success">/vistas/index.jsp</result>
+            <result name="input">/vistas/registro.jsp</result>
         </action>
         
         <action name="buscaViaje" method="buscaViaje" class="acciones.buscaViajeAction">
