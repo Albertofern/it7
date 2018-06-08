@@ -226,6 +226,7 @@
     <package name="viaje" extends="struts-default">
         <action name="publicarViaje" method="crearViaje" class="acciones.publicarViajeAction">
             <result name="success">/vistas/index.jsp</result> <!-- Cambiar la ruta a los listado de viajes cuando este hecho -->
+            <result name="input">/vistas/publicarviaje.jsp</result>
         </action>
     </package>
 </struts>

@@ -399,12 +399,20 @@ table th, table tbody {
 }
 
 .admin {
-	margin: 1em 0 0.5em 0;
-	font-weight: 600;
-	font-family: 'Titillium Web', sans-serif;
-	position: relative;
-	text-shadow: 0 -1px 1px rgba(88,158,65);
-	font-size: 22px;
-	color: #1A6ED5;
-	text-transform: uppercase;
+    margin: 1em 0 0.5em 0;
+    font-weight: 600;
+    font-family: 'Titillium Web', sans-serif;
+    position: relative;
+    text-shadow: 0 -1px 1px rgba(88,158,65);
+    font-size: 22px;
+    color: #1A6ED5;
+    text-transform: uppercase;
+}
+
+/*
+ERROR
+*/
+
+ul{
+    list-style-type: none;
 }
