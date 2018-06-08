@@ -1,3 +1,11 @@
-.btn-eliminar-coche{
+.btn-coche{
 	width: 100%;
+}
+
+.datos-cohe {
+    margin-bottom: 40px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    border-style: solid;
+    border-radius: 5px;
 }

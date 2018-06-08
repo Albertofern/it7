@@ -13,7 +13,7 @@
                         <div class="col-lg-12">
                             <div class="col-lg-6">
                                 <img class="foto-mi-cuenta img-circle img-responsive" src="<s:property value="foto"></s:property>" />        
-                                <button class="btn btn-default">Buscar foto</button>
+                                <input type="file" multiple="true" class="btn btn-default">Buscar foto</input>
                             </div>
                             <div class="col-lg-6">
                                 <br/><br/>

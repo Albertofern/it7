@@ -1,5 +1,44 @@
 <%@include file="index_header.jsp" %>
 <div class="container">
+    <div class="row datos-cohe">
+        <h1 class="text-center">Agregar coche</h1>
+        <hr/>
+        <s:form>
+            <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="marca">Marca:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="" name="marca" value="<s:property value=""></s:property>">
+                    </div>
+                </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="modelo">Modelo:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="" name="modelo" value="<s:property value=""></s:property>">
+                    </div>
+                </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="color">Color:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="" name="color" value="<s:property value=""></s:property>">
+                    </div>
+                </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="plazas">Plazas</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="" name="plaza" value="<s:property value=""></s:property>">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="buscarFotos">Agregar fotos:</label>
+                <input type="file" multiple="true" class="btn btn-default"></input>
+                </div>
+            </div>
+        </s:form>
+    </div>
+    <hr/>
     <div class="row">
         <div class="col-md-12">
             <div class="col-sm-6 col-md-4">
@@ -17,8 +56,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
-                                <a class="btn btn-danger btn-eliminar-coche"><span class="glyphicon glyphicon-thumbs-up"></span> Eliminar coche</a> 
+                            <div class="col-md-6">
+                                <a class="btn btn-warning btn-coche"><span class="glyphicon glyphicon-thumbs-up"></span> Modificar coche</a> 
+                            </div>
+                            <div class="col-md-6">
+                                <a class="btn btn-danger btn-coche"><span class="glyphicon glyphicon-thumbs-up"></span> Eliminar coche</a> 
                             </div>
                         </div>
 
@@ -41,8 +83,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
-                                <a class="btn btn-danger btn-eliminar-coche"><span class="glyphicon glyphicon-thumbs-up"></span> Eliminar coche</a> 
+                            <div class="col-md-6">
+                                <a class="btn btn-warning btn-coche"><span class="glyphicon glyphicon-thumbs-up"></span> Modificar coche</a> 
+                            </div>
+                            <div class="col-md-6">
+                                <a class="btn btn-danger btn-coche"><span class="glyphicon glyphicon-thumbs-up"></span> Eliminar coche</a> 
                             </div>
                         </div>
 
@@ -65,8 +110,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
-                                <a class="btn btn-danger btn-eliminar-coche"><span class="glyphicon glyphicon-thumbs-up"></span> Eliminar coche</a> 
+                            <div class="col-md-6">
+                                <a class="btn btn-warning btn-coche"><span class="glyphicon glyphicon-thumbs-up"></span> Modificar coche</a> 
+                            </div>
+                            <div class="col-md-6">
+                                <a class="btn btn-danger btn-coche"><span class="glyphicon glyphicon-thumbs-up"></span> Eliminar coche</a> 
                             </div>
                         </div>
 
