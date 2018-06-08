@@ -66,7 +66,7 @@
                                 </s:if>
                             </p>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-lg-5 ">                                
+                        <div class="col-sm-6 col-lg-5 hidden-xs">                                
                             <p>
                                 <s:if test="%{fotosVehiculo.size() == 0}">
                                     <img src="./images/Sin_imagen.png" class="img-responsive noDisponible">
