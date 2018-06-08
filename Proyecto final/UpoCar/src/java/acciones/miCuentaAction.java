@@ -8,6 +8,7 @@ package acciones;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -16,12 +17,14 @@ import modelo.PasajeroDAO;
 import modelo.PuntuacionDAO;
 import modelo.TelefonoDAO;
 import modelo.UsuarioDAO;
+import modelo.VehiculoDAO;
 import modelo.ViajeDAO;
 import webServiceREST.entidades.Mensaje;
 import webServiceREST.entidades.Pasajeros;
 import webServiceREST.entidades.Puntuacion;
 import webServiceREST.entidades.Telefono;
 import webServiceREST.entidades.Usuario;
+import webServiceREST.entidades.Vehiculo;
 import webServiceREST.entidades.Viaje;
 
 /**
@@ -62,6 +65,15 @@ public class miCuentaAction extends ActionSupport {
     
     //Mis Reservas
     List<Pasajeros> listaReservas = new ArrayList<Pasajeros>();
+    
+    //Mis coches
+    List<Vehiculo> listaCoches = new ArrayList<Vehiculo>();
+    String idCoche;
+    String marca;
+    String modelo;
+    String color;
+    int plazas;
+    
     
     public miCuentaAction() {
     }
@@ -237,7 +249,91 @@ public class miCuentaAction extends ActionSupport {
         return SUCCESS;
     }
     
-    public String toMisCoches(){        
+    public String toMisCoches(){
+        //Obtengo el usuario de la sesion
+        Map sesion = (Map) ActionContext.getContext().get("session");
+        Usuario u = (Usuario) sesion.get("usuario");        
+        //Creo un objeto VehiculoDAO para obtener los vehiculos
+        VehiculoDAO vDao = new VehiculoDAO();
+        List<Vehiculo> listaCoches = vDao.listadoVehiculosUsuario(u.getIdUsuario());
+        
+        this.setListaCoches(listaCoches);
+        
+        return SUCCESS;
+    }
+    
+    public String toAgregarCoche(){        
+        return SUCCESS;
+    }
+    
+    public String agregarCoche(){
+        //Obtengo el usuario de la sesion
+        Map sesion = (Map) ActionContext.getContext().get("session");
+        Usuario u = (Usuario) sesion.get("usuario");
+        // Creo un objeto vehiculo nuevo y le paso por set el usuario y los datos del formulario
+        Vehiculo v = new Vehiculo();
+        v.setIdUsuario(u);
+        v.setMarca(this.getMarca());
+        v.setModelo(this.getModelo());
+        v.setColor(this.getColor());
+        v.setPlazas(this.getPlazas());
+        v.setIdFotoVehiculo(0);
+        // Creo un objeto VehiculoDAO y le paso el objeto Vehiculo
+        VehiculoDAO vDao = new VehiculoDAO();
+        vDao.createVehiculo(v);
+        //Llamo al metodo toMisCoches() para recargar la pagina de listado de coches
+        this.toMisCoches();
+        return SUCCESS;
+    }
+    
+    public String toModificarCoche(){
+        // Creo un objeto VehiculoDAO y recibo un objeto Vehiculo
+        VehiculoDAO vDao = new VehiculoDAO();
+        Vehiculo v = vDao.getVehiculoPorId(this.getIdCoche());
+        this.getListaCoches().clear();
+        this.getListaCoches().add(v);
+        
+        return SUCCESS;
+    }
+    
+    public String modificarCoche(){
+        // Creo un objeto VehiculoDAO y recibo un objeto Vehiculo
+        VehiculoDAO vDao = new VehiculoDAO();
+        Vehiculo v = vDao.getVehiculoPorId(this.getIdCoche());
+        v.setMarca(this.getMarca());
+        v.setModelo(this.getModelo());
+        v.setColor(this.getColor());
+        v.setPlazas(this.getPlazas());
+        v.setIdFotoVehiculo(0);
+        // Paso el objeto Vehiculo al dao para que lo guarde
+        vDao.updateVehiculo(this.getIdCoche(),v);
+        //Llamo al metodo toMisCoches() para recargar la pagina de listado de coches
+        this.toMisCoches();
+        return SUCCESS;
+    }
+    
+    public String agregarFotos(){
+        // Creo un objeto VehiculoDAO y recibo un objeto Vehiculo
+        VehiculoDAO vDao = new VehiculoDAO();
+        Vehiculo v = vDao.getVehiculoPorId(this.getIdCoche());
+        String ruta = System.getProperty("catalina.home") + "/images/coche.jpg";
+        File nuevoFile = new File(ruta);
+        
+        
+        
+        // Paso el objeto Vehiculo al dao para que lo guarde
+        //vDao.updateVehiculo(this.getIdCoche(),v);
+        //Llamo al metodo toMisCoches() para recargar la pagina de listado de coches
+        this.toMisCoches();
+        return SUCCESS;
+    }
+    
+    public String eliminarCoche(){
+        //Creo un objeto VehiculoDAO para obtener los vehiculos
+        VehiculoDAO vDao = new VehiculoDAO();
+        vDao.deleteVehiculo(this.getIdCoche());
+        //Llamo al metodo toMisCoches() para recargar la pagina
+        this.toMisCoches();
         return SUCCESS;
     }
     
@@ -417,5 +513,57 @@ public class miCuentaAction extends ActionSupport {
     public void setListaReservas(List<Pasajeros> listaReservas) {
         this.listaReservas = listaReservas;
     }
+    
+    //Getter y setter Mis Coches
+
+    public List<Vehiculo> getListaCoches() {
+        return listaCoches;
+    }
+
+    public void setListaCoches(List<Vehiculo> listaCoches) {
+        this.listaCoches = listaCoches;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getPlazas() {
+        return plazas;
+    }
+
+    public void setPlazas(int plazas) {
+        this.plazas = plazas;
+    }
+
+    public String getIdCoche() {
+        return idCoche;
+    }
+
+    public void setIdCoche(String idCoche) {
+        this.idCoche = idCoche;
+    }
+    
+    
     
 }

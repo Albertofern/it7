@@ -56,7 +56,7 @@
                             <label class="control-label col-sm-2" for="sel1">Sexo:</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="sexo" value="<s:property value="sexo"></s:property>">
-                                  <option value="M">Masculino</option>
+                                  <option value="M" >Masculino</option>
                                   <option value="F">Femenino</option>
                                 </select>
                             </div>

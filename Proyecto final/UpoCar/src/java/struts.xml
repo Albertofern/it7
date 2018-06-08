@@ -134,6 +134,30 @@
             <result name="success">/vistas/miscoches.jsp</result>
         </action>
         
+        <action name="toAgregarCoche" method="toAgregarCoche" class="acciones.miCuentaAction">
+            <result name="success">/vistas/miscochesagregar.jsp</result>
+        </action>
+        
+        <action name="agregarCoche" method="agregarCoche" class="acciones.miCuentaAction">
+            <result name="success">/vistas/miscoches.jsp</result>
+        </action>
+        
+        <action name="toModificarCoche" method="toModificarCoche" class="acciones.miCuentaAction">
+            <result name="success">/vistas/miscochesmodificar.jsp</result>
+        </action>
+        
+        <action name="modificarCoche" method="modificarCoche" class="acciones.miCuentaAction">
+            <result name="success">/vistas/miscoches.jsp</result>
+        </action>
+        
+        <action name="agregarFotos" method="agregarFotos" class="acciones.miCuentaAction">
+            <result name="success">/vistas/miscoches.jsp</result>
+        </action>
+        
+        <action name="eliminarCoche" method="eliminarCoche" class="acciones.miCuentaAction">
+            <result name="success">/vistas/miscoches.jsp</result>
+        </action>
+        
         <action name="verPerfil" method="verPerfilUsuario" class="acciones.verPerfilAction">
             <result name="success">/vistas/verPerfil.jsp</result>
         </action>

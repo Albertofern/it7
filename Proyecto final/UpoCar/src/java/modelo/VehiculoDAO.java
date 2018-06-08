@@ -52,4 +52,19 @@ public class VehiculoDAO {
         
         return v;
     }
+    
+    public void createVehiculo(Vehiculo v){
+        this.getClienteVehiculo().create_XML(v);
+    }
+    
+    public void updateVehiculo(String idVehiculo,Vehiculo v) {
+
+        GenericType<Vehiculo> genericTypeVehiculo = new GenericType<Vehiculo>() {
+        };
+        this.getClienteVehiculo().edit_XML(v, idVehiculo);
+    }
+    
+    public void deleteVehiculo(String id) {
+        this.getClienteVehiculo().remove(id);
+    }
 }

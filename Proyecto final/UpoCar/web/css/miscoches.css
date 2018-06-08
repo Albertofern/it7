@@ -1,6 +1,10 @@
 .btn-coche{
 	width: 100%;
 }
+.btn-coche-agregar{
+	width: 100%;
+        margin-bottom: 10px;
+}
 
 .datos-cohe {
     margin-bottom: 40px;
