@@ -83,62 +83,18 @@ public class loginAction extends ActionSupport {
         return SUCCESS;
     }
 
-    public String toLogin() {
-        return SUCCESS;
-    }
-
-    public String toRegistro() {
-        return SUCCESS;
-    }
-    
-    public String toPanelAdmin(){
-        return SUCCESS;
-    }
-    
-    public String toPublicarViaje(){                
-        origen = localidadDao.getLocalidades();
-        destino = localidadDao.getLocalidades();
-        
-        Map sesion = (Map) ActionContext.getContext().get("session");
-        Usuario u = (Usuario) sesion.get("usuario");
-        
-        listadoCoches = vehiculoDao.listadoVehiculosUsuario(u.getIdUsuario());
-        
-        return SUCCESS;
-    }
-    
-    public String toRanking(){
-        this.setListadoUsuarios(usuarioDao.listarUsuarios());
-        Collections.sort(getListadoUsuarios());
-        this.setListadoViajes(viajeDao.listarViajes());
-        return SUCCESS;
-    }
-    
-    
-    public String buscarUsuarioRanking() throws Exception {
-        this.setListadoUsuarios(usuarioDao.buscarUsuario(this.getUsuario()));
-        return SUCCESS;
-    }
-
     public String login() {
         Usuario u = usuarioDao.login(usuario, password);
 
-        if (u == null) {
-            return ERROR;
-        } else {
+        
             Map sesion = (Map) ActionContext.getContext().get("session");
             sesion.put("usuario", u);
 
             return SUCCESS;
-        }
+        
 
     }
-    
-    public String logout(){
-        Map sesion = (Map) ActionContext.getContext().get("session");
-        sesion.clear();
-        return SUCCESS;
-    }
+
 
     public List<Usuario> getListadoUsuarios() {
         return listadoUsuarios;
@@ -156,6 +112,18 @@ public class loginAction extends ActionSupport {
         this.listadoViajes = listadoViajes;
     }
 
-    
+    public void validate(){
+        if(usuario.trim().length() == 0){
+            addFieldError("usuario", "El usuario debe estar relleno");
+        }
+        
+        if(password.trim().length() == 0){
+            addFieldError("password", "La password debe estar rellena");
+        }
+        
+        if(usuarioDao.login(usuario, password) == null){
+            addFieldError("usuario", "El usuario o la password son incorrectos");
+        }
+    }
     
 }

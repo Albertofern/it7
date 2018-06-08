@@ -17,11 +17,11 @@
             <result name="success">/vistas/index.jsp</result>
         </action>
         
-        <action name="toLogin" method="toLogin" class="acciones.loginAction">
+        <action name="toLogin" method="toLogin" class="acciones.redireccionAction">
             <result name="success">/vistas/login.jsp</result>
         </action>
         
-        <action name="toRegistro" method="toRegistro" class="acciones.loginAction">
+        <action name="toRegistro" method="toRegistro" class="acciones.redireccionAction">
             <result name="success">/vistas/registro.jsp</result>
         </action>
         
@@ -32,27 +32,27 @@
         </action>
         
         <action name="login" method="login" class="acciones.loginAction">
-            <result name="success">/vistas/index.jsp</result>
-            <result name="error">/vistas/login.jsp</result>
+            <result name="success">/vistas/index.jsp</result>            
+            <result name="input">/vistas/login.jsp</result>
         </action>
         
-        <action name="logout" method="logout" class="acciones.loginAction">
+        <action name="logout" method="logout" class="acciones.redireccionAction">
             <result name="success">/vistas/index.jsp</result>
         </action>
         
-        <action name="toPanelAdmin" method="toPanelAdmin" class="acciones.loginAction">
+        <action name="toPanelAdmin" method="toPanelAdmin" class="acciones.redireccionAction">
             <result name="success">/vistas/administrador.jsp</result>
         </action>
         
-        <action name="toPublicarViaje" method="toPublicarViaje" class="acciones.loginAction">
+        <action name="toPublicarViaje" method="toPublicarViaje" class="acciones.redireccionAction">
             <result name="success">/vistas/publicarviaje.jsp</result>
         </action>
         
-        <action name="toRanking" method="toRanking" class="acciones.loginAction">
+        <action name="toRanking" method="toRanking" class="acciones.redireccionAction">
             <result name="success">/vistas/ranking.jsp</result>
         </action>
 
-        <action name="buscarUsuarioRanking" method="buscarUsuarioRanking" class="acciones.loginAction">
+        <action name="buscarUsuarioRanking" method="buscarUsuarioRanking" class="acciones.RankingAction">
             <result name="success">/vistas/ranking.jsp</result>
         </action>
         
@@ -250,6 +250,7 @@
     <package name="viaje" extends="struts-default">
         <action name="publicarViaje" method="crearViaje" class="acciones.publicarViajeAction">
             <result name="success">/vistas/index.jsp</result> <!-- Cambiar la ruta a los listado de viajes cuando este hecho -->
+            <result name="input">/vistas/publicarviaje.jsp</result>
         </action>
     </package>
 </struts>

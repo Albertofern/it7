@@ -17,11 +17,11 @@
                 <div class="modal-body">
                     <s:form action="login" cssClass="login">  
                         <div class="form-group">
-                            	
+                            <s:fielderror fieldName="usuario" cssClass="alert alert-danger" />
                             Nickname<s:textfield cssClass="form-control" name="usuario" cssStyle="inputLogin"></s:textfield>
                         </div>
                         <div class="form-group">
-                            
+                            <s:fielderror fieldName="password" cssClass="alert alert-danger" />
                             Password<s:password cssClass="form-control" name="password" cssStyle="inputLogin"></s:password>
                         </div>        
                         <div class="form-group">
