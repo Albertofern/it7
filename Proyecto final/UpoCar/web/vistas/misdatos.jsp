@@ -24,35 +24,39 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-xs-3 col-md-2" for="usuario">Usuario:</label>
+                            
+                            <label class="control-label col-xs-3 col-md-2" for="usuario">Nickname:</label>
                             <div class="col-xs-9 col-md-10">
-                                <%--<s:textfield name="nombre" label="Nombre" value="" class="form-control" />--%>
                                 <input type="text" class="form-control" placeholder="" name="usuario" value="<s:property value="nomUsuario"></s:property>">
+                                <s:fielderror fieldName="usuario" cssClass="alert alert-danger" />
                             </div>
                           </div>
                         <div class="form-group">
                             <label class="control-label col-xs-3 col-md-2" for="nombre">Nombre:</label>
                             <div class="col-xs-9 col-md-10">
-                                <%--<s:textfield name="nombre" label="Nombre" value="" class="form-control" />--%>
                                 <input type="text" class="form-control" placeholder="" name="nombre" value="<s:property value="nombre"></s:property>">
+                                <s:fielderror fieldName="nombre" cssClass="alert alert-danger" />
                             </div>
                           </div>
                         <div class="form-group">
                             <label class="control-label col-xs-3 col-md-2" for="apellidos">Apellidos:</label>
                             <div class="col-xs-9 col-md-10">
                                 <input type="text" class="form-control" placeholder="" name="apellidos" value="<s:property value="apellidos"></s:property>">
+                                <s:fielderror fieldName="apellidos" cssClass="alert alert-danger" />
                             </div>
                           </div>
                         <div class="form-group">
                             <label class="control-label col-xs-3 col-md-2" for="email">Email:</label>
                             <div class="col-xs-9 col-md-10">
                                 <input type="email" class="form-control" placeholder="" name="email" value="<s:property value="email"></s:property>">
+                                <s:fielderror fieldName="email" cssClass="alert alert-danger" />
                             </div>
                           </div>
                         <div class="form-group">
                             <label class="control-label col-xs-3 col-md-2" for="localidad">Localidad:</label>
                             <div class="col-xs-9 col-md-10">
                                 <input type="text" class="form-control" placeholder="" name="localidad" value="<s:property value="localidad"></s:property>">
+                                <s:fielderror fieldName="localidad" cssClass="alert alert-danger" />
                             </div>
                           </div>
                         <div class="form-group">
@@ -79,10 +83,11 @@
                             <h3 class="text-center">Teléfonos:</h3>
                             <hr/>
                             <div class="row">
-                                <div class="col-xs-12"><!--<div class="col-lg-1"></div><button class="btn btn-success col-lg-11">Nuevo teléfono</button>-->
+                                <div class="col-xs-12">
+                                    <s:fielderror fieldName="telefono" cssClass="alert alert-danger" />
                                     <s:form class="form-horizontal" action="agregarTelefono">
                                     <div class="input-group">
-                                        <input type="text" name=nuevoTlf class="form-control" placeholder="ej: 654876123">
+                                        <input type="text" name="nuevoTlf" class="form-control" placeholder="ej: 654876123">
                                         <span class="input-group-btn">
                                             <button class="btn btn-success" name="agregarTlf" type="submit">Agregar<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                         </span>

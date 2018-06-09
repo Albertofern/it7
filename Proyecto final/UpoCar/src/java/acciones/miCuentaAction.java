@@ -12,6 +12,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 import modelo.MensajeDAO;
 import modelo.PasajeroDAO;
 import modelo.PuntuacionDAO;
@@ -90,15 +91,15 @@ public class miCuentaAction extends ActionSupport {
         //Recojo el usuario de la sesion y lo guardo en una lista
         Map sesion = (Map) ActionContext.getContext().get("session");
         Usuario u = (Usuario) sesion.get("usuario");
-        this.getListadoUsuarios().add(u);
+        UsuarioDAO uDAO = new UsuarioDAO();
+        this.getListadoUsuarios().clear();
+        this.getListadoUsuarios().add( uDAO.buscarUsuarioPorID(u.getIdUsuario().toString()) );
         TelefonoDAO tDao = new TelefonoDAO();
         this.setListadoTelefonos(tDao.listarTelefonosUsuarios(u.getIdUsuario()));
-        //UsuarioDAO usuarioDAO = new UsuarioDAO();
-        //this.setListadoUsuarios(usuarioDAO.buscarUsuarioPorID(INPUT));
         return SUCCESS;
     }
     
-    public String modificarMisDatos(){
+    /*public String modificarMisDatos(){
         //Obtengo el usuario de la sesion
         Map sesion = (Map) ActionContext.getContext().get("session");
         Usuario u = (Usuario) sesion.get("usuario");
@@ -107,9 +108,9 @@ public class miCuentaAction extends ActionSupport {
         //Llamo al metodo toMisDatos() para recargar la pagina
         this.toMisDatos();
         return SUCCESS;
-    }
+    }*/
 
-    public String agregarTelefono(){
+    /*public String agregarTelefono(){
         //Obtengo el usuario de la sesion
         Map sesion = (Map) ActionContext.getContext().get("session");
         Usuario u = (Usuario) sesion.get("usuario");
@@ -132,7 +133,7 @@ public class miCuentaAction extends ActionSupport {
         //Llamo al metodo toMisDatos() para recargar la pagina
         this.toMisDatos();
         return SUCCESS;
-    }
+    }*/
     
     public String eliminarTelefono(){
         // Creo un objeto TelefonoDAO y le paso el objeto telefono
@@ -563,7 +564,6 @@ public class miCuentaAction extends ActionSupport {
     public void setIdCoche(String idCoche) {
         this.idCoche = idCoche;
     }
-    
     
     
 }

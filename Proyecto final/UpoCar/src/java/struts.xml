@@ -78,16 +78,19 @@
             <result name="success">/vistas/misdatos.jsp</result>
         </action>
         
-        <action name="modificarMisDatos" method="modificarMisDatos" class="acciones.miCuentaAction">
+        <action name="modificarMisDatos" method="modificarMisDatos" class="acciones.misDatosAction">
             <result name="success">/vistas/misdatos.jsp</result>
+            <result name="input">/vistas/misdatos.jsp</result>
         </action>
         
-        <action name="agregarTelefono" method="agregarTelefono" class="acciones.miCuentaAction">
+        <action name="agregarTelefono" method="agregarTelefono" class="acciones.misDatosTelefonoAction">
             <result name="success">/vistas/misdatos.jsp</result>
+            <result name="input">/vistas/misdatos.jsp</result>
         </action>
         
-        <action name="modificarTelefono" method="modificarTelefono" class="acciones.miCuentaAction">
+        <action name="modificarTelefono" method="modificarTelefono" class="acciones.misDatosTelefonoAction">
             <result name="success">/vistas/misdatos.jsp</result>
+            <result name="input">/vistas/misdatos.jsp</result>
         </action>
         
         <action name="eliminarTelefono" method="eliminarTelefono" class="acciones.miCuentaAction">
