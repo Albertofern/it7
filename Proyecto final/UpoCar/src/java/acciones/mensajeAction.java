@@ -49,8 +49,8 @@ public class mensajeAction extends ActionSupport {
     public String contactarCon(){
         Map sesion = (Map) ActionContext.getContext().get("session");
         Usuario u = (Usuario) sesion.get("usuario");
-        
-        Mensaje m = new Mensaje(null, texto, null);
+        Date d = new Date();
+        Mensaje m = new Mensaje(0, texto, d);
         m.setIdUsuarioEnvia(u);
         Usuario uRecibe = usuarioDao.buscarUsuarioPorID(idUsuarioContacto);
         m.setIdUsuarioRecibe(uRecibe);
