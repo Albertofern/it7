@@ -12,6 +12,7 @@
             <%@include file="../css/css.css" %>
             <%@include file="../css/buscaviajes.css" %>
             <%@include file="../css/micuenta.css" %>
+            <%@include file="../css/misdatos.css" %>
             <%@include file="../css/misviajes.css" %>
             <%@include file="../css/misopiniones.css" %>
             <%@include file="../css/mismensajes.css" %>

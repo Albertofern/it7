@@ -21,6 +21,11 @@
                         </div>
                     </blockquote>
             </s:iterator>
+            <s:if test="%{listaPuntuacionRecibidas.size() == 0}">
+                            <div class="alert alert-danger sin-pasajeros text-center" role="alert">
+                                No hay mensajes
+                              </div>
+                        </s:if>
         </div>
         <div class="col-xs-6 opiniones-box">
             <h3>Realizadas</h3>
@@ -45,6 +50,11 @@
                         </div>
                     </blockquote>
             </s:iterator>
+            <s:if test="%{listaPuntuacionRealizadas.size() == 0}">
+                            <div class="alert alert-danger sin-pasajeros text-center" role="alert">
+                                No hay mensajes
+                              </div>
+                        </s:if>
 
         </div>
     </div>

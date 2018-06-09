@@ -6,7 +6,9 @@
 package webServiceREST.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -42,6 +44,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Vehiculo.findByIdFotoVehiculo", query = "SELECT v FROM Vehiculo v WHERE v.idFotoVehiculo = :idFotoVehiculo")})
 public class Vehiculo implements Serializable {
 
+    private List<FotoVehi> listaFotosVehiculos = new ArrayList<FotoVehi>();
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -192,6 +196,14 @@ public class Vehiculo implements Serializable {
     @Override
     public String toString() {
         return "webServiceREST.entidades.Vehiculo[ idVehiculo=" + idVehiculo + " ]";
+    }
+
+    public List<FotoVehi> getListaFotosVehiculos() {
+        return listaFotosVehiculos;
+    }
+
+    public void setListaFotosVehiculos(List<FotoVehi> listaFotosVehiculos) {
+        this.listaFotosVehiculos = listaFotosVehiculos;
     }
     
 }

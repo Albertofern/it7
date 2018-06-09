@@ -8,15 +8,19 @@
         </s:form>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <s:iterator value="listaCoches">
+        
+        
+                <s:iterator value="listaCoches">
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail" >
                         <h4 class="text-center"><span class="label label-info"><s:property value="marca"></s:property> <s:property value="modelo"></s:property></span></h4>
-                        <div class="fotorama">    
-                            <img src="http://placehold.it/650x450&text=Galaxy S5" class="img-responsive">
-                            <img src="http://placehold.it/650x450&text=Galaxy S5" class="img-responsive">
-                            <img src="http://placehold.it/650x450&text=Galaxy S5" class="img-responsive">
+                        <div class="fotorama">
+                        <s:iterator value="listaFotosVehiculos">
+                            <img src="<s:property value="rutaFoto"></s:property>" class="img-responsive">
+                        </s:iterator>
+                            <s:if test="%{listaFotosVehiculos.size() == 0}">
+                            <img src="./images/Sin_imagen.png" class="img-responsive">
+                        </s:if>
                         </div>
                             <div class="caption">
                                 <div class="row">
@@ -50,7 +54,12 @@
                     </div>
                 </div>
             </s:iterator>
-        </div> 
+            <s:if test="%{listaCoches.size() == 0}">
+                            <div class="alert alert-danger sin-pasajeros text-center" role="alert">
+                                No hay coches
+                              </div>
+                        </s:if>
+       
 
     </div>
 </div>

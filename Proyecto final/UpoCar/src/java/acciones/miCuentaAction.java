@@ -277,7 +277,7 @@ public class miCuentaAction extends ActionSupport {
         v.setModelo(this.getModelo());
         v.setColor(this.getColor());
         v.setPlazas(this.getPlazas());
-        v.setIdFotoVehiculo(0);
+        v.setIdFotoVehiculo(1);
         // Creo un objeto VehiculoDAO y le paso el objeto Vehiculo
         VehiculoDAO vDao = new VehiculoDAO();
         vDao.createVehiculo(v);

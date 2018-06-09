@@ -34,6 +34,11 @@
             </div>
           </article>
                 </s:iterator>
+                <s:if test="%{listaMensajesEnviados.size() == 0}">
+                            <div class="alert alert-danger sin-pasajeros text-center" role="alert">
+                                No hay mensajes
+                              </div>
+                        </s:if>
             </div>
             <div class="col-xs-12 col-sm-6 men-recibido">
                 <h4 class="page-header text-center">Recibidos</h4>
@@ -62,6 +67,11 @@
             </div>
           </article>
           </s:iterator>
+          <s:if test="%{listaMensajesRecibidos.size() == 0}">
+                            <div class="alert alert-danger sin-pasajeros text-center" role="alert">
+                                No hay mensajes
+                              </div>
+                        </s:if>
             </div>
         </section>
 
