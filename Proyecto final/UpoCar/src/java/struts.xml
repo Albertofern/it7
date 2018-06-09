@@ -226,8 +226,9 @@
             </result>
         </action>
         <action name="reservar" method="reservarViaje" class="acciones.buscaViajeAction">
-            <result name="success">/vistas/misviajes.jsp</result>
-            <result name="error">/vistas/index.jsp</result> <!-- Deberia de redirigir a una ventana de errores -->
+            <result type="chain">
+                <param name="actionName">toMisViajes</param>
+            </result>
         </action>
         
         <!-- Gestión Usuarios -->          
@@ -259,7 +260,9 @@
     
     <package name="viaje" extends="struts-default">
         <action name="publicarViaje" method="crearViaje" class="acciones.publicarViajeAction">
-            <result name="success">/vistas/index.jsp</result> <!-- Cambiar la ruta a los listado de viajes cuando este hecho -->
+            <result type="chain">
+                <param name="actionName">toMisViajes</param>
+            </result>
             <result name="input">/vistas/publicarviaje.jsp</result>
         </action>
     </package>

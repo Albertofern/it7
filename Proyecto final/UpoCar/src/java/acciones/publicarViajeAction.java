@@ -168,7 +168,7 @@ public class publicarViajeAction extends ActionSupport {
             addFieldError("plazas", "El coche seleccionado no tiene plazas suficientes");
         }
         
-        if(!Pattern.matches("[0-9]*", String.valueOf(precio))){
+        if(precio <= 0.0){
             addFieldError("precio", "Debe introducir un numero");
         }
         
