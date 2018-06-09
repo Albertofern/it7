@@ -8,10 +8,10 @@
     <div class="panel panel-default event">
         <div class="panel-body">
             <div class="rsvp col-xs-2 col-sm-2">
-                <i><s:property value="(idViaje.fechaSalida.split(' ')[0]).split('-')[0]"></s:property></i>
+                <i><s:property value="(idViaje.fechaSalida.split(' ')[0]).split('-')[2]"></s:property></i>
                 <i><s:property value="(idViaje.fechaSalida.split(' ')[0]).split('-')[1]"></s:property></i>
                 <div>
-                    <i><s:property value="(idViaje.fechaSalida.split(' ')[0]).split('-')[2]"></s:property></i>
+                    <i><s:property value="(idViaje.fechaSalida.split(' ')[0]).split('-')[0]"></s:property></i>
                 </div>
             </div>
             <div class="info col-xs-8 col-sm-7">

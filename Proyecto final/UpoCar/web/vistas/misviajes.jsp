@@ -8,10 +8,10 @@
     <div class="panel panel-default event">
         <div class="panel-body">
             <div class="rsvp col-xs-2 col-sm-2">
-                <i><s:property value="(fechaSalida.split(' ')[0]).split('-')[0]"></s:property></i>
+                <i><s:property value="(fechaSalida.split(' ')[0]).split('-')[2]"></s:property></i>
                 <i><s:property value="(fechaSalida.split(' ')[0]).split('-')[1]"></s:property></i>
                 <div>
-                    <i><s:property value="(fechaSalida.split(' ')[0]).split('-')[2]"></s:property></i>
+                    <i><s:property value="(fechaSalida.split(' ')[0]).split('-')[0]"></s:property></i>
                 </div>
             </div>
             <div class="info col-xs-8 col-sm-7">
@@ -37,7 +37,7 @@
                                 Plazas: <s:property value="listaPasajeros.size()"></s:property> de <s:property value="plazasMax"></s:property>
                             </div>
                         </div>
-                        <div class="row colum1">
+                        <div class="row colum1 box-flex">
                         <s:iterator value="listaPasajeros">
                                 <div class="col-xs-2 pasajero-box">
                                     <s:property value="idUsuario.nombre"></s:property>

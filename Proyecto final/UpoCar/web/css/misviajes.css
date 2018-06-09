@@ -120,7 +120,7 @@
     padding:0 41px 0 0;
 }
 
-#btnEliminarViaje {
+#btnEliminarViaje, #btnEliminarReserva {
     float: right;
     margin-right: 40px;
 }
