@@ -166,6 +166,16 @@
             <result name="success">/vistas/misopiniones.jsp</result>
         </action>
         
+        <action name="contactar" class="acciones.mensajeAction">
+            <result name="success">/vistas/contactar.jsp</result>
+        </action>
+        
+        <action name="contactarCon" method="contactarCon" class="acciones.mensajeAction">
+            <result type="chain">
+                <param name="actionName">toMisMensajes</param>
+            </result>
+        </action>
+        
     </package>
     
     <!-- Administrador -->
@@ -198,7 +208,7 @@
                 <param name="actionName">toGestionMensajes</param>
             </result>
         </action>
-
+                
         <!-- Gestión viajes -->        
         <action name="toGestionViajes" method="toGestionViajes" class="acciones.adminAction">
             <result name="success">/vistas/gestionviajes.jsp</result>

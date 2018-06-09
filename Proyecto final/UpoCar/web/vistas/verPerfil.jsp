@@ -6,11 +6,11 @@
 
         <div class="col-lg-3">                
             <div class="col-lg-12">                
-                
-                    <img class="foto-mi-cuenta img-circle img-responsive" src="<s:property value="foto"></s:property>" /> 
+
+                <img class="foto-mi-cuenta img-circle img-responsive" src="<s:property value="foto"></s:property>" /> 
 
 
-                <br/><br/>
+                    <br/><br/>
                 <s:property value="nombre"></s:property>
                 <s:property value="apellidos"></s:property>                    
                 <p>Puntuación: <span class="badge"><s:property value="puntuacion"></s:property></span></p>
@@ -48,9 +48,10 @@
         </s:form>
 
     </div>            
+    <div class="col-lg-2"></div>
 </div>
 
-<div class="col-lg-2"></div>
+
 </div>
 
 <%@include file="index_footer.jsp" %>

@@ -48,6 +48,10 @@
                                         <s:submit name="verPerfil" value="Ver perfil" cssClass="btn btn-primary btnBuscar"></s:submit>
                                         <s:hidden name="idUsuario" value="%{idUsuarioPublica.idUsuario}"></s:hidden>
                                     </s:form>
+                                    <s:form action="contactar">
+                                        <s:submit name="contactarCon" value="Contactar" cssClass="btn btn-primary btnBuscar"></s:submit>
+                                        <s:hidden name="idUsuarioContacto" value="%{idUsuarioPublica.idUsuario}"></s:hidden>
+                                    </s:form>
                                 </p>
                             </s:if>
                         </div>
