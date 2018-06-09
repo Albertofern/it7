@@ -14,9 +14,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import modelo.FotoVehiDAO;
+import modelo.MensajeDAO;
 import modelo.PasajeroDAO;
+import modelo.UsuarioDAO;
 import modelo.VehiculoDAO;
 import modelo.ViajeDAO;
+import webServiceREST.entidades.Mensaje;
 import webServiceREST.entidades.Pasajeros;
 import webServiceREST.entidades.Usuario;
 import webServiceREST.entidades.Viaje;
@@ -36,7 +39,9 @@ public class buscaViajeAction extends ActionSupport {
     private List listadoFotos;
     private String idViaje;
     private String idUsuario;
-
+    MensajeDAO mensajeDao = new MensajeDAO();
+    UsuarioDAO usuarioDao = new UsuarioDAO();
+    
     public String getIdUsuario() {
         return idUsuario;
     }
@@ -124,25 +129,25 @@ public class buscaViajeAction extends ActionSupport {
 
             List listadoProvisional = viajeDao.buscaViaje(origen, destino, formattedDate);
             List listaFinal = new ArrayList();
-            
-            for(int i = 0; i < listadoProvisional.size(); i++){ //Muestro todos los viajes que tengan plazas disponibles
+
+            for (int i = 0; i < listadoProvisional.size(); i++) { //Muestro todos los viajes que tengan plazas disponibles
                 Viaje v = (Viaje) listadoProvisional.get(i);
-                
-                if(v.getPlazasMax() > pasajeroDao.listarPasajeros(v.getIdViaje()).size()){
+
+                if (v.getPlazasMax() > pasajeroDao.listarPasajeros(v.getIdViaje()).size()) {
                     v.setFotosVehiculo(fotoDao.fotosVehiculo(String.valueOf(v.getIdVehiculoElegido().getIdVehiculo())));
                     v.setListaPasajeros(pasajeroDao.listarPasajeros(v.getIdViaje()));
                     listaFinal.add(v);
                 }
             }
             listadoViajes = listaFinal;
-            
-        } else {                        
+
+        } else {
             List listadoProvisional = viajeDao.listarViajes();
             List listaFinal = new ArrayList();
-            for(int i = 0; i < listadoProvisional.size(); i++){
+            for (int i = 0; i < listadoProvisional.size(); i++) {
                 Viaje v = (Viaje) listadoProvisional.get(i);
-                
-                if(v.getPlazasMax() > pasajeroDao.listarPasajeros(v.getIdViaje()).size()){
+
+                if (v.getPlazasMax() > pasajeroDao.listarPasajeros(v.getIdViaje()).size()) {
                     v.setFotosVehiculo(fotoDao.fotosVehiculo(String.valueOf(v.getIdVehiculoElegido().getIdVehiculo())));
                     v.setListaPasajeros(pasajeroDao.listarPasajeros(v.getIdViaje()));
                     listaFinal.add(v);
@@ -153,25 +158,28 @@ public class buscaViajeAction extends ActionSupport {
 
         return SUCCESS;
     }
-    
-    public String reservarViaje(){
 
-        Pasajeros p = new Pasajeros(null);        
-        
+    public String reservarViaje() {
+
+        Pasajeros p = new Pasajeros(null);
+
         Map sesion = (Map) ActionContext.getContext().get("session");
         Usuario u = (Usuario) sesion.get("usuario");
-        
+
         p.setIdUsuario(u);
-                
+
         Viaje v = viajeDao.getViajePorId(idViaje);
         p.setIdViaje(v);
 
-        if(pasajeroDao.reservaViaje(p, Integer.parseInt(this.idViaje))){
-            return SUCCESS;
-        } else {
-            return ERROR;
-        }
-                
+        pasajeroDao.reservaViaje(p, Integer.parseInt(this.idViaje));
+        
+        Date d = new Date();
+        Mensaje m = new Mensaje(0, u.getNombre()+" " + u.getApellidos() +" ha realizado una reserva en uno de tus viajes", d);        
+        m.setIdUsuarioRecibe(v.getIdUsuarioPublica());
+        m.setIdUsuarioEnvia(u);
+        mensajeDao.enviarMensaje(m);
+        
+        return SUCCESS;
     }
 
     public String execute() throws Exception {
