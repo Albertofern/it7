@@ -14,9 +14,14 @@
                                 <img class="foto-mi-cuenta img-circle img-responsive" src="<s:property value="foto"></s:property>" />        
                                 </div>
                                 <div class="col-xs-8">
-                                    <input type="file"></input>
+                                <s:form action="agregarFotoPerfil" method="POST" enctype="multipart/form-data">
+                                    <input type="file" name="fotoPerfil"></input>
                                 <input type="submit" class="btn btn-success pull-left" value="Guardar foto"></input>
+                                </s:form>
+                                <s:form action="quitarFotoPerfil" method="POST">
                                 <input type="submit" class="btn btn-danger pull-left" value="Quitar foto"></input>
+                                </s:form>
+                                
                             </div>
                                 <s:form class="form-horizontal" action="modificarMisDatos" method="POST">
                             <div class="col-xs-12">

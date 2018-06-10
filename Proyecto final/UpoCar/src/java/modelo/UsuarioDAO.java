@@ -63,6 +63,15 @@ public class UsuarioDAO {
         u.setSexo(sexo);
         clientUsuario.edit_XML(u, String.valueOf(idUsuario));
     }
+    
+    public void updateUsuarioFotoPerfil(Integer idUsuario,String rutaFoto) {
+
+        GenericType<Usuario> genericTypeUsuario = new GenericType<Usuario>() {
+        };
+        Usuario u = clientUsuario.find_XML(genericTypeUsuario, String.valueOf(idUsuario));
+        u.setFoto(rutaFoto);
+        clientUsuario.edit_XML(u, String.valueOf(idUsuario));
+    }
 
     public JerseyClientUsuario getClientUsuario() {
         return clientUsuario;

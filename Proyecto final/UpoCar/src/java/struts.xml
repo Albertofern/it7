@@ -78,6 +78,14 @@
             <result name="success">/vistas/misdatos.jsp</result>
         </action>
         
+        <action name="agregarFotoPerfil" method="agregarFotoPerfil" class="acciones.agregarFotoPerfilAction">
+            <result name="success">/vistas/misdatos.jsp</result>
+        </action>
+        
+        <action name="quitarFotoPerfil" method="quitarFotoPerfil" class="acciones.agregarFotoPerfilAction">
+            <result name="success">/vistas/misdatos.jsp</result>
+        </action>
+        
         <action name="modificarMisDatos" method="modificarMisDatos" class="acciones.misDatosAction">
             <result name="success">/vistas/misdatos.jsp</result>
             <result name="input">/vistas/misdatos.jsp</result>
