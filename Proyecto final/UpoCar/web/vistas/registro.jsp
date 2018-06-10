@@ -8,9 +8,9 @@
             <div class="modal-dialog modal-registro">
                 <div class="modal-content modal-position">
                     <div class="modal-header">
-                        			
+
                         <h4 class="modal-title">Registrate</h4>	
-                        
+
                     </div>
                     <div class="modal-body">
                         <s:form action="registro" cssClass="login">  
@@ -24,26 +24,26 @@
                                     Apellidos<s:textfield cssClass="form-control" name="apellidos" cssStyle="inputLogin"></s:textfield>  
                                     <s:fielderror fieldName="email" cssClass="alert alert-danger" />
                                     Email<s:textfield cssClass="form-control" name="email" cssStyle="inputLogin"></s:textfield> 
-                                    <s:fielderror fieldName="dni" cssClass="alert alert-danger" />
-                                    DNI<s:textfield cssClass="form-control" name="dni" cssStyle="inputLogin"></s:textfield>  
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <s:fielderror fieldName="localidad" cssClass="alert alert-danger" />
-                                        Localidad<s:textfield cssClass="form-control" name="localidad" cssStyle="inputLogin"></s:textfield>  
-                                        <s:fielderror fieldName="telefono" cssClass="alert alert-danger" />
-                                        Telefono<s:textfield cssClass="form-control" name="telefono" cssStyle="inputLogin"></s:textfield>
-                                        <s:fielderror fieldName="password" cssClass="alert alert-danger" />
-                                        Password<s:password cssClass="form-control" name="password" cssStyle="inputLogin"></s:password>
+                                    <s:fielderror fieldName="localidad" cssClass="alert alert-danger" />
+                                    Localidad<s:textfield cssClass="form-control" name="localidad" cssStyle="inputLogin"></s:textfield>  
+                                    <s:fielderror fieldName="telefono" cssClass="alert alert-danger" />
+                                    Telefono<s:textfield cssClass="form-control" name="telefono" cssStyle="inputLogin"></s:textfield>
+                                    <s:fielderror fieldName="password" cssClass="alert alert-danger" />
+                                    Password<s:password cssClass="form-control" name="password" cssStyle="inputLogin"></s:password>
+                                    Sexo<br/>
+                                        <select name="sexo" class="form-control"> 
+                                            <option value="M">Masculino</option> 
+                                            <option value="F">Femenino</option>                             
+                                        </select>
                                     </div>        
                                 </div>
 
                                 <div class="form-group">
-                                    <select name="sexo" class="form-control"> 
-                                        <option value="M">Masculino</option> 
-                                        <option value="F">Femenino</option>                             
-                                    </select> <br/>
+                                    <br/>
                                 <s:submit cssClass="btn btn-primary btn-lg btn-block login-btn" name="Registro" value="Registro"></s:submit> 
 
                                 </div>

@@ -19,7 +19,6 @@ public class registroAction extends ActionSupport {
     private String usuario;
     private String nombre;
     private String apellidos;
-    private String dni;
     private String email;
     private String sexo;
     private String localidad;
@@ -66,14 +65,6 @@ public class registroAction extends ActionSupport {
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
     }
 
     public String getLocalidad() {
@@ -127,10 +118,6 @@ public class registroAction extends ActionSupport {
         
         if(apellidos.trim().length() == 0){
             addFieldError("apellidos", "Los apellidos debe estar relleno");
-        }
-        
-        if(dni.trim().length() == 0){
-            addFieldError("dni", "El dni debe estar relleno");
         }
         
         if(email.trim().length() == 0){
