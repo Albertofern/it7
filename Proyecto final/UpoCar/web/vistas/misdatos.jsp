@@ -62,9 +62,9 @@
                         <div class="form-group">
                             <label class="control-label col-xs-3 col-md-2" for="sel1">Sexo:</label>
                             <div class="col-xs-9 col-md-10">
-                                <select class="form-control" name="sexo" value="<s:property value="sexo"></s:property>">
-                                  <option value="M" >Masculino</option>
-                                  <option value="F">Femenino</option>
+                                <select class="form-control" name="sexo"> 
+                                    <option value="M" <s:if test='%{sexo == "M"}'>selected</s:if>>Masculino</option>
+                                  <option value="F" <s:if test='%{sexo == "F"}'>selected</s:if>>Femenino</option>
                                 </select>
                             </div>
                             

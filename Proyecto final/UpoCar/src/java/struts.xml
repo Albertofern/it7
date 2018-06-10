@@ -141,16 +141,18 @@
             <result name="success">/vistas/miscochesagregar.jsp</result>
         </action>
         
-        <action name="agregarCoche" method="agregarCoche" class="acciones.miCuentaAction">
+        <action name="agregarCoche" method="agregarCoche" class="acciones.misCochesAgregarAction">
             <result name="success">/vistas/miscoches.jsp</result>
+            <result name="input">/vistas/miscochesagregar.jsp</result>
         </action>
         
         <action name="toModificarCoche" method="toModificarCoche" class="acciones.miCuentaAction">
             <result name="success">/vistas/miscochesmodificar.jsp</result>
         </action>
         
-        <action name="modificarCoche" method="modificarCoche" class="acciones.miCuentaAction">
-            <result name="success">/vistas/miscoches.jsp</result>
+        <action name="modificarCoche" method="modificarCoche" class="acciones.misCochesModificarAction">
+            <result name="success">/vistas/miscochesmodificar.jsp</result>
+            <result name="input">/vistas/miscochesmodificar.jsp</result>
         </action>
         
         <action name="agregarFotos" method="agregarFotos" class="acciones.miCuentaAction">

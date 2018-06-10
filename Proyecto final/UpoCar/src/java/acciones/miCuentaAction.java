@@ -38,14 +38,14 @@ public class miCuentaAction extends ActionSupport {
     List<Telefono> listadoTelefonos = new ArrayList<Telefono>();
 
     //mis datos
-    String usuario;
+    /*String usuario;
     String nombre;
     String apellidos; 
     String email;
     String localidad;
-    String sexo;
+    String sexo;*/
     
-    Integer nuevoTlf;
+    //Integer nuevoTlf;
     String idTelefono;
     
     //Mis viajes
@@ -70,10 +70,10 @@ public class miCuentaAction extends ActionSupport {
     //Mis coches
     List<Vehiculo> listaCoches = new ArrayList<Vehiculo>();
     String idCoche;
-    String marca;
+    /*String marca;
     String modelo;
     String color;
-    int plazas;
+    String plazas;*/
     
     
     public miCuentaAction() {
@@ -267,7 +267,7 @@ public class miCuentaAction extends ActionSupport {
         return SUCCESS;
     }
     
-    public String agregarCoche(){
+    /*public String agregarCoche(){
         //Obtengo el usuario de la sesion
         Map sesion = (Map) ActionContext.getContext().get("session");
         Usuario u = (Usuario) sesion.get("usuario");
@@ -285,7 +285,7 @@ public class miCuentaAction extends ActionSupport {
         //Llamo al metodo toMisCoches() para recargar la pagina de listado de coches
         this.toMisCoches();
         return SUCCESS;
-    }
+    }*/
     
     public String toModificarCoche(){
         // Creo un objeto VehiculoDAO y recibo un objeto Vehiculo
@@ -297,21 +297,21 @@ public class miCuentaAction extends ActionSupport {
         return SUCCESS;
     }
     
-    public String modificarCoche(){
+    /*public String modificarCoche(){
         // Creo un objeto VehiculoDAO y recibo un objeto Vehiculo
         VehiculoDAO vDao = new VehiculoDAO();
         Vehiculo v = vDao.getVehiculoPorId(this.getIdCoche());
         v.setMarca(this.getMarca());
         v.setModelo(this.getModelo());
         v.setColor(this.getColor());
-        v.setPlazas(this.getPlazas());
+        v.setPlazas(Integer.parseInt(this.getPlazas()));
         v.setIdFotoVehiculo(0);
         // Paso el objeto Vehiculo al dao para que lo guarde
         vDao.updateVehiculo(this.getIdCoche(),v);
         //Llamo al metodo toMisCoches() para recargar la pagina de listado de coches
         this.toMisCoches();
         return SUCCESS;
-    }
+    }*/
     
     public String agregarFotos(){
         // Creo un objeto VehiculoDAO y recibo un objeto Vehiculo
@@ -354,7 +354,7 @@ public class miCuentaAction extends ActionSupport {
     public void setListadoTelefonos(List<Telefono> listadoTelefonos) {
         this.listadoTelefonos = listadoTelefonos;
     }
-
+/*
     public String getUsuario() {
         return usuario;
     }
@@ -409,8 +409,7 @@ public class miCuentaAction extends ActionSupport {
 
     public void setNuevoTlf(Integer nuevoTlf) {
         this.nuevoTlf = nuevoTlf;
-    }
-
+    }*/
     public String getIdTelefono() {
         return idTelefono;
     }
@@ -524,7 +523,7 @@ public class miCuentaAction extends ActionSupport {
     public void setListaCoches(List<Vehiculo> listaCoches) {
         this.listaCoches = listaCoches;
     }
-
+/*
     public String getMarca() {
         return marca;
     }
@@ -549,14 +548,14 @@ public class miCuentaAction extends ActionSupport {
         this.color = color;
     }
 
-    public int getPlazas() {
+    public String getPlazas() {
         return plazas;
     }
 
-    public void setPlazas(int plazas) {
+    public void setPlazas(String plazas) {
         this.plazas = plazas;
     }
-
+*/
     public String getIdCoche() {
         return idCoche;
     }
