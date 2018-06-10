@@ -115,7 +115,7 @@ public class misDatosTelefonoAction extends ActionSupport {
         } else {
             if (!Pattern.matches("^[9|6|7][0-9]{8}$", this.getNuevoTlf())) {
                 error = true;
-                addFieldError("telefono", "El teléfono no tiene el formato correcto, debe empezar por 7 o 6 o 9 y formar 9 dígitos en total");
+                addFieldError("telefono", "El teléfono no tiene el formato correcto, debe empezar por 7, 6 o 9 y formar 9 dígitos en total");
             }
         }
       

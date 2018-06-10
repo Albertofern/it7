@@ -58,7 +58,15 @@ public class misDatosAction extends ActionSupport {
         Map sesion = (Map) ActionContext.getContext().get("session");
         Usuario u = (Usuario) sesion.get("usuario");
         UsuarioDAO uDao = new UsuarioDAO();
+        //Actualizo usuario en WS
         uDao.updateUsuario(u.getIdUsuario(), this.getUsuario(), this.getNombre(), this.getApellidos(), this.getEmail(), this.getLocalidad(), this.getSexo());
+        //Actualizo usuario en sesion
+        u.setNomUsuario(this.getUsuario());
+        u.setNombre(this.getNombre());
+        u.setApellidos(this.getApellidos());
+        u.setEmail(this.getEmail());
+        u.setLocalidad(this.getLocalidad());
+        u.setSexo(this.getSexo());
         this.toMisDatos();
         return SUCCESS;
     }
@@ -150,7 +158,7 @@ public class misDatosAction extends ActionSupport {
             error = true;
             addFieldError("email", "El email nuevo debe estar relleno");
         } else {
-            if (!Pattern.matches("[^@]+@[^@]+\\\\.[a-zA-Z]{2,}", this.getEmail())) {
+            if (!Pattern.matches("^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$", this.getEmail())) {
                 error = true;
                 addFieldError("email", "El email nuevo no tiene el formato correcto");
             }

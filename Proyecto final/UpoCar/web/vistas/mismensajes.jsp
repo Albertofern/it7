@@ -47,6 +47,10 @@
           <article class="row">
             <div class="col-md-8 col-sm-12 col-xs-12">
               <div class="panel panel-default arrow right">
+                  <s:form class="form-horizontal" action="contactar" method="POST">
+                        <input type="hidden" name="idUsuarioContacto" value="<s:property value="idUsuarioEnvia.idUsuario"></s:property>" />
+                            <button class="btn btn-warning" id="btnResponderMensaje"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                        </s:form>
                 <div class="panel-body">
                   <header class="text-right">
                       <div class="comment-user"><span class="hidden-lg hidden-md"><s:property value="idUsuarioEnvia.nombre"></s:property> a </span> </span><s:property value="idUsuarioRecibe.nombre"></s:property></div>
