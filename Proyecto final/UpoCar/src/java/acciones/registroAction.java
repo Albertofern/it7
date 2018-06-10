@@ -124,7 +124,7 @@ public class registroAction extends ActionSupport {
             addFieldError("email", "El email debe estar relleno");
         }
         
-        if(!Pattern.matches("[^@]+@[^@]+\\\\.[a-zA-Z]{2,}", email)){
+        if(!Pattern.matches("^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$", email)){
             addFieldError("email", "El email no tiene el formato correcto");
         }
         
@@ -135,6 +135,10 @@ public class registroAction extends ActionSupport {
         if(telefono.trim().length() == 0){
             addFieldError("telefono", "El telefono debe estar relleno");
         }
+        
+        if (!Pattern.matches("^[9|6|7][0-9]{8}$", telefono)) {
+                addFieldError("telefono", "El teléfono no tiene el formato correcto, debe empezar por 7 o 6 o 9 y formar 9 dígitos en total");
+            }
         
         if(password.trim().length() == 0){
             addFieldError("password", "La password debe estar rellena");
