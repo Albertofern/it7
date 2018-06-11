@@ -163,8 +163,12 @@
             <result name="input">/vistas/miscochesmodificar.jsp</result>
         </action>
         
-        <action name="agregarFotos" method="agregarFotos" class="acciones.miCuentaAction">
-            <result name="success">/vistas/miscoches.jsp</result>
+        <action name="agregarFotoCoche" method="agregarFotoCoche" class="acciones.fotosCochesAction">
+            <result name="success">/vistas/miscochesmodificar.jsp</result>
+        </action>
+        
+        <action name="eliminarFotoCoche" method="eliminarFotoCoche" class="acciones.fotosCochesAction">
+            <result name="success">/vistas/miscochesmodificar.jsp</result>
         </action>
         
         <action name="eliminarCoche" method="eliminarCoche" class="acciones.miCuentaAction">

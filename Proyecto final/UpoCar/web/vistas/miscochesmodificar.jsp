@@ -4,13 +4,13 @@
         <h1 class="text-center">Modificar coche</h1>
         <hr/>
         <s:iterator value="listaCoches">
-        <s:form class="form-horizontal" action="modificarCoche" method="POST">
-            <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="marca">Marca:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="" name="marca" value="<s:property value="marca"></s:property>">
-                        <s:fielderror fieldName="marca" cssClass="alert alert-danger" />
+            <s:form class="form-horizontal" action="modificarCoche" method="POST">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="marca">Marca:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="" name="marca" value="<s:property value="marca"></s:property>">
+                            <s:fielderror fieldName="marca" cssClass="alert alert-danger" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -37,26 +37,38 @@
                     <div class="form-group">        
                         <div class="col-sm-offset-2 col-sm-10">
                             <input type="hidden" name="idCoche" value="<s:property value="idVehiculo"></s:property>" />
-                            <button type="submit" class="btn btn-primary">Modificar</button>
+                                <button type="submit" class="btn btn-primary">Modificar</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-        </s:form>
-        </s:iterator>
-        <s:form class="form-horizontal" action="agregarFotos" method="POST" enctype="multipart/form-data">
-                <div class="col-xs-12 col-sm-6">
+            </s:form>
+
+
+            <div class="col-xs-12 col-sm-6">
+                <s:form class="form-horizontal" action="agregarFotoCoche" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="buscarFotos">Agregar fotos:</label>
-                        <s:file name="foto" cssClass="btn btn-default"></s:file>
-                    </div>
-                    <div class="form-group">        
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <input type="hidden" name="idCoche" value="<s:property value="idVehiculo"></s:property>" />
-                            <button type="submit" class="btn btn-success">Guardar fotos</button>
+                        <s:file name="fotoCoche" cssClass="btn btn-default"></s:file>
                         </div>
-                    </div>
-                </div>
-        </s:form>
+                        <div class="form-group">        
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="hidden" name="idCoche" value="<s:property value="idVehiculo"></s:property>" />
+                                <button type="submit" class="btn btn-success">Guardar fotos</button>
+                            </div>
+                        </div>
+                </s:form>
+                
+                <s:iterator value="listaFotosVehiculos">
+                     <s:form class="form-horizontal" action="eliminarFotoCoche" method="POST">
+                        <input type="hidden" name="idFotoVehi" value="<s:property value="idFotoVehi"></s:property>" />
+                        <input type="hidden" name="idCoche" value="<s:property value="idVehiculo.idVehiculo"></s:property>" />
+                        <span><s:property value="rutaFoto"></s:property></span>
+                            <button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                        </s:form>
+                </s:iterator>
+                
+            </div>
+        </s:iterator>
     </div>
 </div>
 <%@include file="index_footer.jsp" %>

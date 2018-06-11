@@ -56,8 +56,8 @@ public class FotoVehi implements Serializable {
         this.idFotoVehi = idFotoVehi;
     }
 
-    public FotoVehi(Integer idFotoVehi, String rutaFoto) {
-        this.idFotoVehi = idFotoVehi;
+    public FotoVehi(Vehiculo idVehiculo, String rutaFoto) {
+        this.idVehiculo = idVehiculo;
         this.rutaFoto = rutaFoto;
     }
 

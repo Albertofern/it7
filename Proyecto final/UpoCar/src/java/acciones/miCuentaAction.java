@@ -313,7 +313,7 @@ public class miCuentaAction extends ActionSupport {
         return SUCCESS;
     }*/
     
-    public String agregarFotos(){
+    /*public String agregarFotos(){
         // Creo un objeto VehiculoDAO y recibo un objeto Vehiculo
         VehiculoDAO vDao = new VehiculoDAO();
         Vehiculo v = vDao.getVehiculoPorId(this.getIdCoche());
@@ -327,7 +327,7 @@ public class miCuentaAction extends ActionSupport {
         //Llamo al metodo toMisCoches() para recargar la pagina de listado de coches
         this.toMisCoches();
         return SUCCESS;
-    }
+    }*/
     
     public String eliminarCoche(){
         //Creo un objeto VehiculoDAO para obtener los vehiculos

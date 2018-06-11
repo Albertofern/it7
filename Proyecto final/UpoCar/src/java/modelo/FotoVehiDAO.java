@@ -11,6 +11,7 @@ import java.util.List;
 import javax.ws.rs.core.GenericType;
 import webServiceREST.JerseyClientFotoVehi;
 import webServiceREST.entidades.FotoVehi;
+import webServiceREST.entidades.Vehiculo;
 
 
 /**
@@ -34,5 +35,13 @@ public class FotoVehiDAO {
         }
         
         return fotosVehiculo;
+    }
+    
+    public void createFotoVehi(FotoVehi f){
+        cliente.create_XML(f);
+    }
+    
+    public void deleteFotoVehi(String id) {
+        cliente.remove(id);
     }
 }
