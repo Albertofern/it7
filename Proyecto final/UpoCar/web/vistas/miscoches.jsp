@@ -8,24 +8,28 @@
         </s:form>
     </div>
     <div class="row">
-        
-        
-                <s:iterator value="listaCoches">
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail" >
+
+        <% int col = 0;%>
+        <s:iterator value="listaCoches">
+
+            <% if(col == 0){%>    
+            <div class="fila-coches">
+                <% }%>
+
+                    <div class="thumbnail col-sm-6 col-md-4" >
                         <h4 class="text-center"><span class="label label-info"><s:property value="marca"></s:property> <s:property value="modelo"></s:property></span></h4>
-                        <div class="fotorama">
-                        <s:iterator value="listaFotosVehiculos">
-                            <img src="<s:property value="rutaFoto"></s:property>" class="img-responsive">
-                        </s:iterator>
+                            <div class="fotorama">
+                            <s:iterator value="listaFotosVehiculos">
+                                <img src="<s:property value="rutaFoto"></s:property>" class="img-responsive">
+                            </s:iterator>
                             <s:if test="%{listaFotosVehiculos.size() == 0}">
-                            <img src="./images/Sin_imagen.png" class="img-responsive">
-                        </s:if>
+                                <img src="./images/Sin_imagen.png" class="img-responsive">
+                            </s:if>
                         </div>
-                            <div class="caption">
-                                <div class="row">
-                                    <div class="col-md-6 col-xs-6">
-                                            <h4>Color: <s:property value="color"></s:property></h4>
+                        <div class="caption">
+                            <div class="row">
+                                <div class="col-md-6 col-xs-6">
+                                    <h4>Color: <s:property value="color"></s:property></h4>
                                     </div>
                                     <div class="col-md-6 col-xs-6 price">
                                         <h4>
@@ -36,7 +40,7 @@
                                     <div class="col-md-6">
                                     <s:form class="form-horizontal" action="toModificarCoche" method="POST">
                                         <input type="hidden" name="idCoche" value="<s:property value="idVehiculo"></s:property>" />
-                                        <input type="submit" class="btn btn-warning btn-coche" value="Modificar coche"></input>
+                                            <input type="submit" class="btn btn-warning btn-coche" value="Modificar coche"></input>
                                     </s:form>
                                     <!--<a class="btn btn-warning btn-coche"><span class="glyphicon glyphicon-thumbs-up"></span> Modificar coche</a>--> 
                                 </div>
@@ -52,15 +56,19 @@
                             <p> </p>
                         </div>
                     </div>
-                </div>
-            </s:iterator>
-            <s:if test="%{listaCoches.size() == 0}">
-                            <div class="alert alert-danger sin-pasajeros text-center" role="alert">
-                                No hay coches
-                              </div>
-                        </s:if>
-       
 
-    </div>
-</div>
-<%@include file="index_footer.jsp" %>
+                <% if(col == 2){%>    
+                </div>
+                    <% col = -1;}%>
+                    <% col++;%>
+                </s:iterator>
+                <s:if test="%{listaCoches.size() == 0}">
+                    <div class="alert alert-danger sin-pasajeros text-center" role="alert">
+                        No hay coches
+                    </div>
+                </s:if>
+
+
+            </div>
+        </div>
+        <%@include file="index_footer.jsp" %>

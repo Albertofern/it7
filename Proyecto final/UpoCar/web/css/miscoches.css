@@ -13,3 +13,10 @@
     border-style: solid;
     border-radius: 5px;
 }
+
+@media(min-width:768px) {
+  .fila-coches {
+    display: flex;
+}
+}
+
