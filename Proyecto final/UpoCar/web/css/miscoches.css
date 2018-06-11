@@ -1,9 +1,9 @@
 .btn-coche{
-	width: 100%;
+    width: 100%;
 }
 .btn-coche-agregar{
-	width: 100%;
-        margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .datos-cohe {
@@ -15,8 +15,8 @@
 }
 
 @media(min-width:768px) {
-  .fila-coches {
-    display: flex;
-}
+    .fila-coches {
+        display: flex;
+    }
 }
 

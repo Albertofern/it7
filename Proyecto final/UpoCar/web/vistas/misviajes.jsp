@@ -4,7 +4,7 @@
     
     <s:if test="%{listaViajes.size() > 0}">
         <s:iterator value="listaViajes" status="viaje">
-    
+            <div class="row">
     <div class="panel panel-default event">
         <div class="panel-body">
             <div class="rsvp col-xs-2 col-sm-2">
@@ -76,7 +76,7 @@
                         <button class="btn btn-danger" id="btnEliminarViaje"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
                     </s:form>
                     <strong><s:property value="idUsuarioPublica.nomUsuario"></s:property> <s:property value="idUsuarioPublica.apellidos"></s:property></strong>
-                    <article>Datos del coche:</article>
+                <article class="hidden-sm">Datos del coche:</article>
                     <div class="links">
                         <i class="col-xs-6"><s:property value="idVehiculoElegido.marca"></s:property></i>
                         <i class="col-xs-6"><s:property value="idVehiculoElegido.modelo"></s:property></i>
@@ -87,6 +87,7 @@
             </div>
         </div>
     </div>
+            </div>
     </s:iterator>
     </s:if>
     <s:else>
