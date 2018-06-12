@@ -213,10 +213,12 @@
         
         <action name="buscarEnviaMensaje" method="buscarEnviaMensaje" class="acciones.adminAction">
             <result name="success">/vistas/gestionmensajes.jsp</result>
+            <result name="input">/vistas/gestionmensajes.jsp</result>
         </action>
         
         <action name="buscarRecibeMensaje" method="buscarRecibeMensaje" class="acciones.adminAction">
             <result name="success">/vistas/gestionmensajes.jsp</result>
+            <result name="input">/vistas/gestionmensajes.jsp</result>
         </action>
         
                  
@@ -224,6 +226,7 @@
             <result type="chain">
                 <param name="actionName">toGestionMensajes</param>
             </result>
+            <result name="input">/vistas/gestionmensajes.jsp</result>
         </action>
                 
         <!-- Gestión viajes -->        
@@ -241,7 +244,14 @@
             <result type="chain">
                 <param name="actionName">toGestionViajes</param>
             </result>
+            <result name="input">/vistas/gestionviajes.jsp</result>
         </action>
+                 
+        <action name="buscarUsuarioViaje" method="buscarUsuarioViaje" class="acciones.adminAction">
+            <result name="success">/vistas/gestionviajes.jsp</result>
+            <result name="input">/vistas/gestionviajes.jsp</result>
+        </action>
+        
         <action name="reservar" method="reservarViaje" class="acciones.buscaViajeAction">
             <result type="chain">
                 <param name="actionName">toMisViajes</param>
@@ -249,16 +259,15 @@
         </action>
         
         <!-- Gestión Usuarios -->          
+        
         <action name="toGestionUsuarios" method="toGestionUsuarios" class="acciones.adminAction">
             <result name="success">/vistas/gestionusuarios.jsp</result>
         </action>
-        
-        <action name="buscarUsuarioViaje" method="buscarUsuarioViaje" class="acciones.adminAction">
-            <result name="success">/vistas/gestionviajes.jsp</result>
-        </action>
+
         
         <action name="buscarUsuario" method="buscarUsuario" class="acciones.adminAction">
             <result name="success">/vistas/gestionusuarios.jsp</result>
+            <result name="input">/vistas/gestionusuarios.jsp</result>
         </action>
         
         <action name="deleteUsuario" method="deleteUsuario" class="acciones.adminAction">
@@ -271,6 +280,7 @@
             <result type="chain">
                 <param name="actionName">toGestionUsuarios</param>
             </result>
+            <result name="input">/vistas/gestionusuarios.jsp</result>
         </action>
         
     </package>

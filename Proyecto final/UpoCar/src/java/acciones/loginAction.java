@@ -118,11 +118,11 @@ public class loginAction extends ActionSupport {
         }
         
         if(password.trim().length() == 0){
-            addFieldError("password", "La password debe estar rellena");
+            addFieldError("password", "El password debe estar relleno");
         }
         
         if(usuarioDao.login(usuario, password) == null){
-            addFieldError("usuario", "El usuario o la password son incorrectos");
+            addFieldError("usuario", "El usuario y/o password son incorrectos");
         }
     }
     

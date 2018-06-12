@@ -6,21 +6,26 @@
         <hr />
         &nbsp;
         <div class="row">
-
+            <s:fielderror fieldName="updateUsuario" cssClass="alert alert-danger" />
+            <s:fielderror fieldName="updateNombre" cssClass="alert alert-danger" />
+            <s:fielderror fieldName="updateApellidos" cssClass="alert alert-danger" />
+            <s:fielderror fieldName="updateEmail" cssClass="alert alert-danger" />
+            <s:fielderror fieldName="updateLocalidad" cssClass="alert alert-danger" />
             <div class="col-xs-12">
                 <s:form method="post" action="buscarUsuario">
+                    <s:fielderror fieldName="nomUsuario" cssClass="alert alert-danger" />
                     <s:textfield placeholder="Nombre usuario..." name="nomUsuario" />
                     <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/buscar.jpg" /></button>
-                </s:form>
-                    &nbsp;
+                    </s:form>
+                &nbsp;
                 <s:form method="post" action="toGestionUsuarios">
                     Mostrar Todo
                     <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/mostrarTodo.png" /></button>
-                </s:form>
-                    &nbsp;
+                    </s:form>
+                &nbsp;
             </div>
             <div class="col-xs-12">
-               
+
                 <div class="col-xs-12 datagrid">
                     <table class="col-lg-12" border="1">
                         <thead>
@@ -73,7 +78,7 @@
                         </s:else>
                     </table>
                 </div>
-    
+
             </div>
             <div class="col-xs-12"><hr /></div>
 
@@ -84,10 +89,10 @@
                 <div class="col-lg-4 col-xs-6 datagrid">
                     <table >
                         <thead>
-                        <tr><th colspan="2">Update</th></tr>
+                            <tr><th colspan="2">Update</th></tr>
                         </thead>
-                                <s:form id="formularioUpdate" method="post" action="updateUsuario">
-                            <tr><td>ID:</td><td id="updateIdUsuario"></td></tr>
+                        <s:form id="formularioUpdate" method="post" action="updateUsuario">
+                            <tr><td>ID:</td><td id="updateIdUsuario"></td></tr>              
                             <tr class="alt"><td>Usuario:</td><td><s:textfield id="updateUsuario" name="updateUsuario" value="" ></s:textfield></td></tr>
                             <tr><td>Nombre</td><td><s:textfield id="updateNombre" name="updateNombre" value="" ></s:textfield></td></tr>
                             <tr class="alt"><td>Apellidos:</td><td><s:textfield id="updateApellidos" name="updateApellidos" value=""></s:textfield></td></tr>
@@ -98,11 +103,10 @@
                                             <option id="masculino" value="M">Masculino</option> 
                                             <option id="femenino" value="F">Femenino</option>                             
                                         </select> </td></tr>
-                                <tr class="alt"><td>Foto:</td><td><s:textfield id="updateFoto" name="updateFoto" value=""></s:textfield></td></tr>
-                            <tr><td colspan="2"><s:submit cssClass="btn btn-default" value="Update"></s:submit></td></tr>
+                                <tr><td colspan="2"><s:submit cssClass="btn btn-default" value="Update"></s:submit></td></tr>
                                 <input id="hiddenUpdateID" type="hidden" name="updateIdUsuario" value="" />
                         </s:form>
-                                <tr class="alt"><td colspan="2"><button class="btn btn-default" id="volverUpdate">Cerrar</button></td></tr>
+                        <tr class="alt"><td colspan="2"><button class="btn btn-default" id="volverUpdate">Cerrar</button></td></tr>
                     </table>
                 </div>
                 <div class="col-lg-4 col-xs-3"></div>
@@ -138,7 +142,7 @@
             }
             $("#hiddenUpdateID").attr("value", id);
             $("#updateIdUsuario").text(id);
-        
+
 
             var focalizar = $("#formularioUpdate").position().top;
             $('html,body').animate({scrollTop: focalizar}, 1000);

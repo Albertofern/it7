@@ -7,9 +7,14 @@
         &nbsp;
         <div class="row">
 
+            <s:fielderror fieldName="updatePlazasMax" cssClass="alert alert-danger" />
+            <s:fielderror fieldName="updatePrecioPersona" cssClass="alert alert-danger" />
+            <s:fielderror fieldName="updateFechaSalida" cssClass="alert alert-danger" />
+            <s:fielderror fieldName="updatePuntoRecogida" cssClass="alert alert-danger" />
             <div class="col-xs-12">
                 <s:form method="post" action="buscarUsuarioViaje">
-                    <s:textfield placeholder="Nombre conductor..." name="nomUsuario" />
+                    <s:fielderror fieldName="nomUsuarioViaje" cssClass="alert alert-danger" />
+                    <s:textfield placeholder="Nombre conductor..." name="nomUsuarioViaje" />
                     <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/buscar.jpg" /></button>
                 </s:form>
                     &nbsp;

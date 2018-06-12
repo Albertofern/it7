@@ -6,14 +6,16 @@
         <hr />
         &nbsp;
         <div class="row">
-
+            <s:fielderror fieldName="updateMensaje" cssClass="alert alert-danger" />
             <div class="col-xs-12">
                 <s:form method="post" action="buscarEnviaMensaje">
+                     <s:fielderror fieldName="nomUsuarioEnvia" cssClass="alert alert-danger" />
                     <s:textfield placeholder="Usuario envia mensaje..." name="nomUsuarioEnvia" />
                     <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/buscar.jpg" /></button>
                 </s:form>
                 &nbsp;
                 <s:form method="post" action="buscarRecibeMensaje">
+                     <s:fielderror fieldName="nomUsuarioRecibe" cssClass="alert alert-danger" />
                     <s:textfield placeholder="Usuario recibe mensaje..." name="nomUsuarioRecibe" />
                     <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/buscar.jpg" /></button>
                 </s:form>

@@ -10,6 +10,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import modelo.LocalidadDAO;
 import modelo.MensajeDAO;
 import modelo.UsuarioDAO;
@@ -30,6 +33,7 @@ public class adminAction extends ActionSupport {
     List<Localidad> listadoLocalidades;
     List<Viaje> listadoViajes;
     //Viaje
+    String nomUsuarioViaje;
     String idViaje;
     Integer updatePlazasMax;
     Double updatePrecioPersona;
@@ -53,7 +57,6 @@ public class adminAction extends ActionSupport {
     String nomUsuarioEnvia;
     String nomUsuarioRecibe;
     String updateMensaje;
-    
 
     public adminAction() {
     }
@@ -62,12 +65,152 @@ public class adminAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public void validate() {
+        boolean errorUsuario = false;
+        if (this.getNomUsuario() != null) {
+            if (this.getNomUsuario().trim().length() == 0) {
+                errorUsuario = true;
+                addFieldError("nomUsuario", "El usuario debe estar relleno");
+            }
+        }
+        boolean errorMensaje = false;
+        if (this.getNomUsuarioEnvia() != null) {
+            if (this.getNomUsuarioEnvia().trim().length() == 0) {
+                errorMensaje = true;
+                addFieldError("nomUsuarioEnvia", "El usuario debe estar relleno");
+            }
+        }
+        if (this.getNomUsuarioRecibe() != null) {
+            if (this.getNomUsuarioRecibe().trim().length() == 0) {
+                errorMensaje = true;
+                addFieldError("nomUsuarioRecibe", "El usuario debe estar relleno");
+            }
+        }
+        boolean errorViaje = false;
+        if (this.getNomUsuarioViaje() != null) {
+            if (this.getNomUsuarioViaje().trim().length() == 0) {
+                errorViaje = true;
+                addFieldError("nomUsuarioViaje", "El usuario debe estar relleno");
+            }
+        }
+
+        //Update usuario
+        if (this.getUpdateUsuario() != null) {
+            if (this.getUpdateUsuario().trim().length() == 0) {
+                errorUsuario = true;
+                addFieldError("updateUsuario", "Update: El usuario debe estar relleno");
+            }
+        }
+
+        if (this.getUpdateNombre() != null) {
+            if (this.getUpdateNombre().trim().length() == 0) {
+                errorUsuario = true;
+                addFieldError("updateNombre", "Update: El nombre del usuario debe estar relleno");
+            }
+        }
+
+        if (this.getUpdateApellidos() != null) {
+            if (this.getUpdateApellidos().trim().length() == 0) {
+                errorUsuario = true;
+                addFieldError("updateApellidos", "Update: El apellido del usuario debe estar relleno");
+            }
+        }
+
+        if (this.getUpdateEmail() != null) {
+            if (this.getUpdateEmail().trim().length() == 0) {
+                errorUsuario = true;
+                addFieldError("updateEmail", "Update: El email nuevo debe estar relleno");
+            } else {
+                if (!Pattern.matches("^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$", this.getUpdateEmail())) {
+                    errorUsuario = true;
+                    addFieldError("updateEmail", "Update: El email nuevo no tiene el formato correcto");
+                }
+            }
+        }
+
+        if (this.getUpdateLocalidad() != null) {
+            if (this.getUpdateLocalidad().trim().length() == 0) {
+                errorUsuario = true;
+                addFieldError("updateLocalidad", "Update: La localidad nueva debe estar relleno");
+            }
+        }
+
+        //Update viaje
+        if (this.getUpdatePlazasMax() != null) {
+            if (!Pattern.matches("[0-9]", String.valueOf(this.getUpdatePlazasMax()))) {
+                errorViaje = true;
+                addFieldError("updatePlazasMax", "Update: Debe introducir las plazas máximas");
+            }
+            if (this.getUpdatePlazasMax() <= 0) {
+                errorViaje = true;
+                addFieldError("updatePlazasMax", "Update: Debe introducir el numero de plazas");
+            }
+        }
+
+
+        if (this.getUpdateFechaSalida() != null) {
+            if (this.getUpdatePrecioPersona() <= 0.0) {
+                errorViaje = true;
+                addFieldError("updatePrecioPersona", "Update: Debe introducir un numero en precio por persona");
+            }
+        }
+        if (this.getUpdateFechaSalida() != null) {
+            if (this.getUpdateFechaSalida().length() == 0) {
+                errorViaje = true;
+                addFieldError("updateFechaSalida", "Update: Debe introducir una fecha de salida");
+            }
+        }
+
+        if (this.getUpdatePuntoRecogida() != null) {
+            errorViaje = true;
+            if (this.getUpdatePuntoRecogida().length() == 0) {
+                addFieldError("updatePuntoRecogida", "Update: Debe introducir un punto de recogida");
+            }
+        }
+        
+        //update mensaje
+        
+        if (this.getUpdateMensaje() != null) {
+            errorMensaje = true;
+            if (this.getUpdateMensaje().length() == 0) {
+                addFieldError("updateMensaje", "Update: Debe introducir un mensaje");
+            }
+        }
+
+        if (errorUsuario) {
+            try {
+                this.gestionUsuarios();
+            } catch (Exception ex) {
+                Logger.getLogger(adminAction.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (errorMensaje) {
+            try {
+                this.gestionMensajes();
+            } catch (Exception ex) {
+                Logger.getLogger(adminAction.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (errorViaje) {
+            try {
+                this.gestionViajes();
+            } catch (Exception ex) {
+                Logger.getLogger(adminAction.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+
     //Gestión Mensajes
-    public String toGestionMensajes() throws Exception {
+    public void gestionMensajes() throws Exception {
         MensajeDAO mensajeDAO = new MensajeDAO();
         this.setListadoMensajes(mensajeDAO.listarMensajes());
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         this.setListadoUsuarios(usuarioDAO.listarUsuarios());
+    }
+
+    public String toGestionMensajes() throws Exception {
+        this.gestionMensajes();
         return SUCCESS;
     }
 
@@ -76,31 +219,25 @@ public class adminAction extends ActionSupport {
         mensajeDAO.deleteMensaje(this.getIdMensaje());
         return SUCCESS;
     }
-     public String buscarEnviaMensaje() throws Exception {
+
+    public String updateMensaje() throws Exception {
         MensajeDAO mensajeDAO = new MensajeDAO();
-        this.setListadoMensajes(mensajeDAO.buscarEnviaMensaje(this.getNomUsuarioEnvia()));
-        return SUCCESS;
-    }
-     public String buscarRecibeMensaje() throws Exception {
-        MensajeDAO mensajeDAO = new MensajeDAO();
-        this.setListadoMensajes(mensajeDAO.buscarRecibeMensaje(this.getNomUsuarioRecibe()));
-        return SUCCESS;
-    }
-     
-     public String updateMensaje() throws Exception {
-        MensajeDAO mensajeDAO = new MensajeDAO();
-        mensajeDAO.updateMensaje(this.getIdMensaje(), this.getUpdateMensaje(),this.getIdUsuario());
+        mensajeDAO.updateMensaje(this.getIdMensaje(), this.getUpdateMensaje(), this.getIdUsuario());
         return SUCCESS;
     }
 
     //Gestión Viajes
-    public String toGestionViajes() throws Exception {
+    public void gestionViajes() throws Exception {
         ViajeDAO viajeDAO = new ViajeDAO();
         this.setListadoViajes(viajeDAO.listarViajes());
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         this.setListadoUsuarios(usuarioDAO.listarUsuarios());
         LocalidadDAO localidadDAO = new LocalidadDAO();
         this.setListadoLocalidades(localidadDAO.getLocalidades());
+    }
+
+    public String toGestionViajes() throws Exception {
+        this.gestionViajes();
         return SUCCESS;
     }
 
@@ -112,11 +249,11 @@ public class adminAction extends ActionSupport {
 
     public String updateViaje() throws Exception {
         ViajeDAO viajeDAO = new ViajeDAO();
-        
-          //la fecha la guarda en el siguiente formato: 2018-05-30T14:15
+
+        //la fecha la guarda en el siguiente formato: 2018-05-30T14:15
         Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(this.getUpdateFechaSalida());
         String formattedDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
-        
+
         viajeDAO.updateViaje(this.getUpdateId(), this.getUpdatePlazasMax(),
                 this.getUpdatePrecioPersona(), this.getUpdatePuntoRecogida(),
                 formattedDate, this.getIdUsuario(),
@@ -126,7 +263,7 @@ public class adminAction extends ActionSupport {
 
     public String buscarUsuarioViaje() throws Exception {
         ViajeDAO viajeDAO = new ViajeDAO();
-        this.setListadoViajes(viajeDAO.listarViajesUsuario(this.getNomUsuario()));
+        this.setListadoViajes(viajeDAO.listarViajesUsuario(this.getNomUsuarioViaje()));
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         this.setListadoUsuarios(usuarioDAO.listarUsuarios());
         LocalidadDAO localidadDAO = new LocalidadDAO();
@@ -134,16 +271,32 @@ public class adminAction extends ActionSupport {
         return SUCCESS;
     }
 
-    //Gestión Usuarios
-    public String toGestionUsuarios() throws Exception {
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        this.setListadoUsuarios(usuarioDAO.listarUsuarios());
+    public String buscarEnviaMensaje() throws Exception {
+        MensajeDAO mensajeDAO = new MensajeDAO();
+        this.setListadoMensajes(mensajeDAO.buscarEnviaMensaje(this.getNomUsuarioEnvia()));
+        return SUCCESS;
+    }
+
+    public String buscarRecibeMensaje() throws Exception {
+        MensajeDAO mensajeDAO = new MensajeDAO();
+        this.setListadoMensajes(mensajeDAO.buscarRecibeMensaje(this.getNomUsuarioRecibe()));
         return SUCCESS;
     }
 
     public String buscarUsuario() throws Exception {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         this.setListadoUsuarios(usuarioDAO.buscarUsuario(this.getNomUsuario()));
+        return SUCCESS;
+    }
+
+    //Gestión Usuarios
+    public void gestionUsuarios() throws Exception {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        this.setListadoUsuarios(usuarioDAO.listarUsuarios());
+    }
+
+    public String toGestionUsuarios() throws Exception {
+        this.gestionUsuarios();
         return SUCCESS;
     }
 
@@ -361,6 +514,12 @@ public class adminAction extends ActionSupport {
         this.updateMensaje = updateMensaje;
     }
 
-    
-    
+    public String getNomUsuarioViaje() {
+        return nomUsuarioViaje;
+    }
+
+    public void setNomUsuarioViaje(String nomUsuarioViaje) {
+        this.nomUsuarioViaje = nomUsuarioViaje;
+    }
+
 }
