@@ -137,4 +137,4 @@
 </script>
 <br />
 <br />
-<%@include file="./index_footer.jsp" %>
+<%@include file="index_footer.jsp" %>
