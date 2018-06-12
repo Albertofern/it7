@@ -54,6 +54,7 @@
 
         <action name="buscarUsuarioRanking" method="buscarUsuarioRanking" class="acciones.RankingAction">
             <result name="success">/vistas/ranking.jsp</result>
+            <result name="input">/vistas/ranking.jsp</result>
         </action>
         
         <action name="registro" method="registro" class="acciones.registroAction">

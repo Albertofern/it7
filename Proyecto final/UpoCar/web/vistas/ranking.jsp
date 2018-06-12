@@ -10,6 +10,7 @@
             <div class="col-xs-12">
                 <div class="col-xs-12">
                     <s:form method="post" action="buscarUsuarioRanking">
+                        <s:fielderror fieldName="usuario" cssClass="alert alert-danger" />
                         <s:textfield placeholder="Nombre usuario..." name="usuario" />
                         <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/buscar.jpg" /></button>
                         </s:form>
