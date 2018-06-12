@@ -84,8 +84,12 @@ public class UsuarioDAO {
     public Usuario login(String usuario, String password) {
         GenericType<Usuario> genericType = new GenericType<Usuario>() {
         };
-
-        Usuario user = clientUsuario.login(genericType, usuario, password);
+        
+        Usuario user = null;
+        
+        if(usuario.trim().length() != 0 || password.trim().length() != 0){
+            user = clientUsuario.login(genericType, usuario, password);
+        }
 
         return user;
     }
