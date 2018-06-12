@@ -34,7 +34,7 @@
                 <blockquote class="quote-box">
                     <s:form class="form-horizontal" action="eliminarPuntuacion" method="POST">
                         <input type="hidden" name="idPuntuacion" value="<s:property value="idPuntuacion"></s:property>" />
-                            <button class="btn btn-danger" id="btnEliminarPuntuacion"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                            <button class="btn btn-danger" id="btnEliminarPuntuacion"><img class="img-icon" title="Eliminar" src="./images/papelera.png" /></button>
                         </s:form>
                     <p class="quote-text">
                         <s:property value="comentario"></s:property>

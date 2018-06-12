@@ -54,7 +54,7 @@
                 <div class="profile">
                     <s:form class="form-horizontal" action="eliminarReserva" method="POST">
                         <input type="hidden" name="idPasajero" value="<s:property value="idPasajero"></s:property>" />
-                        <button class="btn btn-danger" id="btnEliminarReserva"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                        <button class="btn btn-danger btnEliminarReserva" ><img class="img-icon" title="Eliminar" src="./images/papelera.png" /></button>
                     </s:form>
                     <strong><s:property value="idViaje.idUsuarioPublica.nomUsuario"></s:property> <s:property value="idViaje.idUsuarioPublica.apellidos"></s:property></strong>
                     <article>Datos del coche:</article>

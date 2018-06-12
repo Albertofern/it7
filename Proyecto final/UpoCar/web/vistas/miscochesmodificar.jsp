@@ -63,7 +63,7 @@
                         <input type="hidden" name="idFotoVehi" value="<s:property value="idFotoVehi"></s:property>" />
                         <input type="hidden" name="idCoche" value="<s:property value="idVehiculo.idVehiculo"></s:property>" />
                         <span><s:property value="rutaFoto"></s:property></span>
-                            <button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                            <button class="btn btn-danger"><img class="img-icon" title="Eliminar" src="./images/papelera.png" /></button>
                         </s:form>
                 </s:iterator>
                 

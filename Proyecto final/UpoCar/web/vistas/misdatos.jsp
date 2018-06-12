@@ -94,7 +94,7 @@
                                     <div class="input-group">
                                         <input type="text" name="nuevoTlf" class="form-control" placeholder="ej: 654876123">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-success" name="agregarTlf" type="submit">Agregar<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                            <button class="btn btn-success" name="agregarTlf" type="submit">Agregar</button>
                                         </span>
                                       </div>
                                     </s:form>
@@ -108,13 +108,13 @@
                                     </div>
                                     <div class="col-xs-1">
                                         <input type="hidden" name="idTelefono" value="<s:property value="idTel"></s:property>" />
-                                        <div><button class="btn btn-warning" name="modificarTlf" type="submit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></div>
+                                        <div><button class="btn btn-warning" name="modificarTlf" type="submit"><img class="img-icon" title="Modificar" src="./images/update.png" /></button></div>
                                     </s:form>
                                     </div>
                                     <div class="col-xs-1">
                                     <s:form class="form-horizontal" action="eliminarTelefono" method="POST">
                                         <input type="hidden" name="idTelefono" value="<s:property value="idTel"></s:property>" />
-                                        <div><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>
+                                        <div><button class="btn btn-danger"><img class="img-icon" title="Eliminar" src="./images/papelera.png" /></button></div>
                                     </s:form>
                                     </div>
                                 </div>

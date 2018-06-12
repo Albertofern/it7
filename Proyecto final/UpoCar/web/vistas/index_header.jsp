@@ -8,12 +8,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style type="text/css">
-            <%@include file="../librerias/bootstrap-3.3.7-dist/css/bootstrap.css" %>
+            <%@include file="../librerias/bootstrap-3.3.7-dist/css/bootstrap.min.css" %>
             <%@include file="../css/css.css" %>
             <%@include file="../css/buscaviajes.css" %>
             <%@include file="../css/micuenta.css" %>
             <%@include file="../css/misdatos.css" %>
-            <%--<%@include file="../css/misviajes.css" %> --%>
+            <%@include file="../css/misviajes.css" %>
             <%@include file="../css/misopiniones.css" %>
             <%@include file="../css/mismensajes.css" %>
             <%@include file="../css/miscoches.css" %>
@@ -21,7 +21,7 @@
         </style>
         <script type="text/javascript" src="./librerias/jquery/jquery-1.12.4.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript" src="./librerias/jquery/bootstrap.js"></script>
+        <script type="text/javascript" src="./librerias/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
         <!-- Fotorama (Carousel) -->
         <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->

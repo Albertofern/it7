@@ -1,11 +1,9 @@
 blockquote{
     border-left:none;
 }
-
 .quote-badge{
     background-color: rgba(0, 0, 0, 0.2);   
 }
-
 .quote-box{
     border-radius: 17px;
     background-color: #4ADFCC;
@@ -13,33 +11,26 @@ blockquote{
     color:white;
     box-shadow: 2px 2px 2px 2px #E0E0E0;
 }
-
-
 .quotation-mark{
     font-weight: bold;
     font-size:100px;
     color:white;
     font-family: "Times New Roman", Georgia, Serif;
 }
-
 .quote-text{
     font-size: 14px;
 }
-
 .opiniones-box {
     background-color: #b2dba1;
     border-style: outset;
 }
-
 .blog-post-bottom {
     font-size: 14px;
     margin-top: -18px;
 }
-
 .box-flex {
     display: flex;
 }
-
 #btnEliminarPuntuacion {
     float: right;
     margin-right: -20px;

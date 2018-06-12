@@ -17,7 +17,7 @@
               <div class="panel panel-default arrow left">
                   <s:form class="form-horizontal" action="eliminarMensaje" method="POST">
                         <input type="hidden" name="idMensaje" value="<s:property value="idMensaje"></s:property>" />
-                            <button class="btn btn-danger" id="btnEliminarMensaje"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                            <button class="btn btn-danger" id="btnEliminarMensaje"><img class="img-icon" title="Eliminar" src="./images/papelera.png" /></button>
                         </s:form>
                 <div class="panel-body">
                   <header class="text-left">
@@ -49,7 +49,7 @@
               <div class="panel panel-default arrow right">
                   <s:form class="form-horizontal" action="contactar" method="POST">
                         <input type="hidden" name="idUsuarioContacto" value="<s:property value="idUsuarioEnvia.idUsuario"></s:property>" />
-                            <button class="btn btn-warning" id="btnResponderMensaje"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                            <button class="btn btn-warning" id="btnResponderMensaje"><img class="img-icon" title="Eliminar" src="./images/responder.png" /></button>
                         </s:form>
                 <div class="panel-body">
                   <header class="text-right">

@@ -44,7 +44,7 @@
                                     <s:property value="idUsuario.apellidos"></s:property>
                                     <s:form class="form-horizontal" action="eliminarPasajeroViaje" method="POST">
                                         <input type="hidden" name="idPasajero" value="<s:property value="idPasajero"></s:property>" />
-                                        <button class="btn btn-danger" id="btnEliminarPasajero"></button>
+                                        <button class="btn btn-danger btnEliminarPasajero" ></button>
                                     </s:form>
                                 </div>  
                             </s:iterator>
@@ -73,7 +73,7 @@
                 <div class="profile">
                     <s:form class="form-horizontal" action="eliminarViaje" method="POST">
                         <input type="hidden" name="idViaje" value="<s:property value="idViaje"></s:property>" />
-                        <button class="btn btn-danger" id="btnEliminarViaje"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                        <button class="btn btn-danger btnEliminarViaje" ><img class="img-icon" title="Eliminar" src="./images/papelera.png" /></button>
                     </s:form>
                     <strong><s:property value="idUsuarioPublica.nomUsuario"></s:property> <s:property value="idUsuarioPublica.apellidos"></s:property></strong>
                 <article class="hidden-sm">Datos del coche:</article>
