@@ -55,7 +55,8 @@ public class misDatosAction extends ActionSupport {
         Usuario u = (Usuario) sesion.get("usuario");
         UsuarioDAO uDao = new UsuarioDAO();
         //Actualizo usuario en WS
-        uDao.updateUsuario(u.getIdUsuario(), this.getUsuario(), this.getNombre(), this.getApellidos(), this.getEmail(), this.getLocalidad(), this.getSexo());
+        uDao.updateUsuario(u.getIdUsuario(), this.getUsuario(), this.getNombre(), 
+                this.getApellidos(), this.getEmail(), this.getLocalidad(), this.getSexo(),"usuario");
         //Actualizo usuario en sesion
         u.setNomUsuario(this.getUsuario());
         u.setNombre(this.getNombre());

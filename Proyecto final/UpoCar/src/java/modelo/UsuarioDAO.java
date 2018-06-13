@@ -38,7 +38,7 @@ public class UsuarioDAO {
         GenericType<Usuario> genericType = new GenericType<Usuario>() {
         };
         Usuario u = clientUsuario.find_XML(genericType, idUsuario);
-        
+
         return u;
     }
 
@@ -47,7 +47,7 @@ public class UsuarioDAO {
     }
 
     public void updateUsuario(Integer idUsuario, String usuario, String nombre, String apellido,
-            String email, String localidad, String sexo) {
+            String email, String localidad, String sexo, String tipo) {
 
         GenericType<Usuario> genericTypeUsuario = new GenericType<Usuario>() {
         };
@@ -58,11 +58,16 @@ public class UsuarioDAO {
         u.setEmail(email);
         u.setLocalidad(localidad);
         u.setSexo(sexo);
-        String rutaFoto = "./images/male.png";
-        if (u.getSexo().equals("F")) {
-            rutaFoto = "./images/female.png";
+
+        if (tipo.equals("admin") && (u.getFoto().equals("./images/male.png") || 
+                u.getFoto().equals("./images/female.png"))) {
+            String rutaFoto = "./images/male.png";
+            if (u.getSexo().equals("F")) {
+                rutaFoto = "./images/female.png";
+            }
+            u.setFoto(rutaFoto);
         }
-        u.setFoto(rutaFoto);
+
         clientUsuario.edit_XML(u, String.valueOf(idUsuario));
     }
 

@@ -317,7 +317,7 @@ public class adminAction extends ActionSupport {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.updateUsuario(this.getUpdateIdUsuario(), this.getUpdateUsuario(),
                 this.getUpdateNombre(), this.getUpdateApellidos(), this.getUpdateEmail(),
-                this.getUpdateLocalidad(), this.getUpdateSexo());
+                this.getUpdateLocalidad(), this.getUpdateSexo(),"admin");
         return SUCCESS;
     }
 
