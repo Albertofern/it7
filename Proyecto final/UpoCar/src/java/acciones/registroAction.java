@@ -94,6 +94,10 @@ public class registroAction extends ActionSupport {
     public registroAction() {
     }
     
+    /*
+    Se crea un nuevo usuario, dependiendo del sexo, se le introduce una imagen por defecto de un chico o una chica
+    Una vez hecho esto, se le envia al metodo de registrar situado en el DAO
+    */
     public String registro() throws Exception {
         Usuario u = null;
         if(sexo.equals("M")){

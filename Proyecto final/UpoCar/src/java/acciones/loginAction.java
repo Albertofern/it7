@@ -83,6 +83,9 @@ public class loginAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /*
+    Mediante el usuario y la password, se recoge el usuario devuelto por el metodo del dao
+    */
     public String login() {
         Usuario u = usuarioDao.login(usuario, password);
 

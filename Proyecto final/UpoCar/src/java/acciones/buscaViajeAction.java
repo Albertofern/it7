@@ -123,6 +123,10 @@ public class buscaViajeAction extends ActionSupport {
     public buscaViajeAction() {
     }
 
+    /*
+    Busca los viajes dependiendo si se ha introducido la fecha o no. Una vez hecho esto, se muestran los viajes
+    que tengan plazas disponibles, devolviendolo con las plazas disponibles y las fotos del coche del viaje.
+    */
     public String buscaViaje() throws ParseException {
         if (!fechaHora.equals("")) {
             Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(fechaHora);
@@ -160,6 +164,9 @@ public class buscaViajeAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /*
+    Se reserva una plaza para el viaje seleccionado, enviando tambien un mensaje al usuario propietario del viaje
+    */
     public String reservarViaje() {
 
         Pasajeros p = new Pasajeros(null);

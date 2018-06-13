@@ -121,6 +121,9 @@ public class verPerfilAction extends ActionSupport {
         return SUCCESS;
     }
     
+    /*
+    Accede al perfil del usuario seleccionado mediante un ID
+    */
     public String verPerfilUsuario(){        
         Usuario u = usuarioDao.buscarUsuarioPorID(idUsuario);
         
@@ -132,6 +135,10 @@ public class verPerfilAction extends ActionSupport {
         return SUCCESS;
     }
     
+    /*
+    Recoge la sesion del usuario actual, y del usuario seleccionado. Seleccionando un numero entre 1 y 5
+    y comentando al usuario, se le asigna la votacion con su correspondiente comentario
+    */
     public String votar(){
         Puntuacion p = new Puntuacion(null, Integer.parseInt(voto), comentario);
         Map sesion = (Map) ActionContext.getContext().get("session");
