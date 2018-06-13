@@ -267,9 +267,9 @@
             <result name="input">/vistas/gestionviajes.jsp</result>
         </action>
         
-        <action name="reservar" method="reservarViaje" class="acciones.buscaViajeAction">
+        <action name="reservar" method="reservarViaje" class="acciones.reservarAction">
             <result type="chain">
-                <param name="actionName">toMisViajes</param>
+                <param name="actionName">toMisReservas</param>
             </result>
         </action>
         
