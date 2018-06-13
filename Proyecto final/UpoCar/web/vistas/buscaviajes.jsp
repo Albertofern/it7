@@ -61,6 +61,7 @@
                             <p><strong>Precio:</strong><s:property value="percioPersona"></s:property></p> 
                             <p><strong>Plazas disponibles:</strong> <s:property value="listaPasajeros.size()"></s:property>/<s:property value="plazasMax"></s:property></p> 
                             <p><strong>Punto de recogida:</strong> <s:property value="puntoRecogida"></s:property></p>
+                            <p><strong>Hora de salida:</strong> <s:property value="fechaSalida"></s:property></p>
                                 <p>
                                 <s:if test="%{#session.usuario != null}">  
                                     <s:form action="reservar">

@@ -124,19 +124,36 @@ public class buscaViajeAction extends ActionSupport {
     }
 
     /*
-    Busca los viajes dependiendo si se ha introducido la fecha o no. Una vez hecho esto, se muestran los viajes
-    que tengan plazas disponibles, devolviendolo con las plazas disponibles y las fotos del coche del viaje.
-    */
+    Busca los viajes segun si se ha introducido una fecha y hora, o no. Para ello, se recogen todos los viajes
+    y se compara si el origen y el destino corresponden con el que ha escrito el usuario
+    Una vez hecho esto, se coge los datos correspondientes y se devuelve a la lista final para que se muestre.
+     */
     public String buscaViaje() throws ParseException {
         if (!fechaHora.equals("")) {
             Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(fechaHora);
             String formattedDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
 
-            List listadoProvisional = viajeDao.buscaViaje(origen, destino, formattedDate);
+            //List listadoProvisional = viajeDao.buscaViaje(origen, destino, formattedDate);
+            List<Viaje> listadoProvisional = viajeDao.listarViajes();
+
+            List<Viaje> listaBusqueda = new ArrayList<Viaje>();
+            for (Viaje v : listadoProvisional) {
+                if (v.getIdLocalidadOrigen().getNombre().equals(origen) && v.getIdLocalidadDestino().getNombre().equals(destino)) {
+
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                    Date dateViaje = format.parse(v.getFechaSalida());
+                    Date dateSeleccionado = format.parse(formattedDate);
+
+                    if (dateSeleccionado.compareTo(dateViaje) <= 0) {
+                        listaBusqueda.add(v);
+                    }
+                }
+            }
+
             List listaFinal = new ArrayList();
 
-            for (int i = 0; i < listadoProvisional.size(); i++) { //Muestro todos los viajes que tengan plazas disponibles
-                Viaje v = (Viaje) listadoProvisional.get(i);
+            for (int i = 0; i < listaBusqueda.size(); i++) { //Muestro todos los viajes que tengan plazas disponibles
+                Viaje v = (Viaje) listaBusqueda.get(i);
 
                 if (v.getPlazasMax() > pasajeroDao.listarPasajeros(v.getIdViaje()).size()) {
                     v.setFotosVehiculo(fotoDao.fotosVehiculo(String.valueOf(v.getIdVehiculoElegido().getIdVehiculo())));
@@ -147,10 +164,20 @@ public class buscaViajeAction extends ActionSupport {
             listadoViajes = listaFinal;
 
         } else {
-            List listadoProvisional = viajeDao.listarViajes();
+            List<Viaje> listadoProvisional = viajeDao.listarViajes();
+
+            List<Viaje> listaBusqueda = new ArrayList<Viaje>();
+            for (Viaje v : listadoProvisional) {
+                if (v.getIdLocalidadOrigen().getNombre().equals(origen) && v.getIdLocalidadDestino().getNombre().equals(destino)) {
+
+                    listaBusqueda.add(v);
+
+                }
+            }
+
             List listaFinal = new ArrayList();
-            for (int i = 0; i < listadoProvisional.size(); i++) {
-                Viaje v = (Viaje) listadoProvisional.get(i);
+            for (int i = 0; i < listaBusqueda.size(); i++) {
+                Viaje v = (Viaje) listaBusqueda.get(i);
 
                 if (v.getPlazasMax() > pasajeroDao.listarPasajeros(v.getIdViaje()).size()) {
                     v.setFotosVehiculo(fotoDao.fotosVehiculo(String.valueOf(v.getIdVehiculoElegido().getIdVehiculo())));
@@ -166,7 +193,7 @@ public class buscaViajeAction extends ActionSupport {
 
     /*
     Se reserva una plaza para el viaje seleccionado, enviando tambien un mensaje al usuario propietario del viaje
-    */
+     */
     public String reservarViaje() {
 
         Pasajeros p = new Pasajeros(null);
@@ -198,10 +225,6 @@ public class buscaViajeAction extends ActionSupport {
         if (!fechaHora.equals("") && (origen.trim().length() == 0 || destino.trim().length() == 0)) {
             addFieldError("origen", "Debe introducir origen");
             addFieldError("origen", "Debe introducir destino");
-        }
-
-        if (!Pattern.matches("20[0-9][0-9]-[01][0-9]-[0-3][0-9]T[0-2][0-3]:[0-5][0-9]", fechaHora) && fechaHora.trim().length() != 0) {
-            addFieldError("origen", "La fecha no es correcta (yyyy-mm-ddTHH:mm)");
         }
     }
 }
