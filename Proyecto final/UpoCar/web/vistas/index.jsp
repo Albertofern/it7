@@ -21,7 +21,7 @@
 
                             <div class="col-lg-6">
                                 <s:fielderror fieldName="fechaHora" cssClass="alert alert-danger" />
-                                <input id="datetime" name="fechaHora" type="datetime-local" class="form-control">
+                                <input id="datetime" name="fechaHora" placeholder="yyyy/mm/ddTHH:mm" type="datetime-local" class="form-control">
                             </div>
                         <s:submit name="buscar" value="Buscar viaje" cssClass="btn btn-default btnBuscar"></s:submit>
                     </s:form>
