@@ -40,27 +40,27 @@
                 </div>
                 <div class="hidden-md hidden-lg">
                     <div class="col-xs-6">       
-                    <s:form action="toMisDatos"><button class="btn btn-defaul" ><img class="foto-mi-cuenta img-circle img-responsive" src="./images/mis-datos.png" /></button></s:form>
+                    <s:form action="toMisDatos"><button class="btn btn-default" ><img class="foto-mi-cuenta img-circle img-responsive" title="Mis datos"  src="./images/mis-datos.png" /></button></s:form>
                         &nbsp;
                     </div>
                     <div class="col-xs-6"> 
-                    <s:form action="toMisViajes"><button class="btn btn-default" ><img class="foto-mi-cuenta img-circle img-responsive" src="./images/gestionViajes.jpg" /></button></s:form>
+                    <s:form action="toMisViajes"><button class="btn btn-default" ><img class="foto-mi-cuenta img-circle img-responsive" title="Mis Viajes"  src="./images/gestionViajes.jpg" /></button></s:form>
                         &nbsp;
                     </div>
                     <div class="col-xs-6">        
-                    <s:form action="toMisOpiniones"><button class="btn btn-default" ><img class="foto-mi-cuenta img-circle img-responsive" src="./images/gestionMensajes.png" /></button></s:form>
+                    <s:form action="toMisOpiniones"><button class="btn btn-default" ><img class="foto-mi-cuenta img-circle img-responsive" title="Mis Opiniones"  src="./images/gestionMensajes.png" /></button></s:form>
                         &nbsp;
                     </div>
                     <div class="col-xs-6">       
-                    <s:form action="toMisMensajes"><button class="btn btn-default" ><img class="foto-mi-cuenta img-circle img-responsive" src="./images/mis-mensajes.png" /></button></s:form>
+                    <s:form action="toMisMensajes"><button class="btn btn-default" ><img class="foto-mi-cuenta img-circle img-responsive" title="Mis Mensajes"  src="./images/mis-mensajes.png" /></button></s:form>
                         &nbsp;
                     </div>
                     <div class="col-xs-6">       
-                    <s:form action="toMisReservas"><button class="btn btn-default" ><img class="foto-mi-cuenta img-circle img-responsive" src="./images/mis-reservas.jpg" /></button></s:form>
+                    <s:form action="toMisReservas"><button class="btn btn-default" ><img class="foto-mi-cuenta img-circle img-responsive" title="Mis Reservas"  src="./images/mis-reservas.jpg" /></button></s:form>
                         &nbsp;
                     </div>
                     <div class="col-xs-6">    
-                    <s:form action="toMisCoches"><button class="btn btn-default" ><img class="foto-mi-cuenta img-circle img-responsive" src="./images/mis-coches.png" /></button></s:form>
+                    <s:form action="toMisCoches"><button class="btn btn-default" ><img class="foto-mi-cuenta img-circle img-responsive" title="Mis Coches"  src="./images/mis-coches.png" /></button></s:form>
                         &nbsp;
                     </div>
                 </div>
