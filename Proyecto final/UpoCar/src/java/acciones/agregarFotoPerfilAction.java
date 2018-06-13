@@ -72,7 +72,7 @@ public class agregarFotoPerfilAction extends ActionSupport {
         File fichero = new File(ruta);
         FileUtils.copyFile(this.getFotoPerfil(), fichero);
         uDao.updateUsuarioFotoPerfil(u.getIdUsuario(), "./"+rutaRelativa);
-        u.setFoto("./"+rutaRelativa);
+        //u.setFoto("./"+rutaRelativa);
         //Llamo al metodo toMisDatos() para recargar la pagina
         this.toMisDatos();
         return SUCCESS;
@@ -96,7 +96,7 @@ public class agregarFotoPerfilAction extends ActionSupport {
             rutaFoto = "./images/female.png";
         }        
         uDao.updateUsuarioFotoPerfil(u.getIdUsuario(), rutaFoto);
-        u.setFoto(rutaFoto);
+        //u.setFoto(rutaFoto);
         //Llamo al metodo toMisDatos() para recargar la pagina
         this.toMisDatos();
         return SUCCESS;
