@@ -76,6 +76,7 @@
             <result name="success">/vistas/micuenta.jsp</result>
         </action>
         
+        <!-- Mis datos -->
         <action name="toMisDatos" method="toMisDatos" class="acciones.miCuentaAction">
             <result name="success">/vistas/misdatos.jsp</result>
         </action>
@@ -107,6 +108,8 @@
             <result name="success">/vistas/misdatos.jsp</result>
         </action>
         
+        <!-- Mis viajes -->
+        
         <action name="toMisViajes" method="toMisViajes" class="acciones.miCuentaAction">
             <result name="success">/vistas/misviajes.jsp</result>
         </action>
@@ -119,6 +122,8 @@
             <result name="success">/vistas/misviajes.jsp</result>
         </action>
         
+        <!-- Mis opiniones -->
+        
         <action name="toMisOpiniones" method="toMisOpiniones" class="acciones.miCuentaAction">
             <result name="success">/vistas/misopiniones.jsp</result>
         </action>
@@ -126,6 +131,8 @@
         <action name="eliminarPuntuacion" method="eliminarPuntuacion" class="acciones.miCuentaAction">
             <result name="success">/vistas/misopiniones.jsp</result>
         </action>
+        
+        <!-- Mis mensajes -->
         
         <action name="toMisMensajes" method="toMisMensajes" class="acciones.miCuentaAction">
             <result name="success">/vistas/mismensajes.jsp</result>
@@ -135,6 +142,8 @@
             <result name="success">/vistas/mismensajes.jsp</result>
         </action>
         
+        <!-- Mis reservas -->
+        
         <action name="toMisReservas" method="toMisReservas" class="acciones.miCuentaAction">
             <result name="success">/vistas/misreservas.jsp</result>
         </action>
@@ -142,6 +151,8 @@
         <action name="eliminarReserva" method="eliminarReserva" class="acciones.miCuentaAction">
             <result name="success">/vistas/misreservas.jsp</result>
         </action>
+        
+        <!-- Mis coches -->
         
         <action name="toMisCoches" method="toMisCoches" class="acciones.miCuentaAction">
             <result name="success">/vistas/miscoches.jsp</result>
@@ -176,6 +187,8 @@
         <action name="eliminarCoche" method="eliminarCoche" class="acciones.miCuentaAction">
             <result name="success">/vistas/miscoches.jsp</result>
         </action>
+        
+        <!-- Perfil -->
         
         <action name="verPerfil" method="verPerfilUsuario" class="acciones.verPerfilAction">
             <result name="success">/vistas/verPerfil.jsp</result>

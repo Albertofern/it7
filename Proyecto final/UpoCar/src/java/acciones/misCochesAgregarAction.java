@@ -16,10 +16,6 @@ import modelo.VehiculoDAO;
 import webServiceREST.entidades.Usuario;
 import webServiceREST.entidades.Vehiculo;
 
-/**
- *
- * @author berse
- */
 public class misCochesAgregarAction extends ActionSupport {
     
     //Mis coches
@@ -122,7 +118,7 @@ public class misCochesAgregarAction extends ActionSupport {
     
     public void validate() {
         boolean error = false;
-        
+
         if (this.getMarca().trim().length() == 0) {
             error = true;
             addFieldError("marca", "Marca debe estar relleno");

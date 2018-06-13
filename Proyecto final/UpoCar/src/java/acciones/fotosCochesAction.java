@@ -20,10 +20,6 @@ import org.apache.struts2.ServletActionContext;
 import webServiceREST.entidades.FotoVehi;
 import webServiceREST.entidades.Vehiculo;
 
-/**
- *
- * @author berse
- */
 public class fotosCochesAction extends ActionSupport {
     
     //Mis coches
@@ -44,6 +40,9 @@ public class fotosCochesAction extends ActionSupport {
         return SUCCESS;
     }
     
+    /*
+    Devuelve una lista de coches para mostrarlo en la vista
+    */
     public String toModificarCoche(){
         // Creo un objeto VehiculoDAO y recibo un objeto Vehiculo
         VehiculoDAO vDao = new VehiculoDAO();
@@ -56,6 +55,16 @@ public class fotosCochesAction extends ActionSupport {
         return SUCCESS;
     }
     
+    /*
+    Obtiene un vehiculo
+    Genera un nuemro aleatorio entre 1 y 6
+    Genera otro numero alatorio entre 1 y 10000 y lo multiplica por el anterior
+    Genera un nombre de fichero con el id y el modelo del coche mas el valor aleatorio anterior
+    Genera ruta relativa
+    Copia foto del temporal y fichero
+    Actualiza la foto en la base de datos
+    Llama al metodo toModificarCoche
+    */
     public String agregarFotoCoche() throws IOException{
         // Creo un objeto VehiculoDAO y recibo un objeto Vehiculo
         VehiculoDAO vDao = new VehiculoDAO();
@@ -80,7 +89,10 @@ public class fotosCochesAction extends ActionSupport {
         this.toModificarCoche();
         return SUCCESS;
     }
-
+    /*
+    Elimina de la base de datos la foto del coche pasado por id
+    Llama al metodo toModificarCoche
+    */
     public String eliminarFotoCoche(){
         // Creo un objeto FotoVehiDAO y le paso el idFotoVehi para eliminarlo
         FotoVehiDAO fDAO = new FotoVehiDAO();
@@ -90,7 +102,8 @@ public class fotosCochesAction extends ActionSupport {
         return SUCCESS;
     }
             
-            
+    /* Getter y setter */        
+    
     public List<Vehiculo> getListaCoches() {
         return listaCoches;
     }

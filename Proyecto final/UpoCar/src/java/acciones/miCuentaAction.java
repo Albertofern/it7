@@ -28,22 +28,10 @@ import webServiceREST.entidades.Usuario;
 import webServiceREST.entidades.Vehiculo;
 import webServiceREST.entidades.Viaje;
 
-/**
- *
- * @author alberto
- */
 public class miCuentaAction extends ActionSupport {
     
     List<Usuario> listadoUsuarios = new ArrayList<Usuario>();
     List<Telefono> listadoTelefonos = new ArrayList<Telefono>();
-
-    //mis datos
-    /*String usuario;
-    String nombre;
-    String apellidos; 
-    String email;
-    String localidad;
-    String sexo;*/
     
     //Integer nuevoTlf;
     String idTelefono;
@@ -70,11 +58,6 @@ public class miCuentaAction extends ActionSupport {
     //Mis coches
     List<Vehiculo> listaCoches = new ArrayList<Vehiculo>();
     String idCoche;
-    /*String marca;
-    String modelo;
-    String color;
-    String plazas;*/
-    
     
     public miCuentaAction() {
     }
@@ -98,43 +81,7 @@ public class miCuentaAction extends ActionSupport {
         this.setListadoTelefonos(tDao.listarTelefonosUsuarios(u.getIdUsuario()));
         return SUCCESS;
     }
-    
-    /*public String modificarMisDatos(){
-        //Obtengo el usuario de la sesion
-        Map sesion = (Map) ActionContext.getContext().get("session");
-        Usuario u = (Usuario) sesion.get("usuario");
-        UsuarioDAO uDao = new UsuarioDAO();
-        uDao.updateUsuario(u.getIdUsuario(), this.getUsuario(), this.getNombre(), this.getApellidos(), this.getEmail(), this.getLocalidad(), this.getSexo());
-        //Llamo al metodo toMisDatos() para recargar la pagina
-        this.toMisDatos();
-        return SUCCESS;
-    }*/
 
-    /*public String agregarTelefono(){
-        //Obtengo el usuario de la sesion
-        Map sesion = (Map) ActionContext.getContext().get("session");
-        Usuario u = (Usuario) sesion.get("usuario");
-        // Creo un objeto telefono nuevo y le paso por set el usuario y el telefono
-        Telefono t = new Telefono();
-        t.setIdUsuario(u);
-        t.setNumTel(this.getNuevoTlf());
-        // Creo un objeto TelefonoDAO y le paso el objeto telefono
-        TelefonoDAO tDao = new TelefonoDAO();
-        tDao.createTelefono(t);
-        //Llamo al metodo toMisDatos() para recargar la pagina
-        this.toMisDatos();
-        return SUCCESS;
-    }
-    
-    public String modificarTelefono(){
-        // Creo un objeto TelefonoDAO y le paso el objeto telefono
-        TelefonoDAO tDao = new TelefonoDAO();
-        tDao.updateTelefono(this.getIdTelefono(), this.getNuevoTlf());
-        //Llamo al metodo toMisDatos() para recargar la pagina
-        this.toMisDatos();
-        return SUCCESS;
-    }*/
-    
     public String eliminarTelefono(){
         // Creo un objeto TelefonoDAO y le paso el objeto telefono
         TelefonoDAO tDao = new TelefonoDAO();
@@ -213,6 +160,7 @@ public class miCuentaAction extends ActionSupport {
         Map sesion = (Map) ActionContext.getContext().get("session");
         Usuario u = (Usuario) sesion.get("usuario");
         MensajeDAO mDao = new MensajeDAO();
+        //Almaceno en dos listas los mensajes recibidos y enviados
         this.setListaMensajesEnviados(mDao.buscarEnviaMensaje(u.getNomUsuario()));
         this.setListaMensajesRecibidos(mDao.buscarRecibeMensaje(u.getNomUsuario()));
         return SUCCESS;
@@ -267,26 +215,6 @@ public class miCuentaAction extends ActionSupport {
         return SUCCESS;
     }
     
-    /*public String agregarCoche(){
-        //Obtengo el usuario de la sesion
-        Map sesion = (Map) ActionContext.getContext().get("session");
-        Usuario u = (Usuario) sesion.get("usuario");
-        // Creo un objeto vehiculo nuevo y le paso por set el usuario y los datos del formulario
-        Vehiculo v = new Vehiculo();
-        v.setIdUsuario(u);
-        v.setMarca(this.getMarca());
-        v.setModelo(this.getModelo());
-        v.setColor(this.getColor());
-        v.setPlazas(this.getPlazas());
-        v.setIdFotoVehiculo(1);
-        // Creo un objeto VehiculoDAO y le paso el objeto Vehiculo
-        VehiculoDAO vDao = new VehiculoDAO();
-        vDao.createVehiculo(v);
-        //Llamo al metodo toMisCoches() para recargar la pagina de listado de coches
-        this.toMisCoches();
-        return SUCCESS;
-    }*/
-    
     public String toModificarCoche(){
         // Creo un objeto VehiculoDAO y recibo un objeto Vehiculo
         VehiculoDAO vDao = new VehiculoDAO();
@@ -296,38 +224,6 @@ public class miCuentaAction extends ActionSupport {
         
         return SUCCESS;
     }
-    
-    /*public String modificarCoche(){
-        // Creo un objeto VehiculoDAO y recibo un objeto Vehiculo
-        VehiculoDAO vDao = new VehiculoDAO();
-        Vehiculo v = vDao.getVehiculoPorId(this.getIdCoche());
-        v.setMarca(this.getMarca());
-        v.setModelo(this.getModelo());
-        v.setColor(this.getColor());
-        v.setPlazas(Integer.parseInt(this.getPlazas()));
-        v.setIdFotoVehiculo(0);
-        // Paso el objeto Vehiculo al dao para que lo guarde
-        vDao.updateVehiculo(this.getIdCoche(),v);
-        //Llamo al metodo toMisCoches() para recargar la pagina de listado de coches
-        this.toMisCoches();
-        return SUCCESS;
-    }*/
-    
-    /*public String agregarFotos(){
-        // Creo un objeto VehiculoDAO y recibo un objeto Vehiculo
-        VehiculoDAO vDao = new VehiculoDAO();
-        Vehiculo v = vDao.getVehiculoPorId(this.getIdCoche());
-        String ruta = System.getProperty("catalina.home") + "/images/coche.jpg";
-        File nuevoFile = new File(ruta);
-        
-        
-        
-        // Paso el objeto Vehiculo al dao para que lo guarde
-        //vDao.updateVehiculo(this.getIdCoche(),v);
-        //Llamo al metodo toMisCoches() para recargar la pagina de listado de coches
-        this.toMisCoches();
-        return SUCCESS;
-    }*/
     
     public String eliminarCoche(){
         //Creo un objeto VehiculoDAO para obtener los vehiculos
@@ -354,62 +250,7 @@ public class miCuentaAction extends ActionSupport {
     public void setListadoTelefonos(List<Telefono> listadoTelefonos) {
         this.listadoTelefonos = listadoTelefonos;
     }
-/*
-    public String getUsuario() {
-        return usuario;
-    }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-    
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getLocalidad() {
-        return localidad;
-    }
-
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-    
-    public Integer getNuevoTlf() {
-        return nuevoTlf;
-    }
-
-    public void setNuevoTlf(Integer nuevoTlf) {
-        this.nuevoTlf = nuevoTlf;
-    }*/
     public String getIdTelefono() {
         return idTelefono;
     }
@@ -523,39 +364,7 @@ public class miCuentaAction extends ActionSupport {
     public void setListaCoches(List<Vehiculo> listaCoches) {
         this.listaCoches = listaCoches;
     }
-/*
-    public String getMarca() {
-        return marca;
-    }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getPlazas() {
-        return plazas;
-    }
-
-    public void setPlazas(String plazas) {
-        this.plazas = plazas;
-    }
-*/
     public String getIdCoche() {
         return idCoche;
     }

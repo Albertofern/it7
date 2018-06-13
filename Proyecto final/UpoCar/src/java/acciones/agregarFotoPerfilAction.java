@@ -22,10 +22,6 @@ import org.eclipse.persistence.tools.file.FileUtil;
 import webServiceREST.entidades.Telefono;
 import webServiceREST.entidades.Usuario;
 
-/**
- *
- * @author berse
- */
 public class agregarFotoPerfilAction extends ActionSupport {
     
     List<Usuario> listadoUsuarios = new ArrayList<Usuario>();
@@ -38,7 +34,10 @@ public class agregarFotoPerfilAction extends ActionSupport {
     public String execute() throws Exception {
         return SUCCESS;
     }
-    
+    /* 
+    Devuelve una lista de usuarios y una lista de telefonos 
+    para mostrarlo en la vista
+    */
     public String toMisDatos(){
         //Recojo el usuario de la sesion y lo guardo en una lista
         Map sesion = (Map) ActionContext.getContext().get("session");
@@ -50,6 +49,15 @@ public class agregarFotoPerfilAction extends ActionSupport {
         this.setListadoTelefonos(tDao.listarTelefonosUsuarios(u.getIdUsuario()));
         return SUCCESS;
     }
+    
+    /*
+    Obtiene el usuario de la sesion
+    Monta la ruta relativa
+    Copia la foto del temporal a un fichero
+    Actualiza en base de datos la foto
+    Modifica la foto en elusuario de la sesion
+    LLama a mis datos
+    */
     
     public String agregarFotoPerfil() throws IOException{
         //Obtengo el usuario de la sesion
@@ -64,12 +72,19 @@ public class agregarFotoPerfilAction extends ActionSupport {
         File fichero = new File(ruta);
         FileUtils.copyFile(this.getFotoPerfil(), fichero);
         uDao.updateUsuarioFotoPerfil(u.getIdUsuario(), "./"+rutaRelativa);
-        //uDao.updateUsuario(u.getIdUsuario(), this.getUsuario(), this.getNombre(), this.getApellidos(), this.getEmail(), this.getLocalidad(), this.getSexo());
+        u.setFoto("./"+rutaRelativa);
         //Llamo al metodo toMisDatos() para recargar la pagina
         this.toMisDatos();
         return SUCCESS;
     }
-
+    
+    /*
+    Obtiene el usuario de la sesion
+    Selecciona la imagen a guardar, male o female
+    Actualiza en base de datos la foto
+    Modifica la foto en elusuario de la sesion
+    LLama a mis datos
+    */
     public String quitarFotoPerfil() {
         //Obtengo el usuario de la sesion
         Map sesion = (Map) ActionContext.getContext().get("session");
@@ -81,10 +96,13 @@ public class agregarFotoPerfilAction extends ActionSupport {
             rutaFoto = "./images/female.png";
         }        
         uDao.updateUsuarioFotoPerfil(u.getIdUsuario(), rutaFoto);
+        u.setFoto(rutaFoto);
         //Llamo al metodo toMisDatos() para recargar la pagina
         this.toMisDatos();
         return SUCCESS;
     }
+    
+    /* Getter y setter */
     
     public List<Usuario> getListadoUsuarios() {
         return listadoUsuarios;

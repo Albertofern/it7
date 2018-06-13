@@ -17,10 +17,6 @@ import modelo.UsuarioDAO;
 import webServiceREST.entidades.Telefono;
 import webServiceREST.entidades.Usuario;
 
-/**
- *
- * @author Alberto
- */
 public class misDatosAction extends ActionSupport {
 
     List<Usuario> listadoUsuarios = new ArrayList<Usuario>();
@@ -168,7 +164,7 @@ public class misDatosAction extends ActionSupport {
             error = true;
             addFieldError("localidad", "La localidad nueva debe estar relleno");
         }
-      
+        // Si hay errror llamo al metodo toModificarCoche
         if(error){
             this.toMisDatos();
         }

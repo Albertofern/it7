@@ -16,10 +16,6 @@ import modelo.VehiculoDAO;
 import webServiceREST.entidades.Usuario;
 import webServiceREST.entidades.Vehiculo;
 
-/**
- *
- * @author berse
- */
 public class misCochesModificarAction extends ActionSupport {
     
     //Mis coches
@@ -40,7 +36,9 @@ public class misCochesModificarAction extends ActionSupport {
     public String toModificarCoche(){
         // Creo un objeto VehiculoDAO y recibo un objeto Vehiculo
         VehiculoDAO vDao = new VehiculoDAO();
+        // Obtengo el vehiculo con el id recibido
         Vehiculo v = vDao.getVehiculoPorId(this.getIdCoche());
+        // Limpio la lista y agrego el coche
         this.getListaCoches().clear();
         this.getListaCoches().add(v);
         
@@ -50,7 +48,9 @@ public class misCochesModificarAction extends ActionSupport {
     public String modificarCoche(){
         // Creo un objeto VehiculoDAO y recibo un objeto Vehiculo
         VehiculoDAO vDao = new VehiculoDAO();
+        // Obtengo el vehiculo con el id recibido
         Vehiculo v = vDao.getVehiculoPorId(this.getIdCoche());
+        // Modifico datos recibidos
         v.setMarca(this.getMarca());
         v.setModelo(this.getModelo());
         v.setColor(this.getColor());
@@ -140,7 +140,7 @@ public class misCochesModificarAction extends ActionSupport {
                 addFieldError("plazas", "Plazas debe contener un número mayor a cero");
             }
         }
-        
+        // Si hay errror llamo al metodo toModificarCoche
         if(error){
             this.toModificarCoche();
         }

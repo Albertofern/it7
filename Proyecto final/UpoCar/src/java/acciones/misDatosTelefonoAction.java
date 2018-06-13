@@ -17,10 +17,6 @@ import modelo.UsuarioDAO;
 import webServiceREST.entidades.Telefono;
 import webServiceREST.entidades.Usuario;
 
-/**
- *
- * @author Alberto
- */
 public class misDatosTelefonoAction extends ActionSupport {
     
     List<Usuario> listadoUsuarios = new ArrayList<Usuario>();
