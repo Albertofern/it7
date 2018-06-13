@@ -37,11 +37,8 @@ public class UsuarioDAO {
     public Usuario buscarUsuarioPorID(String idUsuario) {
         GenericType<Usuario> genericType = new GenericType<Usuario>() {
         };
-        //GenericType<Usuario> genericTypeUsuario = new GenericType<Usuario>() {
-        //};
         Usuario u = clientUsuario.find_XML(genericType, idUsuario);
-
-        //List<Usuario> listaUsuario = this.getClientUsuario().find_XML(genericType, idUsuario); //buscarUsuario(genericType, usuario);
+        
         return u;
     }
 
