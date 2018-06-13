@@ -8,10 +8,13 @@ package acciones;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import modelo.FotoVehiDAO;
 import modelo.VehiculoDAO;
@@ -162,15 +165,24 @@ public class fotosCochesAction extends ActionSupport {
         
         if (this.getFotoCoche() == null) {
             error = true;
-            addFieldError("fotoCoche", "Selecciona una foto");
+            addFieldError("fotoCoche", "Selecciona una foto(2MB máx)");
         } else {
-            if (FileUtils.sizeOf( this.getFotoCoche() ) == 0) {
-            error = true;
-            addFieldError("fotoCoche", "Tamaño demasiado grande");
+            List<String> typeMimeValid = new ArrayList<String>();
+            typeMimeValid.add("image/jpeg");
+            typeMimeValid.add("image/png");
+            String tipeMime = "";
+            try {
+                tipeMime = this.getFotoCoche().toURL().openConnection().getContentType();
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(agregarFotoPerfilAction.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(agregarFotoPerfilAction.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if ( !typeMimeValid.contains(tipeMime)) {
+                error = true;
+                addFieldError("fotoCoche", "Solo acepta .jpeg y .png");
+            }
         }
-        }
-        
-        
 
         // Si hay errror llamo al metodo toModificarCoche
         if(error){

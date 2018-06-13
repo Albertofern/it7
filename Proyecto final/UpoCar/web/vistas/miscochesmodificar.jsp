@@ -63,7 +63,7 @@
                     <s:form class="form-horizontal" action="eliminarFotoCoche" method="POST">
                         <input type="hidden" name="idFotoVehi" value="<s:property value="idFotoVehi"></s:property>" />
                         <input type="hidden" name="idCoche" value="<s:property value="idVehiculo.idVehiculo"></s:property>" />
-                        <span><s:property value="rutaFoto.split('/')[2]"></s:property></span>
+                        <span><s:property value="rutaFoto.split('/')[3]"></s:property></span>
                             <button class="btn btn-danger"><img class="img-icon" title="Eliminar" src="./images/papelera.png" /></button>
                         </s:form>
                     </s:iterator>
