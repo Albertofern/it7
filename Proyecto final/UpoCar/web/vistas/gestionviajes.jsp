@@ -103,7 +103,7 @@
                             <tr><td>Plazas M&aacute;ximas:</td><td><s:textfield id="updatePlazasMax" name="updatePlazasMax" value="" ></s:textfield></td></tr>
                             <tr class="alt"><td>Precio/Persona:</td><td><s:textfield id="updatePrecioPersona" name="updatePrecioPersona" value=""></s:textfield></td></tr>
                             <tr><td>Lugar de Recogida:</td><td><s:textfield id="updatePuntoRecogida" name="updatePuntoRecogida" value=""></s:textfield></td></tr>
-                                <tr class="alt"><td>Fecha Salida:</td><td><input type="datetime-local"  id="updateFechaSalida" name="updateFechaSalida" value=""  /></td></tr>
+                                <tr class="alt"><td>Fecha Salida Ej:2018-05-10T00:00</td><td><input type="datetime-local"  id="updateFechaSalida" name="updateFechaSalida" value=""  /></td></tr>
                                 <tr><td  colspan="2"><s:submit cssClass="btn btn-default" value="Update"></s:submit></td></tr>
                                 <input id="hiddenUpdateID" type="hidden" name="updateId" value="" />
                         </s:form>

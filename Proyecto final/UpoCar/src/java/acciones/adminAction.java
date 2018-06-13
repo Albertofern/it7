@@ -149,7 +149,6 @@ public class adminAction extends ActionSupport {
             }
         }
 
-
         if (this.getUpdateFechaSalida() != null) {
             if (this.getUpdatePrecioPersona() <= 0.0) {
                 errorViaje = true;
@@ -169,9 +168,15 @@ public class adminAction extends ActionSupport {
                 addFieldError("updatePuntoRecogida", "Update: Debe introducir un punto de recogida");
             }
         }
-        
+
+        if (this.getUpdateFechaSalida() != null) {
+            errorViaje = true;
+            if (!Pattern.matches("20[0-9][0-9]-[01][0-9]-[0-3][0-9]T[0-2][0-3]:[0-5][0-9]", this.getUpdateFechaSalida())) {
+                addFieldError("updateFechaSalida", "Update: La fecha no es correcta (yyyy-mm-ddTHH:mm)");
+            }
+        }
+
         //update mensaje
-        
         if (this.getUpdateMensaje() != null) {
             errorMensaje = true;
             if (this.getUpdateMensaje().length() == 0) {
@@ -317,7 +322,6 @@ public class adminAction extends ActionSupport {
     }
 
     //getter y setter
-    
     public List<Mensaje> getListadoMensajes() {
         return listadoMensajes;
     }
