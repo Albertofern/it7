@@ -13,20 +13,16 @@ import webServiceREST.JerseyClientTelefono;
 import webServiceREST.entidades.Telefono;
 import webServiceREST.entidades.Usuario;
 
-/**
- * 
- * @author Alberto
- */
 public class TelefonoDAO {
     private JerseyClientTelefono clientTelefono = new JerseyClientTelefono();
     
     public List<Telefono> listarTelefonosUsuarios(int idUsuario) {
         GenericType<List<Telefono>> genericType = new GenericType<List<Telefono>>() {
         };
-
+        // Obtengo todos los telefonos
         List<Telefono> listaTelefonos = this.getClientTelefono().findAll_XML(genericType);
         List<Telefono> listaTelefonosFiltrados = new ArrayList<Telefono>();
-        
+        // Filtro los telefonos que contengan el id usuario pasado
         for(Telefono t: listaTelefonos ){
             if(t.getIdUsuario().getIdUsuario() == idUsuario){
                 listaTelefonosFiltrados.add(t);
@@ -44,8 +40,6 @@ public class TelefonoDAO {
 
         GenericType<Telefono> genericTypeTelefono = new GenericType<Telefono>() {
         };
-        //List<Telefono> listaTelefonosCompleta = clientTelefono.findAll_XML(genericTypeTelefono);
-        
         
         Telefono t = this.getClientTelefono().find_XML(genericTypeTelefono, idTel);
         t.setNumTel(numTel);

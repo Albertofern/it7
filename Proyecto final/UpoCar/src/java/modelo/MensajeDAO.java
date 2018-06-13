@@ -48,12 +48,15 @@ public class MensajeDAO {
         JerseyClientUsuario clientUsuario = new JerseyClientUsuario();
         GenericType<Usuario> genericTypeUsuario = new GenericType<Usuario>() {
         };
+        // Obtengo el usuario recibido por su id
         Usuario u = clientUsuario.find_XML(genericTypeUsuario, String.valueOf(idUsuario));
         GenericType<Mensaje> genericType = new GenericType<Mensaje>() {
         };
+        // Obtengo el mensaje recibido por id y lo modifico
         Mensaje m = clientMensaje.find_XML(genericType, String.valueOf(id));
         m.setTexto(mensaje);
         m.setIdUsuarioRecibe(u);
+        // Persisto el mensaje modificado
         clientMensaje.edit_XML(m, String.valueOf(id));
     }
 

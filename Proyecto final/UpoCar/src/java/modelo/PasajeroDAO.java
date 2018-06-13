@@ -40,10 +40,10 @@ public class PasajeroDAO {
     public List<Pasajeros> listarPasajeros(int idViaje) {
         GenericType<List<Pasajeros>> genericType = new GenericType<List<Pasajeros>>() {
         };
-
+        // Obtengo todos los pasajeros
         List<Pasajeros> listaPasajeros = this.getCliente().findAll_XML(genericType);
         List<Pasajeros> listaPasajerosFiltrados = new ArrayList<Pasajeros>();
-
+        // Filtro los pasajeros que esten en el viaje pasado por id
         for (Pasajeros p : listaPasajeros) {
             if (p.getIdViaje().getIdViaje() == idViaje) {
                 listaPasajerosFiltrados.add(p);
@@ -56,10 +56,10 @@ public class PasajeroDAO {
     public List<Pasajeros> listarPasajerosPorUsuarios(int idUsuario) {
         GenericType<List<Pasajeros>> genericType = new GenericType<List<Pasajeros>>() {
         };
-
+        // Obtengo todos los pasajeros
         List<Pasajeros> listaPasajeros = this.getCliente().findAll_XML(genericType);
         List<Pasajeros> listaPasajerosFiltrados = new ArrayList<Pasajeros>();
-
+        // Filtro los pasajeros que coincidan con el id usuario pasado
         for (Pasajeros p : listaPasajeros) {
             if (p.getIdUsuario().getIdUsuario() == idUsuario) {
                 listaPasajerosFiltrados.add(p);

@@ -24,10 +24,10 @@ public class FotoVehiDAO {
     public List<FotoVehi> fotosVehiculo (String id){
         GenericType<List<FotoVehi>> genericType = new GenericType<List<FotoVehi>>() {
         };
-        
+        // Obtengo listado de fotos
         List<FotoVehi> listadoFotos = cliente.findAll_XML(genericType);
         List<FotoVehi> fotosVehiculo = new ArrayList<FotoVehi>();
-        
+        // Filtro las fotos si son del id vehiculo recibido 
         for (FotoVehi f : listadoFotos) {
             if(f.getIdVehiculo().getIdVehiculo() == Integer.parseInt(id)){
                 fotosVehiculo.add(f);
