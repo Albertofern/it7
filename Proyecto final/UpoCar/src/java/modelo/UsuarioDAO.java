@@ -33,7 +33,7 @@ public class UsuarioDAO {
         List<Usuario> listaUsuario = this.getClientUsuario().buscarUsuario(genericType, usuario);
         return listaUsuario;
     }
-    
+
     public Usuario buscarUsuarioPorID(String idUsuario) {
         GenericType<Usuario> genericType = new GenericType<Usuario>() {
         };
@@ -49,8 +49,8 @@ public class UsuarioDAO {
         clientUsuario.remove(id);
     }
 
-    public void updateUsuario(Integer idUsuario,String usuario,String nombre,String apellido, 
-            String email,String localidad,String sexo) {
+    public void updateUsuario(Integer idUsuario, String usuario, String nombre, String apellido,
+            String email, String localidad, String sexo) {
 
         GenericType<Usuario> genericTypeUsuario = new GenericType<Usuario>() {
         };
@@ -61,10 +61,15 @@ public class UsuarioDAO {
         u.setEmail(email);
         u.setLocalidad(localidad);
         u.setSexo(sexo);
+        String rutaFoto = "./images/male.png";
+        if (u.getSexo().equals("F")) {
+            rutaFoto = "./images/female.png";
+        }
+        u.setFoto(rutaFoto);
         clientUsuario.edit_XML(u, String.valueOf(idUsuario));
     }
-    
-    public void updateUsuarioFotoPerfil(Integer idUsuario,String rutaFoto) {
+
+    public void updateUsuarioFotoPerfil(Integer idUsuario, String rutaFoto) {
 
         GenericType<Usuario> genericTypeUsuario = new GenericType<Usuario>() {
         };
@@ -84,10 +89,10 @@ public class UsuarioDAO {
     public Usuario login(String usuario, String password) {
         GenericType<Usuario> genericType = new GenericType<Usuario>() {
         };
-        
+
         Usuario user = null;
-        
-        if(usuario.trim().length() != 0 || password.trim().length() != 0){
+
+        if (usuario.trim().length() != 0 || password.trim().length() != 0) {
             user = clientUsuario.login(genericType, usuario, password);
         }
 

@@ -46,7 +46,7 @@
                                             <% }else{%>
                                         <tr >
                                             <% }%>
-                                            <td><img class="foto-mi-cuenta img-circle img-responsive" src="http://www.cetep.cl/web/wp-content/uploads/2016/11/icono-de-usuario-masculino.jpg" /></td>
+                                            <td><img class="foto-mi-cuenta img-circle img-responsive" src="<s:property value="foto" />" /></td>
                                             <td id="usuario<s:property value="idUsuario" />"><s:property value="nomUsuario" /></td>
                                             <td id="nombre<s:property value="idUsuario" />"><s:property value="nombre" /></td>
                                             <td id="apellidos<s:property value="idUsuario" />"><s:property value="apellidos" /></td>

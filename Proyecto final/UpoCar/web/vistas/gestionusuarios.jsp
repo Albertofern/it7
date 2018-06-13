@@ -43,8 +43,6 @@
                                 <th>E-mail</th>
                                 <th>Localidad</th>
                                 <th>Sexo</th>
-                                <th>&Uacute;ltimo acceso</th>
-                                <th>Fecha Alta</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -57,7 +55,7 @@
                                         <% }else{%>
                                     <tr >
                                         <% }%>
-                                        <td><img class="foto-mi-cuenta img-circle img-responsive" src="http://www.cetep.cl/web/wp-content/uploads/2016/11/icono-de-usuario-masculino.jpg" /></td>
+                                        <td><img class="foto-mi-cuenta img-circle img-responsive" src="<s:property value="foto" />" /></td>
                                         <td><s:property value="idUsuario" /></td>
                                         <td id="usuario<s:property value="idUsuario" />"><s:property value="nomUsuario" /></td>
                                         <td id="nombre<s:property value="idUsuario" />"><s:property value="nombre" /></td>
@@ -65,8 +63,6 @@
                                         <td id="email<s:property value="idUsuario" />"><s:property value="email" /></td>
                                         <td id="localidad<s:property value="idUsuario" />"><s:property value="localidad" /></td>
                                         <td id="sexo<s:property value="idUsuario" />"><s:property value="sexo" /></td>
-                                        <td id="ultimoAcceso<s:property value="idUsuario" />"><s:property value="ultimoAcceso" /></td>
-                                        <td id="fechaAlta<s:property value="idUsuario" />"><s:property value="fechaAlta" /></td>
                                         <td>
                                             <s:form action="deleteUsuario" ><button class="btn btn-default" name="idUsuario" value="<s:property value="idUsuario" />"><img class="imagenCRUD img-circle img-responsive" title="Borrar" src="./images/papelera.png" /></button></s:form>
                                             <button id="<s:property value="idUsuario" />" class="updateButton btn btn-default" /><img class="imagenCRUD img-circle img-responsive" title="Editar" src="./images/update.png" /></button>
