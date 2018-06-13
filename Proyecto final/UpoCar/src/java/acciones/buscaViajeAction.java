@@ -222,7 +222,8 @@ public class buscaViajeAction extends ActionSupport {
     }
 
     public void validate() {
-        if (!fechaHora.equals("") && (origen.trim().length() == 0 || destino.trim().length() == 0)) {
+        
+        if (origen.trim().length() == 0 || destino.trim().length() == 0) {
             addFieldError("origen", "Debe introducir origen");
             addFieldError("origen", "Debe introducir destino");
         }
