@@ -57,18 +57,24 @@
                             </div>
                         </div>
                 </s:form>
-                
+
                 <s:iterator value="listaFotosVehiculos">
-                     <s:form class="form-horizontal" action="eliminarFotoCoche" method="POST">
+                    <s:form class="form-horizontal" action="eliminarFotoCoche" method="POST">
                         <input type="hidden" name="idFotoVehi" value="<s:property value="idFotoVehi"></s:property>" />
                         <input type="hidden" name="idCoche" value="<s:property value="idVehiculo.idVehiculo"></s:property>" />
                         <span><s:property value="rutaFoto.split('/')[2]"></s:property></span>
                             <button class="btn btn-danger"><img class="img-icon" title="Eliminar" src="./images/papelera.png" /></button>
                         </s:form>
-                </s:iterator>
-                
+                    </s:iterator>
+
             </div>
         </s:iterator>
     </div>
+    <div class="col-lg-4">
+        <s:form class="form-horizontal" action="toMisCoches" method="POST">
+            <input type="submit" class="btn btn-info btn-coche" value="Volver"></input>
+        </s:form>
+    </div>
 </div>
+
 <%@include file="index_footer.jsp" %>

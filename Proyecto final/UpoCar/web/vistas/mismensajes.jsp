@@ -49,7 +49,7 @@
               <div class="panel panel-default arrow right">
                   <s:form class="form-horizontal" action="contactar" method="POST">
                         <input type="hidden" name="idUsuarioContacto" value="<s:property value="idUsuarioEnvia.idUsuario"></s:property>" />
-                            <button class="btn btn-warning" id="btnResponderMensaje"><img class="img-icon" title="Eliminar" src="./images/responder.png" /></button>
+                            <button class="btn btn-warning" id="btnResponderMensaje"><img class="img-icon" title="Responder" src="./images/responder.png" /></button>
                         </s:form>
                 <div class="panel-body">
                   <header class="text-right">
