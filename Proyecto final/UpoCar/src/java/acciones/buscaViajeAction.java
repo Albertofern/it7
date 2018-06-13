@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 import modelo.FotoVehiDAO;
 import modelo.MensajeDAO;
 import modelo.PasajeroDAO;
@@ -41,7 +42,7 @@ public class buscaViajeAction extends ActionSupport {
     private String idUsuario;
     MensajeDAO mensajeDao = new MensajeDAO();
     UsuarioDAO usuarioDao = new UsuarioDAO();
-    
+
     public String getIdUsuario() {
         return idUsuario;
     }
@@ -172,17 +173,28 @@ public class buscaViajeAction extends ActionSupport {
         p.setIdViaje(v);
 
         pasajeroDao.reservaViaje(p, Integer.parseInt(this.idViaje));
-        
+
         Date d = new Date();
-        Mensaje m = new Mensaje(0, u.getNombre()+" " + u.getApellidos() +" ha realizado una reserva en uno de tus viajes", d);        
+        Mensaje m = new Mensaje(0, u.getNombre() + " " + u.getApellidos() + " ha realizado una reserva en uno de tus viajes", d);
         m.setIdUsuarioRecibe(v.getIdUsuarioPublica());
         m.setIdUsuarioEnvia(u);
         mensajeDao.enviarMensaje(m);
-        
+
         return SUCCESS;
     }
 
     public String execute() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void validate() {
+        if (!fechaHora.equals("") && (origen.trim().length() == 0 || destino.trim().length() == 0)) {
+            addFieldError("origen", "Debe introducir origen");
+            addFieldError("origen", "Debe introducir destino");
+        }
+
+        if (!Pattern.matches("20[0-9][0-9]-[01][0-9]-[0-3][0-9]T[0-2][0-3]:[0-5][0-9]", fechaHora) && fechaHora.trim().length() != 0) {
+            addFieldError("origen", "La fecha no es correcta (yyyy-mm-ddTHH:mm)");
+        }
     }
 }

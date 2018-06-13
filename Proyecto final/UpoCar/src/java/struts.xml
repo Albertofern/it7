@@ -64,6 +64,7 @@
         
         <action name="buscaViaje" method="buscaViaje" class="acciones.buscaViajeAction">
             <result name="success">/vistas/buscaviajes.jsp</result>
+            <result name="input">/vistas/index.jsp</result>
         </action>
     </package>
     
