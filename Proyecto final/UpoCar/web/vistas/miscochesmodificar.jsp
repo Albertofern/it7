@@ -49,6 +49,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="buscarFotos">Agregar fotos:</label>
                         <s:file name="fotoCoche" cssClass="btn btn-default"></s:file>
+                        <s:fielderror fieldName="fotoCoche" cssClass="alert alert-danger" />
                         </div>
                         <div class="form-group">        
                             <div class="col-sm-offset-2 col-sm-10">

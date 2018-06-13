@@ -89,18 +89,7 @@ public class fotosCochesAction extends ActionSupport {
         this.toModificarCoche();
         return SUCCESS;
     }
-    /*
-    Elimina de la base de datos la foto del coche pasado por id
-    Llama al metodo toModificarCoche
-    */
-    public String eliminarFotoCoche(){
-        // Creo un objeto FotoVehiDAO y le paso el idFotoVehi para eliminarlo
-        FotoVehiDAO fDAO = new FotoVehiDAO();
-        fDAO.deleteFotoVehi(this.getIdFotoVehi());
-        //Llamo al metodo toModificarCoche() para recargar la pagina
-        this.toModificarCoche();
-        return SUCCESS;
-    }
+    
             
     /* Getter y setter */        
     
@@ -166,6 +155,28 @@ public class fotosCochesAction extends ActionSupport {
 
     public void setIdFotoVehi(String idFotoVehi) {
         this.idFotoVehi = idFotoVehi;
+    }
+    
+    public void validate() {
+        boolean error = false;
+        
+        if (this.getFotoCoche() == null) {
+            error = true;
+            addFieldError("fotoCoche", "Selecciona una foto");
+        } else {
+            if (FileUtils.sizeOf( this.getFotoCoche() ) == 0) {
+            error = true;
+            addFieldError("fotoCoche", "Tamaño demasiado grande");
+        }
+        }
+        
+        
+
+        // Si hay errror llamo al metodo toModificarCoche
+        if(error){
+            this.toModificarCoche();
+        }
+        
     }
     
 }

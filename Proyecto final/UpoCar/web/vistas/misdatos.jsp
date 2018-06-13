@@ -16,6 +16,7 @@
                                 <div class="col-xs-8">
                                 <s:form action="agregarFotoPerfil" method="POST" enctype="multipart/form-data">
                                     <input type="file" name="fotoPerfil"></input>
+                                    <s:fielderror fieldName="fotoPerfil" cssClass="alert alert-danger" />
                                 <input type="submit" class="btn btn-success pull-left" value="Guardar foto"></input>
                                 </s:form>
                                 <s:form action="quitarFotoPerfil" method="POST">

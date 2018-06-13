@@ -83,9 +83,10 @@
         
         <action name="agregarFotoPerfil" method="agregarFotoPerfil" class="acciones.agregarFotoPerfilAction">
             <result name="success">/vistas/misdatos.jsp</result>
+            <result name="input">/vistas/misdatos.jsp</result>
         </action>
         
-        <action name="quitarFotoPerfil" method="quitarFotoPerfil" class="acciones.agregarFotoPerfilAction">
+        <action name="quitarFotoPerfil" method="quitarFotoPerfil" class="acciones.miCuentaAction">
             <result name="success">/vistas/misdatos.jsp</result>
         </action>
         
@@ -178,9 +179,10 @@
         
         <action name="agregarFotoCoche" method="agregarFotoCoche" class="acciones.fotosCochesAction">
             <result name="success">/vistas/miscochesmodificar.jsp</result>
+            <result name="input">/vistas/miscochesmodificar.jsp</result>
         </action>
         
-        <action name="eliminarFotoCoche" method="eliminarFotoCoche" class="acciones.fotosCochesAction">
+        <action name="eliminarFotoCoche" method="eliminarFotoCoche" class="acciones.miCuentaAction">
             <result name="success">/vistas/miscochesmodificar.jsp</result>
         </action>
         

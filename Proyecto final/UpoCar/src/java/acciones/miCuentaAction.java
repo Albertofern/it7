@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+import modelo.FotoVehiDAO;
 import modelo.MensajeDAO;
 import modelo.PasajeroDAO;
 import modelo.PuntuacionDAO;
@@ -58,6 +59,7 @@ public class miCuentaAction extends ActionSupport {
     //Mis coches
     List<Vehiculo> listaCoches = new ArrayList<Vehiculo>();
     String idCoche;
+    String idFotoVehi;
     
     public miCuentaAction() {
     }
@@ -82,6 +84,30 @@ public class miCuentaAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /*
+    Obtiene el usuario de la sesion
+    Selecciona la imagen a guardar, male o female
+    Actualiza en base de datos la foto
+    Modifica la foto en elusuario de la sesion
+    LLama a mis datos
+     */
+    public String quitarFotoPerfil() {
+        //Obtengo el usuario de la sesion
+        Map sesion = (Map) ActionContext.getContext().get("session");
+        Usuario u = (Usuario) sesion.get("usuario");
+        UsuarioDAO uDao = new UsuarioDAO();
+
+        String rutaFoto = "./images/male.png";
+        if (u.getSexo().equals("F")) {
+            rutaFoto = "./images/female.png";
+        }
+        uDao.updateUsuarioFotoPerfil(u.getIdUsuario(), rutaFoto);
+        //u.setFoto(rutaFoto);
+        //Llamo al metodo toMisDatos() para recargar la pagina
+        this.toMisDatos();
+        return SUCCESS;
+    }
+    
     public String eliminarTelefono(){
         // Creo un objeto TelefonoDAO y le paso el objeto telefono
         TelefonoDAO tDao = new TelefonoDAO();
@@ -234,6 +260,19 @@ public class miCuentaAction extends ActionSupport {
         return SUCCESS;
     }
     
+    /*
+    Elimina de la base de datos la foto del coche pasado por id
+    Llama al metodo toModificarCoche
+    */
+    public String eliminarFotoCoche(){
+        // Creo un objeto FotoVehiDAO y le paso el idFotoVehi para eliminarlo
+        FotoVehiDAO fDAO = new FotoVehiDAO();
+        fDAO.deleteFotoVehi(this.getIdFotoVehi());
+        //Llamo al metodo toModificarCoche() para recargar la pagina
+        this.toModificarCoche();
+        return SUCCESS;
+    }
+    
     // Getter y setter MisDatos
     public List<Usuario> getListadoUsuarios() {
         return listadoUsuarios;
@@ -372,6 +411,13 @@ public class miCuentaAction extends ActionSupport {
     public void setIdCoche(String idCoche) {
         this.idCoche = idCoche;
     }
-    
+
+    public String getIdFotoVehi() {
+        return idFotoVehi;
+    }
+
+    public void setIdFotoVehi(String idFotoVehi) {
+        this.idFotoVehi = idFotoVehi;
+    }
     
 }

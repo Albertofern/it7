@@ -23,33 +23,34 @@ import webServiceREST.entidades.Telefono;
 import webServiceREST.entidades.Usuario;
 
 public class agregarFotoPerfilAction extends ActionSupport {
-    
+
     List<Usuario> listadoUsuarios = new ArrayList<Usuario>();
     List<Telefono> listadoTelefonos = new ArrayList<Telefono>();
     File fotoPerfil;
-    
+
     public agregarFotoPerfilAction() {
     }
-    
+
     public String execute() throws Exception {
         return SUCCESS;
     }
+
     /* 
     Devuelve una lista de usuarios y una lista de telefonos 
     para mostrarlo en la vista
-    */
-    public String toMisDatos(){
+     */
+    public String toMisDatos() {
         //Recojo el usuario de la sesion y lo guardo en una lista
         Map sesion = (Map) ActionContext.getContext().get("session");
         Usuario u = (Usuario) sesion.get("usuario");
         UsuarioDAO uDAO = new UsuarioDAO();
         this.getListadoUsuarios().clear();
-        this.getListadoUsuarios().add( uDAO.buscarUsuarioPorID(u.getIdUsuario().toString()) );
+        this.getListadoUsuarios().add(uDAO.buscarUsuarioPorID(u.getIdUsuario().toString()));
         TelefonoDAO tDao = new TelefonoDAO();
         this.setListadoTelefonos(tDao.listarTelefonosUsuarios(u.getIdUsuario()));
         return SUCCESS;
     }
-    
+
     /*
     Obtiene el usuario de la sesion
     Monta la ruta relativa
@@ -57,9 +58,8 @@ public class agregarFotoPerfilAction extends ActionSupport {
     Actualiza en base de datos la foto
     Modifica la foto en elusuario de la sesion
     LLama a mis datos
-    */
-    
-    public String agregarFotoPerfil() throws IOException{
+     */
+    public String agregarFotoPerfil() throws IOException {
         //Obtengo el usuario de la sesion
         Map sesion = (Map) ActionContext.getContext().get("session");
         Usuario u = (Usuario) sesion.get("usuario");
@@ -71,39 +71,14 @@ public class agregarFotoPerfilAction extends ActionSupport {
         String ruta = context.getRealPath("/") + rutaRelativa;
         File fichero = new File(ruta);
         FileUtils.copyFile(this.getFotoPerfil(), fichero);
-        uDao.updateUsuarioFotoPerfil(u.getIdUsuario(), "./"+rutaRelativa);
+        uDao.updateUsuarioFotoPerfil(u.getIdUsuario(), "./" + rutaRelativa);
         //u.setFoto("./"+rutaRelativa);
         //Llamo al metodo toMisDatos() para recargar la pagina
         this.toMisDatos();
         return SUCCESS;
     }
-    
-    /*
-    Obtiene el usuario de la sesion
-    Selecciona la imagen a guardar, male o female
-    Actualiza en base de datos la foto
-    Modifica la foto en elusuario de la sesion
-    LLama a mis datos
-    */
-    public String quitarFotoPerfil() {
-        //Obtengo el usuario de la sesion
-        Map sesion = (Map) ActionContext.getContext().get("session");
-        Usuario u = (Usuario) sesion.get("usuario");
-        UsuarioDAO uDao = new UsuarioDAO();
-              
-        String rutaFoto = "./images/male.png";
-        if(u.getSexo().equals("F")){
-            rutaFoto = "./images/female.png";
-        }        
-        uDao.updateUsuarioFotoPerfil(u.getIdUsuario(), rutaFoto);
-        //u.setFoto(rutaFoto);
-        //Llamo al metodo toMisDatos() para recargar la pagina
-        this.toMisDatos();
-        return SUCCESS;
-    }
-    
+
     /* Getter y setter */
-    
     public List<Usuario> getListadoUsuarios() {
         return listadoUsuarios;
     }
@@ -127,5 +102,25 @@ public class agregarFotoPerfilAction extends ActionSupport {
     public void setFotoPerfil(File fotoPerfil) {
         this.fotoPerfil = fotoPerfil;
     }
-    
+
+    public void validate() {
+        boolean error = false;
+
+        if (this.getFotoPerfil() == null) {
+            error = true;
+            addFieldError("fotoPerfil", "Selecciona una foto");
+        } else {
+            if (FileUtils.sizeOf(this.getFotoPerfil()) == 0) {
+                error = true;
+                addFieldError("fotoPerfil", "Tamaño demasiado grande");
+            }
+        }
+
+        // Si hay errror llamo al metodo toModificarCoche
+        if (error) {
+            this.toMisDatos();
+        }
+
+    }
+
 }
