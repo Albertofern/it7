@@ -9,17 +9,17 @@
                 <div class="col-lg-10">
                     <s:form action="buscaViaje">                        
                         <s:fielderror fieldName="origen" cssClass="alert alert-danger" />
-                        <div class="col-lg-4 ">
+                        <div class="col-lg-3 ">
                             
                             <s:textfield cssClass="form-control" name="origen" placeholder="Origen"></s:textfield>                            
                             </div>
 
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                             <s:fielderror fieldName="destino" cssClass="alert alert-danger" />
                             <s:textfield cssClass="form-control" name="destino" placeholder="Destino"></s:textfield>                            
                             </div>
 
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <s:fielderror fieldName="fechaHora" cssClass="alert alert-danger" />
                                 <input id="datetime" name="fechaHora" type="datetime-local" class="form-control">
                             </div>
