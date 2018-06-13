@@ -10,6 +10,7 @@
             <div class="col-xs-2"></div>
             <div class="col-xs-8">
 
+                <!--En pantallas grandes ser verá con botones con letras y colocados de forma horizontal-->
                 <div class="col-xs-12 hidden-sm hidden-md hidden-xs">
                     <div class="col-lg-4 ">
                         <div><img class="foto-mi-cuenta img-circle img-responsive" src="./images/gestionUsuarios.png" /></div>        
@@ -28,8 +29,10 @@
                         &nbsp;
                     </div>
                 </div>
+                        
+                <!--En responsive serán botones sin letras idenfiticativas-->
                 
-                <div class="hidden-lg  ">
+                <div class="hidden-lg ">
                     <div >
                         <div><s:form action="toGestionUsuarios"><button class="btn btn-default"><img class="foto-mi-cuenta img-circle img-responsive" title="Gestión Usuarios" src="./images/gestionUsuarios.png" /></button></s:form></div>  
                         &nbsp;

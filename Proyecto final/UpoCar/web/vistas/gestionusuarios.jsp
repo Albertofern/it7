@@ -6,6 +6,9 @@
         <hr />
         &nbsp;
         <div class="row">
+
+            <!--mensajes de error de errores del update-->
+
             <s:fielderror fieldName="updateUsuario" cssClass="alert alert-danger" />
             <s:fielderror fieldName="updateNombre" cssClass="alert alert-danger" />
             <s:fielderror fieldName="updateApellidos" cssClass="alert alert-danger" />
@@ -27,6 +30,8 @@
             <div class="col-xs-12">
 
                 <div class="col-xs-12 datagrid">
+
+                    <!--visualización de todos los usuarios-->
                     <table class="col-lg-12" border="1">
                         <thead>
                             <tr>
@@ -91,6 +96,9 @@
                         <thead>
                             <tr><th colspan="2">Update</th></tr>
                         </thead>
+
+                        <!--formulario para realizar el update de mensajes-->
+
                         <s:form id="formularioUpdate" method="post" action="updateUsuario">
                             <tr><td>ID:</td><td id="updateIdUsuario"></td></tr>              
                             <tr class="alt"><td>Usuario:</td><td><s:textfield id="updateUsuario" name="updateUsuario" value="" ></s:textfield></td></tr>
@@ -119,6 +127,10 @@
 </div>
 <script type="text/javascript">
     $("document").ready(function () {
+
+        //al clickear el botón de editar llevamos todos los datos del usuario y 
+        //se mueve la pantalla al formulario situacdo debajo de la tabla
+
         $(".updateButton").click(function () {
             $("#formularioUpdate").show();
             var id = $(this).attr("id");
@@ -148,6 +160,8 @@
             $('html,body').animate({scrollTop: focalizar}, 1000);
 
         });
+
+        //al clickear en el botón cerrar, volveremos al inicio de la página.
 
         $("#volverUpdate").click(function () {
             $("#formularioUpdate").hide();

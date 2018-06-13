@@ -28,6 +28,7 @@ import webServiceREST.entidades.Viaje;
  */
 public class adminAction extends ActionSupport {
 
+    //listas necesarias
     List<Mensaje> listadoMensajes;
     List<Usuario> listadoUsuarios = new ArrayList<Usuario>();
     List<Localidad> listadoLocalidades;
@@ -65,6 +66,7 @@ public class adminAction extends ActionSupport {
         return SUCCESS;
     }
 
+    //validaciones
     public void validate() {
         boolean errorUsuario = false;
         if (this.getNomUsuario() != null) {
@@ -314,6 +316,8 @@ public class adminAction extends ActionSupport {
         return SUCCESS;
     }
 
+    //getter y setter
+    
     public List<Mensaje> getListadoMensajes() {
         return listadoMensajes;
     }

@@ -7,6 +7,8 @@
         &nbsp;
         <div class="row">
 
+            <!--mensajes de error de errores del update-->
+
             <s:fielderror fieldName="updatePlazasMax" cssClass="alert alert-danger" />
             <s:fielderror fieldName="updatePrecioPersona" cssClass="alert alert-danger" />
             <s:fielderror fieldName="updateFechaSalida" cssClass="alert alert-danger" />
@@ -16,15 +18,18 @@
                     <s:fielderror fieldName="nomUsuarioViaje" cssClass="alert alert-danger" />
                     <s:textfield placeholder="Nombre conductor..." name="nomUsuarioViaje" />
                     <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/buscar.jpg" /></button>
-                </s:form>
-                    &nbsp;
+                    </s:form>
+                &nbsp;
                 <s:form method="post" action="toGestionViajes">
                     Mostrar Todo
                     <button class="btn btn-default"><img class="imagenBuscar" title="Buscar" src="./images/mostrarTodo.png" /></button>
-                </s:form>
-                    &nbsp;
+                    </s:form>
+                &nbsp;
             </div>
             <div class="col-xs-12 datagrid">
+
+                <!--visualización de todos los usuarios-->
+
                 <table>
                     <thead>
                         <tr>
@@ -85,9 +90,12 @@
                 <div class="col-lg-4 col-xs-6 datagrid">
                     <table >
                         <thead>
-                        <tr><th colspan="2">Update</th></tr>
+                            <tr><th colspan="2">Update</th></tr>
                         </thead>
-                                <s:form id="formularioUpdate" method="post" action="updateViaje">
+
+                        <!--formulario para realizar el update de mensajes-->
+
+                        <s:form id="formularioUpdate" method="post" action="updateViaje">
                             <tr><td>ID Viaje</td><td id="updateId"></td></tr>
                             <tr class="alt"><td>Conductor:</td><td><s:select list="listadoUsuarios" listValue="nomUsuario" listKey="idUsuario" name="idUsuario" ></s:select>  </td></tr>
                             <tr><td>Origen:</td><td><s:select list="listadoLocalidades" listValue="nombre" listKey="idLocalidad" name="updateIdLocalidadOrigen" ></s:select>  </td></tr>
@@ -114,6 +122,10 @@
 
 <script type="text/javascript">
     $("document").ready(function () {
+
+        //al clickear el botón de editar llevamos todos los datos del viaje y 
+        //se mueve la pantalla al formulario situacdo debajo de la tabla
+
         $(".updateButton").click(function () {
             $("#formularioUpdate").show();
             var id = $(this).attr("id");
@@ -132,6 +144,8 @@
             $('html,body').animate({scrollTop: focalizar}, 1000);
 
         });
+
+        //al clickear en el botón cerrar, volveremos al inicio de la página.
 
         $("#volverUpdate").click(function () {
             $("#formularioUpdate").hide();

@@ -29,6 +29,9 @@
             <div class="col-xs-12">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10 datagrid">
+                    
+                    <!--visualización de todos los mensajes-->
+                    
                     <table class="col-lg-12 " border="1">
                         <thead>
                             <tr>
@@ -77,6 +80,8 @@
 
                 <div class="col-lg-4 col-xs-3"></div>
 
+                <!--formulario para realizar el update de mensajes-->
+                
                 <div class="col-lg-4 col-xs-6 datagrid">
                     <table >
                         <thead>
@@ -103,6 +108,9 @@
 </div>
 <script type="text/javascript">
     $("document").ready(function () {
+        
+        //al clickear el botón de editar llevamos todos los datos del mensaje y 
+        //se mueve la pantalla al formulario situacdo debajo de la tabla
         $(".updateButton").click(function () {
             $("#formularioUpdate").show();
             var id = $(this).attr("id");
@@ -115,6 +123,8 @@
             $('html,body').animate({scrollTop: focalizar}, 1000);
 
         });
+
+//al clickear en el botón cerrar, volveremos al inicio de la página.
 
         $("#volverUpdate").click(function () {
             $("#formularioUpdate").hide();
